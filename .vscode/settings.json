@@ -1,0 +1,10 @@
+{
+    "al.assemblyProbingPaths": [
+        "./.netpackages",
+        "c:/Windows/assembly/",
+        "C:/Windows//Microsoft.NET/Framework64",
+
+        "./.NET Assembly \"Microsoft.Dynamics.Nav.OpenXml\""
+    ]
+    
+}
