@@ -393,7 +393,7 @@ Page 51516487 "Devco Sacco Main Role Center"
                     action("Other Disclosures")
                     {
                         ApplicationArea = Basic, Suite;
-                        Caption = 'Loans Defaulter Aging';
+                        Caption = 'Other Disclosures';
                         RunObject = report "Other Disclosures";
                     }
                     action("Insider Lending Report")
@@ -646,24 +646,24 @@ Page 51516487 "Devco Sacco Main Role Center"
 
 
 
-                    action("Liquidity Report")
-                    {
-                        ApplicationArea = Basic, Suite;
-                        Caption = 'Liquidity Report';
-                        // Image = Journal;
-                        // RunObject = Page "General Journal Batches";
-                        //  RunPageView = WHERE("Template Type" = CONST(General),
-                        //                    Recurring = CONST(false));
-                        ToolTip = 'Generate Liquidity Report for a given period.';
-                    }
+                    // action("Liquidity Report")
+                    // {
+                    //     ApplicationArea = Basic, Suite;
+                    //     Caption = 'Liquidity Report';
+                    //     // Image = Journal;
+                    //     // RunObject = Page "General Journal Batches";
+                    //     //  RunPageView = WHERE("Template Type" = CONST(General),
+                    //     //                    Recurring = CONST(false));
+                    //     ToolTip = 'Generate Liquidity Report for a given period.';
+                    // }
 
-                    action("Deposit Return SASRA")
-                    {
-                        ApplicationArea = Basic, Suite;
-                        Caption = 'Deposit Return SASRA';
-                        RunObject = Page "Chart of Accounts";
-                        ToolTip = 'View or Generate Deposit Return SASRA for a given period.';
-                    }
+                    // action("Deposit Return SASRA")
+                    // {
+                    //     ApplicationArea = Basic, Suite;
+                    //     Caption = 'Deposit Return SASRA';
+                    //     RunObject = Page "Chart of Accounts";
+                    //     ToolTip = 'View or Generate Deposit Return SASRA for a given period.';
+                    // }
 
 
                     // action("Capital Adequacy Return")
@@ -740,13 +740,63 @@ Page 51516487 "Devco Sacco Main Role Center"
                         RunObject = Page "Chart of Accounts";
                         ToolTip = 'View or Generate GL Accounts Net Change Report for a given period.';
                     }
-
-
-
-
                 }
+                group("Mkopo Reports")
+                {
+                    Caption = 'Mkopo Reports';
+                    action(SaccoInformationReport)
+                    {
+                        ApplicationArea = All;
+                        RunObject = report "Sacco Information";
 
+                    }
+                    action("Statement of Directors'RE")
+                    {
+                        ApplicationArea = All;
+                        Caption = 'Statement of Director''s Responsibilities';
+                        RunObject = report "Statement of Directors'RE";
+                    }
+                    action(Reportofthedirectors)
+                    {
+                        ApplicationArea = All;
+                        RunObject = report "REPORT OF THE DIRECTORS";
 
+                    }
+                    action("Financial Statical Information")
+                    {
+                        ApplicationArea = All;
+
+                        RunObject = report FinancialStaticalInformation;
+                    }
+                    action("Statement of Financial Position Mkopo")
+                    {
+                        ApplicationArea = All;
+                        Caption = 'Satement of Financial Position';
+                        RunObject = report "State of financial Position";
+                    }
+                    action("Statement of profit or loss and other comprehensive income")
+                    {
+                        ApplicationArea = All;
+                        Caption = 'Statement of profit or loss and other comprehensive income';
+                        RunObject = report StatementProfitorloss;
+                    }
+                    action("Statement of changes of Equity Current")
+                    {
+                        ApplicationArea = All;
+                        RunObject = report StatchangesinequityCurrent;
+                    }
+                    action("Statement of changes of Equity Previous")
+                    {
+                        ApplicationArea = All;
+                        RunObject = report StatchangesinequityPrevious;
+                    }
+                    action("Statement OF Cash Flows")
+                    {
+                        ApplicationArea = All;
+                        Caption = 'Cash Flows';
+                        RunObject = report cashFlows;
+                    }
+                }
                 //.......................................................................................................................................
 
                 //..................................................................................................................................
@@ -762,7 +812,12 @@ Page 51516487 "Devco Sacco Main Role Center"
                         caption = 'Close Income Statement';
                         RunObject = report "Close Income Statement";
                     }
+                    action("Sacco Information")
+                    {
+                        ApplicationArea = Basic, Suite;
 
+                        RunObject = page "Sacco Information";
+                    }
                     action("Create Accounting Period")
                     {
                         ApplicationArea = Basic, Suite;
@@ -4121,6 +4176,13 @@ Page 51516487 "Devco Sacco Main Role Center"
                     image = CostAccountingDimensions;
                     ToolTip = 'Generate Loan Performance Classification and New Schedule';
                     Enabled = true;
+                }
+                action("Member Re-Application List")
+                {
+
+                    RunObject = page "Member Re-Application List";
+                    Enabled = true;
+                    ApplicationArea = all;
                 }
 
             }

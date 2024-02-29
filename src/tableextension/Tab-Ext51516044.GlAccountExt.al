@@ -21,11 +21,10 @@ tableextension 51516044 "GlAccountExt" extends "G/L Account"
             Editable = false;
             FieldClass = FlowField;
         }
-     
+
         field(54252; StatementOfFP; Option)
         {
-            OptionCaption = '  ,Cashinhand,Cashatbank,GrossLoanPortfolio,PropertyEquipment,AllowanceforLoanLoss,PrepaymentsSundryReceivables,Investmentincompanies,IntangibleAssets,Other Assets';
-            OptionMembers = "  ",Cashinhand,Cashatbank,GrossLoanPortfolio,PropertyEquipment,AllowanceforLoanLoss,PrepaymentsSundryReceivables,Investmentincompanies,IntangibleAssets,"Other Assets";
+            OptionMembers = "  ",Cashinhand,InterestonMemberdeposits,Cashatbank,GrossLoanPortfolio,PropertyEquipment,AllowanceforLoanLoss,PrepaymentsSundryReceivables,Investmentincompanies,IntangibleAssets,"Other Assets";
         }
         field(54253; StatementOfFP2; Option)
         {
@@ -34,8 +33,8 @@ tableextension 51516044 "GlAccountExt" extends "G/L Account"
         }
         field(54254; "Form2F(Statement of C Income)"; Option)
         {
-            OptionCaption = ' ,InterestonLoanPortfolio,FeesCommissiononLoanPortfolio,GovernmentSecurities,InvestmentinCompaniesshares,nterestExpenseonDeposits,DividendExpenses,OtherFinancialExpense,FeesCommissionExpense,OtherExpense,ProvisionforLoanLosses';
-            OptionMembers = " ",InterestonLoanPortfolio,FeesCommissiononLoanPortfolio,GovernmentSecurities,InvestmentinCompaniesshares,nterestExpenseonDeposits,DividendExpenses,OtherFinancialExpense,FeesCommissionExpense,OtherExpense,ProvisionforLoanLosses;
+           
+            OptionMembers = " ",OtherOperatingincome,NetFeeandcommission,InterestExpenses,OtherInterestIncome,InterestonLoanPortfolio,FeesCommissiononLoanPortfolio,GovernmentSecurities,InvestmentinCompaniesshares,nterestExpenseonDeposits,DividendExpenses,OtherFinancialExpense,FeesCommissionExpense,OtherExpense,ProvisionforLoanLosses;
         }
         field(54255; "Form2F1(Statement of C Income)"; Option)
         {
@@ -77,5 +76,24 @@ tableextension 51516044 "GlAccountExt" extends "G/L Account"
             OptionCaption = ' ,ShareCapital,StatutoryReserve,GeneralReserve,RevaluationReserve,RetainedEarnings,honararia';
             OptionMembers = " ",ShareCapital,StatutoryReserve,GeneralReserve,RevaluationReserve,RetainedEarnings,honararia;
         }
+        field(54263; "Financial Assets"; Boolean)
+        {
+            DataClassification = ToBeClassified;
+        }
+
+
     }
+    trigger OnAfterRename()
+    var
+        myInt: Integer;
+    begin
+        if GLEntry.get("No.") then begin
+            if GLEntry.IsEmpty <> true then begin
+                Error('You cannot Rename the Record');
+            end;
+        end;
+    end;
+
+    var
+        GLEntry: Record "G/L Entry";
 }

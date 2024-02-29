@@ -1799,12 +1799,18 @@ Page 51516221 "Membership Application Card"
 
 
     procedure SendMail()
+    Var
+        Email: Codeunit Email;
+        EmailMsg: Codeunit "Email Message";
+
     begin
 
         GenSetUp.Get;
 
         if GenSetUp."Send Email Notifications" = true then begin
-
+            EmailMsg.Create('Kmutiso@surestep.co.ke','Invoice from' + CompanyName(),'hello Yotube');
+            
+            Email.Send(EmailMsg,"Email Scenario"::"Customer Statement")
             // Notification.CreateMessage('Dynamics NAV',GenSetUp."Sender Address","E-Mail (Personal)",'Member Acceptance Notification',
             //                 'Member application '+ BOSAACC + ' has been approved'
             //                + ' (Dynamics NAV ERP)',false);

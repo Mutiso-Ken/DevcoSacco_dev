@@ -55,6 +55,7 @@ Page 51516271 "Sacco General Set-Up"
                 {
                     ApplicationArea = Basic;
                 }
+            
                 field("Min. Dividend Proc. Period"; "Min. Dividend Proc. Period")
                 {
                     ApplicationArea = Basic;

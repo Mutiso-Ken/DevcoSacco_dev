@@ -6,7 +6,7 @@ report 51516008 "Devco Sacco Trial Balance"
     // PreviewMode = PrintLayout;
     // DataAccessIntent = ReadOnly;
     DefaultLayout = RDLC;
-    RDLCLayout = './Layouts/JamiiYetuTrialBalance.rdlc';
+    RDLCLayout = './Layouts/DevcoTrialBalance.rdlc';
     dataset
     {
         dataitem("G/L Account"; "G/L Account")

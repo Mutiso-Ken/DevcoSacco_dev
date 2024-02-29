@@ -76,6 +76,10 @@ tableextension 51516079 "CustomerExt" extends Customer
             OptionCaption = ' ,Staff,Client,Others';
             OptionMembers = " ",Staff,Client,Others;
         }
+        field(68009; Supervisory; Boolean)
+        {
+            DataClassification = ToBeClassified;
+        }
         field(68011; "Outstanding Balance"; Decimal)
         {
             CalcFormula = sum("Cust. Ledger Entry"."Amount Posted" where("Customer No." = field("No."),
@@ -1411,6 +1415,10 @@ tableextension 51516079 "CustomerExt" extends Customer
             DataClassification = ToBeClassified;
         }
         field(69435; "Re-instated"; Boolean)
+        {
+            DataClassification = ToBeClassified;
+        }
+        field(69436; "Dormantancy Date"; Date)
         {
             DataClassification = ToBeClassified;
         }

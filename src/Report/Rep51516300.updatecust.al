@@ -1,27 +1,38 @@
-report 51516300 "update cust"
+report 51516300 "Update Member Dormancy"
 {
     UsageCategory = ReportsAndAnalysis;
     ApplicationArea = All;
-    // DefaultRenderingLayout = LayoutName;
-    RDLCLayout = './Layouts/updatecustreg.rdlc';
+    ProcessingOnly = true;
 
     dataset
     {
         dataitem(Customer; Customer)
         {
-            RequestFilterFields = "No.";
             column(No_; "No.")
             {
 
             }
             trigger OnAfterGetRecord()
+            var
+                DateFormula: Text;
+                Lastdate: Date;
             begin
-                CalcFields(Customer."Shares Retained");
+                DateFormula := '<6M>';
+                CalcFields(Customer."Last Payment Date");
+                if (Customer.Status <> Customer.Status::Withdrawal) and (Customer."Last Payment Date" <> 0D) then begin
+                    Lastdate := CalcDate(DateFormula, Customer."Last Payment Date");
+                    if Lastdate < Today then begin
+                        Customer.Status := Customer.Status::Dormant;
+                        Customer.Modify();
+                    end else
+                        if Lastdate >= Today then begin
+                            Customer.Status := Customer.Status::Active;
+                            Customer.Modify();
+                        end;
+                end;
 
-                // if "Shares Retained" = 0 then
-                //     "Account Category" := "Account Category"::"Non-member";
-                // Modify(true)
             end;
+
         }
     }
 
@@ -54,15 +65,6 @@ report 51516300 "update cust"
             }
         }
     }
-
-    // rendering
-    // {
-    //     layout(LayoutName)
-    //     {
-    //         Type = Excel;
-    //         LayoutFile = 'mySpreadsheet.xlsx';
-    //     }
-    // }
 
     var
         myInt: Integer;

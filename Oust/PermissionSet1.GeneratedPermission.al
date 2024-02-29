@@ -761,7 +761,7 @@ permissionset 1 GeneratedPermission
         report "Group Performance Status" = X,
         // report "Housing Levy Schedule" = X,
         report "Insider Lending" = X,
-        report "Jamii Account Schedule" = X,
+        // report "Jamii Account Schedule" = X,
         report "Devco Sacco Trial Balance" = X,
         report "Loan Appraisal MICRO" = X,
         // report "Loan Appraisal- BOSA" = X,

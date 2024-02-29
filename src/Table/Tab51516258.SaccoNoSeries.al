@@ -377,6 +377,10 @@ Table 51516258 "Sacco No. Series"
         {
             TableRelation = "No. Series";
         }
+           field(51516020; "Member Re-Application No.s"; Code[20])
+        {
+            TableRelation = "No. Series";
+        }
     }
 
     keys

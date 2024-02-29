@@ -292,6 +292,11 @@ Page 51516227 "Member Account Card"
                     ApplicationArea = Basic;
                     Editable = true;
                 }
+                field(Supervisory; Supervisory)
+                {
+                    ApplicationArea = Basic;
+                    Editable = true;
+                }
                 field(staff; staff)
                 {
                     ApplicationArea = Basic;

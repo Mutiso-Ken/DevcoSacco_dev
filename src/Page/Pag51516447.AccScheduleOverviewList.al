@@ -7,6 +7,7 @@ Page 51516447 "Acc. Schedule Overview List"
     PageType = Worksheet;
     SaveValues = true;
     SourceTable = "Acc. Schedule Line";
+    ApplicationArea = all;
 
     layout
     {
@@ -472,7 +473,7 @@ Page 51516447 "Acc. Schedule Overview List"
 
                 trigger OnAction()
                 var
-                    AccSched: Report "Jamii Account Schedule";
+                    AccSched: Report "Devco Account Schedule";
                     DateFilter2: Text[30];
                     GLBudgetFilter2: Text[30];
                     BusUnitFilter: Text[30];

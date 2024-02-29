@@ -870,7 +870,7 @@ Page 51516245 "Loan Application Card"
         SMSMessages."Entered By" := USERID;
         SMSMessages."Sent To Server" := SMSMessages."Sent To Server"::No;
         SMSMessages."SMS Message" := 'Your loan application of KSHs.' + FORMAT("Requested Amount") +
-                                  ' has been received. Devco Sacco Ltd.';
+                                  ' has been Approved by Credit. Devco Sacco Ltd.';
         Cust.RESET;
         IF Cust.GET("Client Code") THEN
             if Cust."Mobile Phone No" <> '' then begin

@@ -64,7 +64,7 @@ Page 51516273 "Sacco No. Series"
                 {
                     ApplicationArea = Basic;
                 }
-                  field("Share Capital Transfer No.s";"Share Capital Transfer No.s")
+                field("Share Capital Transfer No.s"; "Share Capital Transfer No.s")
                 {
                     ApplicationArea = Basic;
                 }
@@ -97,6 +97,10 @@ Page 51516273 "Sacco No. Series"
                 {
                     ApplicationArea = Basic;
                     Caption = 'Bosa member Number';
+                }
+                field("Member Re-Application No.s"; "Member Re-Application No.s")
+                {
+                    ApplicationArea = Basic;
                 }
                 field("Checkoff-Proc Distributed Nos"; "Checkoff-Proc Distributed Nos")
                 {

@@ -3,6 +3,19 @@ pageextension 51516628 "ChartOfAccountsCardExt" extends "G/L Account Card"
 
     layout
     {
+        modify(Name)
+        {
+            trigger OnBeforeValidate()
+            var
+                myInt: Integer;
+            begin
+                // if GlEntry.IsEmpty = false then begin
+                //     Editable := false;
+                // end else
+                //     Editable := true;
+            end;
+
+        }
         addafter(Reporting)
         {
             group("SASRA REPORTS SETUP")
@@ -52,12 +65,23 @@ pageextension 51516628 "ChartOfAccountsCardExt" extends "G/L Account Card"
                 {
                     ApplicationArea = Basic;
                 }
+                field("Financial Assets"; "Financial Assets")
+                {
+                    ApplicationArea = basic;
+                }
             }
         }
 
     }
     trigger OnOpenPage()
     begin
+        // GlEntry.Reset();
+        // GlEntry.SetRange(GLEntry."G/L Account No.", "No.");
+        // if not FindSet() then begin
+        //     // if GlEntry.IsEmpty = false then begin
+        //     Edit := true;
+        //     // end;
+        // end;
         AuditLog.FnReadingsMadeAudit(UserId, 'Accessed and read the G/L account page no-' + Format("No.") + ' Name-' + Format(Name));
     end;
 
@@ -68,4 +92,6 @@ pageextension 51516628 "ChartOfAccountsCardExt" extends "G/L Account Card"
 
     var
         AuditLog: Codeunit "Audit Log Codeunit";
+        GlEntry: Record "G/L Entry";
+        Edit: Boolean;
 }
