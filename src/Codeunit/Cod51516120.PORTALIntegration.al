@@ -82,16 +82,22 @@ Codeunit 51516120 "PORTALIntegration"
         sharecapital := 0;
         overallLoans := 0;
 
-        if objMember.Get(MemberNo) then begin
+        objMember.Reset();
+        objMember.SetRange(objMember."No.", MemberNo);
+        if objMember.Find('-')
+         then begin
             objMember.CalcFields("Shares Retained", "Outstanding Balance", "Outstanding Interest", "Current Shares");
             bdeposits := objMember."Current Shares";
             outstandingLoans := objMember."Outstanding Balance" + objMember."Outstanding Interest";
             sharecapital := objMember."Shares Retained";
-        end;
 
-        overallSavings := bdeposits + mDeposits + rsf + fosaShares;
-        overallLoans := outstandingLoans;
-        responsetext := Format(bdeposits) + ':::' + Format(mDeposits) + ':::' + Format(rsf) + ':::' + Format(fosaShares) + ':::' + Format(outstandingLoans) + ':::' + Format(overallSavings) + ':::' + Format(sharecapital) + ':::' + Format(overallLoans) + ':::';
+            overallSavings := bdeposits + mDeposits + rsf + fosaShares;
+            overallLoans := outstandingLoans;
+            responsetext := Format(bdeposits) + ':::' + Format(mDeposits) + ':::' + Format(rsf) + ':::' + Format(fosaShares) + ':::' + Format(outstandingLoans) + ':::' + Format(overallSavings) + ':::' + Format(sharecapital) + ':::' + Format(overallLoans) + ':::';
+        end else
+            responsetext := 'Member Not Found.'
+
+
     end;
 
 
@@ -123,7 +129,7 @@ Codeunit 51516120 "PORTALIntegration"
             MemberLedgerEntry.Ascending(false);
             if MemberLedgerEntry.Find('-') then begin
                 repeat
-                    MiniStmt := MiniStmt + Format(MemberLedgerEntry."Posting Date") + '|' + Format(MemberLedgerEntry."Transaction Type") + '|' + Format((Abs(MemberLedgerEntry.Amount))) + ';';
+                    MiniStmt := MiniStmt + Format(MemberLedgerEntry."Posting Date") + '|' + Format(MemberLedgerEntry."Transaction Type") + '|' + Format((Abs(MemberLedgerEntry."Amount Posted"))) + ';';
                     runcount := runcount + 1;
                     if runcount >= 10 then begin
                         exit(MiniStmt);
@@ -434,8 +440,6 @@ Codeunit 51516120 "PORTALIntegration"
         _record.Source := _record.Source::BOSA;
 
         _record.Insert(true);
-
-
         loanNo := _record."Loan  No.";
     end;
 
@@ -867,7 +871,10 @@ Codeunit 51516120 "PORTALIntegration"
 
 
     procedure fnLoanCalculator(LoanAmount: Decimal; RepayPeriod: Integer; LoanCode: Code[30]) text: Text
+    var
+        StaticPeriod: Integer;
     begin
+        StaticPeriod := RepayPeriod;
         Loansetup.Reset;
         Loansetup.SetRange(Loansetup.Code, LoanCode);
 
@@ -901,14 +908,14 @@ Codeunit 51516120 "PORTALIntegration"
                     //LoansRec.TESTFIELD(LoansRec.Interest);
                     //LoansRec.TESTFIELD(LoansRec.Installments);
 
-                    LPrincipal := LoanAmount / RepayPeriod;
-                    LInterest := (Loansetup."Interest rate" / 12 / 100) * LoanAmount / RepayPeriod;
+                    LPrincipal := LoanAmount / StaticPeriod;
+                    LInterest := (Loansetup."Interest rate" / 1200) * LoanAmount;
                     TotalMRepay := LPrincipal + LInterest;
                     RepayPeriod := RepayPeriod - 1;
                     LoanAmount := LoanAmount - LPrincipal;
                     text := text + Format(Date) + '!!' + Format(ROUND(LPrincipal)) + '!!' + Format(ROUND(LInterest)) + '!!' + Format(ROUND(TotalMRepay)) + '!!' + Format(ROUND(LoanAmount)) + '??';
                     Date := CalcDate('+1M', Date);
-                until RepayPeriod = 0;
+                until LoanAmount = 0;
             end;
 
 
@@ -918,20 +925,7 @@ Codeunit 51516120 "PORTALIntegration"
                 Message('type is %1', LoanCode);
                 Date := Today;
 
-                //    //MESSAGE('HERE');
-                //  // TotalMRepay:=ROUND((Loansetup."Interest Rate2"/12/100) / (1 - POWER((1 +(Loansetup."Interest Rate2"/12/100)),- (RepayPeriod))) * (LoanAmount),0.0001,'>');
-                //   REPEAT
-                //  LInterest:=ROUND(LoanAmount * Loansetup."Interest Rate2"/12/100,0.0001,'>');
-                //  LPrincipal:=TotalMRepay-LInterest;
-                //    LoanAmount:=LoanAmount-LPrincipal;
-                // RepayPeriod:= RepayPeriod-1;
-                //
-                //  text:=text+FORMAT(Date)+'!!'+FORMAT(ROUND( LPrincipal))+'!!'+FORMAT(ROUND( LInterest))+'!!'+FORMAT(ROUND(TotalMRepay))+'!!'+FORMAT(ROUND(LoanAmount))+'??';
-                //  Date:=CALCDATE('+1M', Date);
-                //
-                //  UNTIL RepayPeriod=0;
 
-                // ELSE BEGIN
                 TotalMRepay := ROUND((Loansetup."Interest rate" / 12 / 100) / (1 - Power((1 + (Loansetup."Interest rate" / 12 / 100)), -(RepayPeriod))) * (LoanAmount), 0.0001, '>');
                 repeat
                     LInterest := ROUND(LoanAmount * Loansetup."Interest rate" / 12 / 100, 0.0001, '>');
@@ -945,20 +939,7 @@ Codeunit 51516120 "PORTALIntegration"
                 until RepayPeriod = 0;
             end;
 
-            /*IF  Loansetup."Repayment Method"= Loansetup."Repayment Method"::Constants THEN BEGIN
-            LoansRec.TESTFIELD(LoansRec.Repayment);
-            IF LBalance < LoansRec.Repayment THEN
-            LPrincipal:=LBalance
-            ELSE
-            LPrincipal:=LoansRec.Repayment;
-            LInterest:=LoansRec.Interest;
-            END;*/
 
-
-
-            //END;
-
-            //EXIT(Amount);
         end;
 
     end;
@@ -970,7 +951,7 @@ Codeunit 51516120 "PORTALIntegration"
         if Loansetup.Find('-') then begin
             loanType := '';
             repeat
-                loanType := Format(Loansetup.Code) + ':' + Loansetup."Product Description" + ':::' + loanType;
+                loanType := Format(Loansetup.Code) + ':' + Loansetup."Product Description" + ':::' + loanType + ':::' + Format(Loansetup."Interest rate");
             until Loansetup.Next = 0;
         end;
     end;
@@ -982,7 +963,9 @@ Codeunit 51516120 "PORTALIntegration"
         Loansetup.Reset;
         Loansetup.SetRange(Code, productType);
         if Loansetup.Find('-') then begin
-            response := Format(Loansetup."Min. Loan Amount") + ':::' + Format(Loansetup."Max. Loan Amount") + ':::' + Format(Loansetup."Interest rate") + ':::' + Format(Loansetup."No of Installment");
+            repeat
+                response := Format(Loansetup."Min. Loan Amount") + ':::' + Format(Loansetup."Max. Loan Amount") + ':::' + Format(Loansetup."Interest rate") + ':::' + Format(Loansetup."No of Installment");
+            until Loansetup.Next = 0;
         end;
     end;
 
@@ -1104,7 +1087,6 @@ Codeunit 51516120 "PORTALIntegration"
             end else begin
                 response := '{ "StatusCode":"2","StatusDescription":"MEMBERNOTFOUND","MemberInfo": [] }';
             end
-        end
-    end;
+        end
+    end;
 }
-

@@ -14,6 +14,22 @@ report 50039 cashFlows
             {
 
             }
+            column(PreviousYear; PreviousYear)
+            {
+
+            }
+            column(CurrentYear; CurrentYear)
+            {
+
+            }
+            column(EndofLastyear; EndofLastyear)
+            {
+
+            }
+            column(LastYearButOne; LastYearButOne)
+            {
+
+            }
         }
     }
 
@@ -50,6 +66,9 @@ report 50039 cashFlows
 
 
     var
-        myInt: Integer;
-        Asat: Date;
+        AsAt: Date;
+        PreviousYear: Integer;
+        CurrentYear: Integer;
+        EndofLastyear: date;
+        LastYearButOne: Date;
 }

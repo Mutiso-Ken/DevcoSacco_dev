@@ -5042,6 +5042,18 @@ End Function
         <Field Name="Code">
           <DataField>Code</DataField>
         </Field>
+        <Field Name="PreviousYear">
+          <DataField>PreviousYear</DataField>
+        </Field>
+        <Field Name="CurrentYear">
+          <DataField>CurrentYear</DataField>
+        </Field>
+        <Field Name="EndofLastyear">
+          <DataField>EndofLastyear</DataField>
+        </Field>
+        <Field Name="LastYearButOne">
+          <DataField>LastYearButOne</DataField>
+        </Field>
       </Fields>
       <Query>
         <DataSourceName>DataSource</DataSourceName>
