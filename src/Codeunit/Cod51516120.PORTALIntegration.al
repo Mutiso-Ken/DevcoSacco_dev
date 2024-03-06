@@ -387,7 +387,6 @@ Codeunit 51516120 "PORTALIntegration"
             objRegMember.Reset;
             objRegMember.SetRange("ID No.", "ID Number");
             if objRegMember.Find('-') then begin
-                Message('already registered');
             end
             else begin
                 objRegMember.Init;
@@ -848,17 +847,8 @@ Codeunit 51516120 "PORTALIntegration"
     begin
         objLoanRegister.Reset;
         objLoanRegister.SetRange("Client Code", MemberNo);
-        //objLoanRegister.SETRANGE("Loan Status",objLoanRegister."Loan Status"::Appraisal);
-        //objLoanRegister.SETRANGE("Loan Status",objLoanRegister."Loan Status"::Approval1);
-        //objLoanRegister.SETRANGE("Loan Status",objLoanRegister."Loan Status"::Approved);
-        //objLoanRegister.SETRANGE("Loan Status",objLoanRegister."Loan Status"::"Being Repaid");
         if objLoanRegister.Find('-') then begin
-            //objLoanRegister.SETCURRENTKEY("Application Date");
-            //objLoanRegister.ASCENDING(FALSE);
-
             repeat
-                //Loanperiod:=Kentoursfactory.KnGetCurrentPeriodForLoan(objLoanRegister."Loan  No.");
-
                 objLoanRegister.CalcFields("Outstanding Balance");
                 loanlist := loanlist + '::::' + objLoanRegister."Loan Product Type" + ':' + Format(objLoanRegister."Outstanding Balance") + ':' + Format(objLoanRegister."Loan Status") + ':' + Format(objLoanRegister.Installments) + ':'
                   + Format(objLoanRegister.Installments - Loanperiod) + ':' + Format(objLoanRegister."Approved Amount") + ':' + Format(objLoanRegister."Requested Amount") + ':' + objLoanRegister."Loan  No." + '::::';
@@ -869,73 +859,55 @@ Codeunit 51516120 "PORTALIntegration"
         end;
     end;
 
-
     procedure fnLoanCalculator(LoanAmount: Decimal; RepayPeriod: Integer; LoanCode: Code[30]) text: Text
     var
         StaticPeriod: Integer;
     begin
+        StaticPeriod := 0;
         StaticPeriod := RepayPeriod;
         Loansetup.Reset;
         Loansetup.SetRange(Loansetup.Code, LoanCode);
-
         if Loansetup.Find('-') then begin
-
             if Loansetup."Repayment Method" = Loansetup."repayment method"::Amortised then begin
-
+                Date := Today;
+                Loansetup.TestField(Loansetup."Interest rate");
+                Loansetup.TestField(Loansetup."Instalment Period");
+                TotalMRepay := ROUND((Loansetup."Interest rate" / 1200) / (1 - Power((1 + (Loansetup."Interest rate" / 1200)), -(RepayPeriod))) * (LoanAmount), 0.0001, '>');
                 repeat
-                    Date := Today;
-
-                    Loansetup.TestField(Loansetup."Interest rate");
-                    Loansetup.TestField(Loansetup."Instalment Period");
-                    TotalMRepay := ROUND((Loansetup."Interest rate" / 12 / 100) / (1 - Power((1 + (Loansetup."Interest rate" / 12 / 100)), -RepayPeriod)) * (LoanAmount), 0.05, '>');
-                    LInterest := ROUND((LBalance / 100 / 12) * InterestRate, 0.005, '>');
+                    LInterest := ROUND((LoanAmount / 1200) * Loansetup."Interest rate", 0.0001, '>');
                     LPrincipal := TotalMRepay - LInterest;
+                    LoanAmount := LoanAmount - LPrincipal;
                     RepayPeriod := RepayPeriod - 1;
-
-                    Date := CalcDate('+1M', Date);
-                    Message(Format(Date));
                     text := text + Format(Date) + '!!' + Format(ROUND(LPrincipal)) + '!!' + Format(ROUND(LInterest)) + '!!' + Format(ROUND(TotalMRepay)) + '!!' + Format(ROUND(LoanAmount)) + '??';
-
-                    //MESSAGE(FORMAT( TotalMRepay));
-                    Message(Format(LInterest));
-                // MESSAGE(FORMAT( LPrincipal));
+                    Date := CalcDate('+1M', Date);
                 until RepayPeriod = 0;
 
             end;
             if Loansetup."Repayment Method" = Loansetup."repayment method"::"Straight Line" then begin
-                repeat
-                    Date := Today;
-                    //LoansRec.TESTFIELD(LoansRec.Interest);
-                    //LoansRec.TESTFIELD(LoansRec.Installments);
 
-                    LPrincipal := LoanAmount / StaticPeriod;
-                    LInterest := (Loansetup."Interest rate" / 1200) * LoanAmount;
+                Date := Today;
+                LPrincipal := LoanAmount / RepayPeriod;
+                LInterest := Round((LoanAmount * Loansetup."Interest rate" / 1200), 1, '=');
+                repeat
+
+
                     TotalMRepay := LPrincipal + LInterest;
-                    RepayPeriod := RepayPeriod - 1;
+                    // RepayPeriod := RepayPeriod - 1;
                     LoanAmount := LoanAmount - LPrincipal;
                     text := text + Format(Date) + '!!' + Format(ROUND(LPrincipal)) + '!!' + Format(ROUND(LInterest)) + '!!' + Format(ROUND(TotalMRepay)) + '!!' + Format(ROUND(LoanAmount)) + '??';
                     Date := CalcDate('+1M', Date);
                 until LoanAmount = 0;
             end;
-
-
             if Loansetup."Repayment Method" = Loansetup."repayment method"::"Reducing Balance" then begin
-                //LoansRec.TESTFIELD(LoansRec.Interest);
-                //LoansRec.TESTFIELD(LoansRec.Installments);
-                Message('type is %1', LoanCode);
                 Date := Today;
-
-
                 TotalMRepay := ROUND((Loansetup."Interest rate" / 12 / 100) / (1 - Power((1 + (Loansetup."Interest rate" / 12 / 100)), -(RepayPeriod))) * (LoanAmount), 0.0001, '>');
                 repeat
                     LInterest := ROUND(LoanAmount * Loansetup."Interest rate" / 12 / 100, 0.0001, '>');
                     LPrincipal := TotalMRepay - LInterest;
                     LoanAmount := LoanAmount - LPrincipal;
                     RepayPeriod := RepayPeriod - 1;
-
                     text := text + Format(Date) + '!!' + Format(ROUND(LPrincipal)) + '!!' + Format(ROUND(LInterest)) + '!!' + Format(ROUND(TotalMRepay)) + '!!' + Format(ROUND(LoanAmount)) + '??';
                     Date := CalcDate('+1M', Date);
-
                 until RepayPeriod = 0;
             end;
 
@@ -1087,6 +1059,6 @@ Codeunit 51516120 "PORTALIntegration"
             end else begin
                 response := '{ "StatusCode":"2","StatusDescription":"MEMBERNOTFOUND","MemberInfo": [] }';
             end
-        end
-    end;
+        end
+    end;
 }

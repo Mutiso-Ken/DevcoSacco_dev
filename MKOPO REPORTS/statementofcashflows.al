@@ -30,6 +30,23 @@ report 50039 cashFlows
             {
 
             }
+            trigger OnAfterGetRecord()
+            var
+                myInt: Integer;
+                InputDate: Date;
+                DateFormula: Text;
+                DateExpr: Text;
+
+            begin
+                DateFormula := '<-CY-1D>';
+                DateExpr := '<-1y>';
+                InputDate := Asat;
+
+                EndofLastyear := CalcDate(DateFormula, Asat);
+                CurrentYear := Date2DMY(EndofLastyear, 3);
+                LastYearButOne := CalcDate(DateExpr, EndofLastyear);
+                PreviousYear := CurrentYear - 1;
+            end;
         }
     }
 

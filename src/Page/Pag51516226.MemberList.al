@@ -188,7 +188,7 @@ Page 51516226 "Member List"
                     ApplicationArea = Basic;
                     Promoted = true;
                     //visible = false;
-                    Caption='Member Statement';
+                    Caption = 'Member Statement';
                     PromotedCategory = "Report";
 
                     trigger OnAction()
@@ -208,7 +208,22 @@ Page 51516226 "Member List"
 
     end;
 
+    // trigger OnOpenPage()
+    // var
+    //     EmailBody: Text[700];
+    //     EmailSubject: Text[100];
+    //     Emailaddress: Text[100];
+    // begin
+    //     Emailaddress := 'kmutiso39@gmail.com';
+    //     EmailSubject := 'wee wacha';
+    //     EMailBody := 'Dear <b>' + '</b>,</br></br>'+
+    //         'On behalf of Devco Sacco am pleased to inform you that your application for membership has been accepted.' +'<br></br>'+
+    //         'Congratulations';
+    //     SurestepFactory.SendMail(Emailaddress, EmailSubject, EmailBody);
+    // end;
+
     var
+        SurestepFactory: Codeunit "SURESTEP Factory";
         Cust: Record Customer;
         GeneralSetup: Record "Sacco General Set-Up";
         Gnljnline: Record "Gen. Journal Line";

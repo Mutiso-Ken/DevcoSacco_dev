@@ -26,6 +26,10 @@ report 50027 StatchangesinequityCurrent
             {
                 
             }
+            column(CurrentYear;CurrentYear)
+            {
+                
+            }
             trigger OnAfterGetRecord()
             var
                 myInt: Integer;

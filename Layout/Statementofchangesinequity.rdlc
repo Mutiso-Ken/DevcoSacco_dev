@@ -31,7 +31,7 @@
                   <Width>0.90625in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>0.90625in</Width>
+                  <Width>0.96875in</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>0.96875in</Width>
@@ -653,10 +653,21 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Year ended 31 December 2022</Value>
+                                  <Value>Year ended </Value>
                                   <Style>
                                     <FontFamily>Times New Roman</FontFamily>
                                     <FontWeight>Bold</FontWeight>
+                                  </Style>
+                                </TextRun>
+                                <TextRun>
+                                  <Value>=First(Fields!EndofLastyear.Value, "DataSet_Result")</Value>
+                                  <Style>
+                                    <FontStyle>Normal</FontStyle>
+                                    <FontFamily>Times New Roman</FontFamily>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Format>dd MMMM yyyy</Format>
+                                    <TextDecoration>None</TextDecoration>
+                                    <Color>#000000</Color>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -5916,7 +5927,29 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>-Final for 2020 (paid)</Value>
+                                  <Value>-Final for  </Value>
+                                  <Style>
+                                    <FontStyle>Normal</FontStyle>
+                                    <FontFamily>Times New Roman</FontFamily>
+                                    <FontWeight>Normal</FontWeight>
+                                    <TextDecoration>None</TextDecoration>
+                                    <Color>#000000</Color>
+                                  </Style>
+                                </TextRun>
+                                <TextRun>
+                                  <Value>=Fields!PreviousYear.Value</Value>
+                                  <Style>
+                                    <FontFamily>Times New Roman</FontFamily>
+                                  </Style>
+                                </TextRun>
+                                <TextRun>
+                                  <Value xml:space="preserve"> </Value>
+                                  <Style>
+                                    <FontFamily>Times New Roman</FontFamily>
+                                  </Style>
+                                </TextRun>
+                                <TextRun>
+                                  <Value>(paid)</Value>
                                   <Style>
                                     <FontStyle>Normal</FontStyle>
                                     <FontFamily>Times New Roman</FontFamily>
@@ -5944,7 +5977,7 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox189">
+                        <Textbox Name="PreviousYear">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
@@ -5958,7 +5991,7 @@
                               <Style />
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Textbox189</rd:DefaultName>
+                          <rd:DefaultName>PreviousYear</rd:DefaultName>
                           <Style>
                             <Border>
                               <Style>None</Style>
@@ -6130,7 +6163,23 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>- Interim for 2021 (paid)</Value>
+                                  <Value>- Interim for </Value>
+                                  <Style>
+                                    <FontStyle>Normal</FontStyle>
+                                    <FontFamily>Times New Roman</FontFamily>
+                                    <FontWeight>Normal</FontWeight>
+                                    <TextDecoration>None</TextDecoration>
+                                    <Color>#000000</Color>
+                                  </Style>
+                                </TextRun>
+                                <TextRun>
+                                  <Value>=Fields!CurrentYear.Value</Value>
+                                  <Style>
+                                    <FontFamily>Times New Roman</FontFamily>
+                                  </Style>
+                                </TextRun>
+                                <TextRun>
+                                  <Value> (paid)</Value>
                                   <Style>
                                     <FontStyle>Normal</FontStyle>
                                     <FontFamily>Times New Roman</FontFamily>
@@ -6640,10 +6689,11 @@
                 <TablixMember />
               </TablixMembers>
             </TablixRowHierarchy>
+            <DataSetName>DataSet_Result</DataSetName>
             <Top>0.12375in</Top>
             <Left>0.36458in</Left>
-            <Height>6.595in</Height>
-            <Width>9.23611in</Width>
+            <Height>6.59502in</Height>
+            <Width>9.29861in</Width>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -6807,6 +6857,9 @@ End Function
         </Field>
         <Field Name="PreviousYear">
           <DataField>PreviousYear</DataField>
+        </Field>
+        <Field Name="CurrentYear">
+          <DataField>CurrentYear</DataField>
         </Field>
       </Fields>
       <Query>

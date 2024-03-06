@@ -747,20 +747,21 @@ Page 51516487 "Devco Sacco Main Role Center"
                     action(SaccoInformationReport)
                     {
                         ApplicationArea = All;
+                        Caption = 'Sacco Information Report';
                         RunObject = report "Sacco Information";
 
                     }
                     action("Statement of Directors'RE")
                     {
                         ApplicationArea = All;
-                        Caption = 'Statement of Director''s Responsibilities';
+                        Caption = 'Statement of Directors Responsibilities';
                         RunObject = report "Statement of Directors'RE";
                     }
                     action(Reportofthedirectors)
                     {
                         ApplicationArea = All;
                         RunObject = report "REPORT OF THE DIRECTORS";
-
+                        Caption = 'Report of the Directors';
                     }
                     action("Financial Statical Information")
                     {

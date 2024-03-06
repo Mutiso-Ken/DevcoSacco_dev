@@ -27,7 +27,17 @@ Codeunit 51516022 "SURESTEP Factory"
         BAND4: Decimal;
         BAND5: Decimal;
         NLInterest: Decimal;
+        TheMessage: Codeunit "Email Message";
+        Email: Codeunit Email;
 
+
+
+    procedure SendMail(EmailAddress: Text[60]; EmailSubject: text[100]; EmailBody: Text[200])
+    begin
+        TheMessage.Create(EmailAddress, EmailSubject, EmailBody,true);
+        Email.Send(TheMessage);
+
+    end;
 
     procedure FnGetCashierTransactionBudding(TransactionType: Code[100]; TransAmount: Decimal) TCharge: Decimal
     begin
@@ -69,7 +79,7 @@ Codeunit 51516022 "SURESTEP Factory"
                         if InsuredAmount < 1000000 then begin
                             FCharged := ObjProductCharges.Amount
                         end else
-                            FCharged :=  ObjProductCharges.Amount2
+                            FCharged := ObjProductCharges.Amount2
 
                     end;
             end;
@@ -1720,7 +1730,14 @@ Codeunit 51516022 "SURESTEP Factory"
         exit('Direct Posting');
     end;
     //.......................................................
-    procedure FnCreateJournalLines(TemplateName: Text; BatchName: Text; DocumentNo: Code[30]; LineNo: Integer; TransactionType: enum TransactionTypesEnum; AccountType: enum "Gen. Journal Account Type"; AccountNo: Code[50]; TransactionDate: Date; TransactionAmount: Decimal; DimensionActivity: Code[40]; ExternalDocumentNo: Code[50]; TransactionDescription: Text; LoanNumber: Code[50])
+    procedure FnCreateJournalLines(TemplateName: Text; BatchName: Text; DocumentNo: Code[30]; LineNo: Integer; TransactionType: enum TransactionTypesEnum; AccountType: enum "Gen. Journal Account Type";
+                                                                                                                                    AccountNo: Code[50];
+                                                                                                                                    TransactionDate: Date;
+                                                                                                                                    TransactionAmount: Decimal;
+                                                                                                                                    DimensionActivity: Code[40];
+                                                                                                                                    ExternalDocumentNo: Code[50];
+                                                                                                                                    TransactionDescription: Text;
+                                                                                                                                    LoanNumber: Code[50])
     var
         GenJournalLine: Record "Gen. Journal Line";
     begin

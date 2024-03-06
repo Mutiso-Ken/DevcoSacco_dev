@@ -959,7 +959,7 @@ Page 51516221 "Membership Application Card"
                             end;
                             //...............................Close The Card
                             //-----Send Email
-                            FnSendMemberWelcomeEmailWithAttachment();
+                            SendMail();
                             //-----Send SMS
                             FnSendSMSOnAccountOpening();
                             //-----
@@ -989,7 +989,7 @@ Page 51516221 "Membership Application Card"
 
                     trigger OnAction()
                     VAR
-                        SFactory: Codeunit "SURESTEP Factory";
+
                     begin
                         SFactory.FnGetMemberApplicationAMLRiskRating("No.");
                     end;
@@ -1099,6 +1099,7 @@ Page 51516221 "Membership Application Card"
     end;
 
     var
+        SFactory: Codeunit "SURESTEP Factory";
         Individual: Boolean;
         groupAcc: Boolean;
         Junior: Boolean;
@@ -1800,22 +1801,21 @@ Page 51516221 "Membership Application Card"
 
     procedure SendMail()
     Var
-        Email: Codeunit Email;
-        EmailMsg: Codeunit "Email Message";
+        EmailBody: Text[150];
+        EmailSubject: Text[100];
+        Emailaddress: Text[100];
 
     begin
 
         GenSetUp.Get;
 
         if GenSetUp."Send Email Notifications" = true then begin
-            EmailMsg.Create('Kmutiso@surestep.co.ke','Invoice from' + CompanyName(),'hello Yotube');
-            
-            Email.Send(EmailMsg,"Email Scenario"::"Customer Statement")
-            // Notification.CreateMessage('Dynamics NAV',GenSetUp."Sender Address","E-Mail (Personal)",'Member Acceptance Notification',
-            //                 'Member application '+ BOSAACC + ' has been approved'
-            //                + ' (Dynamics NAV ERP)',false);
-
-            // Notification.Send;
+            Emailaddress := Rec."E-Mail (Personal)";
+            EmailSubject := 'Membership Application Subject';
+            EMailBody := ' <b> Dear ' + Rec.Name + '</b> ,</br></br>' +
+                'On behalf of Devco Sacco am pleased to inform you that your application for membership has been accepted.' + '<br></br>' +
+                'Congratulations ' + '</br></br>' + 'Regards' + '</br></br>' + ' Devco sacco';
+            SFactory.SendMail(Emailaddress, EmailSubject, EmailBody);
 
         end;
     end;
@@ -2188,55 +2188,7 @@ Page 51516221 "Membership Application Card"
             CoveragePercentStyle := 'Favorable';
     end;
 
-    local procedure FnSendMemberWelcomeEmailWithAttachment()
-    var
-        MemberReg: Record Customer;
-        LoansRegister: Record "Loans Register";
-        SaccoGeneralSetup: Record "Sacco General Set-Up";
-        //GeneralApplicationCodeUnit: Codeunit "General Application Codeunit";
-        FileName: Text[200];
-        FileName2: Text[200];
-        FileType: Text[100];
-        SendEmailTo: Text[100];
-        EmailBody: Text[1000];
-        EmailSubject: Text[100];
-        membersreg: Record Customer;
-        Outstr: OutStream;
-        Instr: InStream;
 
-        Outstr2: OutStream;
-        Instr2: InStream;
-        TempBlob: Codeunit "Temp Blob";
-
-        MailToSend: Codeunit "Email Message";
-        GenerateDoc: InStream;//Generate PDF/Document to be sent 
-        EncodeStream: Codeunit "Base64 Convert";//To encode the stream of data form GenerateDoc
-        FnEmail: Codeunit Email;
-        DialogBox: Dialog;
-    begin
-        DialogBox.Open('Sending Member Welcome Email');
-        //------------------->Get Key Details of Send Email
-        SendEmailTo := '';
-        SendEmailTo := "E-Mail (Personal)";//"E-Mail (Personal)"
-        EmailSubject := '';
-        EmailSubject := 'MEMBER ACCEPTANCE REPORT ';
-
-        EmailBody := '';
-        EmailBody := 'Dear ' + Format(Name) + '  We hope this email finds you well.Please find the attached';
-        //------------------->Generate The Report Attachments To Send
-        //---------Attachment 1
-        FileName := Format("No.") + '-WelcomeLetter.pdf';
-        TempBlob.CreateOutStream(Outstr);
-        Report.SaveAs(Report::"Member Accceptance Letter", '', ReportFormat::Pdf, Outstr);
-        TempBlob.CreateInStream(Instr);
-        //REPORT.SAVEASPDF(REPORT::"Loan Appraisal Draft", SaccoGeneralSetup."Path To Email Attachments " + FileName);//Save A copy
-
-        //------------------->Create Emails Start
-        MailToSend.Create(SendEmailTo, EmailSubject, EmailBody);
-        MailToSend.AddAttachment(FileName, FileType, Instr);
-        FnEmail.Send(MailToSend, Enum::"Email Scenario"::Default);
-        DialogBox.Close();
-    end;
 
 
 }
