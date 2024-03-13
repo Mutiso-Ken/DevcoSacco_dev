@@ -866,7 +866,10 @@ tableextension 51516069 "VendorExt" extends Vendor
                                                                   Reversed = const(false)));
             FieldClass = FlowField;
         }
-
+field(69082; "Sacco Lawyer"; Boolean)
+{
+    DataClassification = ToBeClassified;
+}
         field(51516062; "Do Not Include?"; Boolean)
         {
         }

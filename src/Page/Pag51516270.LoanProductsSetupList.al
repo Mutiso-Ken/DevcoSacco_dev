@@ -3,7 +3,7 @@ Page 51516270 "Loan Products Setup List"
 {
     ApplicationArea = Basic;
     CardPageID = "Loan Products Setup Card";
-    DeleteAllowed = false;
+    DeleteAllowed = true;
     Editable = false;
     PageType = List;
     PromotedActionCategories = 'New,Process,Reports,Approval,Budgetary Control,Cancellation,Category7_caption,Category8_caption,Category9_caption,Category10_caption';

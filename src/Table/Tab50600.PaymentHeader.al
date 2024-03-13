@@ -36,7 +36,7 @@ Table 50600 "Payment Header"
         }
         field(18; "Payment Mode"; Option)
         {
-            Editable = false;
+            // Editable = false;
             OptionCaption = ' ,Cash,Cheque,EFT,Letter of Credit,Custom 3,Custom 4,Custom 5';
             OptionMembers = " ",Cash,Cheque,EFT,"Letter of Credit","Custom 3","Custom 4","Custom 5";
         }
@@ -90,12 +90,7 @@ Table 50600 "Payment Header"
         }
         field(27; "Bank Account"; Code[10])
         {
-            TableRelation = if ("Payment Type" = const(Normal)) "Bank Account"."No." where("Bank Type1" = const(Normal),
-                                                                                          "Account Type" = const(" "))
-            else
-            if ("Payment Type" = const("Petty Cash")) "Bank Account"."No." where("Bank Type1" = const("Petty Cash"),
-                                                                                                                                                                   "Account Type" = const(" "));
-
+            TableRelation =  "Bank Account"."No.";                                                                                                                                                    
             trigger OnValidate()
             begin
                 BankAccount.Reset;

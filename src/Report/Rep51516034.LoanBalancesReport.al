@@ -1,7 +1,7 @@
 report 51516034 "Loan Balances Report"
 {
     ApplicationArea = All;
-    Caption = 'Jamii Yetu Sacco Loans Book Report';
+    Caption = 'Devco Sacco Loans Book Report';
     UsageCategory = ReportsAndAnalysis;
     RDLCLayout = './Layouts/LoanBalancesReport.rdlc';
     dataset

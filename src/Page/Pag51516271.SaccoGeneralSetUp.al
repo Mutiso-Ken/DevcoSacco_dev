@@ -55,7 +55,7 @@ Page 51516271 "Sacco General Set-Up"
                 {
                     ApplicationArea = Basic;
                 }
-            
+
                 field("Min. Dividend Proc. Period"; "Min. Dividend Proc. Period")
                 {
                     ApplicationArea = Basic;
@@ -63,18 +63,18 @@ Page 51516271 "Sacco General Set-Up"
                 field("Member Can Guarantee Own Loan"; "Member Can Guarantee Own Loan")
                 {
                     ApplicationArea = Basic;
+                    Visible = false;
                 }
                 field("Days for Checkoff"; "Days for Checkoff")
                 {
                     ApplicationArea = Basic;
+                    Visible = false;
                 }
-                field("Contactual Shares (%)"; "Contactual Shares (%)")
-                {
-                    ApplicationArea = Basic;
-                }
+
                 field("Use Bands"; "Use Bands")
                 {
                     ApplicationArea = Basic;
+                    Visible = false;
                 }
                 field("Maximum No of Guarantees"; "Maximum No of Guarantees")
                 {
@@ -219,11 +219,12 @@ Page 51516271 "Sacco General Set-Up"
                 field("Passcard Fee"; "Passcard Fee")
                 {
                     ApplicationArea = Basic;
+                    Visible = false;
                 }
                 field("share Capital"; "share Capital")
                 {
                     ApplicationArea = Basic;
-                    Visible = false;
+
                 }
                 field("Form Fee Account"; "Form Fee Account")
                 {
@@ -286,6 +287,7 @@ Page 51516271 "Sacco General Set-Up"
             group("Mail Setup")
             {
                 Caption = 'Mail Setup';
+                Visible = false;
                 field("Incoming Mail Server"; "Incoming Mail Server")
                 {
                     ApplicationArea = Basic;
@@ -333,11 +335,13 @@ Page 51516271 "Sacco General Set-Up"
                 field("Insurance Retension Account"; "Insurance Retension Account")
                 {
                     ApplicationArea = Basic;
+                    Visible = false;
 
                 }
                 field("Shares Retension Account"; "Shares Retension Account")
                 {
                     ApplicationArea = Basic;
+                    Visible = false;
                 }
                 field("Loan Transfer Fees Account"; "Loan Transfer Fees Account")
                 {
@@ -351,6 +355,7 @@ Page 51516271 "Sacco General Set-Up"
                 field("Funeral Expenses Amount"; "Funeral Expenses Amount")
                 {
                     ApplicationArea = Basic;
+                    Visible = false;
                 }
                 field("Funeral Expenses Account"; "Funeral Expenses Account")
                 {
@@ -384,6 +389,10 @@ Page 51516271 "Sacco General Set-Up"
                     ApplicationArea = Basic;
                     Caption = 'Interest On Current Shares(%)';
                 }
+                field("Interest on Share Capital(%)"; "Interest on Share Capital(%)")
+                {
+                    ApplicationArea = Basic;
+                }
                 field("Dividends Paying Bank Account"; "Dividends Paying Bank Account")
                 {
                     ApplicationArea = Basic;
@@ -392,46 +401,55 @@ Page 51516271 "Sacco General Set-Up"
                 {
                     ApplicationArea = Basic;
                     Caption = 'Interest On FOSA Shares(%)';
+                    Visible = false;
                 }
                 field("Interest On Computer Shares"; "Interest On Computer Shares")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Interest On Computer Shares(%)';
+                    Visible = false;
                 }
                 field("Interest On Preferential Shares"; "Interest On PreferentialShares")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Interest On Preferential Shares(%)';
+                    Visible = false;
                 }
                 field("Interest On Lift Shares"; "Interest On LiftShares")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Interest On Lift Shares(%)';
+                    Visible = false;
                 }
                 field("Interest On PreferentialShares"; "Interest On PreferentialShares")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Interest On Preferential Shares(%)';
+                    Visible = false;
                 }
                 field("Interest On TambaaShares"; "Interest On TambaaShares")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Interest On Tambaa Shares(%)';
+                    Visible = false;
                 }
                 field("Interest On PepeaShares"; "Interest On PepeaShares")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Interest On Pepea Shares(%)';
+                    Visible = false;
                 }
                 field("Interest On HousingShares"; "Interest On HousingShares")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Interest On Housing Shares(%)';
+                    Visible = false;
                 }
                 field("Dividends Capitalization Rate"; "Dividends Capitalization Rate")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Dividends Capitalization Rate(%)';
+                    Visible = false;
                 }
             }
             group(ATM)
@@ -475,6 +493,7 @@ Page 51516271 "Sacco General Set-Up"
         {
             group("Shares Bands")
             {
+                Visible = false;
                 Caption = 'Shares Bands';
             }
         }
@@ -482,6 +501,7 @@ Page 51516271 "Sacco General Set-Up"
         {
             action("Reset Data Sheet")
             {
+                Visible = false;
                 ApplicationArea = Basic;
                 Caption = 'Reset Data Sheet';
                 Promoted = true;

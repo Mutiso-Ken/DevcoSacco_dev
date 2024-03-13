@@ -85,7 +85,7 @@ Page 51516221 "Membership Application Card"
                 field(Name; Name)
                 {
                     ApplicationArea = Basic;
-                    Editable = FistnameEditable;
+                    Editable = false;
 
 
                     ShowMandatory = true;
@@ -271,11 +271,13 @@ Page 51516221 "Membership Application Card"
             }
             group(Junior)
             {
+
                 Visible = Junior;
                 field("JuniorNo."; "No.")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
+                    Caption = 'Junior Account Application Number';
                 }
 
                 field("JuniorFirst Name"; "First Name")
@@ -319,20 +321,122 @@ Page 51516221 "Membership Application Card"
                 field(JuniorName; Name)
                 {
                     ApplicationArea = Basic;
-                    Editable = FistnameEditable;
+                    Editable = false;
                     ShowMandatory = true;
+                }
+                field("Birth Certficate No."; "Birth Certficate No.")
+                {
+                    ApplicationArea = all;
+                    Editable = FistnameEditable;
                 }
                 field("Guardian No."; "Guardian No.")
                 {
                     ApplicationArea = all;
+                    Editable = FistnameEditable;
                 }
                 field("Guardian Name"; "Guardian Name")
                 {
                     ApplicationArea = all;
                     Editable = false;
                 }
+
             }
-            group("Member Two Details")
+
+
+            group(JointAccountOne)
+            {
+                Visible = Jooint;
+                Caption = 'Member One Details';
+                field("JointNo."; "No.")
+                {
+                    ApplicationArea = Basic;
+                    Editable = false;
+                    Caption = 'Joint No.';
+                }
+                field(JointTitle; Title)
+                {
+                    ApplicationArea = Basic;
+                    Editable = TitleEditable;
+                    ShowMandatory = true;
+                }
+                field(JoointName; Name)
+                {
+                    ApplicationArea = Basic;
+                    Editable = gender2editable;
+                    ShowMandatory = true;
+                }
+                field("JointID No."; "ID No.")
+                {
+                    ApplicationArea = Basic;
+                    Editable = gender2editable;
+                    ShowMandatory = true;
+                }
+                field("JointKRA Pin"; "KRA Pin")
+                {
+                    ApplicationArea = Basic;
+                    Editable = gender2editable;
+                    ShowMandatory = true;
+                }
+                field(JointAddress; Address)
+                {
+                    ApplicationArea = Basic;
+                    Editable = gender2editable;
+                    ShowMandatory = true;
+                }
+                field("JointE-Mail (Personal)"; "E-Mail (Personal)")
+                {
+                    ApplicationArea = Basic;
+                    Editable = gender2editable;
+                    ShowMandatory = true;
+
+                }
+                field(JoointGender; Gender)
+                {
+                    ApplicationArea = Basic;
+                    Editable = gender2editable;
+                    ShowMandatory = true;
+                }
+                field("JointDate of Birth"; "Date of Birth")
+                {
+                    ApplicationArea = Basic;
+                    Editable = gender2editable;
+                    ShowMandatory = true;
+
+                    // trigger OnValidate()
+                    // begin
+                    //     DAge := Dates.DetermineAge("Date of Birth", Today);
+                    // end;
+                }
+                field(JointAge; DAge)
+                {
+                    ApplicationArea = Basic;
+                    Editable = ageEditable;
+                    Visible = false;
+                }
+                field("JointEmployer Code"; "Employer Code")
+                {
+                    ApplicationArea = Basic;
+                    Caption = 'Employer Code';
+                }
+                field("JointEmployer Name"; "Employer Name")
+                {
+                    ApplicationArea = Basic;
+                    Caption = 'Employer Name';
+                    Editable = Employername2Editable;
+                }
+                field("Share Of Ownership One"; "Share Of Ownership One")
+                {
+                    ApplicationArea = Basic;
+                    Editable = Employername2Editable;
+                }
+                field("Source of Income Member One"; "Source of Income Member One")
+                {
+                    ApplicationArea = Basic;
+                    Editable = Employername2Editable;
+                }
+            }
+
+            group(JointAccountTwo)
             {
                 Caption = 'Member Two Details';
                 Visible = Jooint;
@@ -343,7 +447,7 @@ Page 51516221 "Membership Application Card"
                     Editable = title2Editable;
                     ShowMandatory = true;
                 }
-                field("Member Name"; "First member name")
+                field("Second Member Name"; "Second Member Name")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Name';
@@ -425,6 +529,43 @@ Page 51516221 "Membership Application Card"
                     Caption = 'Employer Name';
                     Editable = Employername2Editable;
                 }
+                field("Share Of Ownership Two"; "Share Of Ownership Two")
+                {
+                    ApplicationArea = Basic;
+                    Editable = Employername2Editable;
+                }
+                field("Source of IncomeMember Two"; "Source of IncomeMember Two")
+                {
+                    ApplicationArea = Basic;
+                    Editable = Employername2Editable;
+                }
+            }
+            group("Joint Information")
+            {
+                Visible = Jooint;
+                field("JointRecruited By"; "Recruited By")
+                {
+                    ApplicationArea = Basic;
+                    Editable = Employername2Editable;
+                }
+                field("JointRecruiter Name"; "Recruiter Name")
+                {
+                    ApplicationArea = Basic;
+                    Editable = Employername2Editable;
+                }
+
+                field(JointRelationship; JointRelationship)
+                {
+                    ApplicationArea = Basic;
+                    Caption = 'Relationship';
+                    Editable = Employername2Editable;
+                }
+                field(Reasontocreatingajointaccount; Reasontocreatingajointaccount)
+                {
+                    ApplicationArea = Basic;
+                    Editable = Employername2Editable;
+                    Caption = 'Reason to creating a joint account';
+                }
             }
             group("Group Account Details")
             {
@@ -438,7 +579,7 @@ Page 51516221 "Membership Application Card"
                 field(GroupName; Name)
                 {
                     ApplicationArea = Basic;
-                    Editable = FistnameEditable;
+                    Editable = EmailEdiatble;
                     Caption = 'Group Name';
                     ShowMandatory = true;
                 }
@@ -447,7 +588,7 @@ Page 51516221 "Membership Application Card"
                     ApplicationArea = Basic;
                     Editable = EmailEdiatble;
                     caption = ' Group Email';
-                    ShowMandatory = false;
+                    ShowMandatory = true;
                 }
                 field(GroupKRAPin; "KRA Pin")
                 {
@@ -479,6 +620,17 @@ Page 51516221 "Membership Application Card"
                         if StrLen("Mobile No. 2") <> 10 then
                             Error('Mobile No. Can not be more or less than 15 Characters');
                     end;
+                }
+                field(GroupAddress; Address)
+                {
+                    ApplicationArea = Basic;
+                    Editable = RecruitedEditable;
+                }
+                field("Nature of Business"; "Nature of Business")
+                {
+                    Caption = 'Group Nature of Business';
+                    ApplicationArea = Basic;
+                    Editable = RecruitedEditable;
                 }
                 field("Group Recruited By"; "Recruited By")
                 {
@@ -519,6 +671,7 @@ Page 51516221 "Membership Application Card"
             }
             group("Employment Details")
             {
+                Visible = Individual;
                 field("Employer Code"; "Employer Code")
                 {
                     ApplicationArea = Basic;
@@ -615,12 +768,14 @@ Page 51516221 "Membership Application Card"
                     {
                         ApplicationArea = Basic;
                         Editable = false;
+                        Visible = false;
                     }
                 }
             }
 
             group("Member Risk Ratings")
             {
+                Visible = Individual;
                 group("Member Risk Rate")
                 {
                     field("Individual Category"; "Individual Category")
@@ -656,6 +811,7 @@ Page 51516221 "Membership Application Card"
 
                 group("Product Risk Rating")
                 {
+                    Visible = Individual;
                     field("Electronic Payment"; "Electronic Payment")
                     {
                         ApplicationArea = Basic;
@@ -682,6 +838,7 @@ Page 51516221 "Membership Application Card"
                         Caption = 'Risk Level';
                         Editable = false;
                         StyleExpr = CoveragePercentStyle;
+
                     }
                     field("Due Diligence Measure"; "Due Diligence Measure")
                     {
@@ -774,15 +931,23 @@ Page 51516221 "Membership Application Card"
                     RunObject = Page "Membership App Kin Details";
                     RunPageLink = "Account No" = field("No.");
                 }
-                action("Account Signatories ")
+                action("Account Signatories")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Signatories';
                     Image = Group;
                     RunObject = Page "Membership App Signatories";
                     RunPageLink = "Account No" = field("No.");
-                    Visible = groupAcc;
 
+                }
+                action("Group Account Members")
+                {
+                    ApplicationArea = Basic;
+                    Caption = 'Group Account Register';
+                    Image = Group;
+                    RunObject = Page "Bosa Group Members List";
+                    RunPageLink = "Account No" = field("No.");
+                    Visible = groupAcc;
                 }
                 separator(Action6)
                 {
@@ -829,7 +994,7 @@ Page 51516221 "Membership Application Card"
                             TestField("Global Dimension 2 Code");
                         end else
 
-                            if ("Account Category" = "account category"::Group) or ("Account Category" = "account category"::Corporate) then begin
+                            if ("Account Category" = "account category"::"Group Account") then begin
                                 TestField(Name);
                                 //TESTFIELD("Registration No");
                                 //TESTFIELD("Copy of KRA Pin");
@@ -850,7 +1015,7 @@ Page 51516221 "Membership Application Card"
                             end;
                         end;
 
-                        if ("Account Category" = "account category"::Group) or ("Account Category" = "account category"::Corporate) then begin
+                        if ("Account Category" = "account category"::"Group Account") then begin
                             AccountSignApp.Reset;
                             AccountSignApp.SetRange(AccountSignApp."Account No", "No.");
                             if AccountSignApp.Find('-') = false then begin
@@ -920,7 +1085,7 @@ Page 51516221 "Membership Application Card"
                         Cust.SetRange(Cust."ID No.", "ID No.");
                         Cust.SetRange(Cust."Customer Type", Cust."customer type"::Member);
                         if Cust.Find('-') then begin
-                            if (Cust."No." <> "No.") and (Cust."Account Category" = Cust."account category"::Individual) then
+                            if (Cust."No." <> "No.") then
                                 Error('Member has already been created');
                         end;
                         if Confirm('Are you sure you want to create account application?', false) = false then begin
@@ -947,6 +1112,10 @@ Page 51516221 "Membership Application Card"
                             FnCreateAccountSignatories();
                             dialogBox.Close();
 
+                            dialogBox.Open('Registering Account Group Members for ' + Format(MembApp.Name));
+                            FnCreateGroupMembers();
+                            dialogBox.Close();
+                            //
                             if rec."AutoFill Mobile Details" = true then begin
                                 dialogBox.Open('Autofilling Mobile Application for ' + Format(MembApp.Name));
                                 FnAutoCreateMobileApplication();
@@ -965,7 +1134,6 @@ Page 51516221 "Membership Application Card"
                             //-----
                             Message('Account created successfully.');
                             Message('The Member Sacco no is %1', Cust."No.");
-                            Message('The Member FOSA Account no is %1', AcctNo);
 
                             //...............................modify the status of the application to closed
                             rec.Status := Status::Closed;
@@ -1010,7 +1178,10 @@ Page 51516221 "Membership Application Card"
                 actionref("Next of Kin_Promoted"; "Next of Kin")
                 {
                 }
-                actionref("Account Signatories _Promoted"; "Account Signatories ")
+                actionref("Account Signatories _Promoted"; "Account Signatories")
+                {
+                }
+                actionref("Group Account Details Promoted"; "Group Account Members")
                 {
                 }
                 actionref("Create Account_Promoted"; "Create Account")
@@ -1102,6 +1273,8 @@ Page 51516221 "Membership Application Card"
         SFactory: Codeunit "SURESTEP Factory";
         Individual: Boolean;
         groupAcc: Boolean;
+        BosaAPPGroup: Record "Bosa Member App Group Members";
+        BosacustGroup: Record "Bosa Customer Group Members";
         Junior: Boolean;
         MemberAppliedProducts: Record "Membership Applied Products";
         ObjProductsApp: Record "Membership Applied Products";
@@ -1136,6 +1309,7 @@ Page 51516221 "Membership Application Card"
         NameEditable: Boolean;
         AddressEditable: Boolean;
         NoEditable: Boolean;
+        NoSeriesMgt: Codeunit NoSeriesManagement;
         DioceseEditable: Boolean;
         HomeAdressEditable: Boolean;
         GlobalDim1Editable: Boolean;
@@ -1187,6 +1361,7 @@ Page 51516221 "Membership Application Card"
         CopyofKRAPinEditable: Boolean;
         membertypeEditable: Boolean;
         FistnameEditable: Boolean;
+        ObjNoSeries: Record "Sacco No. Series";
         dateofbirth2: Boolean;
         registrationeditable: Boolean;
         EstablishdateEditable: Boolean;
@@ -1202,6 +1377,7 @@ Page 51516221 "Membership Application Card"
         town2Editable: Boolean;
         passpoetEditable: Boolean;
         maritalstatus2Editable: Boolean;
+        commonDetails: Boolean;
         payrollno2editable: Boolean;
         Employercode2Editable: Boolean;
         address3Editable: Boolean;
@@ -1257,6 +1433,7 @@ Page 51516221 "Membership Application Card"
             groupAcc := false;
             Individual := true;
             Junior := false;
+            commonDetails := true;
             Jooint := false;
             NameEditable := true;
             AddressEditable := true;
@@ -1324,6 +1501,7 @@ Page 51516221 "Membership Application Card"
             Employername2Editable := false;
             ageEditable := false;
             CopyofconstitutionEditable := false;
+            commonDetails := true;
 
 
 
@@ -1331,18 +1509,22 @@ Page 51516221 "Membership Application Card"
             if "Account Category" = "account category"::Junior then begin
                 groupAcc := false;
                 Junior := true;
-                Individual := true;
+                Individual := false;
                 Jooint := false;
+                FistnameEditable := true;
+                commonDetails := true;
+
             end
             else
-                if "Account Category" = "account category"::Group then begin
+                if "Account Category" = "account category"::"Group Account" then begin
                     Individual := false;
                     Jooint := false;
-                    Junior := true;
+                    Junior := false;
                     groupAcc := true;
                     NameEditable := true;
                     AddressEditable := true;
                     GlobalDim1Editable := false;
+                    commonDetails := false;
                     GlobalDim2Editable := true;
                     CustPostingGroupEdit := false;
                     PhoneEditable := true;
@@ -1416,10 +1598,11 @@ Page 51516221 "Membership Application Card"
                 end else
                     //Account types.
                     if "Account Category" = "account category"::Joint then begin
-                        Individual := true;
+                        Individual := false;
                         groupAcc := false;
                         Junior := false;
                         Jooint := true;
+                        commonDetails := false;
                         NameEditable := true;
                         AddressEditable := true;
                         GlobalDim1Editable := false;
@@ -1493,80 +1676,8 @@ Page 51516221 "Membership Application Card"
                         CopyofconstitutionEditable := true;
                         IDNoEditable := true;
                         dateofbirth2 := true
-
-
                     end;
-        //corporate account.
-        if "Account Category" = "account category"::Corporate then begin
-            Individual := false;
-            groupAcc := true;
-            Jooint := false;
-            NameEditable := true;
-            AddressEditable := true;
-            GlobalDim1Editable := true;
-            GlobalDim2Editable := true;
-            CustPostingGroupEdit := false;
-            PhoneEditable := true;
-            MaritalstatusEditable := false;
-            IDNoEditable := false;
-            PhoneEditable := true;
-            RegistrationDateEdit := true;
-            OfficeBranchEditable := true;
-            DeptEditable := false;
-            SectionEditable := false;
-            OccupationEditable := false;
-            DesignationEdiatble := false;
-            EmployerCodeEditable := false;
-            DOBEditable := false;
-            EmailEdiatble := true;
-            StaffNoEditable := false;
-            GenderEditable := false;
-            MonthlyContributionEdit := true;
-            PostCodeEditable := true;
-            CityEditable := true;
-            WitnessEditable := true;
-            BankCodeEditable := true;
-            BranchCodeEditable := true;
-            BankAccountNoEditable := true;
-            VillageResidence := true;
-            TitleEditable := false;
-            PostalCodeEditable := true;
-            HomeAddressPostalCodeEditable := true;
-            HomeTownEditable := true;
-            RecruitedEditable := true;
-            ContactPEditable := true;
-            ContactPRelationEditable := true;
-            ContactPOccupationEditable := true;
-            CopyOFIDEditable := true;
-            CopyofPassportEditable := true;
-            SpecimenEditable := true;
-            ContactPPhoneEditable := true;
-            HomeAdressEditable := true;
-            PictureEditable := true;
-            SignatureEditable := false;
-            PayslipEditable := false;
-            RegistrationFeeEditable := true;
-            CopyofKRAPinEditable := true;
-            membertypeEditable := true;
-            FistnameEditable := false;
-            registrationeditable := true;
-            EstablishdateEditable := true;
-            RegistrationofficeEditable := true;
-            Picture2Editable := false;
-            Signature2Editable := false;
-            title2Editable := false;
-            emailaddresEditable := false;
-            gender2editable := false;
-            HomePostalCode2Editable := false;
-            town2Editable := false;
-            passpoetEditable := false;
-            maritalstatus2Editable := false;
-            payrollno2editable := false;
-            Employercode2Editable := false;
-            address3Editable := false;
-            Employername2Editable := false;
-            CopyofconstitutionEditable := true;
-        end;
+
 
         if Status = Status::Approved then begin
             CreateAccount := false;
@@ -1806,14 +1917,12 @@ Page 51516221 "Membership Application Card"
         Emailaddress: Text[100];
 
     begin
-
         GenSetUp.Get;
-
         if GenSetUp."Send Email Notifications" = true then begin
             Emailaddress := Rec."E-Mail (Personal)";
             EmailSubject := 'Membership Application Subject';
             EMailBody := ' <b> Dear ' + Rec.Name + '</b> ,</br></br>' +
-                'On behalf of Devco Sacco am pleased to inform you that your application for membership has been accepted.' + '<br></br>' +
+                'On behalf of Devco Sacco am pleased to inform you that your application for Membership has been accepted.' + '<br></br>' +
                 'Congratulations ' + '</br></br>' + 'Regards' + '</br></br>' + ' Devco sacco';
             SFactory.SendMail(Emailaddress, EmailSubject, EmailBody);
 
@@ -1821,18 +1930,40 @@ Page 51516221 "Membership Application Card"
     end;
 
     local procedure FnCreateBOSAMemberAccounts()
+    var
+        NoSeriesLine: Record "No. Series Line";
+
     begin
         Saccosetup.Get();
-        //NewMembNo := Saccosetup.BosaNumber;
-        NewMembNo := Saccosetup."Last Memb No.";
+
+
+        //Getting the next Member Number
+        NewMembNo := NoSeriesMgt.TryGetNextNo(ObjNoSeries."Members Nos", today);
+        NoSeriesLine.RESET;
+        NoSeriesLine.SETRANGE(NoSeriesLine."Series Code", ObjNoSeries."Members Nos");
+        IF NoSeriesLine.FINDSET THEN BEGIN
+            NoSeriesLine."Last No. Used" := INCSTR(NoSeriesLine."Last No. Used");
+            NoSeriesLine."Last Date Used" := TODAY;
+            NoSeriesLine.MODIFY;
+        END;
+
 
         //Create BOSA account
+        Cust.Init;
         Cust."No." := Format(NewMembNo);
         Cust.Name := Name;
+        if "Account Category" = "Account Category"::"Group Account" then begin
+            Cust."Group Account" := true;
+        end;
+        Cust."Group Account Name" := Name;
+        Cust."Nature of Business" := "Nature of Business";
         Cust.Address := Address;
         Cust."Post Code" := "Postal Code";
         Cust.Pin := "KRA Pin";
         Cust.County := City;
+
+
+
         Cust."Phone No." := "Mobile Phone No";
         Cust."Global Dimension 1 Code" := "Global Dimension 1 Code";
         Cust."Global Dimension 2 Code" := "Global Dimension 2 Code";
@@ -1857,6 +1988,8 @@ Page 51516221 "Membership Application Card"
         //---Junior Accounts
         Cust."Guardian No." := "Guardian No.";
         Cust."Guardian Name" := "Guardian Name";
+        Cust."Birth Certficate No." := "Birth Certficate No.";
+
         //**
         Cust."Office Branch" := "Office Branch";
         Cust.Department := Department;
@@ -1866,6 +1999,26 @@ Page 51516221 "Membership Application Card"
         Cust."Bank Branch" := "Bank Name";
         Cust."Bank Account No." := "Bank Account No";
         //**
+        //Joint
+        Cust."Share Of Ownership One" := "Share Of Ownership One";
+        Cust."Source of Income Member One" := "Source of Income Member One";
+        Cust."ID NO/Passport 2" := "ID NO/Passport 2";
+        Cust.JointRelationship := JointRelationship;
+        Cust."Reasontocreatingajointaccount" := Reasontocreatingajointaccount;
+        Cust.Gender2 := Gender2;
+        Cust."Marital Status2" := "Marital Status2";
+        Cust."Date of Birth2" := "Date of Birth2";
+        Cust."Mobile No. 3" := "Mobile No. 3";
+        Cust."E-Mail (Personal2)" := "E-Mail (Personal2)";
+        Cust."Home Postal Code2" := "Home Postal Code2";
+        Cust."Home Town2" := "Home Town2";
+        Cust."Payroll/Staff No2" := "Payroll/Staff No2";
+        Cust."Employer Code2" := "Employer Code2";
+        Cust."Share Of Ownership Two" := "Share Of Ownership Two";
+        Cust."Employer Name2" := "Employer Name2";
+        Cust."Source of IncomeMember Two" := "Source of IncomeMember Two";
+        //**
+
         Cust."Sub-Location" := "Sub-Location";
         Cust.District := District;
         Cust."Payroll/Staff No" := "Payroll/Staff No";
@@ -1998,21 +2151,6 @@ Page 51516221 "Membership Application Card"
         NextOfKinApp.SetRange(NextOfKinApp."Account No", "No.");
         if NextOfKinApp.Find('-') then begin
             repeat
-                //........................................FOSA
-                // NextofKinFOSA.Init;
-                // NextofKinFOSA."Account No" := AcctNo;
-                // NextofKinFOSA.Name := NextOfKinApp.Name;
-                // NextofKinFOSA.Relationship := NextOfKinApp.Relationship;
-                // NextofKinFOSA.Beneficiary := NextOfKinApp.Beneficiary;
-                // NextofKinFOSA."Date of Birth" := NextOfKinApp."Date of Birth";
-                // NextofKinFOSA.Address := NextOfKinApp.Address;
-                // NextofKinFOSA.Telephone := NextOfKinApp.Telephone;
-                // NextofKinFOSA.Fax := NextOfKinApp.Fax;
-                // NextofKinFOSA.Email := NextOfKinApp.Email;
-                // NextofKinFOSA."ID No." := NextOfKinApp."ID No.";
-                // NextofKinFOSA."%Allocation" := NextOfKinApp."%Allocation";
-                // NextofKinFOSA.Type := NextOfKin.Type;
-                // NextofKinFOSA.Insert;
                 //......................................BOSA
                 NextofKinBOSA.Init;
                 NextofKinBOSA."Account No" := AcctNo;
@@ -2053,6 +2191,30 @@ Page 51516221 "Membership Application Card"
                 AccountSign."Expiry Date" := AccountSignApp."Expiry Date";
                 AccountSign."Mobile Number" := AccountSignApp."Mobile No";
             until AccountSignApp.Next = 0;
+        end;
+    end;
+
+    local procedure FnCreateGroupMembers()
+
+    begin
+        BosaAPPGroup.Reset;
+        BosaAPPGroup.SetRange(BosaAPPGroup."Account No", "No.");
+        if BosaAPPGroup.Find('-') then begin
+            repeat
+                //......................................BOSA
+                BosacustGroup.Init;
+                BosacustGroup."Account No" := AcctNo;
+                BosacustGroup."Date of Birth" := BosaAPPGroup."Date of Birth";
+                BosacustGroup.E_Mail := BosaAPPGroup.E_Mail;
+                BosacustGroup.Employer := BosaAPPGroup.Employer;
+                BosacustGroup."ID Number/Passport Number" := BosaAPPGroup."ID Number/Passport Number";
+                BosacustGroup."Mobile Phone Number" := BosaAPPGroup."Mobile Phone Number";
+                BosacustGroup.Name := BosaAPPGroup.Name;
+                BosacustGroup.Nationality := BosaAPPGroup.Nationality;
+                BosacustGroup.Occupation := BosaAPPGroup.Occupation;
+                BosacustGroup."Specimen Passport" := BosaAPPGroup."Specimen Passport";
+                BosacustGroup."Specimen Signature" := BosaAPPGroup."Specimen Signature";
+            until BosaAPPGroup.Next = 0;
         end;
     end;
 

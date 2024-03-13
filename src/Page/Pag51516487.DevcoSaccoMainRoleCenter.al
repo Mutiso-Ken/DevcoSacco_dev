@@ -182,21 +182,22 @@ Page 51516487 "Devco Sacco Main Role Center"
                 Image = Journals;
                 ToolTip = 'Collect and make payments, prepare statements, and reconcile bank accounts.';
 
+                action("General Journals")
+                {
+                    ApplicationArea = Basic, Suite;
+                    Caption = 'General Journals';
+                    Image = Journal;
+                    RunObject = Page "General Journal";
+                    ToolTip = 'Post financial transactions directly to general ledger accounts and other accounts, such as bank, customer, vendor, and employee accounts. Posting with a general journal always creates entries on general ledger accounts. This is true even when, for example, you post a journal line to a customer account, because an entry is posted to a general ledger receivables account through a posting group.';
+                }
 
                 group("General Ledger")
                 {
-                    Caption = 'General Ledger';
+                    Caption = 'General Ledger and General Journals';
                     ToolTip = 'Process incoming and outgoing payments. Set up bank accounts and service connections for electronic banking.  ';
                     Visible = true;
 
-                    action("General Journals")
-                    {
-                        ApplicationArea = Basic, Suite;
-                        Caption = 'General Journals';
-                        Image = Journal;
-                        RunObject = Page "General Journal";
-                        ToolTip = 'Post financial transactions directly to general ledger accounts and other accounts, such as bank, customer, vendor, and employee accounts. Posting with a general journal always creates entries on general ledger accounts. This is true even when, for example, you post a journal line to a customer account, because an entry is posted to a general ledger receivables account through a posting group.';
-                    }
+
 
 
                     action("G/L Register")
@@ -224,6 +225,15 @@ Page 51516487 "Devco Sacco Main Role Center"
                         Caption = 'G/L Navigator';
                         Image = Journal;
                         RunObject = Page Navigate;
+
+
+                    }
+                    action("Account Categories")
+                    {
+                        ApplicationArea = Basic, Suite;
+
+                        Image = Journal;
+                        RunObject = Page "G/L Account Categories";
 
 
                     }
@@ -283,11 +293,11 @@ Page 51516487 "Devco Sacco Main Role Center"
                         ApplicationArea = Basic, Suite;
                         Caption = 'Payment Reconcilations';
                         RunObject = page "Posted Payment Reconciliations";
-                        Visible = false;
+
 
                     }
 
-                    action("Payment Reconcilations jOURNALS")
+                    action("Payment Reconcilations JOURNALS")
                     {
                         ApplicationArea = Basic, Suite;
                         Caption = 'Payment Reconcilations Journals';
@@ -483,26 +493,14 @@ Page 51516487 "Devco Sacco Main Role Center"
 
                     }
 
-                    action("Pettycash rembursement")
-                    {
-                        ApplicationArea = Basic, Suite;
-                        Caption = 'Petty Cash Rembursement';
-                        RunObject = Page "Funds Transfer List";
-                    }
 
-                    action("PostedPetty Cash Reimbursement")
-                    {
-                        ApplicationArea = Basic, Suite;
-                        Caption = 'Posted Rembursements';
-                        RunObject = Page "Posted Funds Transfer List";
-                    }
 
 
                 }
                 Group(FundsTranfer)
                 {
                     Caption = 'Funds Tranfer';
-                    Visible = false;
+              
 
                     action("FundTransList")
                     {
@@ -524,9 +522,6 @@ Page 51516487 "Devco Sacco Main Role Center"
                         Caption = 'Electronic Funds Tranfer';
                         RunObject = Page "EFT list";
                     }
-
-
-
 
                 }
                 //............................................................................................
@@ -613,8 +608,8 @@ Page 51516487 "Devco Sacco Main Role Center"
                     action("Devco Trial Balance")
                     {
                         ApplicationArea = Basic, Suite;
-                        Caption = 'Trial Balance';
-                        RunObject = report "Devco Sacco Trial Balance";
+                        Caption = 'Summarised Trial Balance';
+                        RunObject = report "Trial Balance2016";
                         ToolTip = 'Generate Trial Balance for a given period.';
                     }
                     action("Account Schedules")
@@ -632,115 +627,11 @@ Page 51516487 "Devco Sacco Main Role Center"
                         RunObject = report Liquidity;
                         ToolTip = 'Generate Liquidity Report for a given period.';
                     }
+
                 }
 
 
                 //.......................................................................................................................................
-
-
-                group("Financials Reports")
-                {
-                    Caption = 'Financial Reports';
-                    ToolTip = 'Display Financial Reports.';
-                    Visible = false;
-
-
-
-                    // action("Liquidity Report")
-                    // {
-                    //     ApplicationArea = Basic, Suite;
-                    //     Caption = 'Liquidity Report';
-                    //     // Image = Journal;
-                    //     // RunObject = Page "General Journal Batches";
-                    //     //  RunPageView = WHERE("Template Type" = CONST(General),
-                    //     //                    Recurring = CONST(false));
-                    //     ToolTip = 'Generate Liquidity Report for a given period.';
-                    // }
-
-                    // action("Deposit Return SASRA")
-                    // {
-                    //     ApplicationArea = Basic, Suite;
-                    //     Caption = 'Deposit Return SASRA';
-                    //     RunObject = Page "Chart of Accounts";
-                    //     ToolTip = 'View or Generate Deposit Return SASRA for a given period.';
-                    // }
-
-
-                    // action("Capital Adequacy Return")
-                    // {
-                    //     ApplicationArea = Basic, Suite;
-                    //     Caption = 'Capital Adequacy Return';
-                    //     RunObject = Page "Chart of Accounts";
-                    //     ToolTip = 'View or Generate Deposit Return SASRA for a given period.';
-                    // }
-
-
-                    // action("Liquidity Statement")
-                    // {
-                    //     ApplicationArea = Basic, Suite;
-                    //     Caption = 'Liquidity Statement';
-                    //     RunObject = Page "Chart of Accounts";
-                    //     ToolTip = 'View or Generate Deposit Return SASRA for a given period.';
-                    // }
-
-                    // action("Investiment Return")
-                    // {
-                    //     ApplicationArea = Basic, Suite;
-                    //     Caption = 'Investiment Return';
-                    //     RunObject = Page "Chart of Accounts";
-                    //     ToolTip = 'View or Generate Deposit Return SASRA for a given period.';
-                    // }
-
-                    // action("Statement of Financial Position")
-                    // {
-                    //     ApplicationArea = Basic, Suite;
-                    //     Caption = 'Statement of Financial Position';
-                    //     RunObject = Page "Chart of Accounts";
-                    //     ToolTip = 'View or Generate Deposit Return SASRA for a given period.';
-                    // }
-
-                    action("Statement Of Comprehensive Income")
-                    {
-                        ApplicationArea = Basic, Suite;
-                        Caption = 'Statement Of Comprehensive Income';
-                        RunObject = Page "Chart of Accounts";
-                        ToolTip = 'View or Generate Deposit Return SASRA for a given period.';
-                    }
-
-                    // action("Agency Returns Report")
-                    // {
-                    //     ApplicationArea = Basic, Suite;
-                    //     Caption = 'Agency Returns Report';
-                    //     RunObject = Page "Chart of Accounts";
-                    //     ToolTip = 'View or Generate Agency Returns for a given period.';
-                    // }
-
-                    // action("Sectorial Lending Report")
-                    // {
-                    //     ApplicationArea = Basic, Suite;
-                    //     Caption = 'Sectorial Lending Report';
-                    //     RunObject = Page "Chart of Accounts";
-                    //     ToolTip = 'View or Generate Agency Returns for a given period.';
-                    // }
-
-
-                    // action("Insider Lending Report")
-                    // {
-                    //     ApplicationArea = Basic, Suite;
-                    //     Caption = 'Insider Lending Report';
-                    //     RunObject = Page "Chart of Accounts";
-                    //     ToolTip = 'View or Generate Agency Returns for a given period.';
-                    // }
-
-
-                    action("GL Accounts Net Change Report")
-                    {
-                        ApplicationArea = Basic, Suite;
-                        Caption = 'GL Accounts Net Change Report';
-                        RunObject = Page "Chart of Accounts";
-                        ToolTip = 'View or Generate GL Accounts Net Change Report for a given period.';
-                    }
-                }
                 group("Mkopo Reports")
                 {
                     Caption = 'Mkopo Reports';
@@ -835,18 +726,9 @@ Page 51516487 "Devco Sacco Main Role Center"
                 }
 
 
-                group("G/L Budgets")
-                {
-                    Caption = 'G/L Budgets';
-                    ToolTip = 'G/L Budgets.';
-                    Visible = true;
-                    action("GL Budgets")
-                    {
-                        ApplicationArea = Basic, Suite;
-                        caption = 'G/L Budgets';
-                        RunObject = page "G/L Budget Names";
-                    }
-                }
+
+
+                // }
 
             }
 
@@ -1028,155 +910,301 @@ Page 51516487 "Devco Sacco Main Role Center"
                 }
             }
 
+            //.................................START OF MEMBERSHIP MANAGEMENT..................................
 
-            group(BosaManagement)
+            group(MembershipManagement)
             {
-                Caption = 'BOSA Management';
+                Caption = 'Membership Management';
 
-                //.................................START OF MEMBERSHIP MANAGEMENT..................................
-
-                group(MembershipManagement)
+                action(MembersList)
                 {
-                    Caption = 'Membership Management';
+                    ApplicationArea = all;
+                    Caption = 'Member Accounts';
+                    RunObject = Page "Member List";
+                    ToolTip = 'View Member Accounts';
+                    Visible = false;
+                }
+                group("Account Opening")
+                {
+                    Caption = 'Membership Registration';
+                    action(NewAccountOpening)
+                    {
+                        ApplicationArea = All;
+                        Caption = 'New Account Opening';
+                        RunObject = page "Membership Application List";
+                        RunPageView = WHERE(status = CONST(open));
+                        RunPageMode = Edit;
+                    }
+                    action(NewAccountPending)
+                    {
+                        ApplicationArea = All;
+                        Caption = 'Applications Pending Approval';
+                        RunObject = page "Membership Application-Pending";
+                        RunPageView = WHERE(status = CONST(pending));
+                        RunPageMode = View;
+                    }
 
-                    action(MembersList)
+                    action(NewApprovedAccounts)
                     {
                         ApplicationArea = all;
-                        Caption = 'Member Accounts';
-                        RunObject = Page "Member List";
-                        ToolTip = 'View Member Accounts';
-                        Visible = false;
+                        Caption = 'Applications Pending Creation';
+                        RunObject = Page "Member Applications -Approved";
+                        RunPageMode = View;
+                        RunPageView = WHERE(status = CONST(approved));
                     }
-                    group("Account Opening")
+                    action("CreatedAccounts")
                     {
-                        Caption = 'Membership Registration';
-                        action(NewAccountOpening)
-                        {
-                            ApplicationArea = All;
-                            Caption = 'New Account Opening';
-                            RunObject = page "Membership Application List";
-                            RunPageView = WHERE(status = CONST(open));
-                            RunPageMode = Edit;
-                        }
-                        action(NewAccountPending)
-                        {
-                            ApplicationArea = All;
-                            Caption = 'Applications Pending Approval';
-                            RunObject = page "Membership Application-Pending";
-                            RunPageView = WHERE(status = CONST(pending));
-                            RunPageMode = View;
-                        }
-
-                        action(NewApprovedAccounts)
-                        {
-                            ApplicationArea = all;
-                            Caption = 'Applications Pending Creation';
-                            RunObject = Page "Member Applications -Approved";
-                            RunPageMode = View;
-                            RunPageView = WHERE(status = CONST(approved));
-                        }
-                        action("CreatedAccounts")
-                        {
-                            ApplicationArea = all;
-                            Caption = 'Closed Membership Applications';
-                            RunObject = Page "Member Applications -Closed";
-                            RunPageMode = View;
-                            RunPageView = WHERE(status = CONST(closed));
-                        }
-
+                        ApplicationArea = all;
+                        Caption = 'Closed Membership Applications';
+                        RunObject = Page "Member Applications -Closed";
+                        RunPageMode = View;
+                        RunPageView = WHERE(status = CONST(closed));
                     }
 
-                    group("Membership Exit")
+                }
+
+                group("Membership Exit")
+                {
+
+                    action("Member Withdrawal List")
                     {
-
-                        action("Member Withdrawal List")
-                        {
-                            ApplicationArea = all;
-                            RunObject = page "Membership Exit List";
-
-                        }
-
-                        action("Approved Membership Exit")
-                        {
-                            ApplicationArea = all;
-                            RunObject = page "Membership Exit List-Posted";
-                            RunPageView = where(status = const(Approved), posted = const(false));
-                        }
-
-                        action("Posted Membership Exit")
-                        {
-                            ApplicationArea = all;
-                            RunObject = page "Membership Exit List-Posted";
-                            RunPageView = where(Posted = const(true));
-                        }
-
+                        ApplicationArea = all;
+                        RunObject = page "Membership Exit List";
 
                     }
 
-                    group("Member Reports")
+                    action("Approved Membership Exit")
                     {
-
-                        Caption = 'Membership Reports';
-                        action("Sacco Membership Reports")
-                        {
-                            ApplicationArea = all;
-                            RunObject = report "Member Accounts List";
-                            ToolTip = 'Members Register';
-
-                        }
-                        action("Member Account Balances Report")
-                        {
-                            ApplicationArea = all;
-                            RunObject = report "Member Account  balances";
-                            ToolTip = 'Member Account Balances Report';
-                        }
-
-                        action("Membership Closure Report")
-                        {
-                            ApplicationArea = all;
-                            Caption = 'Membership Exit Reports';
-                            RunObject = report "Membership Closure Report";
-
-                        }
-                        action("Member Next Of Kin Details")
-                        {
-                            ApplicationArea = All;
-
-                            RunObject = report "Next of Kin Report";
-                        }
-                        // action("Member shares Report")
-                        // {
-                        //     ApplicationArea = all;
-                        //     RunObject = report "Member Share Capital Statement";
-                        // }
-                        //     action("Member Deposits Report")
-                        // {
-                        //     ApplicationArea = all;
-                        //     RunObject = report "Members Deposits Statement";
-                        // }
-                        //     action("Member Detailed Statement")
-                        // {
-                        //     ApplicationArea = all;
-                        //     RunObject = report "Member Detailed Statement";
-                        // }
-                        //     action("Member Accounts Statement")
-                        // {
-                        //     ApplicationArea = all;
-                        //     RunObject = report "Member Account Statement";
-                        // }
+                        ApplicationArea = all;
+                        RunObject = page "Membership Exit List-Posted";
+                        RunPageView = where(status = const(Approved), posted = const(false));
                     }
 
+                    action("Posted Membership Exit")
+                    {
+                        ApplicationArea = all;
+                        RunObject = page "Membership Exit List-Posted";
+                        RunPageView = where(Posted = const(true));
+                    }
 
 
                 }
 
-                //'''''''''''''''''''''''''''''''''''''''''END OF MEMBERSHIP MANAGEMENT
+                group("Member Reports")
+                {
+
+                    Caption = 'Membership Reports';
+                    action("Sacco Membership Reports")
+                    {
+                        ApplicationArea = all;
+                        RunObject = report "Member Accounts List";
+                        ToolTip = 'Members Register';
+
+                    }
+                    action("Member Account Balances Report")
+                    {
+                        ApplicationArea = all;
+                        RunObject = report "Member Account  balances";
+                        ToolTip = 'Member Account Balances Report';
+                    }
+
+                    action("Membership Closure Report")
+                    {
+                        ApplicationArea = all;
+                        Caption = 'Membership Exit Reports';
+                        RunObject = report "Membership Closure Report";
+
+                    }
+                    action("Member Next Of Kin Details")
+                    {
+                        ApplicationArea = All;
+
+                        RunObject = report "Next of Kin Report";
+                    }
+                    action("Member shares Report")
+                    {
+                        ApplicationArea = all;
+                        RunObject = report "Member Share Capital Statement";
+                    }
+                    action("Member Deposits Report")
+                    {
+                        ApplicationArea = all;
+                        RunObject = report "Members Deposits Statement";
+                    }
+                    action("Member Detailed Statement")
+                    {
+                        ApplicationArea = all;
+                        RunObject = report "Member Detailed Statement";
+                    }
+                    action("Member Accounts Statement")
+                    {
+                        ApplicationArea = all;
+                        RunObject = report "Member Account Statement";
+                    }
+                }
 
 
 
+            }
+
+            //'''''''''''''''''''''''''''''''''''''''''END OF MEMBERSHIP MANAGEMENT
+
+            //.....................................START OF LOAN MANAGEMENT
+            group(SaccoLoansManagement)
+            {
+                Caption = 'Credit Management';
+                ToolTip = 'Manage BOSA Loans Module';
+                group("BOSA Loans Management")
+                {
+                    Caption = 'New BOSA Loans Applications';
+                    ToolTip = 'BOSA Loans'' Management Module';
+                    action("BOSA Loan Application")
+                    {
+                        ApplicationArea = All;
+                        Caption = 'BOSA Loan Application List';
+                        Image = Loaners;
+                        RunObject = Page "Loan List-New Application BOSA";
+                        ToolTip = 'Open BOSA Loan Applications List';
+                        RunPageView = where(Posted = const(false), "Loan Status" = const(Application));
+                    }
+                    action("Pending BOSA Loan Application")
+                    {
+                        ApplicationArea = Basic, Suite;
+                        Caption = 'BOSA Loans Pending Approval';
+                        Image = CreditCard;
+                        RunObject = Page "LoanList-Pending Approval BOSA";
+
+                        ToolTip = 'Open the list of BOSA Loans Pending Approval';
+
+                    }
+                    action("Approved Loans")
+                    {
+                        ApplicationArea = Basic, Suite;
+                        Caption = 'BOSA Loans Pending Disbursement.';
+                        RunObject = Page "Loan Application BOSA-Approved";
+                        ToolTip = 'Open the list of Approved Loans Pending Disbursement.';
+                    }
+                }
+
+
+                group("Loan Batching")
+                {
+
+                    action("Loan Batch List")
+                    {
+                        ApplicationArea = Basic, Suite;
+                        RunObject = page "Loans Disbursment Batch List";
+
+                    }
+                    action("Posted Loan Batch List")
+                    {
+                        ApplicationArea = Basic, Suite;
+                        RunObject = page "Posted Loan Batch - List";
+
+                    }
+                }
+                group("Loans Top Up List")
+                {
+                    Visible = false;
+                    action("LoansTop Up List")
+                    {
+                        ApplicationArea = Basic, Suite;
+                        RunObject = page "Loan Top-Up List";
+                        Caption = 'Loans Top-Up List';
+                    }
+                    action("LoansTopUp Posted")
+                    {
+                        ApplicationArea = Basic, Suite;
+                        RunObject = page "Loan Top-Up List-Posted";
+                        Caption = 'Loans Top-Up Posted';
+                    }
+                }
 
 
 
+                group("Loans' Reports")
+                {
+                    action("Loans Balances Report")
+                    {
+                        ApplicationArea = all;
+                        RunObject = Report "Loan Balances Report";
+                        Caption = 'Member Loans Book Report';
+                        ToolTip = 'Member Loans Book Report';
+                        Visible = true;
+                    }
+                    action("Loan Defaulter Aging")
+                    {
+                        ApplicationArea = all;
+                        Caption = 'Loans Defaulter Aging-SASRA';
+                        RunObject = report "SASRA Loans Classification";
+                        ToolTip = 'Loan Defaulter Aging(Risk Classification)';
+                    }
+                    action("Loan Collection Targets Report")
+                    {
+                        ApplicationArea = all;
+                        RunObject = report "Loan Monthly Expectation";
+                        ToolTip = 'Loan Collection Targets';
+                        Caption = 'Loan Collection Targets';
+                    }
+
+                    action("Loans Guard Report")
+                    {
+                        ApplicationArea = all;
+                        RunObject = report "Loan Guard Report";
+                        ToolTip = 'Loans Guard Report';
+                    }
+                    action("Loans Register")
+                    {
+                        ApplicationArea = all;
+                        Caption = 'Member Loan Register';
+                        RunObject = Report "Loans Register";
+                        ToolTip = 'Loan Register Report';
+                        Visible = false;
+                    }
+
+                    action("Loans Arreas Report")
+                    {
+                        ApplicationArea = all;
+                        RunObject = Report "Loan Arrears Report";
+                        ToolTip = 'Loan Arreas Report';
+                        visible = false;
+                    }
+
+                    action("Loans Guarantor Details Report")
+                    {
+                        ApplicationArea = all;
+                        RunObject = Report "Loans Guarantor Details Report";
+                        ToolTip = 'Loans Securities Report';
+                    }
+                    action("General Recoveries Report")
+                    {
+                        ApplicationArea = all;
+                        RunObject = Report "Recovery From Salaries";
+                        Caption = 'General Recoveries Report';
+                    }
+                }
+                action("PostedLoans")
+                {
+                    ApplicationArea = Basic, Suite;
+                    Caption = 'Posted BOSA Loans';
+                    RunObject = Page "Loans Posted List";
+                    ToolTip = 'Open the list of the Loans Posted.';
+                }
+                action("LoansRescheduleList")
+                {
+                    ApplicationArea = Basic, Suite;
+                    RunObject = page "Loans Reschedule  List";
+                    Caption = 'Loans Reschedule List';
+                }
+                action("Loan Calculator")
+                {
+                    RunObject = page "Loans Calculator List";
+                }
+            }
+
+            group(BosaManagement)
+            {
+                Caption = 'Other Bosa Management Functions';
                 //................................................START OF CHANGE REQUEST MENU.........................
                 group(ChangeRequest)
                 {
@@ -1285,158 +1313,6 @@ Page 51516487 "Devco Sacco Main Role Center"
                         RunObject = page "Share Capital Trading Posted";
                         Caption = 'Sharecapital Trading List Posted';
 
-                    }
-                }
-                //.....................................START OF LOAN MANAGEMENT
-                group(SaccoLoansManagement)
-                {
-                    Caption = 'BOSA Loans';
-                    ToolTip = 'Manage BOSA Module';
-                    group("BOSA Loans Management")
-                    {
-                        Caption = 'New BOSA Loans Applications';
-                        ToolTip = 'BOSA Loans'' Management Module';
-                        action("BOSA Loan Application")
-                        {
-                            ApplicationArea = All;
-                            Caption = 'BOSA Loan Application List';
-                            Image = Loaners;
-                            RunObject = Page "Loan List-New Application BOSA";
-                            ToolTip = 'Open BOSA Loan Applications List';
-                            RunPageView = where(Posted = const(false), "Loan Status" = const(Application));
-                        }
-                        action("Pending BOSA Loan Application")
-                        {
-                            ApplicationArea = Basic, Suite;
-                            Caption = 'BOSA Loans Pending Approval';
-                            Image = CreditCard;
-                            RunObject = Page "LoanList-Pending Approval BOSA";
-
-                            ToolTip = 'Open the list of BOSA Loans Pending Approval';
-
-                        }
-                        action("Approved Loans")
-                        {
-                            ApplicationArea = Basic, Suite;
-                            Caption = 'BOSA Loans Pending Disbursement.';
-                            RunObject = Page "Loan Application BOSA-Approved";
-                            ToolTip = 'Open the list of Approved Loans Pending Disbursement.';
-                        }
-                    }
-
-
-                    group("Loan Batching")
-                    {
-
-                        action("Loan Batch List")
-                        {
-                            ApplicationArea = Basic, Suite;
-                            RunObject = page "Loans Disbursment Batch List";
-
-                        }
-                        action("Posted Loan Batch List")
-                        {
-                            ApplicationArea = Basic, Suite;
-                            RunObject = page "Posted Loan Batch - List";
-
-                        }
-                    }
-                    group("Loans Top Up List")
-                    {
-                        Visible = false;
-                        action("LoansTop Up List")
-                        {
-                            ApplicationArea = Basic, Suite;
-                            RunObject = page "Loan Top-Up List";
-                            Caption = 'Loans Top-Up List';
-                        }
-                        action("LoansTopUp Posted")
-                        {
-                            ApplicationArea = Basic, Suite;
-                            RunObject = page "Loan Top-Up List-Posted";
-                            Caption = 'Loans Top-Up Posted';
-                        }
-                    }
-
-
-
-                    group("Loans' Reports")
-                    {
-                        action("Loans Balances Report")
-                        {
-                            ApplicationArea = all;
-                            RunObject = Report "Loan Balances Report";
-                            Caption = 'Member Loans Book Report';
-                            ToolTip = 'Member Loans Book Report';
-                            Visible = true;
-                        }
-                        action("Loan Defaulter Aging")
-                        {
-                            ApplicationArea = all;
-                            Caption = 'Loans Defaulter Aging-SASRA';
-                            RunObject = report "SASRA Loans Classification";
-                            ToolTip = 'Loan Defaulter Aging(Risk Classification)';
-                        }
-                        action("Loan Collection Targets Report")
-                        {
-                            ApplicationArea = all;
-                            RunObject = report "Loan Monthly Expectation";
-                            ToolTip = 'Loan Collection Targets';
-                            Caption = 'Loan Collection Targets';
-                        }
-
-                        action("Loans Guard Report")
-                        {
-                            ApplicationArea = all;
-                            RunObject = report "Loan Guard Report";
-                            ToolTip = 'Loans Guard Report';
-                        }
-                        action("Loans Register")
-                        {
-                            ApplicationArea = all;
-                            Caption = 'Member Loan Register';
-                            RunObject = Report "Loans Register";
-                            ToolTip = 'Loan Register Report';
-                            Visible = false;
-                        }
-
-                        action("Loans Arreas Report")
-                        {
-                            ApplicationArea = all;
-                            RunObject = Report "Loan Arrears Report";
-                            ToolTip = 'Loan Arreas Report';
-                            visible = false;
-                        }
-
-                        action("Loans Guarantor Details Report")
-                        {
-                            ApplicationArea = all;
-                            RunObject = Report "Loans Guarantor Details Report";
-                            ToolTip = 'Loans Securities Report';
-                        }
-                        action("General Recoveries Report")
-                        {
-                            ApplicationArea = all;
-                            RunObject = Report "Recovery From Salaries";
-                            Caption = 'General Recoveries Report';
-                        }
-                    }
-                    action("PostedLoans")
-                    {
-                        ApplicationArea = Basic, Suite;
-                        Caption = 'Posted BOSA Loans';
-                        RunObject = Page "Loans Posted List";
-                        ToolTip = 'Open the list of the Loans Posted.';
-                    }
-                    action("LoansRescheduleList")
-                    {
-                        ApplicationArea = Basic, Suite;
-                        RunObject = page "Loans Reschedule  List";
-                        Caption = 'Loans Reschedule List';
-                    }
-                    action("Loan Calculator")
-                    {
-                        RunObject = page "Loans Calculator List";
                     }
                 }
 
@@ -2561,15 +2437,7 @@ Page 51516487 "Devco Sacco Main Role Center"
                     // RunObject = page "Budgetary Control Setup";
                     ToolTip = 'Budgetary Control Setup';
                 }
-                // action("Funds User Setup")
-                // {
 
-                //     Caption = 'Funds User Setup ';
-                //     ApplicationArea = Basic, Suite;
-                //     Image = Check;
-                //     //RunObject = page "Funds User Setup";
-                //     ToolTip = 'Funds User Setup';
-                // }
                 action("Receipt and Payment Types List")
                 {
 
@@ -2707,7 +2575,7 @@ Page 51516487 "Devco Sacco Main Role Center"
             {
                 Caption = 'Fixed Assets';
                 Image = FixedAssets;
-                Visible = false;
+                Visible = true;
                 ToolTip = 'Manage depreciation and insurance of your fixed assets.';
                 action(Action17)
                 {
@@ -3335,6 +3203,11 @@ Page 51516487 "Devco Sacco Main Role Center"
                     {
                         RunObject = report "P9Report";
                         ApplicationArea = All;
+                    }
+                    action("Staff Salaries Report")
+                    {
+                        RunObject = report "Staff Salaries Report";
+                        ApplicationArea = all;
                     }
 
 

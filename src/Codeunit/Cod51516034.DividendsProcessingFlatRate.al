@@ -30,7 +30,7 @@ codeunit 51516034 "Dividends Processing-Flat Rate"
     begin
         MemberRegister.reset;
         MemberRegister.SetRange(MemberRegister."No.", MemberNo);
-        MemberRegister.SetAutoCalcFields(MemberRegister."Current Shares", MemberRegister."Fosa Shares", MemberRegister."Computer Shares", MemberRegister."van Shares", MemberRegister."Preferencial Building Shares", MemberRegister."Lift Shares", MemberRegister."Tamba Shares", MemberRegister."Pepea Shares", MemberRegister."Housing Deposits");
+        MemberRegister.SetAutoCalcFields(MemberRegister."Current Shares", MemberRegister."Fosa Shares", MemberRegister."van Shares", MemberRegister."Preferencial Building Shares", MemberRegister."Lift Shares", MemberRegister."Tamba Shares", MemberRegister."Pepea Shares", MemberRegister."Housing Deposits");
         if MemberRegister.find('-') then begin
             //2 Delete Previous Entries Of the Member
             DivRegister.Reset();
@@ -43,29 +43,29 @@ codeunit 51516034 "Dividends Processing-Flat Rate"
             NWDSharesInterestEarned := 0;
             NWDSharesInterestEarned := FnProcessInterestEarnedOnCurrentShares(MemberRegister."No.", StartDate, EndDate, MemberRegister."Current Shares");
             //2 Get FOSA Shares Interest Earned
-            FOSASharesInterestEarned := 0;
-            FOSASharesInterestEarned := FnProcessInterestEarnedOnFOSAShares(MemberRegister."No.", StartDate, EndDate, MemberRegister."Fosa Shares");
+            // FOSASharesInterestEarned := 0;
+            // FOSASharesInterestEarned := FnProcessInterestEarnedOnFOSAShares(MemberRegister."No.", StartDate, EndDate, MemberRegister."Fosa Shares");
             //3 Computer Shares Interest Earned
-            ComputerSharesInterestEarned := 0;
-            ComputerSharesInterestEarned := FnProcessInterestEarnedOnComputerShares(MemberRegister."No.", StartDate, EndDate, MemberRegister."Computer Shares");
+            // ComputerSharesInterestEarned := 0;
+            // ComputerSharesInterestEarned := FnProcessInterestEarnedOnComputerShares(MemberRegister."No.", StartDate, EndDate, MemberRegister."Computer Shares");
             //4 Van Shares Interest Earned
-            VanSharesInterestEarned := 0;
-            VanSharesInterestEarned := FnProcessInterestEarnedOnVanShares(MemberRegister."No.", StartDate, EndDate, MemberRegister."van Shares");
+            // VanSharesInterestEarned := 0;
+            // VanSharesInterestEarned := FnProcessInterestEarnedOnVanShares(MemberRegister."No.", StartDate, EndDate, MemberRegister."van Shares");
             //5 Preferential Shares Interest Earned
-            PreferentialSharesInterestEarned := 0;
-            PreferentialSharesInterestEarned := FnProcessInterestEarnedOnPreferentialShares(MemberRegister."No.", StartDate, EndDate, MemberRegister."Preferencial Building Shares");
+            // PreferentialSharesInterestEarned := 0;
+            // PreferentialSharesInterestEarned := FnProcessInterestEarnedOnPreferentialShares(MemberRegister."No.", StartDate, EndDate, MemberRegister."Preferencial Building Shares");
             //6 Lift Shares Interest Earned
-            LiftSharesInterestEarned := 0;
+            // LiftSharesInterestEarned := 0;
             LiftSharesInterestEarned := FnProcessInterestEarnedOnLiftShares(MemberRegister."No.", StartDate, EndDate, MemberRegister."Lift Shares");
             //7 Tambaa Shares Interest Earned
-            TambaaSharesInterestEarned := 0;
-            TambaaSharesInterestEarned := FnProcessInterestEarnedOnTambaaShares(MemberRegister."No.", StartDate, EndDate, MemberRegister."Tamba Shares");
+            // TambaaSharesInterestEarned := 0;
+            // TambaaSharesInterestEarned := FnProcessInterestEarnedOnTambaaShares(MemberRegister."No.", StartDate, EndDate, MemberRegister."Tamba Shares");
             //8 Pepea Shares Interest Earned
-            PepeaSharesInterestEarned := 0;
-            PepeaSharesInterestEarned := FnProcessInterestEarnedOnPepeaShares(MemberRegister."No.", StartDate, EndDate, MemberRegister."Pepea Shares");
+            // PepeaSharesInterestEarned := 0;
+            // PepeaSharesInterestEarned := FnProcessInterestEarnedOnPepeaShares(MemberRegister."No.", StartDate, EndDate, MemberRegister."Pepea Shares");
             //9 Housing Shares Interest Earned
-            HousingSharesInterestEarned := 0;
-            HousingSharesInterestEarned := FnProcessInterestEarnedOnHousingShares(MemberRegister."No.", StartDate, EndDate, MemberRegister."Housing Deposits");
+            // HousingSharesInterestEarned := 0;
+            // HousingSharesInterestEarned := FnProcessInterestEarnedOnHousingShares(MemberRegister."No.", StartDate, EndDate, MemberRegister."Housing Deposits");
             //--------------GET NET DIVIDENDS PAYABLE TO MEMBER(Inclusive of capitalzed amount)
             NetDividendsPayableToMember := 0;
             NetDividendsPayableToMember := ComputerSharesInterestEarned + FOSASharesInterestEarned + NWDSharesInterestEarned + VanSharesInterestEarned + PreferentialSharesInterestEarned + LiftSharesInterestEarned + PepeaSharesInterestEarned + TambaaSharesInterestEarned + HousingSharesInterestEarned;
@@ -301,109 +301,109 @@ codeunit 51516034 "Dividends Processing-Flat Rate"
         exit(DivRegister."Net Interest -FOSA Shares");
     end;
     //------------------------------------------------------------------------------------------------------------------------------------------------
-    local procedure FnProcessInterestEarnedOnComputerShares(No: Code[20]; StartDate: Date; EndDate: Date; ComputerShares: Decimal): Decimal
-    var
-        QualifyingComputerShares: Decimal;
-    begin
-        //1_Get the Qualifying Deposit Contributions Amounts
-        QualifyingComputerShares := 0;
-        CustLedgerEntry.Reset();
-        CustLedgerEntry.SetRange(CustLedgerEntry."Customer No.", No);
-        CustLedgerEntry.SetRange(CustLedgerEntry."Transaction Type", CustLedgerEntry."Transaction Type"::"Computer Shares");
-        CustLedgerEntry.SetRange(CustLedgerEntry.Reversed, false);
-        CustLedgerEntry.SetFilter(CustLedgerEntry."Posting Date", '%1..%2', 0D, EndDate);
-        IF CustLedgerEntry.FIND('-') then begin
-            repeat
-                QualifyingComputerShares += (CustLedgerEntry."Amount Posted") * -1;
-            until CustLedgerEntry.next = 0;
-        end;
+    // local procedure FnProcessInterestEarnedOnComputerShares(No: Code[20]; StartDate: Date; EndDate: Date; ComputerShares: Decimal): Decimal
+    // var
+    //     QualifyingComputerShares: Decimal;
+    // begin
+    //     //1_Get the Qualifying Deposit Contributions Amounts
+    //     QualifyingComputerShares := 0;
+    //     CustLedgerEntry.Reset();
+    //     CustLedgerEntry.SetRange(CustLedgerEntry."Customer No.", No);
+    //     CustLedgerEntry.SetRange(CustLedgerEntry."Transaction Type", CustLedgerEntry."Transaction Type"::"Computer Shares");
+    //     CustLedgerEntry.SetRange(CustLedgerEntry.Reversed, false);
+    //     CustLedgerEntry.SetFilter(CustLedgerEntry."Posting Date", '%1..%2', 0D, EndDate);
+    //     IF CustLedgerEntry.FIND('-') then begin
+    //         repeat
+    //             QualifyingComputerShares += (CustLedgerEntry."Amount Posted") * -1;
+    //         until CustLedgerEntry.next = 0;
+    //     end;
 
-        //2 Process the amounts One Qualifies to be paid
-        SaccoGenSetUp.Get();
-        DivRegister.Reset();
-        DivRegister.SetRange(DivRegister."Member No", No);
-        DivRegister.SetRange(DivRegister."Dividend Year", format(DATE2DMY((EndDate), 3)));
-        if DivRegister.Find('-') = true then begin
-            DivRegister."Computer Shares" := ComputerShares;
-            DivRegister."Qualifying Computer Shares" := QualifyingComputerShares;
-            DivRegister."Gross Interest-Computer Shares" := (((SaccoGenSetUp."Interest On Computer Shares") / 100) * QualifyingComputerShares);
-            DivRegister."WTX -Computer Shares" := ((SaccoGenSetUp."Withholding Tax (%)" / 100) * DivRegister."Gross Interest-Computer Shares");
-            DivRegister."Net Interest -Computer Shares" := (DivRegister."Gross Interest-Computer Shares") - (DivRegister."WTX -Computer Shares");
-            DivRegister.Modify(true);
-        end else
-            if DivRegister.Find('-') = false then begin
-                Error('Could not insert into dividends register');
-            end;
-        //4 Insert To GL's
-        //A)GROSS
-        //i)Bank Account
-        SaccoGenSetUp.Get();
-        SaccoGenSetUp.TestField(SaccoGenSetUp."Dividends Paying Bank Account");
-        LineNo := LineNo + 10000;
-        GenJournalLine.Init;
-        GenJournalLine."Journal Template Name" := 'GENERAL';
-        GenJournalLine."Journal Batch Name" := 'DIVIDEND';
-        GenJournalLine."Line No." := LineNo;
-        GenJournalLine."Account Type" := GenJournalLine."account type"::"Bank Account";
-        GenJournalLine."Account No." := SaccoGenSetUp."Dividends Paying Bank Account";
-        GenJournalLine.Validate(GenJournalLine."Account No.");
-        GenJournalLine."Document No." := format(DATE2DMY((EndDate), 3)) + 'DIVIDEND';
-        GenJournalLine."Posting Date" := Today;
-        GenJournalLine.Description := 'Gross Interest Earned On Computer Shares Year-' + format(DATE2DMY((EndDate), 3)) + ' paid to-' + Format(No);
-        GenJournalLine.Amount := DivRegister."Gross Interest-Computer Shares";
-        GenJournalLine.Validate(GenJournalLine.Amount);
-        GenJournalLine."Shortcut Dimension 1 Code" := 'BOSA';
-        GenJournalLine."Shortcut Dimension 2 Code" := FnGetMemberBranchCode(No);
-        if GenJournalLine.Amount <> 0 then
-            GenJournalLine.Insert;
-        //ii)Member Account
-        LineNo := LineNo + 10000;
-        GenJournalLine.Init;
-        GenJournalLine."Journal Template Name" := 'GENERAL';
-        GenJournalLine."Journal Batch Name" := 'DIVIDEND';
-        GenJournalLine."Line No." := LineNo;
-        GenJournalLine."Account Type" := GenJournalLine."account type"::Customer;
-        GenJournalLine."Account No." := No;
-        GenJournalLine.Validate(GenJournalLine."Account No.");
-        GenJournalLine."Document No." := format(DATE2DMY((EndDate), 3)) + 'DIVIDEND';
-        GenJournalLine."Posting Date" := Today;
-        GenJournalLine.Description := 'Gross Interest Earned On Computer Shares Year-' + format(DATE2DMY((EndDate), 3));
-        GenJournalLine.Amount := -DivRegister."Gross Interest-Computer Shares";
-        GenJournalLine.Validate(GenJournalLine.Amount);
-        GenJournalLine."Transaction Type" := GenJournalLine."transaction type"::Dividend;
-        GenJournalLine."Shortcut Dimension 1 Code" := 'BOSA';
-        GenJournalLine."Shortcut Dimension 2 Code" := FnGetMemberBranchCode(No);
-        if GenJournalLine.Amount <> 0 then
-            GenJournalLine.Insert;
+    //     //2 Process the amounts One Qualifies to be paid
+    //     SaccoGenSetUp.Get();
+    //     DivRegister.Reset();
+    //     DivRegister.SetRange(DivRegister."Member No", No);
+    //     DivRegister.SetRange(DivRegister."Dividend Year", format(DATE2DMY((EndDate), 3)));
+    //     if DivRegister.Find('-') = true then begin
+    //         DivRegister."Computer Shares" := ComputerShares;
+    //         DivRegister."Qualifying Computer Shares" := QualifyingComputerShares;
+    //         DivRegister."Gross Interest-Computer Shares" := (((SaccoGenSetUp."Interest On Computer Shares") / 100) * QualifyingComputerShares);
+    //         DivRegister."WTX -Computer Shares" := ((SaccoGenSetUp."Withholding Tax (%)" / 100) * DivRegister."Gross Interest-Computer Shares");
+    //         DivRegister."Net Interest -Computer Shares" := (DivRegister."Gross Interest-Computer Shares") - (DivRegister."WTX -Computer Shares");
+    //         DivRegister.Modify(true);
+    //     end else
+    //         if DivRegister.Find('-') = false then begin
+    //             Error('Could not insert into dividends register');
+    //         end;
+    //     //4 Insert To GL's
+    //     //A)GROSS
+    //     //i)Bank Account
+    //     SaccoGenSetUp.Get();
+    //     SaccoGenSetUp.TestField(SaccoGenSetUp."Dividends Paying Bank Account");
+    //     LineNo := LineNo + 10000;
+    //     GenJournalLine.Init;
+    //     GenJournalLine."Journal Template Name" := 'GENERAL';
+    //     GenJournalLine."Journal Batch Name" := 'DIVIDEND';
+    //     GenJournalLine."Line No." := LineNo;
+    //     GenJournalLine."Account Type" := GenJournalLine."account type"::"Bank Account";
+    //     GenJournalLine."Account No." := SaccoGenSetUp."Dividends Paying Bank Account";
+    //     GenJournalLine.Validate(GenJournalLine."Account No.");
+    //     GenJournalLine."Document No." := format(DATE2DMY((EndDate), 3)) + 'DIVIDEND';
+    //     GenJournalLine."Posting Date" := Today;
+    //     GenJournalLine.Description := 'Gross Interest Earned On Computer Shares Year-' + format(DATE2DMY((EndDate), 3)) + ' paid to-' + Format(No);
+    //     GenJournalLine.Amount := DivRegister."Gross Interest-Computer Shares";
+    //     GenJournalLine.Validate(GenJournalLine.Amount);
+    //     GenJournalLine."Shortcut Dimension 1 Code" := 'BOSA';
+    //     GenJournalLine."Shortcut Dimension 2 Code" := FnGetMemberBranchCode(No);
+    //     if GenJournalLine.Amount <> 0 then
+    //         GenJournalLine.Insert;
+    //     //ii)Member Account
+    //     LineNo := LineNo + 10000;
+    //     GenJournalLine.Init;
+    //     GenJournalLine."Journal Template Name" := 'GENERAL';
+    //     GenJournalLine."Journal Batch Name" := 'DIVIDEND';
+    //     GenJournalLine."Line No." := LineNo;
+    //     GenJournalLine."Account Type" := GenJournalLine."account type"::Customer;
+    //     GenJournalLine."Account No." := No;
+    //     GenJournalLine.Validate(GenJournalLine."Account No.");
+    //     GenJournalLine."Document No." := format(DATE2DMY((EndDate), 3)) + 'DIVIDEND';
+    //     GenJournalLine."Posting Date" := Today;
+    //     GenJournalLine.Description := 'Gross Interest Earned On Computer Shares Year-' + format(DATE2DMY((EndDate), 3));
+    //     GenJournalLine.Amount := -DivRegister."Gross Interest-Computer Shares";
+    //     GenJournalLine.Validate(GenJournalLine.Amount);
+    //     GenJournalLine."Transaction Type" := GenJournalLine."transaction type"::Dividend;
+    //     GenJournalLine."Shortcut Dimension 1 Code" := 'BOSA';
+    //     GenJournalLine."Shortcut Dimension 2 Code" := FnGetMemberBranchCode(No);
+    //     if GenJournalLine.Amount <> 0 then
+    //         GenJournalLine.Insert;
 
-        //B)WTX
-        SaccoGenSetUp.Get();
-        if DivRegister."WTX -FOSA Shares" <> 0 then begin
-            SaccoGenSetUp.TestField(SaccoGenSetUp."Withholding Tax Account");
-        end;
-        LineNo := LineNo + 10000;
-        GenJournalLine.Init;
-        GenJournalLine."Journal Template Name" := 'GENERAL';
-        GenJournalLine."Journal Batch Name" := 'DIVIDEND';
-        GenJournalLine."Line No." := LineNo;
-        GenJournalLine."Account Type" := GenJournalLine."account type"::Customer;
-        GenJournalLine."Account No." := No;
-        GenJournalLine.Validate(GenJournalLine."Account No.");
-        GenJournalLine."Document No." := format(DATE2DMY((EndDate), 3)) + 'DIVIDEND';
-        GenJournalLine."Posting Date" := Today;
-        GenJournalLine.Description := 'Witholding Tax On-Gross Computer Interest Year-' + format(DATE2DMY((EndDate), 3));
-        GenJournalLine.Amount := DivRegister."WTX -Computer Shares";
-        GenJournalLine.Validate(GenJournalLine.Amount);
-        GenJournalLine."Transaction Type" := GenJournalLine."transaction type"::Dividend;
-        GenJournalLine."Shortcut Dimension 1 Code" := 'BOSA';
-        GenJournalLine."Shortcut Dimension 2 Code" := FnGetMemberBranchCode(No);
-        GenJournalLine."Bal. Account Type" := GenJournalLine."Bal. Account Type"::"G/L Account";
-        GenJournalLine."Bal. Account No." := SaccoGenSetUp."Withholding Tax Account";
-        if GenJournalLine.Amount <> 0 then
-            GenJournalLine.Insert;
-        exit(DivRegister."Net Interest -Computer Shares");
-    end;
-    //---------------------------------------------------------------------------------------------
+    //     //B)WTX
+    //     SaccoGenSetUp.Get();
+    //     if DivRegister."WTX -FOSA Shares" <> 0 then begin
+    //         SaccoGenSetUp.TestField(SaccoGenSetUp."Withholding Tax Account");
+    //     end;
+    //     LineNo := LineNo + 10000;
+    //     GenJournalLine.Init;
+    //     GenJournalLine."Journal Template Name" := 'GENERAL';
+    //     GenJournalLine."Journal Batch Name" := 'DIVIDEND';
+    //     GenJournalLine."Line No." := LineNo;
+    //     GenJournalLine."Account Type" := GenJournalLine."account type"::Customer;
+    //     GenJournalLine."Account No." := No;
+    //     GenJournalLine.Validate(GenJournalLine."Account No.");
+    //     GenJournalLine."Document No." := format(DATE2DMY((EndDate), 3)) + 'DIVIDEND';
+    //     GenJournalLine."Posting Date" := Today;
+    //     GenJournalLine.Description := 'Witholding Tax On-Gross Computer Interest Year-' + format(DATE2DMY((EndDate), 3));
+    //     GenJournalLine.Amount := DivRegister."WTX -Computer Shares";
+    //     GenJournalLine.Validate(GenJournalLine.Amount);
+    //     GenJournalLine."Transaction Type" := GenJournalLine."transaction type"::Dividend;
+    //     GenJournalLine."Shortcut Dimension 1 Code" := 'BOSA';
+    //     GenJournalLine."Shortcut Dimension 2 Code" := FnGetMemberBranchCode(No);
+    //     GenJournalLine."Bal. Account Type" := GenJournalLine."Bal. Account Type"::"G/L Account";
+    //     GenJournalLine."Bal. Account No." := SaccoGenSetUp."Withholding Tax Account";
+    //     if GenJournalLine.Amount <> 0 then
+    //         GenJournalLine.Insert;
+    //     exit(DivRegister."Net Interest -Computer Shares");
+    // end;
+    // //---------------------------------------------------------------------------------------------
     local procedure FnProcessInterestEarnedOnVanShares(No: Code[20]; StartDate: Date; EndDate: Date; vanShares: Decimal): Decimal
     var
         QualifyingVanShares: Decimal;

@@ -55,10 +55,11 @@ Codeunit 51516000 "Funds Management"
         GenJnlLine."Line No." := LineNo;
         GenJnlLine."Source Code" := SourceCode;
         GenJnlLine."Posting Date" := PaymentHeader."Posting Date";
-        if CustomerLinesExist(PaymentHeader) then
-            GenJnlLine."Document Type" := GenJnlLine."document type"::" "
-        else
-            GenJnlLine."Document Type" := GenJnlLine."document type"::Payment;
+       
+        // if CustomerLinesExist(PaymentHeader) then
+        //     GenJnlLine."Document Type" := GenJnlLine."document type"::" "
+        // else
+        //     GenJnlLine."Document Type" := GenJnlLine."document type"::Payment;
         GenJnlLine."Document No." := PaymentHeader."No.";
         GenJnlLine."External Document No." := PaymentHeader."Cheque No";
         GenJnlLine."Account Type" := GenJnlLine."account type"::"Bank Account";
@@ -86,14 +87,14 @@ Codeunit 51516000 "Funds Management"
         GenJnlLine.ValidateShortcutDimCode(8, PaymentHeader."Shortcut Dimension 8 Code");
         GenJnlLine.Description := CopyStr(PaymentHeader."Payment Description", 1, 50);
         GenJnlLine.Validate(GenJnlLine.Description);
-        if PaymentHeader."Payment Mode" <> PaymentHeader."payment mode"::Cheque then begin
-            GenJnlLine."Bank Payment Type" := GenJnlLine."bank payment type"::" "
-        end else begin
-            if PaymentHeader."Cheque Type" = PaymentHeader."cheque type"::"Computer Cheque" then
-                GenJnlLine."Bank Payment Type" := GenJnlLine."bank payment type"::"Computer Check"
-            else
-                GenJnlLine."Bank Payment Type" := GenJnlLine."bank payment type"::" "
-        end;
+        // if PaymentHeader."Payment Mode" <> PaymentHeader."payment mode"::Cheque then begin
+        //     GenJnlLine."Bank Payment Type" := GenJnlLine."bank payment type"::" "
+        // end else begin
+        //     if PaymentHeader."Cheque Type" = PaymentHeader."cheque type"::"Computer Cheque" then
+        //         GenJnlLine."Bank Payment Type" := GenJnlLine."bank payment type"::"Computer Check"
+        //     else
+        //         GenJnlLine."Bank Payment Type" := GenJnlLine."bank payment type"::" "
+        // end;
         if GenJnlLine.Amount <> 0 then
             GenJnlLine.Insert;
         //************************************************End Add to Bank***************************************************************//
@@ -115,11 +116,12 @@ Codeunit 51516000 "Funds Management"
                 GenJnlLine."Line No." := LineNo;
                 GenJnlLine."Posting Date" := PaymentHeader."Posting Date";
                 GenJnlLine."Document No." := PaymentLine."Document No";
+                     
                 GenJnlLine."Posting Group" := PaymentLine."Default Grouping";    //Posting Group
-                if CustomerLinesExist(PaymentHeader) then
-                    GenJnlLine."Document Type" := GenJnlLine."document type"::" "
-                else
-                    GenJnlLine."Document Type" := GenJnlLine."document type"::Payment;
+                // if CustomerLinesExist(PaymentHeader) then
+                //     GenJnlLine."Document Type" := GenJnlLine."document type"::" "
+                // else
+                //     GenJnlLine."Document Type" := GenJnlLine."document type"::Payment;
                 GenJnlLine."Account Type" := PaymentLine."Account Type";
                 GenJnlLine."Account No." := PaymentLine."Account No.";
                 GenJnlLine.Validate(GenJnlLine."Account No.");
@@ -155,7 +157,7 @@ Codeunit 51516000 "Funds Management"
                 GenJnlLine.ValidateShortcutDimCode(8, PaymentHeader."Shortcut Dimension 8 Code");
                 GenJnlLine.Description := PaymentLine."Payment Description";//COPYSTR(PaymentHeader."Payment Description",1,50);
                                                                             //GenJnlLine.VALIDATE(GenJnlLine.Description);
-                GenJnlLine."Applies-to Doc. Type" := GenJnlLine."applies-to doc. type"::Invoice;
+                // GenJnlLine."Applies-to Doc. Type" := GenJnlLine."applies-to doc. type"::Invoice;
                 GenJnlLine."Applies-to Doc. No." := PaymentLine."Applies-to Doc. No.";
                 GenJnlLine.Validate(GenJnlLine."Applies-to Doc. No.");
                 GenJnlLine."Applies-to ID" := PaymentLine."Applies-to ID";
@@ -179,10 +181,10 @@ Codeunit 51516000 "Funds Management"
                         GenJnlLine."Line No." := LineNo;
                         GenJnlLine."Source Code" := SourceCode;
                         GenJnlLine."Posting Date" := PaymentHeader."Posting Date";
-                        if CustomerLinesExist(PaymentHeader) then
-                            GenJnlLine."Document Type" := GenJnlLine."document type"::" "
-                        else
-                            GenJnlLine."Document Type" := GenJnlLine."document type"::Payment;
+                        // if CustomerLinesExist(PaymentHeader) then
+                        //     GenJnlLine."Document Type" := GenJnlLine."document type"::" "
+                        // else
+                        //     GenJnlLine."Document Type" := GenJnlLine."document type"::Payment;
                         GenJnlLine."Document No." := PaymentLine."Document No";
                         //GenJnlLine."Posting Group":=PaymentLine."Default Grouping";    //Posting Group
                         GenJnlLine."External Document No." := PaymentHeader."Cheque No";
@@ -234,10 +236,10 @@ Codeunit 51516000 "Funds Management"
                         GenJnlLine."Line No." := LineNo;
                         GenJnlLine."Source Code" := SourceCode;
                         GenJnlLine."Posting Date" := PaymentHeader."Posting Date";
-                        if CustomerLinesExist(PaymentHeader) then
-                            GenJnlLine."Document Type" := GenJnlLine."document type"::" "
-                        else
-                            GenJnlLine."Document Type" := GenJnlLine."document type"::Payment;
+                        // if CustomerLinesExist(PaymentHeader) then
+                        //     GenJnlLine."Document Type" := GenJnlLine."document type"::" "
+                        // else
+                        //     GenJnlLine."Document Type" := GenJnlLine."document type"::Payment;
                         GenJnlLine."Document No." := PaymentLine."Document No";
                         GenJnlLine."Posting Group" := PaymentLine."Default Grouping";    //Posting Group
                         GenJnlLine."External Document No." := PaymentHeader."Cheque No";
@@ -266,7 +268,7 @@ Codeunit 51516000 "Funds Management"
                         GenJnlLine.ValidateShortcutDimCode(7, PaymentHeader."Shortcut Dimension 7 Code");
                         GenJnlLine.ValidateShortcutDimCode(8, PaymentHeader."Shortcut Dimension 8 Code");
                         GenJnlLine.Description := CopyStr('VAT:' + Format(PaymentLine."Account Type") + '::' + Format(PaymentLine."Account Name"), 1, 50);
-                        GenJnlLine."Applies-to Doc. Type" := GenJnlLine."applies-to doc. type"::Invoice;
+                        // GenJnlLine."Applies-to Doc. Type" := GenJnlLine."applies-to doc. type"::Invoice;
                         GenJnlLine."Applies-to Doc. No." := PaymentLine."Applies-to Doc. No.";
                         GenJnlLine.Validate(GenJnlLine."Applies-to Doc. No.");
                         GenJnlLine."Applies-to ID" := PaymentLine."Applies-to ID";
@@ -292,10 +294,10 @@ Codeunit 51516000 "Funds Management"
                         GenJnlLine."Line No." := LineNo;
                         GenJnlLine."Source Code" := SourceCode;
                         GenJnlLine."Posting Date" := PaymentHeader."Posting Date";
-                        if CustomerLinesExist(PaymentHeader) then
-                            GenJnlLine."Document Type" := GenJnlLine."document type"::" "
-                        else
-                            GenJnlLine."Document Type" := GenJnlLine."document type"::Payment;
+                        // if CustomerLinesExist(PaymentHeader) then
+                        //     GenJnlLine."Document Type" := GenJnlLine."document type"::" "
+                        // else
+                        //     GenJnlLine."Document Type" := GenJnlLine."document type"::Payment;
                         GenJnlLine."Document No." := PaymentLine."Document No";
                         //GenJnlLine."Posting Group":=PaymentLine."Default Grouping";    //Posting Group
                         GenJnlLine."External Document No." := PaymentHeader."Cheque No";
@@ -346,10 +348,10 @@ Codeunit 51516000 "Funds Management"
                         GenJnlLine."Line No." := LineNo;
                         GenJnlLine."Source Code" := SourceCode;
                         GenJnlLine."Posting Date" := PaymentHeader."Posting Date";
-                        if CustomerLinesExist(PaymentHeader) then
-                            GenJnlLine."Document Type" := GenJnlLine."document type"::" "
-                        else
-                            GenJnlLine."Document Type" := GenJnlLine."document type"::Payment;
+                        // if CustomerLinesExist(PaymentHeader) then
+                        //     GenJnlLine."Document Type" := GenJnlLine."document type"::" "
+                        // else
+                        //     GenJnlLine."Document Type" := GenJnlLine."document type"::Payment;
                         GenJnlLine."Document No." := PaymentLine."Document No";
                         GenJnlLine."Posting Group" := PaymentLine."Default Grouping";    //Posting Group
                         GenJnlLine."External Document No." := PaymentHeader."Cheque No";
@@ -378,10 +380,10 @@ Codeunit 51516000 "Funds Management"
                         GenJnlLine.ValidateShortcutDimCode(7, PaymentHeader."Shortcut Dimension 7 Code");
                         GenJnlLine.ValidateShortcutDimCode(8, PaymentHeader."Shortcut Dimension 8 Code");
                         GenJnlLine.Description := CopyStr('W/TAX:' + Format(PaymentLine."Account Type") + '::' + Format(PaymentLine."Account Name"), 1, 50);
-                        GenJnlLine."Applies-to Doc. Type" := GenJnlLine."applies-to doc. type"::Invoice;
-                        GenJnlLine."Applies-to Doc. No." := PaymentLine."Applies-to Doc. No.";
-                        GenJnlLine.Validate(GenJnlLine."Applies-to Doc. No.");
-                        GenJnlLine."Applies-to ID" := PaymentLine."Applies-to ID";
+                        // GenJnlLine."Applies-to Doc. Type" := GenJnlLine."applies-to doc. type"::Invoice;
+                        // GenJnlLine."Applies-to Doc. No." := PaymentLine."Applies-to Doc. No.";
+                        // GenJnlLine.Validate(GenJnlLine."Applies-to Doc. No.");
+                        // GenJnlLine."Applies-to ID" := PaymentLine."Applies-to ID";
                         if GenJnlLine.Amount <> 0 then
                             GenJnlLine.Insert;
 
@@ -407,11 +409,11 @@ Codeunit 51516000 "Funds Management"
 
 
         //Before posting if its computer cheque,print the cheque
-        if (PaymentHeader."Payment Mode" = PaymentHeader."payment mode"::Cheque) and
-        (PaymentHeader."Cheque Type" = PaymentHeader."cheque type"::"Computer Cheque") then begin
-            DocPrint.PrintCheck(GenJnlLine);
-            Codeunit.Run(Codeunit::"Adjust Gen. Journal Balance", GenJnlLine);
-        end;
+        // if (PaymentHeader."Payment Mode" = PaymentHeader."payment mode"::Cheque) and
+        // (PaymentHeader."Cheque Type" = PaymentHeader."cheque type"::"Computer Cheque") then begin
+            // DocPrint.PrintCheck(GenJnlLine);
+            // Codeunit.Run(Codeunit::"Adjust Gen. Journal Balance", GenJnlLine);
+        // end;
         //Now Post the Journal Lines
         Codeunit.Run(Codeunit::"Gen. Jnl.-Post", GenJnlLine);
         //***************************************************End Posting****************************************************************//
@@ -568,7 +570,7 @@ Codeunit 51516000 "Funds Management"
                 GenJnlLine.ValidateShortcutDimCode(8, ReceiptHeader."Shortcut Dimension 8 Code");
                 GenJnlLine.Description := ReceiptLine.Description;//COPYSTR(ReceiptHeader.Description,1,50);
                 GenJnlLine.Validate(GenJnlLine.Description);
-                GenJnlLine."Interest Code" := ReceiptHeader."Interest Code";
+                // GenJnlLine."Interest Code" := ReceiptHeader."Interest Code";
                 /*GenJnlLine."Applies-to Doc. Type":=GenJnlLine."Applies-to Doc. Type"::Invoice;
                 GenJnlLine."Applies-to Doc. No.":=PaymentLine."Applies-to Doc. No.";
                 GenJnlLine.VALIDATE(GenJnlLine."Applies-to Doc. No.");

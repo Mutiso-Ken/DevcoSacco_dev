@@ -230,7 +230,7 @@ Table 51516230 "Loans Register"
             trigger OnValidate()
             begin
                 //--------------------------------------------------------
-                // GenSetUp.Get(0);
+                GenSetUp.Get(0);
 
                 "BOSA No" := "Client Code";
 
@@ -256,10 +256,10 @@ Table 51516230 "Loans Register"
                     end;
                     //-------------------------------------------------------------------
                     // IF CUST."Account Category" <> CUST."Account Category"::"Non-member" then
-                    //     if CustomerRecord."Registration Date" <> 0D then begin
-                    //         if CalcDate(GenSetUp."Min. Loan Application Period", CustomerRecord."Registration Date") > Today then
-                    //             Error('Member is less than six months old therefor not eligible for loan application.');
-                    //     end;
+                    if CustomerRecord."Registration Date" <> 0D then begin
+                        if CalcDate(GenSetUp."Min. Loan Application Period", CustomerRecord."Registration Date") > Today then
+                            Error('Member is less than six months old therefor not eligible for loan application.');
+                    end;
                     //-------------------------------------------------------------------
                     CustomerRecord.CalcFields(CustomerRecord."Current Shares", CustomerRecord."Outstanding Balance",
                     CustomerRecord."Current Loan");
@@ -290,15 +290,6 @@ Table 51516230 "Loans Register"
                 if LoanApp.Find('-') then
                     Error('Member has a loan which has previously been recovered from gurantors. - %1', LoanApp."Loan  No.");
                 //-------------------------------------------------------------------
-                if Source = Source::MICRO then begin
-                    Cust.Reset;
-                    Cust.SetRange(Cust."No.", "Client Code");
-                    Cust.SetRange(Cust."Customer Type", Cust."customer type"::MicroFinance);
-                    if Cust.Find('-') = false then
-                        Error('Sorry selected Member is not a micro member');
-                end else begin
-                    "Group Code" := Cust."Group Code";
-                end;
             end;
         }
         field(5; "Group Code"; Code[20])
@@ -965,7 +956,7 @@ Table 51516230 "Loans Register"
                                                                                      "Repayment Date" = field("Date filter")));
             FieldClass = FlowField;
         }
-            field(53193; "Loans Insurance"; Decimal)
+        field(53193; "Loans Insurance"; Decimal)
         {
             CalcFormula = sum("Cust. Ledger Entry"."Amount Posted" where("Customer No." = field("Client Code"),
                                                                   "Transaction Type" = filter("Loan Insurance Paid"),
@@ -1079,12 +1070,12 @@ Table 51516230 "Loans Register"
                     Error('Member has a loan which has previously been recovered from gurantors. - %1', LoanApp."Loan  No.");
                 //Block if loan Previously recovered from gurantors
 
-                Cust.Reset;
-                Cust.SetRange(Cust."ID No.", "ID NO");
-                if Cust.Find('-') then begin
-                    Cust.CalcFields(Cust."Outstanding Balance", Cust."Current Shares");//,Cust."Loans Guaranteed"
-                    "BOSA Deposits" := Cust."Current Shares";
-                end;
+                // Cust.Reset;
+                // Cust.SetRange(Cust."ID No.", "ID NO");
+                // if Cust.Find('-') then begin
+                //     Cust.CalcFields(Cust."Outstanding Balance", Cust."Current Shares");//,Cust."Loans Guaranteed"
+                //     "BOSA Deposits" := Cust."Current Shares";
+                // end;
             end;
         }
         field(68001; "BOSA No"; Code[20])
@@ -1605,7 +1596,7 @@ Table 51516230 "Loans Register"
         {
             CalcFormula = sum("Cust. Ledger Entry"."Amount Posted" where("Customer No." = field("Client Code"),
                                                                   "Transaction Type" = filter(Loan | Repayment),
-                                                                  "Loan Type" = filter(<> 'ADV' | 'ASSET' | 'B/L' | 'FL' | 'IPF'),
+                                                                //   "Loan Type" = filter(<> 'ADV' | 'ASSET' | 'B/L' | 'FL' | 'IPF'),
                                                                    Reversed = const(false)));
             FieldClass = FlowField;
         }
@@ -1625,9 +1616,9 @@ Table 51516230 "Loans Register"
         field(69056; "partially Bridged"; Boolean)
         {
         }
-        field(69058; "BOSA Deposits"; Decimal)
-        {
-        }
+        // field(69058; "BOSA Deposits"; Decimal)
+        // {
+        // }
         field(69059; "Topup Commission"; Decimal)
         {
             CalcFormula = sum("Loan Offset Details".Commision where("Loan No." = field("Loan  No.")));

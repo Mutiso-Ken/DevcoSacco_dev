@@ -3,6 +3,7 @@ Page 51516282 "Employer list"
 {
     ApplicationArea = Basic;
     CardPageID = "Sacco Employers card";
+    Caption='Sacco Employers Card';
     DeleteAllowed = false;
     Editable = false;
     PageType = List;
@@ -26,10 +27,12 @@ Page 51516282 "Employer list"
                 field("Repayment Method";"Repayment Method")
                 {
                     ApplicationArea = Basic;
+                    Visible=false;
                 }
                 field("Check Off";"Check Off")
                 {
                     ApplicationArea = Basic;
+                      Visible=false;
                 }
                 field("No. of Members";"No. of Members")
                 {
@@ -46,10 +49,12 @@ Page 51516282 "Employer list"
                 field("Vote Code";"Vote Code")
                 {
                     ApplicationArea = Basic;
+                      Visible=false;
                 }
                 field("Can Guarantee Loan";"Can Guarantee Loan")
                 {
                     ApplicationArea = Basic;
+                      Visible=false;
                 }
                 field("Active Members";"Active Members")
                 {
@@ -70,6 +75,7 @@ Page 51516282 "Employer list"
                 field("Join Date";"Join Date")
                 {
                     ApplicationArea = Basic;
+                    
                 }
             }
         }

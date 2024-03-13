@@ -70,60 +70,60 @@ Page 51516228 "Members Statistics"
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Computer Shares"; "Computer Shares")
-                {
-                    ApplicationArea = Basic;
-                    Editable = false;
-                }
-                field("van Shares"; "van Shares")
-                {
-                    ApplicationArea = Basic;
-                    Caption = 'Van Shares';
-                    Editable = false;
-                }
-                field("Investment Max Limit."; "Investment Max Limit.")
-                {
-                    ApplicationArea = Basic;
-                    Caption = 'FOSA Shares Monthly Cont.';
-                }
-                field("Changamka Shares"; "Changamka Shares")
-                {
-                    ApplicationArea = Basic;
-                    Editable = false;
-                }
-                field("Housing Deposits"; "Housing Deposits")
-                {
-                    ApplicationArea = Basic;
-                    Caption = 'Housing Deposit';
-                    Editable = false;
-                }
-                field("Executive Deposits"; "Executive Deposits")
-                {
-                    ApplicationArea = Basic;
-                    Editable = false;
-                }
-                field("Preferencial Building Shares"; "Preferencial Building Shares")
-                {
-                    ApplicationArea = Basic;
-                    Caption = '15% Preferencial Shares';
-                    Editable = false;
-                }
-                field("Tamba Shares"; "Tamba Shares")
-                {
-                    ApplicationArea = Basic;
-                }
-                field("Kussco Shares"; "Kussco Shares")
-                {
-                    ApplicationArea = Basic;
-                }
-                field("CIC Shares"; "CIC Shares")
-                {
-                    ApplicationArea = Basic;
-                }
-                field("Lift Shares"; "Lift Shares")
-                {
-                    ApplicationArea = Basic;
-                }
+                // field("Computer Shares"; "Computer Shares")
+                // {
+                //     ApplicationArea = Basic;
+                //     Editable = false;
+                // }
+                // field("van Shares"; "van Shares")
+                // {
+                //     ApplicationArea = Basic;
+                //     Caption = 'Van Shares';
+                //     Editable = false;
+                // }
+                // field("Investment Max Limit."; "Investment Max Limit.")
+                // {
+                //     ApplicationArea = Basic;
+                //     Caption = 'FOSA Shares Monthly Cont.';
+                // }
+                // field("Changamka Shares"; "Changamka Shares")
+                // {
+                //     ApplicationArea = Basic;
+                //     Editable = false;
+                // }
+                // field("Housing Deposits"; "Housing Deposits")
+                // {
+                //     ApplicationArea = Basic;
+                //     Caption = 'Housing Deposit';
+                //     Editable = false;
+                // }
+                // field("Executive Deposits"; "Executive Deposits")
+                // {
+                //     ApplicationArea = Basic;
+                //     Editable = false;
+                // }
+                // field("Preferencial Building Shares"; "Preferencial Building Shares")
+                // {
+                //     ApplicationArea = Basic;
+                //     Caption = '15% Preferencial Shares';
+                //     Editable = false;
+                // }
+                // field("Tamba Shares"; "Tamba Shares")
+                // {
+                //     ApplicationArea = Basic;
+                // }
+                // field("Kussco Shares"; "Kussco Shares")
+                // {
+                //     ApplicationArea = Basic;
+                // }
+                // field("CIC Shares"; "CIC Shares")
+                // {
+                //     ApplicationArea = Basic;
+                // }
+                // field("Lift Shares"; "Lift Shares")
+                // {
+                //     ApplicationArea = Basic;
+                // }
             }
             part(Control1102755002; "Loans Sub-Page List")
             {

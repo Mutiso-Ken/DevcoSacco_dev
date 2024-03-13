@@ -22,6 +22,11 @@ page 51516149 "Sacco Information"
                     ToolTip = 'Specifies the value of the Code field.';
                     Visible = false;
                 }
+                field("Sacco Principal Activities"; "Sacco Principal Activities")
+                {
+                    ApplicationArea = all;
+                    ToolTip = 'The Sacco Principal activities';
+                }
                 field("Sacco CEO"; "Sacco CEO")
                 {
                     ApplicationArea = all;
@@ -59,7 +64,7 @@ page 51516149 "Sacco Information"
                 {
                     ApplicationArea = all;
                 }
-                 field(IndAuditorBOX;IndAuditorBOX)
+                field(IndAuditorBOX; IndAuditorBOX)
                 {
                     ApplicationArea = all;
                 }
@@ -97,6 +102,25 @@ page 51516149 "Sacco Information"
                 }
             }
         }
+
+
+    }
+    actions
+    {
+        area(processing)
+        {
+            action("Mkopo Account Setup")
+            {
+                ApplicationArea = Basic;
+                Image = Import;
+                Promoted = true;
+                PromotedCategory = Process;
+                PromotedIsBig = true;
+                RunObject = page "Mkopo Account Setup";
+            }
+
+        }
+
     }
     trigger OnInit()
     begin

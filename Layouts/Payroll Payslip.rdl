@@ -3390,7 +3390,7 @@
                 <Value>=Fields!SubGroupOrder.Value</Value>
               </SortExpression>
             </SortExpressions>
-            <Top>2.39233in</Top>
+            <Top>2.14233in</Top>
             <Left>0.50559in</Left>
             <Height>5.67861in</Height>
             <Width>3.81945in</Width>
@@ -3418,7 +3418,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox3</rd:DefaultName>
-            <Top>8.10914in</Top>
+            <Top>7.85914in</Top>
             <Left>0.49862in</Left>
             <Height>0.12847in</Height>
             <Width>1in</Width>
@@ -3447,7 +3447,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox3</rd:DefaultName>
-            <Top>8.26539in</Top>
+            <Top>8.01539in</Top>
             <Left>0.49862in</Left>
             <Height>0.15625in</Height>
             <Width>1in</Width>
@@ -3476,7 +3476,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox3</rd:DefaultName>
-            <Top>8.57789in</Top>
+            <Top>8.32789in</Top>
             <Left>0.50415in</Left>
             <Height>0.14236in</Height>
             <Width>1in</Width>
@@ -3505,7 +3505,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox3</rd:DefaultName>
-            <Top>8.42164in</Top>
+            <Top>8.17164in</Top>
             <Left>0.49862in</Left>
             <Height>0.15625in</Height>
             <Width>1in</Width>
@@ -3534,7 +3534,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox3</rd:DefaultName>
-            <Top>8.73414in</Top>
+            <Top>8.48414in</Top>
             <Left>0.50415in</Left>
             <Height>0.14236in</Height>
             <Width>1in</Width>
@@ -3563,7 +3563,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox3</rd:DefaultName>
-            <Top>8.10914in</Top>
+            <Top>7.85914in</Top>
             <Left>1.51251in</Left>
             <Height>0.14236in</Height>
             <Width>2.80417in</Width>
@@ -3592,7 +3592,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox3</rd:DefaultName>
-            <Top>8.42164in</Top>
+            <Top>8.17164in</Top>
             <Left>1.51251in</Left>
             <Height>0.15625in</Height>
             <Width>2.80556in</Width>
@@ -3621,7 +3621,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox3</rd:DefaultName>
-            <Top>8.57789in</Top>
+            <Top>8.32789in</Top>
             <Left>1.53193in</Left>
             <Height>0.14236in</Height>
             <Width>2.78614in</Width>
@@ -3650,55 +3650,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox3</rd:DefaultName>
-            <Top>8.73414in</Top>
+            <Top>8.48414in</Top>
             <Left>1.53193in</Left>
             <Height>0.15625in</Height>
             <Width>2.78614in</Width>
             <ZIndex>9</ZIndex>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-            </Style>
-          </Textbox>
-          <Textbox Name="Textbox38">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>.................................</Value>
-                    <Style>
-                      <FontFamily>Tahoma</FontFamily>
-                      <FontSize>8pt</FontSize>
-                    </Style>
-                  </TextRun>
-                  <TextRun>
-                    <Value>END PAYSLIP</Value>
-                    <Style>
-                      <FontStyle>Italic</FontStyle>
-                      <FontFamily>Tahoma</FontFamily>
-                      <FontSize>8pt</FontSize>
-                    </Style>
-                  </TextRun>
-                  <TextRun>
-                    <Value>...........................</Value>
-                    <Style>
-                      <FontFamily>Tahoma</FontFamily>
-                      <FontSize>8pt</FontSize>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style />
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>Textbox13</rd:DefaultName>
-            <Top>22.75797cm</Top>
-            <Left>1.27003cm</Left>
-            <Height>0.42334cm</Height>
-            <Width>9.7014cm</Width>
-            <ZIndex>10</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -3723,11 +3679,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox3</rd:DefaultName>
-            <Top>8.26539in</Top>
+            <Top>8.01539in</Top>
             <Left>1.51251in</Left>
             <Height>0.15625in</Height>
             <Width>2.80556in</Width>
-            <ZIndex>11</ZIndex>
+            <ZIndex>10</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -3739,11 +3695,11 @@
             <Value>=First(Fields!CPic.Value, "DataSet_Result")</Value>
             <MIMEType>image/png</MIMEType>
             <Sizing>FitProportional</Sizing>
-            <Top>0.18236in</Top>
-            <Left>2.0632in</Left>
+            <Top>0in</Top>
+            <Left>0.53193in</Left>
             <Height>0.57292in</Height>
             <Width>0.60417in</Width>
-            <ZIndex>12</ZIndex>
+            <ZIndex>11</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -3771,11 +3727,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox2</rd:DefaultName>
-            <Top>0.81083in</Top>
+            <Top>0.61459in</Top>
             <Left>0.53193in</Left>
             <Height>0.17708in</Height>
             <Width>3.79311in</Width>
-            <ZIndex>13</ZIndex>
+            <ZIndex>12</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -4442,11 +4398,11 @@
               </TablixMembers>
             </TablixRowHierarchy>
             <DataSetName>DataSet_Result</DataSetName>
-            <Top>1.04347in</Top>
+            <Top>0.79347in</Top>
             <Left>0.53193in</Left>
             <Height>1.2794in</Height>
             <Width>3.79311in</Width>
-            <ZIndex>14</ZIndex>
+            <ZIndex>13</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -4454,10 +4410,10 @@
             </Style>
           </Tablix>
         </ReportItems>
-        <Height>9.14639in</Height>
+        <Height>8.65681in</Height>
         <Style />
       </Body>
-      <Width>8.1042in</Width>
+      <Width>5.51045in</Width>
       <Page>
         <PageFooter>
           <Height>0.17708in</Height>

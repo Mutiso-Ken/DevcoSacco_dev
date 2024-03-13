@@ -12,12 +12,16 @@ report 50013 "Sacco Information"
         dataitem("Sacco Information"; "Sacco Information")
 
         {
-           
+
             column(Sacco_CEO_Name; "Sacco CEO Name") { }
             column(CompanyName; CompanyInfo.Name)
             {
             }
             column(Date_Filter; "Date Filter")
+            {
+
+            }
+            column(EndofLastyear; EndofLastyear)
             {
 
             }
@@ -82,9 +86,46 @@ report 50013 "Sacco Information"
             column(NameSupervisory; Name)
             {
 
+
+            }
+            trigger OnAfterGetRecord()
+            var
+                myInt: Integer;
+                InputDate: Date;
+                DateFormula: Text;
+                DateExpr: Text;
+            begin
+
+                DateFormula := '<-CY-1D>';
+                DateExpr := '<-1y>';
+                InputDate := Asat;
+
+                EndofLastyear := CalcDate(DateFormula, Asat);
+                CurrentYear := Date2DMY(EndofLastyear, 3);
+                LastYearButOne := CalcDate(DateExpr, EndofLastyear);
+                PreviousYear := CurrentYear - 1;
+            end;
+        }
+
+    }
+    requestpage
+    {
+
+        layout
+        {
+            area(content)
+            {
+                field(Asat; Asat)
+                {
+                    ApplicationArea = Basic;
+                    Caption = 'Asat';
+                }
             }
         }
 
+        actions
+        {
+        }
     }
     trigger OnPreReport()
     begin
@@ -94,5 +135,10 @@ report 50013 "Sacco Information"
 
     var
         CompanyInfo: Record "Company Information";
+        Asat: Date;
+        PreviousYear: Integer;
+        EndofLastyear: date;
+        LastYearButOne: Date;
+        CurrentYear: Integer;
 }
 

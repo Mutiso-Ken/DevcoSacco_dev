@@ -30,22 +30,22 @@ report 51516033 "Member Shares Status"
             column(No; "No.")
             {
             }
-            column(FosaShares; "Fosa Shares")
-            {
+            // column(FosaShares; "Fosa Shares")
+            // {
 
-            }
-            column(ComputerShares; "Computer Shares")
-            {
+            // }
+            // column(ComputerShares; "Computer Shares")
+            // {
 
-            }
-            column(BuildingShares; BuildingShares)
-            {
+            // }
+            // column(BuildingShares; BuildingShares)
+            // {
 
-            }
-            column(PepeaShares; "Pepea Shares")
-            {
+            // }
+            // column(PepeaShares; "Pepea Shares")
+            // {
 
-            }
+            // }
             trigger OnAfterGetRecord()
             begin
                 // MembersReg.Reset();

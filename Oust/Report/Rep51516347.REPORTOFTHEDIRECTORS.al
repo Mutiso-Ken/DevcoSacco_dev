@@ -35,6 +35,18 @@ report 51516347 "REPORT OF THE DIRECTORS"
             {
 
             }
+            column(Sacco_Principal_Activities; "Sacco Principal Activities")
+            {
+
+            }
+            column(IntCurrentDeposits; IntCurrentDeposits)
+            {
+
+            }
+            column(IntShareCapital; IntShareCapital)
+            {
+
+            }
             trigger OnAfterGetRecord()
             var
                 myInt: Integer;
@@ -46,6 +58,11 @@ report 51516347 "REPORT OF THE DIRECTORS"
                 EndofLastyear := CalcDate(DateFormula, Asat);
                 CurrentYear := Date2DMY(EndofLastyear, 3);
                 PreviousYear := CurrentYear - 1;
+                GenSetup.Get();
+                IntCurrentDeposits := (GenSetup."Interest on Share Capital(%)" * 0.01);
+                IntShareCapital := (GenSetup."Interest On Current Shares" * 0.01);
+
+
 
             end;
         }
@@ -81,9 +98,12 @@ report 51516347 "REPORT OF THE DIRECTORS"
     }
 
     var
+        IntCurrentDeposits: Decimal;
+        IntShareCapital: Decimal;
         myInt: Integer;
         Asat: Date;
         CurrentYear: Integer;
         PreviousYear: Integer;
         EndofLastyear: date;
+        GenSetup: Record "Sacco General Set-Up";
 }

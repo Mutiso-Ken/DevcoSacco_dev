@@ -18,6 +18,34 @@ pageextension 51516628 "ChartOfAccountsCardExt" extends "G/L Account Card"
         }
         addafter(Reporting)
         {
+            group(Budgetary)
+            {
+                field("Balance at Date"; "Balance at Date")
+                {
+                    ApplicationArea = Basic;
+                    Editable = false;
+                }
+                field("Budgeted Amount"; "Budgeted Amount")
+                {
+                    ApplicationArea = Basic;
+                    Editable = false;
+                }
+                field("Budget Filter"; "Budget Filter")
+                {
+                    ApplicationArea = Basic;
+                    Editable = false;
+                }
+                field("Budgeted Credit Amount"; "Budgeted Credit Amount")
+                {
+                    ApplicationArea = Basic;
+                    Editable = false;
+                }
+                field("Budgeted Debit Amount"; "Budgeted Debit Amount")
+                {
+                    ApplicationArea = Basic;
+                    Editable = false;
+                }
+            }
             group("SASRA REPORTS SETUP")
             {
                 Caption = 'SASRA REPORTS SETUP';
@@ -75,13 +103,6 @@ pageextension 51516628 "ChartOfAccountsCardExt" extends "G/L Account Card"
     }
     trigger OnOpenPage()
     begin
-        // GlEntry.Reset();
-        // GlEntry.SetRange(GLEntry."G/L Account No.", "No.");
-        // if not FindSet() then begin
-        //     // if GlEntry.IsEmpty = false then begin
-        //     Edit := true;
-        //     // end;
-        // end;
         AuditLog.FnReadingsMadeAudit(UserId, 'Accessed and read the G/L account page no-' + Format("No.") + ' Name-' + Format(Name));
     end;
 

@@ -154,7 +154,7 @@ report 51516037 "Applicant Pending Registration"
             column(FileMovementRemarks; "File Movement Remarks")
             {
             }
-            column(Firstmembername; "First member name")
+            column(Firstmembername; "Second Member Name")
             {
             }
             column(Gender; Gender)

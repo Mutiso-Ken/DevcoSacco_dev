@@ -59,8 +59,8 @@ Table 51516221 "Member App Next Of kin"
         }
         field(15; Type; Option)
         {
-            OptionCaption = 'Nominee,Spouse,Children';
-            OptionMembers = "Next of Kin",Spouse,"Benevolent Beneficiary";
+   
+            OptionMembers = "Next of Kin","Benevolent Beneficiary";
         }
     }
 

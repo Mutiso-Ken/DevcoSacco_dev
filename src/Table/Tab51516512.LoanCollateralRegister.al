@@ -1,4 +1,4 @@
-#pragma warning disable AA0005, AA0008, AA0018, AA0021, AA0072, AA0137, AA0201, AA0206, AA0218, AA0228, AL0254, AL0424, AS0011, AW0006 // ForNAV settings
+#pragma warning disable AA0005, AA0008, AA0018, AA0021, AA0072, AA0137, AA0201, AA0204, AA0206, AA0218, AA0228, AL0254, AL0424, AS0011, AW0006 // ForNAV settings
 Table 51516512 "Loan Collateral Register"
 {
     DrillDownPageID = "Loan Collateral Register List";
@@ -42,7 +42,8 @@ Table 51516512 "Loan Collateral Register"
         }
         field(6; "Collateral Type"; Option)
         {
-            OptionMembers = Cash;
+            OptionCaption = 'Title Deed';
+            OptionMembers = "Title Deed";
         }
         field(7; "Collateral Description"; Code[20])
         {
@@ -53,7 +54,6 @@ Table 51516512 "Loan Collateral Register"
             trigger OnValidate()
             begin
                 "Received By" := UserId;
-                rec.Modify();
             end;
         }
         field(9; "Received By"; Code[20])
@@ -116,10 +116,10 @@ Table 51516512 "Loan Collateral Register"
             Caption = 'Insurance Type';
             TableRelation = "Insurance Type";
         }
-        field(31; "Insurance Company"; Code[20])
+        field(31; "Insurance Vendor No."; Code[20])
         {
-            Caption = 'Insurance Company';
-
+            Caption = 'Insurance Vendor No.';
+            TableRelation = Vendor;
         }
         field(32; "Asset Value"; Decimal)
         {
@@ -161,31 +161,58 @@ Table 51516512 "Loan Collateral Register"
         }
         field(39; "Action"; Option)
         {
-            OptionMembers = " ",Receive,"Release to Member","Issue to Auctioneer";
+            OptionCaption = ' ,Receive at HQ,Lodge to Strong Room,Retrieve From Strong Room,Issue to Lawyer,Issue to Insurance Agent,Release to Member,Dispatch to Branch,Receive at Branch,Receive From Lawyer,Issue to Auctioneer,Booked to Safe Custody';
+            OptionMembers = " ","Receive at HQ","Lodge to Strong Room","Retrieve From Strong Room","Issue to Lawyer","Issue to Insurance Agent","Release to Member","Dispatch to Branch","Receive at Branch","Receive From Lawyer","Issue to Auctioneer","Booked to Safe Custody";
 
             trigger OnValidate()
             begin
                 if Confirm('Are you sure you want to' + Format(Action) + ' this Collateral', false) = true then begin
 
-                    if Action = Action::"Receive" then begin
+                    if Action = Action::"Receive at HQ" then begin
                         "Received to HQ By" := UserId;
                         "Received to HQ On" := Today;
-                        FnUpdateCollateralMovement(Action::Receive, Today, UserId, "Document No");
+                        FnUpdateCollateralMovement(Action::"Receive at HQ", Today, UserId, "Document No");
                     end;
-
-
+                    if (Action = Action::"Dispatch to Branch") then begin
+                        "Dispatched to Branch By" := UserId;
+                        "Dispatched to Branch On" := Today;
+                        FnUpdateCollateralMovement(Action::"Dispatch to Branch", Today, UserId, "Document No");
+                    end;
+                    if (Action = Action::"Receive at Branch") then begin
+                        "Received at Branch By" := UserId;
+                        "Received at Branch On" := Today;
+                        FnUpdateCollateralMovement(Action::"Receive at Branch", Today, UserId, "Document No");
+                    end;
+                    if (Action = Action::"Issue to Lawyer") then begin
+                        "Issued to Lawyer By" := UserId;
+                        "Issued to Lawyer On" := Today;
+                        FnUpdateCollateralMovement(Action::"Issue to Lawyer", Today, UserId, "Document No");
+                    end;
+                    if (Action = Action::"Receive From Lawyer") then begin
+                        "Received From Lawyer By" := UserId;
+                        "Received From Lawyer On" := Today;
+                        FnUpdateCollateralMovement(Action::"Receive From Lawyer", Today, UserId, "Document No");
+                    end;
                     if Action = Action::"Issue to Auctioneer" then begin
                         "Issued to Auctioneer By" := UserId;
                         "Issued to Auctioneer On" := Today;
                         FnUpdateCollateralMovement(Action::"Issue to Auctioneer", Today, UserId, "Document No");
                     end;
-
+                    if Action = Action::"Issue to Insurance Agent" then begin
+                        "Issued to Insurance Agent By" := UserId;
+                        "Issued to Insurance Agent On" := Today;
+                        FnUpdateCollateralMovement(Action::"Issue to Insurance Agent", Today, UserId, "Document No");
+                    end;
                     if Action = Action::"Release to Member" then begin
                         "Released to Member By" := UserId;
                         "Released to Member on" := Today;
                         FnUpdateCollateralMovement(Action::"Release to Member", Today, UserId, "Document No");
                     end;
-
+                    if Action = Action::"Retrieve From Strong Room" then begin
+                        "Retrieved From Strong Room By" := UserId;
+                        "Retrieved From Strong Room On" := Today;
+                        FnUpdateCollateralMovement(Action::"Retrieve From Strong Room", Today, UserId, "Document No");
+                    end;
                 end;
             end;
         }
@@ -215,7 +242,7 @@ Table 51516512 "Loan Collateral Register"
         }
         field(48; "Lawyer Code"; Code[20])
         {
-            //TableRelation = Vendor."No." where ("Sacco Lawyer"=filter(Yes));
+            TableRelation = Vendor."No." where("Sacco Lawyer" = filter(true));
 
             trigger OnValidate()
             begin
@@ -283,7 +310,8 @@ Table 51516512 "Loan Collateral Register"
         {
             CalcFormula = max("Collateral Movement Register"."Current Location" where("Document No" = field("Document No")));
             FieldClass = FlowField;
-            OptionMembers = " ",Receive,"Release to Member","Issue to Auctioneer";
+            OptionCaption = ' ,Receive at HQ,Lodge to Strong Room,Retrieve From Strong Room,Issue to Lawyer,Issue to Insurance Agent,Release to Member,Dispatch to Branch,Receive at Branch,Receive From Lawyer,Issue to Auctioneer,Booked to Safe Custody';
+            OptionMembers = " ","Receive at HQ","Lodge to Strong Room","Retrieve From Strong Room","Issue to Lawyer","Issue to Insurance Agent","Release to Member","Dispatch to Branch","Receive at Branch","Receive From Lawyer","Issue to Auctioneer","Booked to Safe Custody";
         }
         field(68; "Lodged By(Custodian 1)"; Code[20])
         {
@@ -322,10 +350,6 @@ Table 51516512 "Loan Collateral Register"
             CalcFormula = max("Collateral Movement Register"."Entry No" where("Document No" = field("Document No")));
             FieldClass = FlowField;
         }
-        field(79; Released; Boolean)
-        {
-            DataClassification = ToBeClassified;
-        }
     }
 
     keys
@@ -354,7 +378,6 @@ Table 51516512 "Loan Collateral Register"
 
 
         "Date Received" := Today;
-        "Received By" := UserId;
     end;
 
     var

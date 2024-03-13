@@ -45,4 +45,5 @@ enum 51516010 "Account Status"
     {
         Caption = 'Defaulter';
     }
+    value(11;"Awaiting Exit"){}
 }

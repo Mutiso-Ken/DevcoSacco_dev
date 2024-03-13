@@ -4,10 +4,10 @@ Page 51516227 "Member Account Card"
     ApplicationArea = Basic;
     Caption = 'Member Card';
     DeleteAllowed = false;
-    // Editable = false;
+    Editable = false;
     InsertAllowed = false;
     PageType = Card;
-    PromotedActionCategories = 'Process,Reports,Budgetary Control,Cancellation,Category7_caption,Category8_caption,Category9_caption,Category10_caption';
+    // PromotedActionCategories = 'Process,Reports,Budgetary Control,Cancellation,Category7_caption,Category8_caption,Category9_caption,Category10_caption';
     RefreshOnActivate = true;
     SourceTable = Customer;
     UsageCategory = Tasks;
@@ -19,7 +19,8 @@ Page 51516227 "Member Account Card"
             group(General)
             {
                 Caption = 'General';
-                Editable = true;
+                // //Editable = true;
+                Visible = Individual;
                 field("No."; "No.")
                 {
                     ApplicationArea = Basic;
@@ -202,10 +203,318 @@ Page 51516227 "Member Account Card"
                     ApplicationArea = Basic;
                 }
             }
+            group("Group Account Details")
+            {
+                Visible = groupAcc;
+                field(GroupNo; "No.")
+                {
+                    ApplicationArea = Basic;
+                    Editable = false;
+                    Caption = 'Group No.';
+                }
+                field(GroupName; Name)
+                {
+                    ApplicationArea = Basic;
+                    Caption = 'Group Name';
+
+                }
+                field(GroupEmail; "E-Mail (Personal)")
+                {
+                    ApplicationArea = Basic;
+
+                    caption = ' Group Email';
+
+                }
+                field(GroupKRAPin; pin)
+                {
+                    ApplicationArea = Basic;
+                    Style = Attention;
+                    StyleExpr = true;
+
+                    Caption = 'Group KRA Pin';
+                }
+                field("Mobile Phone No Group"; "Mobile Phone No")
+                {
+                    ApplicationArea = Basic;
+
+
+                }
+                field("Nature of Business"; "Nature of Business")
+                {
+                    ApplicationArea = Basic;
+                    Caption='Group Nature of Business';
+
+
+                }
+                field("Mobile Phone No 2 Group"; "Mobile No. 2")
+                {
+                    ApplicationArea = Basic;
+
+                }
+                field("Group Recruited By"; "Recruited By")
+                {
+                    ApplicationArea = Basic;
+                }
+                field("Group Recruiter Name"; "Recruiter Name")
+                {
+                    ApplicationArea = Basic;
+
+                }
+            }
+            //Joint
+            group(JointAccountOne)
+            {
+                Visible = Jooint;
+                Caption = 'Member One Details';
+                field("JointNo."; "No.")
+                {
+                    ApplicationArea = Basic;
+                    Editable = false;
+                    Caption = 'Joint No.';
+                }
+                field(JointTitle; Title)
+                {
+                    ApplicationArea = Basic;
+
+                    ShowMandatory = true;
+                }
+                field(JoointName; Name)
+                {
+                    ApplicationArea = Basic;
+
+                    ShowMandatory = true;
+                }
+                field("JointID No."; "ID No.")
+                {
+                    ApplicationArea = Basic;
+
+                    ShowMandatory = true;
+                }
+                field("JointKRA Pin"; Pin)
+                {
+                    ApplicationArea = Basic;
+
+                    ShowMandatory = true;
+                }
+                field(JointAddress; Address)
+                {
+                    ApplicationArea = Basic;
+
+                    ShowMandatory = true;
+                }
+                field("JointE-Mail (Personal)"; "E-Mail (Personal)")
+                {
+                    ApplicationArea = Basic;
+
+                    ShowMandatory = true;
+
+                }
+                field(JoointGender; Gender)
+                {
+                    ApplicationArea = Basic;
+
+                    ShowMandatory = true;
+                }
+                field("JointDate of Birth"; "Date of Birth")
+                {
+                    ApplicationArea = Basic;
+                    ShowMandatory = true;
+                }
+
+                field("JointEmployer Code"; "Employer Code")
+                {
+                    ApplicationArea = Basic;
+                    Caption = 'Employer Code';
+                }
+                field("JointEmployer Name"; "Employer Name")
+                {
+                    ApplicationArea = Basic;
+                    Caption = 'Employer Name';
+
+                }
+                field("Share Of Ownership One"; "Share Of Ownership One")
+                {
+                    ApplicationArea = Basic;
+
+                }
+                field("Source of Income Member One"; "Source of Income Member One")
+                {
+                    ApplicationArea = Basic;
+
+                }
+            }
+
+            group(JointAccountTwo)
+            {
+                Caption = 'Member Two Details';
+                Visible = Jooint;
+                field("Member Title"; Title2)
+                {
+                    ApplicationArea = Basic;
+                    Caption = 'Title';
+
+                    ShowMandatory = true;
+                }
+                field("Second Member Name"; "Second Member Name")
+                {
+                    ApplicationArea = Basic;
+                    Caption = 'Name';
+
+                    ShowMandatory = true;
+                }
+                field("ID/Passport No"; "ID NO/Passport 2")
+                {
+                    ApplicationArea = Basic;
+
+                    ShowMandatory = true;
+                }
+                field("Member Gender"; Gender2)
+                {
+                    ApplicationArea = Basic;
+                    Caption = 'Gender';
+
+                    ShowMandatory = true;
+                }
+                field("Marital Status2"; "Marital Status2")
+                {
+                    ApplicationArea = Basic;
+                    Caption = 'Marital Status';
+
+                    ShowMandatory = true;
+                }
+                field("Date of Birth2"; "Date of Birth2")
+                {
+                    ApplicationArea = Basic;
+                    Caption = 'Date of Birth';
+
+                    ShowMandatory = true;
+                }
+                field("Mobile No. 3"; "Mobile No. 3")
+                {
+                    ApplicationArea = Basic;
+                    Caption = 'Mobile No.';
+
+                    ShowMandatory = true;
+                }
+                field("E-Mail (Personal2)"; "E-Mail (Personal2)")
+                {
+                    ApplicationArea = Basic;
+                    Caption = 'E-Mail Adress';
+
+                }
+                field(Address3; Address3)
+                {
+                    ApplicationArea = Basic;
+                    Caption = 'Physical Address';
+
+                }
+                field("Home Postal Code2"; "Home Postal Code2")
+                {
+                    ApplicationArea = Basic;
+                    Caption = ' Postal Code';
+
+                }
+                field("Home Town2"; "Home Town2")
+                {
+                    ApplicationArea = Basic;
+                    Caption = 'Town';
+
+                }
+                field("Payroll/Staff No2"; "Payroll/Staff No2")
+                {
+                    ApplicationArea = Basic;
+                    Caption = 'Payroll/Staff No';
+
+                }
+                field("Employer Code2"; "Employer Code2")
+                {
+                    ApplicationArea = Basic;
+                    Caption = 'Employer Code';
+                }
+                field("Employer Name2"; "Employer Name2")
+                {
+                    ApplicationArea = Basic;
+                    Caption = 'Employer Name';
+
+                }
+                field("Share Of Ownership Two"; "Share Of Ownership Two")
+                {
+                    ApplicationArea = Basic;
+
+                }
+                field("Source of IncomeMember Two"; "Source of IncomeMember Two")
+                {
+                    ApplicationArea = Basic;
+
+                }
+            }
+            group("Joint Information")
+            {
+                Visible = Jooint;
+                field("JointRecruited By"; "Recruited By")
+                {
+                    ApplicationArea = Basic;
+
+                }
+                field("JointRecruiter Name"; "Recruiter Name")
+                {
+                    ApplicationArea = Basic;
+
+                }
+
+                field(JointRelationship; JointRelationship)
+                {
+                    ApplicationArea = Basic;
+                    Caption = 'Relationship';
+
+                }
+                field(Reasontocreatingajointaccount; Reasontocreatingajointaccount)
+                {
+                    ApplicationArea = Basic;
+
+                    Caption = 'Reason to creating a joint account';
+                }
+            }
+            //Junior
+            group(Junior)
+            {
+
+                Visible = Junior;
+
+                field("JuniorNo."; "No.")
+                {
+                    ApplicationArea = Basic;
+                    Editable = false;
+                    Caption = 'Junior Account Application Number';
+                }
+
+                field(JuniorName; Name)
+                {
+                    ApplicationArea = Basic;
+                    Editable = false;
+                    ShowMandatory = true;
+                }
+                field("Birth Certficate No."; "Birth Certficate No.")
+                {
+                    ApplicationArea = all;
+
+                }
+                field("Guardian No."; "Guardian No.")
+                {
+                    ApplicationArea = all;
+
+                }
+                field("Guardian Name"; "Guardian Name")
+                {
+                    ApplicationArea = all;
+                    Editable = false;
+                }
+
+            }
             group("Member Risk Rating")
             {
                 Editable = false;
-                Visible = false;
+                Visible = Individual;
                 group("Member Risk Rate")
                 {
                     field("Individual Category"; "Individual Category")
@@ -267,6 +576,7 @@ Page 51516227 "Member Account Card"
                 }
                 part(Control39; "Member Due Diligence Measure")
                 {
+                    Visible = Individual;
                     Caption = 'Due Diligence Measure';
                     SubPageLink = "Member No" = field("No.");
                     SubPageView = sorting("Due Diligence No");
@@ -326,13 +636,13 @@ Page 51516227 "Member Account Card"
                 {
                     ApplicationArea = Basic;
                     Editable = false;
-                    Visible = false;
+
                 }
             }
             group("Member Withdrawal Details")
             {
                 Caption = 'Member Withdrawal Details';
-                visible = false;
+
                 field("Withdrawal Application Date"; "Withdrawal Application Date")
                 {
                     ApplicationArea = Basic;
@@ -346,6 +656,11 @@ Page 51516227 "Member Account Card"
                 {
                     ApplicationArea = Basic;
                     Editable = false;
+                }
+                   field("Reason For Membership Withdraw";"Reason For Membership Withdraw")
+                {
+                    ApplicationArea = Basic;
+                    
                 }
                 field("Status - Withdrawal App."; "Status - Withdrawal App.")
                 {
@@ -463,6 +778,7 @@ Page 51516227 "Member Account Card"
                     Caption = 'File MV General Remarks';
                 }
             }
+
         }
         area(factboxes)
         {
@@ -527,7 +843,7 @@ Page 51516227 "Member Account Card"
                     ApplicationArea = Basic;
                     Image = Card;
                     Promoted = true;
-
+                    Visible = false;
                     PromotedCategory = Report;
 
                     trigger OnAction()
@@ -561,15 +877,37 @@ Page 51516227 "Member Account Card"
                     RunObject = Page "Members Kin Details List";
                     RunPageLink = "Account No" = field("No.");
                 }
-                // action("Account Signatories")
-                // {
-                //     ApplicationArea = Basic;
-                //     Caption = 'Signatories Details';
-                //     Promoted = true;
-                //     PromotedCategory = Process;
-                //     RunObject = Page "Member Account Signatory list";
-                //     RunPageLink = "Account No" = field("No.");
-                // }
+                action("Members Beneficiary Details")
+                {
+                    ApplicationArea = Basic;
+                    Caption = 'Members Benevolent Beneficiary Details';
+                    Image = Relationship;
+                    Promoted = true;
+                    PromotedCategory = Process;
+                    PromotedIsBig = true;
+                    RunObject = Page "Members Benev Benefi Details";
+                    RunPageLink = "Account No" = field("No.");
+                }
+                action("Group Account Members")
+                {
+                    ApplicationArea = Basic;
+                    Caption = 'Group Account Register';
+                    Image = Group;
+                    Promoted = true;
+                    PromotedCategory = process;
+                    RunObject = Page "Bosa Group Customer List";
+                    RunPageLink = "Account No" = field("No.");
+                    Visible = groupAcc;
+                }
+                action("Account Signatories")
+                {
+                    ApplicationArea = Basic;
+                    Caption = 'Signatories Details';
+                    Promoted = true;
+                    PromotedCategory = Process;
+                    RunObject = Page "Member Account Signatory list";
+                    RunPageLink = "Account No" = field("No.");
+                }
                 action("Members Statistics")
                 {
                     ApplicationArea = Basic;
@@ -582,7 +920,6 @@ Page 51516227 "Member Account Card"
                 action("Member is  a Guarantor")
                 {
                     ApplicationArea = Basic;
-                    visible = false;
                     Caption = 'Member is  a Guarantor';
                     Image = "Report";
 
@@ -600,7 +937,6 @@ Page 51516227 "Member Account Card"
                     ApplicationArea = Basic;
                     Caption = 'Member is  Guaranteed';
                     Image = "Report";
-                    visible = false;
 
                     trigger OnAction()
                     begin
@@ -735,6 +1071,24 @@ Page 51516227 "Member Account Card"
                         if Cust.Find('-') then begin
                             Report.Run(64, true, false, Cust);
                         END;
+                    end;
+                }
+                             action("Create Withdrawal Application")
+                {
+                    ApplicationArea = Basic;
+                    Image = Document;
+                    Promoted = true;
+                    PromotedCategory = Process;
+
+                    trigger OnAction()
+                    begin
+                        if "Current Shares" >= "Outstanding Balance" then begin
+                            if Confirm('Are you sure you want to create a Withdrawal Application for this Member', false) = true then begin
+                                SurestepFactory.FnCreateMembershipWithdrawalApplication("No.", "Withdrawal Application Date", "Reason For Membership Withdraw", "Withdrawal Date");
+                            end;
+                        end else
+                            Error('The withdraw Application has been denied');
+
                     end;
                 }
                 action("Recover Loans from Gurantors")
@@ -1363,6 +1717,41 @@ Page 51516227 "Member Account Card"
         exit(RecordFound);
     end;
 
+    procedure UpdateControls()
+    begin
+        if "Account Category" = "account category"::Individual then begin
+            groupAcc := false;
+            Individual := true;
+            Junior := false;
+            commonDetails := true;
+            Jooint := false;
+
+        end else
+            if "Account Category" = "account category"::Junior then begin
+                groupAcc := false;
+                Junior := true;
+                Individual := false;
+                Jooint := false;
+                commonDetails := true;
+
+            end
+            else
+                if "Account Category" = "account category"::Group then begin
+                    Individual := false;
+                    Jooint := false;
+                    Junior := false;
+                    groupAcc := true;
+                end else
+                    //Account types.
+                    if "Account Category" = "account category"::Joint then begin
+                        Individual := false;
+                        groupAcc := false;
+                        Junior := false;
+                        Jooint := true;
+                        commonDetails := false;
+                    end;
+    end;
+
     trigger OnInit()
     begin
         txtMaritalVisible := true;
@@ -1391,6 +1780,8 @@ Page 51516227 "Member Account Card"
         OnAfterGetCurrRec;
     end;
 
+
+
     trigger OnOpenPage()
     var
         MapMgt: Codeunit "Online Map Management";
@@ -1400,10 +1791,12 @@ Page 51516227 "Member Account Card"
         IF NOT MapMgt.TestSetup THEN
           CurrForm.MapPoint.VISIBLE(FALSE);
         */
+        UpdateControls
 
     end;
 
     var
+    SurestepFactory:Codeunit "SURESTEP Factory";
         CustomizedCalEntry: Record "Customized Calendar Entry";
         Text001: label 'Do you want to allow payment tolerance for entries that are currently open?';
         CustomizedCalendar: Record "Customized Calendar Change";
@@ -1412,6 +1805,11 @@ Page 51516227 "Member Account Card"
         PaymentToleranceMgt: Codeunit "Payment Tolerance Management";
         PictureExists: Boolean;
         GenJournalLine: Record "Gen. Journal Line";
+        Individual: Boolean;
+        groupAcc: Boolean;
+        Junior: Boolean;
+        Jooint: Boolean;
+        commonDetails: Boolean;
         GLPosting: Codeunit "Gen. Jnl.-Post Line";
         StatusPermissions: Record "Status Change Permision";
         Charges: Record Charges;

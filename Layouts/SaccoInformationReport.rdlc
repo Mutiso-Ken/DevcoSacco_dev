@@ -36,7 +36,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox1</rd:DefaultName>
-            <Top>0.25917in</Top>
+            <Top>0.13417in</Top>
             <Left>0.23833in</Left>
             <Height>0.17708in</Height>
             <Width>1.8125in</Width>
@@ -375,7 +375,7 @@
               </TablixMembers>
             </TablixRowHierarchy>
             <DataSetName>DataSet_Result</DataSetName>
-            <Top>2.16888in</Top>
+            <Top>2.04388in</Top>
             <Left>0.23833in</Left>
             <Height>1.35416in</Height>
             <Width>5.23959in</Width>
@@ -554,7 +554,7 @@
               </TablixMembers>
             </TablixRowHierarchy>
             <DataSetName>DataSet_Result</DataSetName>
-            <Top>4.42297in</Top>
+            <Top>4.29797in</Top>
             <Left>0.23833in</Left>
             <Height>0.70139in</Height>
             <Width>2.83334in</Width>
@@ -699,7 +699,7 @@
               </TablixMembers>
             </TablixRowHierarchy>
             <DataSetName>DataSet_Result</DataSetName>
-            <Top>5.19381in</Top>
+            <Top>5.06881in</Top>
             <Left>0.23833in</Left>
             <Height>0.55208in</Height>
             <Width>2.83334in</Width>
@@ -728,7 +728,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox26</rd:DefaultName>
-            <Top>0.49181in</Top>
+            <Top>0.36681in</Top>
             <Left>0.23833in</Left>
             <Height>0.20833in</Height>
             <Width>4.17709in</Width>
@@ -846,7 +846,7 @@
               </TablixMembers>
             </TablixRowHierarchy>
             <DataSetName>DataSet_Result</DataSetName>
-            <Top>1.18625in</Top>
+            <Top>1.06125in</Top>
             <Left>0.23833in</Left>
             <Height>0.29166in</Height>
             <Width>2.4375in</Width>
@@ -1019,7 +1019,7 @@
               </TablixMembers>
             </TablixRowHierarchy>
             <DataSetName>DataSet_Result</DataSetName>
-            <Top>3.6452in</Top>
+            <Top>3.5202in</Top>
             <Left>0.23833in</Left>
             <Height>0.70833in</Height>
             <Width>2.83334in</Width>
@@ -1125,7 +1125,7 @@
               </TablixMembers>
             </TablixRowHierarchy>
             <DataSetName>DataSet_Result</DataSetName>
-            <Top>1.65152in</Top>
+            <Top>1.52652in</Top>
             <Left>0.23833in</Left>
             <Height>0.375in</Height>
             <Width>2.83334in</Width>
@@ -1239,7 +1239,7 @@
               </TablixMembers>
             </TablixRowHierarchy>
             <DataSetName>DataSet_Result</DataSetName>
-            <Top>0.76958in</Top>
+            <Top>0.64458in</Top>
             <Left>0.23833in</Left>
             <Height>0.29166in</Height>
             <Width>2.4375in</Width>
@@ -1251,11 +1251,99 @@
             </Style>
           </Tablix>
         </ReportItems>
-        <Height>5.88413in</Height>
+        <Height>5.6758in</Height>
         <Style />
       </Body>
-      <Width>6.5in</Width>
+      <Width>5.86458in</Width>
       <Page>
+        <PageHeader>
+          <Height>0.70833in</Height>
+          <PrintOnFirstPage>true</PrintOnFirstPage>
+          <PrintOnLastPage>true</PrintOnLastPage>
+          <ReportItems>
+            <Textbox Name="Textbox6">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>Devco Savings and Credit Co-operative Society Limited - CS /8246  </Value>
+                      <Style>
+                        <FontStyle>Italic</FontStyle>
+                        <FontFamily>Times New Roman</FontFamily>
+                        <FontWeight>Normal</FontWeight>
+                        <TextDecoration>None</TextDecoration>
+                        <Color>#000000</Color>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style />
+                </Paragraph>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>Annual report and financial statements</Value>
+                      <Style>
+                        <FontStyle>Italic</FontStyle>
+                        <FontFamily>Times New Roman</FontFamily>
+                        <FontWeight>Normal</FontWeight>
+                        <TextDecoration>None</TextDecoration>
+                        <Color>#000000</Color>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style />
+                </Paragraph>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value> For the year ended  </Value>
+                      <Style>
+                        <FontStyle>Italic</FontStyle>
+                        <FontFamily>Times New Roman</FontFamily>
+                        <FontWeight>Normal</FontWeight>
+                        <TextDecoration>None</TextDecoration>
+                        <Color>#000000</Color>
+                      </Style>
+                    </TextRun>
+                    <TextRun>
+                      <Value>=First(Fields!EndofLastyear.Value, "DataSet_Result")</Value>
+                      <Style>
+                        <FontStyle>Italic</FontStyle>
+                        <FontFamily>Calibri</FontFamily>
+                        <FontWeight>Normal</FontWeight>
+                        <Format>dd MMMM yyyy</Format>
+                        <TextDecoration>None</TextDecoration>
+                        <Color>#000000</Color>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style />
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>Textbox6</rd:DefaultName>
+              <Top>0.125in</Top>
+              <Left>0.23833in</Left>
+              <Height>0.53125in</Height>
+              <Width>5.375in</Width>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+          </ReportItems>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+          </Style>
+        </PageHeader>
         <Style />
       </Page>
     </ReportSection>
@@ -1310,6 +1398,9 @@ End Function
         </Field>
         <Field Name="Date_Filter">
           <DataField>Date_Filter</DataField>
+        </Field>
+        <Field Name="EndofLastyear">
+          <DataField>EndofLastyear</DataField>
         </Field>
         <Field Name="CompanyAddress">
           <DataField>CompanyAddress</DataField>

@@ -1102,30 +1102,6 @@ End Function
         <Field Name="No">
           <DataField>No</DataField>
         </Field>
-        <Field Name="FosaShares">
-          <DataField>FosaShares</DataField>
-        </Field>
-        <Field Name="FosaSharesFormat">
-          <DataField>FosaSharesFormat</DataField>
-        </Field>
-        <Field Name="ComputerShares">
-          <DataField>ComputerShares</DataField>
-        </Field>
-        <Field Name="ComputerSharesFormat">
-          <DataField>ComputerSharesFormat</DataField>
-        </Field>
-        <Field Name="BuildingShares">
-          <DataField>BuildingShares</DataField>
-        </Field>
-        <Field Name="BuildingSharesFormat">
-          <DataField>BuildingSharesFormat</DataField>
-        </Field>
-        <Field Name="PepeaShares">
-          <DataField>PepeaShares</DataField>
-        </Field>
-        <Field Name="PepeaSharesFormat">
-          <DataField>PepeaSharesFormat</DataField>
-        </Field>
       </Fields>
       <Query>
         <DataSourceName>DataSource</DataSourceName>

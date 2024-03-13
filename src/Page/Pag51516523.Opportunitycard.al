@@ -179,7 +179,7 @@ Page 51516523 "Opportunity card."
                       if "Lead Type"="lead type"::"As Non Member" then begin
                         membApp.Init;
                         membApp."No.":="No.";
-                        membApp."First member name":="First Name";
+                        //membApp."First member name":="First Name";
                         membApp.Name:=Name;
                         membApp.Address:=Address;
                         membApp."ID No.":="ID No";

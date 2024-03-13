@@ -549,6 +549,7 @@ Report 51516244 "Loan Appraisal"
                 column(OTHERDEDUCTIONS; OTHERDEDUCTIONS)
                 {
                 }
+
             }
             dataitem("Loans Guarantee Details"; "Loans Guarantee Details")
             {
@@ -618,6 +619,7 @@ Report 51516244 "Loan Appraisal"
                     end;
                     TGuaranteedAmount := TGuaranteedAmount + GuaranteedAmount;
                     AmountofFreeShares := AvailableG - LoanG."Amont Guaranteed";
+                    if "Member No" = '' then CurrReport.Skip();
                 end;
             }
             dataitem("Loan Offset Details"; "Loan Offset Details")

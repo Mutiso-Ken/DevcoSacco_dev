@@ -4,7 +4,7 @@ Table 51516257 "Sacco General Set-Up"
 
     fields
     {
-        field(1; "Share Interest (%)"; Decimal)
+        field(1; "Interest on Share Capital(%)"; Decimal)
         {
         }
         field(2; "Max. Non Contribution Periods"; Code[10])

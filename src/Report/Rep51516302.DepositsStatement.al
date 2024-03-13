@@ -824,16 +824,16 @@ Report 51516302 "Deposits Statement"
                     Cust.SetRange(Cust."No.", "No.");
                     Cust.SetFilter(Cust."Date Filter", DateFilterBF);
                     if Cust.Find('-') then begin
-                        Cust.CalcFields(Cust."Shares Retained", Cust."Current Shares", Cust."Insurance Fund", Cust."Fosa Shares", Cust."Computer Shares", Cust."van Shares", Cust."Preferencial Building Shares");
+                        Cust.CalcFields(Cust."Shares Retained", Cust."Current Shares", Cust."Insurance Fund", Cust."Fosa Shares",Cust."van Shares", Cust."Preferencial Building Shares");
                         SharesBF := Cust."Current Shares";
                         ShareCapBF := Cust."Shares Retained";
                         InsuranceBF := Cust."Insurance Fund";
                         SchoolfeesBF := Cust."School Fees Shares";
-                        PepeaSharesBF := Cust."Pepea Shares";
-                        FosaSharesBF := Cust."Fosa Shares";
-                        ComputerSharesBF := Cust."Computer Shares";
-                        VanSharesBF := Cust."van Shares";
-                        PrefShares := Cust."Preferencial Building Shares";
+                        // PepeaSharesBF := Cust."Pepea Shares";
+                        // FosaSharesBF := Cust."Fosa Shares";
+                        // ComputerSharesBF := Cust."Computer Shares";
+                        // VanSharesBF := Cust."van Shares";
+                        // PrefShares := Cust."Preferencial Building Shares";
 
                         //MESSAGE('%1',Cust."Current Shares");
 

@@ -1235,7 +1235,30 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>The directors have recommended payment of ….% (</Value>
+                    <Value>The directors have recommended payment of  </Value>
+                    <Style>
+                      <FontStyle>Normal</FontStyle>
+                      <FontFamily />
+                      <FontSize>12pt</FontSize>
+                      <FontWeight>Normal</FontWeight>
+                      <TextDecoration>None</TextDecoration>
+                      <Color>#000000</Color>
+                    </Style>
+                  </TextRun>
+                  <TextRun>
+                    <Value>=First(Fields!IntShareCapital.Value, "DataSet_Result")</Value>
+                    <Style>
+                      <FontStyle>Normal</FontStyle>
+                      <FontFamily />
+                      <FontSize>12pt</FontSize>
+                      <FontWeight>Normal</FontWeight>
+                      <Format>0%</Format>
+                      <TextDecoration>None</TextDecoration>
+                      <Color>#000000</Color>
+                    </Style>
+                  </TextRun>
+                  <TextRun>
+                    <Value> (</Value>
                     <Style>
                       <FontStyle>Normal</FontStyle>
                       <FontFamily />
@@ -1257,7 +1280,42 @@
                     </Style>
                   </TextRun>
                   <TextRun>
-                    <Value> : ….%) as dividend on investment shares and paid ….% (</Value>
+                    <Value>) as dividend on Share capital and paid </Value>
+                    <Style>
+                      <FontStyle>Normal</FontStyle>
+                      <FontFamily />
+                      <FontSize>12pt</FontSize>
+                      <FontWeight>Normal</FontWeight>
+                      <TextDecoration>None</TextDecoration>
+                      <Color>#000000</Color>
+                    </Style>
+                  </TextRun>
+                  <TextRun>
+                    <Value>=First(Fields!IntCurrentDeposits.Value, "DataSet_Result")</Value>
+                    <Style>
+                      <FontStyle>Normal</FontStyle>
+                      <FontFamily />
+                      <FontSize>12pt</FontSize>
+                      <FontWeight>Normal</FontWeight>
+                      <Format>0%</Format>
+                      <TextDecoration>None</TextDecoration>
+                      <Color>#000000</Color>
+                    </Style>
+                  </TextRun>
+                  <TextRun>
+                    <Value xml:space="preserve"> </Value>
+                    <Style>
+                      <FontStyle>Normal</FontStyle>
+                      <FontFamily />
+                      <FontSize>12pt</FontSize>
+                      <FontWeight>Normal</FontWeight>
+                      <Format>0%</Format>
+                      <TextDecoration>None</TextDecoration>
+                      <Color>#000000</Color>
+                    </Style>
+                  </TextRun>
+                  <TextRun>
+                    <Value>(</Value>
                     <Style>
                       <FontStyle>Normal</FontStyle>
                       <FontFamily />
@@ -1279,7 +1337,7 @@
                     </Style>
                   </TextRun>
                   <TextRun>
-                    <Value> :...%) interest on Sacco deposits</Value>
+                    <Value>) interest on Sacco deposits</Value>
                     <Style>
                       <FontStyle>Normal</FontStyle>
                       <FontFamily />
@@ -1417,7 +1475,29 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>The society's auditor, ..............., has indicated willingness to continue in office in accordance with Sacco Societies Act No. 14 of 2008.</Value>
+                    <Value>The society's auditor, </Value>
+                    <Style>
+                      <FontStyle>Normal</FontStyle>
+                      <FontFamily>Cambria</FontFamily>
+                      <FontSize>12pt</FontSize>
+                      <FontWeight>Normal</FontWeight>
+                      <TextDecoration>None</TextDecoration>
+                      <Color>#000000</Color>
+                    </Style>
+                  </TextRun>
+                  <TextRun>
+                    <Value>=First(Fields!Independent_Auditor.Value, "DataSet_Result")</Value>
+                    <Style>
+                      <FontStyle>Normal</FontStyle>
+                      <FontFamily>Cambria</FontFamily>
+                      <FontSize>12pt</FontSize>
+                      <FontWeight>Normal</FontWeight>
+                      <TextDecoration>None</TextDecoration>
+                      <Color>#000000</Color>
+                    </Style>
+                  </TextRun>
+                  <TextRun>
+                    <Value> , has indicated willingness to continue in office in accordance with Sacco Societies Act No. 14 of 2008.</Value>
                     <Style>
                       <FontStyle>Normal</FontStyle>
                       <FontFamily>Cambria</FontFamily>
@@ -1743,6 +1823,21 @@ End Function
         </Field>
         <Field Name="EndofLastyear">
           <DataField>EndofLastyear</DataField>
+        </Field>
+        <Field Name="Sacco_Principal_Activities">
+          <DataField>Sacco_Principal_Activities</DataField>
+        </Field>
+        <Field Name="IntCurrentDeposits">
+          <DataField>IntCurrentDeposits</DataField>
+        </Field>
+        <Field Name="IntCurrentDepositsFormat">
+          <DataField>IntCurrentDepositsFormat</DataField>
+        </Field>
+        <Field Name="IntShareCapital">
+          <DataField>IntShareCapital</DataField>
+        </Field>
+        <Field Name="IntShareCapitalFormat">
+          <DataField>IntShareCapitalFormat</DataField>
         </Field>
       </Fields>
       <Query>

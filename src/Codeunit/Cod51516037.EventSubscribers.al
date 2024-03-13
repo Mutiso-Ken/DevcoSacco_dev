@@ -64,4 +64,13 @@ codeunit 51516037 "EventSubscribers"
         IsPrinted := true;
         exit;
     end;
+
+
+     [EventSubscriber(ObjectType::Table, Database::Customer, 'OnBeforeCheckBlockedCust', '', false, false)]
+    local procedure OnBeforeCheckBlockedCust(Customer: Record Customer; Source: Option; DocType: Option; Shipment: Boolean; Transaction: Boolean; var IsHandled: Boolean);
+    begin
+        if ((DocType = 0) AND (Customer."No." = '50000')) then begin
+            IsHandled := true;
+        end;
+    end;
 }

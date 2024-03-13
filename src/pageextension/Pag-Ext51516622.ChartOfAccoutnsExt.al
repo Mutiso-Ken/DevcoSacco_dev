@@ -3,26 +3,42 @@ pageextension 51516622 "ChartOfAccoutnsExt" extends "Chart of Accounts"
 
     layout
     {
-        addbefore(Name)
+        addafter(Balance)
         {
-            field(Debit; "Debit Amount")
+          
+            field("Budgeted Amount"; "Budgeted Amount")
             {
                 ApplicationArea = Basic;
-                Visible = false;
-            }
-            field(Credit; "Credit Amount")
-            {
-                ApplicationArea = Basic;
-                Visible = false;
+                Editable=false;
             }
          
-
-
-
+            field("Budget Controlled";"Budget Controlled")
+            {
+                ApplicationArea = Basic;
+                Editable=false;
+            }
+           
+        }
+        modify("No.")
+        {
+            trigger OnAfterValidate()
+            var
+                myInt: Integer;
+            begin
+                GLEntry.SetRange("G/L Account No.", "No.");
+                if GLEntry.FindSet() then begin
+                    Enable := false;
+                end;
+            end;
+        }
+        modify(Name)
+        {
+            Editable = Enable;
         }
         modify("Account Subcategory Descript.")
         {
             Visible = false;
+
         }
         modify("Gen. Posting Type")
         {
@@ -53,10 +69,18 @@ pageextension 51516622 "ChartOfAccoutnsExt" extends "Chart of Accounts"
         {
             Visible = false;
         }
+
     }
     trigger OnOpenPage()
+
+
     begin
         AuditLog.FnReadingsMadeAudit(UserId, 'Accessed and read the chart of accounts listing page');
+        GLEntry.Reset();
+
+
+
+
     end;
 
     trigger OnClosePage()
@@ -65,5 +89,10 @@ pageextension 51516622 "ChartOfAccoutnsExt" extends "Chart of Accounts"
     end;
 
     var
+
+        GLEntry: Record "G/L Entry";
         AuditLog: Codeunit "Audit Log Codeunit";
+        Enable: Boolean;
+        Text000: Label 'Not Editable';
+
 }

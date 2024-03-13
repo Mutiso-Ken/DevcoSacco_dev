@@ -10,10 +10,7 @@ report 50024 FinancialStaticalInformation
     {
         dataitem("Sacco Information"; "Sacco Information")
         {
-            column(Code; Code)
-            {
-
-            }
+            column(Code; Code) { }
             column(Active; Active) { }
             column(Dormant; Dormant) { }
             column(LActive; LActive) { }

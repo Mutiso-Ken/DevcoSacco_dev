@@ -71,7 +71,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto" />
+                                  <Value />
                                   <Style>
                                     <FontFamily>Tahoma</FontFamily>
                                     <FontSize>9pt</FontSize>
@@ -126,7 +126,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">=First(Fields!No_Caption.Value)</Value>
+                                  <Value>=First(Fields!No_Caption.Value)</Value>
                                   <Style>
                                     <FontFamily>Tahoma</FontFamily>
                                     <FontSize>9pt</FontSize>
@@ -180,7 +180,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">=First(Fields!Employee_NameCaption.Value)</Value>
+                                  <Value>=First(Fields!Employee_NameCaption.Value)</Value>
                                   <Style>
                                     <FontFamily>Tahoma</FontFamily>
                                     <FontSize>9pt</FontSize>
@@ -234,7 +234,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">=First(Fields!PIN_Number_Caption.Value)</Value>
+                                  <Value>=First(Fields!PIN_Number_Caption.Value)</Value>
                                   <Style>
                                     <FontFamily>Tahoma</FontFamily>
                                     <FontSize>9pt</FontSize>
@@ -290,7 +290,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">ID Number</Value>
+                                  <Value>ID Number</Value>
                                   <Style>
                                     <FontFamily>Tahoma</FontFamily>
                                     <FontSize>9pt</FontSize>
@@ -346,7 +346,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">=First(Fields!Paye_Amount_Caption.Value)</Value>
+                                  <Value>=First(Fields!Paye_Amount_Caption.Value)</Value>
                                   <Style>
                                     <FontFamily>Tahoma</FontFamily>
                                     <FontSize>9pt</FontSize>
@@ -401,7 +401,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto" />
+                                  <Value />
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -446,7 +446,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">=Fields!SN.Value</Value>
+                                  <Value>=Fields!SN.Value</Value>
                                   <Style>
                                     <FontFamily>Tahoma</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -500,7 +500,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">=Fields!prSalary_Card__prSalary_Card___Employee_Code_.Value</Value>
+                                  <Value>=Fields!prSalary_Card__prSalary_Card___Employee_Code_.Value</Value>
                                   <Style>
                                     <FontFamily>Tahoma</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -553,7 +553,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">=Fields!EmployeeName.Value</Value>
+                                  <Value>=Fields!EmployeeName.Value</Value>
                                   <Style>
                                     <FontFamily>Tahoma</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -606,7 +606,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">=Fields!PinNumber.Value</Value>
+                                  <Value>=Fields!PinNumber.Value</Value>
                                   <Style>
                                     <FontFamily>Tahoma</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -659,7 +659,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">=Fields!IDS_NUMBER.Value</Value>
+                                  <Value>=Fields!IDS_NUMBER.Value</Value>
                                   <Style>
                                     <FontFamily>Tahoma</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -713,7 +713,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">=Last(Fields!PayeAmount.Value)</Value>
+                                  <Value>=Last(Fields!PayeAmount.Value)</Value>
                                   <Style>
                                     <FontFamily>Tahoma</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -750,7 +750,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">=Convert.ToBase64String(Fields!companyinfo_Picture.Value)</Value>
+                                  <Value>=Convert.ToBase64String(Fields!companyinfo_Picture.Value)</Value>
                                   <Style>
                                     <Color>#ff0000</Color>
                                   </Style>
@@ -783,7 +783,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">=Fields!PeriodName.Value</Value>
+                                  <Value>=Fields!PeriodName.Value</Value>
                                   <Style>
                                     <Color>#ff0000</Color>
                                   </Style>
@@ -816,7 +816,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">=Fields!User_Name_Caption.Value</Value>
+                                  <Value>=Fields!User_Name_Caption.Value</Value>
                                   <Style>
                                     <Color>#ff0000</Color>
                                   </Style>
@@ -849,7 +849,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">=Fields!Print_Date_Caption.Value</Value>
+                                  <Value>=Fields!Print_Date_Caption.Value</Value>
                                   <Style>
                                     <Color>#ff0000</Color>
                                   </Style>
@@ -882,7 +882,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">=Fields!P_A_Y_E_ScheduleCaption.Value</Value>
+                                  <Value>=Fields!P_A_Y_E_ScheduleCaption.Value</Value>
                                   <Style>
                                     <Color>#ff0000</Color>
                                   </Style>
@@ -915,7 +915,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">=Fields!Period_Caption.Value</Value>
+                                  <Value>=Fields!Period_Caption.Value</Value>
                                   <Style>
                                     <Color>#ff0000</Color>
                                   </Style>
@@ -948,7 +948,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">=Fields!Page_No_Caption.Value</Value>
+                                  <Value>=Fields!Page_No_Caption.Value</Value>
                                   <Style>
                                     <Color>#ff0000</Color>
                                   </Style>
@@ -987,7 +987,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto" />
+                                  <Value />
                                   <Style>
                                     <FontFamily>Tahoma</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -1043,7 +1043,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">Total:</Value>
+                                  <Value>Total:</Value>
                                   <Style>
                                     <FontFamily>Tahoma</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -1102,7 +1102,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto" />
+                                  <Value />
                                   <Style>
                                     <FontFamily>Tahoma</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -1159,7 +1159,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">=Sum(Fields!PayeAmount.Value)</Value>
+                                  <Value>=Sum(Fields!PayeAmount.Value)</Value>
                                   <Style>
                                     <FontFamily>Tahoma</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -1216,7 +1216,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto" />
+                                  <Value />
                                   <Style>
                                     <Color>#ff0000</Color>
                                   </Style>
@@ -1248,7 +1248,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto" />
+                                  <Value />
                                   <Style>
                                     <Color>#ff0000</Color>
                                   </Style>
@@ -1280,7 +1280,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto" />
+                                  <Value />
                                   <Style>
                                     <Color>#ff0000</Color>
                                   </Style>
@@ -1312,7 +1312,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto" />
+                                  <Value />
                                   <Style>
                                     <Color>#ff0000</Color>
                                   </Style>
@@ -1344,7 +1344,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto" />
+                                  <Value />
                                   <Style>
                                     <Color>#ff0000</Color>
                                   </Style>
@@ -1376,7 +1376,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto" />
+                                  <Value />
                                   <Style>
                                     <Color>#ff0000</Color>
                                   </Style>
@@ -1408,7 +1408,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto" />
+                                  <Value />
                                   <Style>
                                     <Color>#ff0000</Color>
                                   </Style>
@@ -1445,7 +1445,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto" />
+                                  <Value />
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -1494,7 +1494,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto" />
+                                  <Value />
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -1542,7 +1542,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto" />
+                                  <Value />
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -1591,7 +1591,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto" />
+                                  <Value />
                                   <Style>
                                     <FontFamily>Tahoma</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -1643,7 +1643,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto" />
+                                  <Value />
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -1691,7 +1691,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto" />
+                                  <Value />
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -1739,7 +1739,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto" />
+                                  <Value />
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -1834,7 +1834,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value EvaluationMode="Auto">Prepared  By:...............................................   SIGN......................................... DATE</Value>
+                    <Value>Prepared  By:...............................................   SIGN......................................... DATE</Value>
                     <Style>
                       <FontFamily>Cambria</FontFamily>
                       <FontWeight>Bold</FontWeight>
@@ -1867,14 +1867,14 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value EvaluationMode="Auto">Certified  By:..</Value>
+                    <Value>Certified  By:..</Value>
                     <Style>
                       <FontFamily>Cambria</FontFamily>
                       <FontWeight>Bold</FontWeight>
                     </Style>
                   </TextRun>
                   <TextRun>
-                    <Value EvaluationMode="Auto">.................................</Value>
+                    <Value>.................................</Value>
                     <Style>
                       <FontFamily>Cambria</FontFamily>
                       <FontSize>11pt</FontSize>
@@ -1882,7 +1882,7 @@
                     </Style>
                   </TextRun>
                   <TextRun>
-                    <Value EvaluationMode="Auto">............... SIGN ........................................   DATE</Value>
+                    <Value>............... SIGN ........................................   DATE</Value>
                     <Style>
                       <FontFamily>Cambria</FontFamily>
                       <FontWeight>Bold</FontWeight>
@@ -1915,14 +1915,14 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value EvaluationMode="Auto">Approved  By:....</Value>
+                    <Value>Approved  By:....</Value>
                     <Style>
                       <FontFamily>Cambria</FontFamily>
                       <FontWeight>Bold</FontWeight>
                     </Style>
                   </TextRun>
                   <TextRun>
-                    <Value EvaluationMode="Auto">....................................</Value>
+                    <Value>....................................</Value>
                     <Style>
                       <FontFamily>Cambria</FontFamily>
                       <FontSize>11pt</FontSize>
@@ -1930,7 +1930,7 @@
                     </Style>
                   </TextRun>
                   <TextRun>
-                    <Value EvaluationMode="Auto">....... SIGN .........................................  DATE</Value>
+                    <Value>....... SIGN .........................................  DATE</Value>
                     <Style>
                       <FontFamily>Cambria</FontFamily>
                       <FontWeight>Bold</FontWeight>
@@ -1963,7 +1963,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value EvaluationMode="Auto">=User!UserID</Value>
+                    <Value>=User!UserID</Value>
                     <Style />
                   </TextRun>
                 </TextRuns>
@@ -1993,7 +1993,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value EvaluationMode="Auto" />
+                    <Value />
                     <Style>
                       <Format>d</Format>
                     </Style>
@@ -2025,7 +2025,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value EvaluationMode="Auto" />
+                    <Value />
                     <Style>
                       <Format>d</Format>
                     </Style>
@@ -2057,7 +2057,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value EvaluationMode="Auto" />
+                    <Value />
                     <Style>
                       <Format>d</Format>
                     </Style>
@@ -2089,14 +2089,14 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value EvaluationMode="Auto">Checked  By:...</Value>
+                    <Value>Checked  By:...</Value>
                     <Style>
                       <FontFamily>Cambria</FontFamily>
                       <FontWeight>Bold</FontWeight>
                     </Style>
                   </TextRun>
                   <TextRun>
-                    <Value EvaluationMode="Auto">................................</Value>
+                    <Value>................................</Value>
                     <Style>
                       <FontFamily>Cambria</FontFamily>
                       <FontSize>11pt</FontSize>
@@ -2104,7 +2104,7 @@
                     </Style>
                   </TextRun>
                   <TextRun>
-                    <Value EvaluationMode="Auto">................ SIGN....................................  DATE</Value>
+                    <Value>................ SIGN....................................  DATE</Value>
                     <Style>
                       <FontFamily>Cambria</FontFamily>
                       <FontWeight>Bold</FontWeight>
@@ -2137,7 +2137,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value EvaluationMode="Auto" />
+                    <Value />
                     <Style>
                       <Format>d</Format>
                     </Style>
@@ -2163,10 +2163,10 @@
             </Style>
           </Textbox>
         </ReportItems>
-        <Height>6.23332cm</Height>
+        <Height>6.57728cm</Height>
         <Style />
       </Body>
-      <Width>18.4251cm</Width>
+      <Width>19.00718cm</Width>
       <Page>
         <PageHeader>
           <Height>3.34872cm</Height>
@@ -2178,7 +2178,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value EvaluationMode="Auto">=ReportItems!Print_Date_Caption.Value</Value>
+                      <Value>=ReportItems!Print_Date_Caption.Value</Value>
                       <Style>
                         <FontSize>7pt</FontSize>
                       </Style>
@@ -2187,8 +2187,8 @@
                   <Style />
                 </Paragraph>
               </Paragraphs>
-              <Top>1.09821cm</Top>
-              <Left>14.26596cm</Left>
+              <Top>0.67522cm</Top>
+              <Left>14.26595cm</Left>
               <Height>0.423cm</Height>
               <Width>1.5cm</Width>
               <Style>
@@ -2201,7 +2201,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value EvaluationMode="Auto">=ReportItems!User_Name_Caption.Value</Value>
+                      <Value>=ReportItems!User_Name_Caption.Value</Value>
                       <Style>
                         <FontSize>7pt</FontSize>
                       </Style>
@@ -2225,7 +2225,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value EvaluationMode="Auto">PAYE Schedule</Value>
+                      <Value>PAYE Schedule</Value>
                       <Style>
                         <FontSize>12pt</FontSize>
                         <FontWeight>Bold</FontWeight>
@@ -2252,7 +2252,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value EvaluationMode="Auto">=User!UserID</Value>
+                      <Value>=User!UserID</Value>
                       <Style>
                         <FontSize>7pt</FontSize>
                       </Style>
@@ -2265,7 +2265,7 @@
               </Paragraphs>
               <Top>0.0993in</Top>
               <Left>15.83651cm</Left>
-              <Height>0.70489cm</Height>
+              <Height>0.423cm</Height>
               <Width>2.50917cm</Width>
               <ZIndex>3</ZIndex>
               <Style>
@@ -2279,7 +2279,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value EvaluationMode="Auto">=Globals!ExecutionTime</Value>
+                      <Value>=Globals!ExecutionTime</Value>
                       <Style>
                         <FontSize>7pt</FontSize>
                         <Format>g</Format>
@@ -2291,8 +2291,8 @@
                   </Style>
                 </Paragraph>
               </Paragraphs>
-              <Top>0.9571cm</Top>
-              <Left>15.83651cm</Left>
+              <Top>0.71897cm</Top>
+              <Left>15.87179cm</Left>
               <Height>0.423cm</Height>
               <Width>2.25cm</Width>
               <ZIndex>4</ZIndex>
@@ -2306,7 +2306,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value EvaluationMode="Auto">=ReportItems!PeriodName.Value</Value>
+                      <Value>=ReportItems!PeriodName.Value</Value>
                       <Style>
                         <FontSize>7pt</FontSize>
                       </Style>
@@ -2317,8 +2317,8 @@
                   </Style>
                 </Paragraph>
               </Paragraphs>
-              <Top>1.3801cm</Top>
-              <Left>15.83651cm</Left>
+              <Top>1.14197cm</Top>
+              <Left>15.87179cm</Left>
               <Height>0.423cm</Height>
               <Width>2.25cm</Width>
               <ZIndex>5</ZIndex>
@@ -2347,7 +2347,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value EvaluationMode="Auto">=First(Fields!CompName.Value, "DataSet_Result")</Value>
+                      <Value>=First(Fields!CompName.Value, "DataSet_Result")</Value>
                       <Style>
                         <FontWeight>Bold</FontWeight>
                       </Style>
@@ -2382,7 +2382,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value EvaluationMode="Auto">=First(Fields!Addr1.Value, "DataSet_Result")</Value>
+                      <Value>=First(Fields!Addr1.Value, "DataSet_Result")</Value>
                       <Style>
                         <FontWeight>Bold</FontWeight>
                       </Style>
@@ -2417,7 +2417,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value EvaluationMode="Auto">=First(Fields!Addr2.Value, "DataSet_Result")</Value>
+                      <Value>=First(Fields!Addr2.Value, "DataSet_Result")</Value>
                       <Style>
                         <FontWeight>Bold</FontWeight>
                       </Style>
@@ -2452,7 +2452,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value EvaluationMode="Auto">=First(Fields!Email.Value, "DataSet_Result")</Value>
+                      <Value>=First(Fields!Email.Value, "DataSet_Result")</Value>
                       <Style>
                         <FontWeight>Bold</FontWeight>
                       </Style>
@@ -2486,7 +2486,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value EvaluationMode="Auto">=ReportItems!PeriodName.Value</Value>
+                      <Value>=ReportItems!PeriodName.Value</Value>
                       <Style>
                         <FontSize>9pt</FontSize>
                         <FontWeight>Bold</FontWeight>

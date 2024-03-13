@@ -51,7 +51,7 @@ Page 51516210 "Change Request Card"
                     ApplicationArea = Basic;
                     Editable = AccountNoEditable;
                     Style = StrongAccent;
-                   
+
                 }
                 field("Captured by"; "Captured by")
                 {
@@ -108,6 +108,7 @@ Page 51516210 "Change Request Card"
                     ApplicationArea = Basic;
                     Editable = false;
                 }
+
                 field("Email(New Value)"; "Email(New Value)")
                 {
                     ApplicationArea = Basic;
@@ -144,7 +145,7 @@ Page 51516210 "Change Request Card"
                 }
                 field("Position In the Sacco(New)"; "Position In the Sacco(New)")
                 {
-
+                    ApplicationArea = basic;
                 }
                 field("Receive SMS Notification (Old)"; "SMS Notification")
                 {
@@ -273,10 +274,56 @@ Page 51516210 "Change Request Card"
                     Editable = MobileNoEditable;
                 }
 
+
             }
 
 
+            group("Bank Details")
+            {
+                field("Bank Code(Old)"; "Bank Code(Old)")
+                {
+                    ApplicationArea = Basic;
+                    Editable = false;
+                }
+                field("Bank Code(New)"; "Bank Code(New)")
+                {
 
+                }
+
+                field("Bank Name"; "Bank Name")
+                {
+                    ApplicationArea = Basic;
+                    Visible = false;
+                }
+                field("Bank Name (New)"; "Bank Name (New)")
+                {
+                    ApplicationArea = Basic;
+
+                }
+                field("Bank Branch Name"; "Bank Branch Name")
+                {
+                    ApplicationArea = Basic;
+                    Editable = false;
+
+                }
+                field("Branch(New Value)"; "Branch(New Value)")
+                {
+                    ApplicationArea = Basic;
+
+                }
+                field("Bank Account No(Old)"; "Bank Account No(Old)")
+                {
+                    ApplicationArea = Basic;
+                    Editable = false;
+
+                }
+                field("Bank Account No(New)"; "Bank Account No(New)")
+                {
+                    ApplicationArea = Basic;
+
+                }
+
+            }
 
             group("mobile Info")
             {
@@ -496,17 +543,26 @@ Page 51516210 "Change Request Card"
                                     Memb.Board := true;
                                     Memb.staff := false;
                                     Memb."Sacco Insider" := true;
+                                    Memb.Supervisory := false;
                                 end else
                                     if "Position In the Sacco(New)" = "Position In the Sacco(New)"::Staff then begin
                                         Memb.Board := false;
                                         Memb.staff := true;
+                                        Memb.Supervisory := false;
                                         Memb."Sacco Insider" := true;
                                     end else
                                         if "Position In the Sacco(New)" = "Position In the Sacco(New)"::Member then begin
                                             Memb.Board := false;
                                             Memb.staff := false;
+                                            Memb.Supervisory := false;
                                             Memb."Sacco Insider" := false;
-                                        end;
+                                        end else
+                                            if "Position In the Sacco(New)" = "Position In the Sacco(New)"::Supervisory then begin
+                                                Memb.Board := false;
+                                                Memb.staff := false;
+                                                Memb."Sacco Insider" := true;
+                                                Memb.Supervisory := true;
+                                            end;
                             end;
                             //Update Bank
                             if "Bank Code(New)" <> '' then
@@ -519,8 +575,9 @@ Page 51516210 "Change Request Card"
                             if "Bank Branch Code(New)" <> '' then
                                 Memb."Bank Code" := "Bank Branch Code(New)";
                             if "Bank Branch Name(New)" <> '' then
-                                if "KRA Pin(New)" <> '' then
-                                    Memb.Pin := "KRA Pin(New)";
+                                Memb."Bank Branch" := "Bank Branch Name(New)";
+                            if "KRA Pin(New)" <> '' then
+                                Memb.Pin := "KRA Pin(New)";
                             Memb."Last Date Modified" := "Capture Date";
                             if "Group Account Name" <> '' then
                                 Memb."Group Account Name" := "Group Account Name";
@@ -542,6 +599,8 @@ Page 51516210 "Change Request Card"
                             if "Status.(New)" <> "Status.(New)"::" " then begin
                                 Memb.Status := "Status.(New)";
                             end;
+                            if "Monthly Contributions(NewValu)"<> 0 then
+                                Memb."Monthly Contribution" := "Monthly Contributions(NewValu)";
                             Memb.Modify;
                             //.....................GENERAL UPDATE VENDOR ALSO
                             VEND.Reset();

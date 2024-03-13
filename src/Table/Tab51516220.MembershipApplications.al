@@ -505,8 +505,9 @@ Table 51516220 "Membership Applications"
         }
         field(68070; "Account Category"; Option)
         {
-            OptionCaption = 'Individual,Joint,Corporate,Group,Junior';
-            OptionMembers = Single,Joint,Corporate,Group,Junior;
+
+            OptionMembers = Single,Joint,"Group Account",Junior;
+            OptionCaption = 'Individual Account,Joint Account,Group Account, Junior Account';
         }
         field(68071; "Copy of KRA Pin"; Boolean)
         {
@@ -530,7 +531,7 @@ Table 51516220 "Membership Applications"
 
             end;
         }
-        field(68073; "First member name"; Text[30])
+        field(68073; "Second Member Name"; Text[30])
         {
         }
         field(68075; "Date Establish"; Date)
@@ -971,7 +972,38 @@ Table 51516220 "Membership Applications"
         {
             DataClassification = ToBeClassified;
         }
-
+        field(69220; "Share Of Ownership One"; Decimal)
+        {
+            DataClassification = ToBeClassified;
+        }
+        field(69221; "Source of Income Member One"; Text[100])
+        {
+            DataClassification = ToBeClassified;
+        }
+        field(69222; "Source of IncomeMember Two"; Text[100])
+        {
+            DataClassification = ToBeClassified;
+        }
+        field(69223; JointRelationship; Text[100])
+        {
+            DataClassification = ToBeClassified;
+        }
+        field(69224; "Reasontocreatingajointaccount"; Text[100])
+        {
+            DataClassification = ToBeClassified;
+        }
+        field(69225; "Birth Certficate No."; Code[50])
+        {
+            DataClassification = ToBeClassified;
+        }
+        field(69226; "Share Of Ownership Two"; Decimal)
+        {
+            DataClassification = ToBeClassified;
+        }
+        field(69227; "Nature of Business"; Text[100])
+        {
+            DataClassification = ToBeClassified;
+        }
 
     }
 
@@ -1035,7 +1067,7 @@ Table 51516220 "Membership Applications"
         //     "Customer Posting Group" := 'MICRO';
         //     "Global Dimension 1 Code" := 'MICRO';
         // end else
-            "Customer Posting Group" := 'MEMBER';
+        "Customer Posting Group" := 'MEMBER';
         "Global Dimension 1 Code" := 'BOSA';
 
         "Registration Date" := Today;

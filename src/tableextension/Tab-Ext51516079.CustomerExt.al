@@ -1080,15 +1080,15 @@ tableextension 51516079 "CustomerExt" extends Customer
                                                                    "Document No." = field("Document No. Filter")));
             FieldClass = FlowField;
         }
-        field(69083; "Computer Shares"; Decimal)
-        {
-            CalcFormula = - sum("Cust. Ledger Entry"."Amount Posted" where("Customer No." = field("No."),
-                                                                   "Transaction Type" = filter("Computer Shares"),
-                                                                   "Posting Date" = field("Date Filter"),
-                                                                   Reversed = filter(false),
-                                                                   "Document No." = field("Document No. Filter")));
-            FieldClass = FlowField;
-        }
+        // field(69083; "Computer Shares"; Decimal)
+        // {
+        //     CalcFormula = - sum("Cust. Ledger Entry"."Amount Posted" where("Customer No." = field("No."),
+        //                                                            "Transaction Type" = filter("Computer Shares"),
+        //                                                            "Posting Date" = field("Date Filter"),
+        //                                                            Reversed = filter(false),
+        //                                                            "Document No." = field("Document No. Filter")));
+        //     FieldClass = FlowField;
+        // }
         field(69084; "van Shares"; Decimal)
         {
             CalcFormula = - sum("Cust. Ledger Entry"."Amount Posted" where("Customer No." = field("No."),
@@ -1422,6 +1422,119 @@ tableextension 51516079 "CustomerExt" extends Customer
         {
             DataClassification = ToBeClassified;
         }
+        field(69437; "Source of Income Member One"; Text[100])
+        {
+            DataClassification = ToBeClassified;
+        }
+        field(69438; "Source of IncomeMember Two"; Text[100])
+        {
+            DataClassification = ToBeClassified;
+        }
+        field(69439; JointRelationship; Text[100])
+        {
+            DataClassification = ToBeClassified;
+        }
+        field(69440; "Reasontocreatingajointaccount"; Text[100])
+        {
+            DataClassification = ToBeClassified;
+        }
+        field(69441; "Birth Certficate No."; Code[50])
+        {
+            DataClassification = ToBeClassified;
+        }
+
+        //
+        field(69442; "Registration No"; Code[30])
+        {
+        }
+        field(69443; "ID NO/Passport 2"; Code[30])
+        {
+        }
+        field(69444; "Registration office"; Text[30])
+        {
+            TableRelation = Location.Code;
+        }
+        field(69445; "Picture 2"; Blob)
+        {
+            SubType = Bitmap;
+        }
+        field(69446; "Signature  2"; Blob)
+        {
+            SubType = Bitmap;
+        }
+        field(69447; Title2; Option)
+        {
+            OptionCaption = ' ,Mr.,Mrs.,Miss.,DR.,Prof.,Fr.,Sr.,Bro.';
+            OptionMembers = " ","Mr.","Mrs.","Miss.","DR.","Prof.","Fr.","Sr.","Bro.";
+        }
+        field(69448; "Mobile No. 3"; Code[20])
+        {
+        }
+        field(69449; "Date of Birth2"; Date)
+        {
+
+
+        }
+        field(69450; "Marital Status2"; Option)
+        {
+            OptionMembers = " ",Single,Married,Devorced,Widower,Widow;
+        }
+        field(69451; Gender2; Option)
+        {
+            OptionCaption = ' ,Male,Female';
+            OptionMembers = " ",Male,Female;
+        }
+        field(69452; Address3; Code[30])
+        {
+        }
+        field(69453; "Home Postal Code2"; Code[20])
+        {
+            TableRelation = "Post Code";
+
+
+        }
+        field(69454; "Home Town2"; Text[60])
+        {
+        }
+        field(69455; "Payroll/Staff No2"; Code[20])
+        {
+        }
+        field(69456; "Employer Code2"; Code[20])
+        {
+            TableRelation = "Sacco Employers";
+
+
+        }
+        field(69457; "Employer Name2"; Code[50])
+        {
+        }
+        field(69458; "E-Mail (Personal2)"; Text[50])
+        {
+        }
+        field(69459; "Share Of Ownership Two"; Decimal)
+        {
+            DataClassification = ToBeClassified;
+        }
+        field(69460; "Recruiter Name"; Text[50])
+        {
+        }
+        field(69461; "Second Member Name"; Text[30])
+        {
+        }
+        field(69462; "Share Of Ownership One"; Decimal)
+        {
+            DataClassification = ToBeClassified;
+        }
+            field(69463; "Nature of Business"; Text[100])
+        {
+            DataClassification = ToBeClassified;
+        }
+        field(69195; "Reason For Membership Withdraw"; Option)
+        {
+            OptionCaption = 'Relocation,Financial Constraints,House/Group Challages,Join another Institution,Personal Reasons,Other';
+            OptionMembers = Relocation,"Financial Constraints","House/Group Challages","Join another Institution","Personal Reasons",Other;
+        }
+
     }
 }
 

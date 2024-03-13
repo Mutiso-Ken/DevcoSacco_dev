@@ -98,18 +98,18 @@ enum 51516022 "TransactionTypesEnum"
     {
         Caption = 'Penalty Paid';
     }
-    value(24; "Dev Shares")
-    {
-        Caption = 'Dev Shares';
-    }
+    // value(24; "Dev Shares")
+    // {
+    //     Caption = 'Dev Shares';
+    // }
     value(25; "Tax Shares")
     {
         Caption = 'Tax Shares';
     }
-    value(26; "Welfare Contribution 2")
-    {
-        Caption = 'Welfare Contribution 2';
-    }
+    // value(26; "Welfare Contribution 2")
+    // {
+    //     Caption = 'Welfare Contribution 2';
+    // }
     value(27; "Loan Penalty")
     {
         Caption = 'Loan Penalty';
@@ -126,14 +126,14 @@ enum 51516022 "TransactionTypesEnum"
     {
         Caption = 'Van Shares';
     }
-    value(31; "Bus Shares")
-    {
-        Caption = 'Bus Shares';
-    }
-    value(32; "Computer Shares")
-    {
-        Caption = 'Computer Shares';
-    }
+    // value(31; "Bus Shares")
+    // {
+    //     Caption = 'Bus Shares';
+    // }
+    // value(32; "Computer Shares")
+    // {
+    //     Caption = 'Computer Shares';
+    // }
     value(33; "Ordinary Building Shares")
     {
         Caption = 'Ordinary Building Shares';

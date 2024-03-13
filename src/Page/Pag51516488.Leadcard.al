@@ -114,37 +114,44 @@ Page 51516488 "Lead card"
                     ApplicationArea = Basic;
                     Caption = 'Full Name';
                     ShowMandatory = true;
+                    Editable=false;
                 }
                 field("Phone No"; "Phone No")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Mobile No';
                     ShowMandatory = true;
+                    Editable=false;
                 }
                 field("Date Of Birth"; "Date Of Birth")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Date Of Birth';
                     ShowMandatory = true;
+                    Editable=false;
                 }
                 field(Gender; Gender)
                 {
                     ApplicationArea = Basic;
                     ShowMandatory = true;
+                    Editable=false;
                 }
                 field(Email; Email)
                 {
                     ApplicationArea = Basic;
+                    Editable=false;
                 }
                 field(Address; Address)
                 {
                     ApplicationArea = Basic;
                     ShowMandatory = true;
+                    Editable=false;
                 }
                 field("ID No."; "ID No.")
                 {
                     ApplicationArea = Basic;
                     Caption = 'ID No';
+                    Editable=false;
                     ShowMandatory = true;
                 }
                 field("Escalate Case;"; "Escalate Case")
@@ -152,6 +159,7 @@ Page 51516488 "Lead card"
                     ApplicationArea = Basic;
                     Caption = 'Escalate Case';
                     ShowMandatory = true;
+                  
                     trigger OnValidate()
                     begin
                         if "Escalate Case" = true then begin

@@ -93,6 +93,10 @@ table 51516874 "Sacco Information"
         {
             DataClassification = ToBeClassified;
         }
+        field(22; "Sacco Principal Activities"; Text[150])
+        {
+            DataClassification = ToBeClassified;
+        }
 
 
     }

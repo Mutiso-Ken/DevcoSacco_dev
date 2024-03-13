@@ -111,7 +111,7 @@ Report 51516319 "payroll Allowances Report."
                 HR.Reset;
                 HR.SetRange(HR."No.","prPeriod Transactions."."Employee Code");
                 if HR.Find('-') then begin
-                EmployeeName:=HR."First Name"+' '+HR.Surname+' '+HR."Middle Name";
+                EmployeeName:=HR."Full Name";
                 end;
                 
                 

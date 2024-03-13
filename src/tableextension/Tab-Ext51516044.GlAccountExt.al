@@ -33,7 +33,7 @@ tableextension 51516044 "GlAccountExt" extends "G/L Account"
         }
         field(54254; "Form2F(Statement of C Income)"; Option)
         {
-           
+
             OptionMembers = " ",OtherOperatingincome,NetFeeandcommission,InterestExpenses,OtherInterestIncome,InterestonLoanPortfolio,FeesCommissiononLoanPortfolio,GovernmentSecurities,InvestmentinCompaniesshares,nterestExpenseonDeposits,DividendExpenses,OtherFinancialExpense,FeesCommissionExpense,OtherExpense,ProvisionforLoanLosses;
         }
         field(54255; "Form2F1(Statement of C Income)"; Option)
@@ -83,15 +83,14 @@ tableextension 51516044 "GlAccountExt" extends "G/L Account"
 
 
     }
-    trigger OnAfterRename()
+    trigger OnBeforeModify()
     var
         myInt: Integer;
     begin
-        if GLEntry.get("No.") then begin
-            if GLEntry.IsEmpty <> true then begin
-                Error('You cannot Rename the Record');
-            end;
-        end;
+        Reset();
+        GLEntry.SetRange("G/L Account No.", "No.");
+        if not GLEntry.IsEmpty() then
+            Error('The Account Cannot be Renamed');
     end;
 
     var

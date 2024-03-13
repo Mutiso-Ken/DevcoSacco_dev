@@ -50,17 +50,19 @@ Table 51516225 "Members Next Kin Details"
         }
         field(14;Type;Option)
         {
-            OptionCaption = 'Next of Kin,Spouse,Nominee';
-            OptionMembers = "Next of Kin",Spouse,"Benevolent Beneficiary";
+         
+            OptionMembers = "Next of Kin","Benevolent Beneficiary";
         }
-        field(15;test;Text[30])
+        field(15; "Maximun Allocation %"; Decimal)
         {
+            DataClassification = ToBeClassified;
         }
+     
     }
 
     keys
     {
-        key(Key1;"Account No",Name,Type)
+        key(Key1;"Account No",Name)
         {
             Clustered = true;
         }

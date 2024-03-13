@@ -122,7 +122,7 @@ Report 51516318 "payroll Deductions Report."
                 HR.Reset;
                 HR.SetRange(HR."No.", "prPeriod Transactions."."Employee Code");
                 if HR.Find('-') then begin
-                    EmployeeName := HR."First Name" + ' ' + HR."Middle Name" + ' ' + HR.Surname;
+                    EmployeeName := HR."Full Name";
                 end;
 
 

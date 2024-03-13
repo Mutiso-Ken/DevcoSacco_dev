@@ -11,7 +11,7 @@ Page 51516223 "Membership App Signatories"
         {
             repeater(Control1102760000)
             {
-                field("Account No"; "Account No")
+                field("Account No"; Rec."Account No")
                 {
                     ApplicationArea = all;
                     Editable = false;

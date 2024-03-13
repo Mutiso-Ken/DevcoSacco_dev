@@ -34,7 +34,7 @@ Codeunit 51516022 "SURESTEP Factory"
 
     procedure SendMail(EmailAddress: Text[60]; EmailSubject: text[100]; EmailBody: Text[200])
     begin
-        TheMessage.Create(EmailAddress, EmailSubject, EmailBody,true);
+        TheMessage.Create(EmailAddress, EmailSubject, EmailBody, true);
         Email.Send(TheMessage);
 
     end;
@@ -53,6 +53,50 @@ Codeunit 51516022 "SURESTEP Factory"
         end;
     end;
 
+    procedure FnCreateMembershipWithdrawalApplication(MemberNo: Code[20]; ApplicationDate: Date; Reason: Option Relocation,"Financial Constraints","House/Group Challages","Join another Institution","Personal Reasons",Other; ClosureDate: Date)
+    var
+        DateExp: Text[30];
+        ObjNoSeries: Record "No. Series Line";
+        ObjSalesSetup: Record "Sacco No. Series";
+        ObjNoSeriesManagement: Codeunit NoSeriesManagement;
+        ObjNextNo: Code[20];
+        PostingDate: Date;
+        ObjMembershipWithdrawal: Record "Membership Exist";
+    begin
+        DateExp := '<60D>';
+        PostingDate := WorkDate;
+        ObjSalesSetup.GET;
+        ApplicationDate := today;
+        ObjNextNo := ObjNoSeriesManagement.TryGetNextNo(ObjSalesSetup."Closure  Nos", PostingDate);
+        ObjNoSeries.RESET;
+        ObjNoSeries.SETRANGE(ObjNoSeries."Series Code", ObjSalesSetup."Closure  Nos");
+        IF ObjNoSeries.FINDSET THEN BEGIN
+            ObjNoSeries."Last No. Used" := INCSTR(ObjNoSeries."Last No. Used");
+            ObjNoSeries."Last Date Used" := TODAY;
+            ObjNoSeries.MODIFY;
+        END;
+        ClosureDate := CalcDate(DateExp, ApplicationDate);
+
+        ObjMembershipWithdrawal.INIT;
+        ObjMembershipWithdrawal."No." := ObjNextNo;
+        ObjMembershipWithdrawal."Member No." := MemberNo;
+        ObjMembershipWithdrawal."Withdrawal Application Date" := ApplicationDate;
+        ObjMembershipWithdrawal."Notice Date" := ApplicationDate;
+        ObjMembershipWithdrawal."Closing Date" := ClosureDate;
+        ObjMembershipWithdrawal."Reason For Withdrawal" := Reason;
+        ObjMembershipWithdrawal.INSERT;
+
+        ObjMembershipWithdrawal.VALIDATE(ObjMembershipWithdrawal."Member No.");
+        ObjMembershipWithdrawal.MODIFY;
+
+        if ObjMembers.Get(MemberNo) then begin
+            ObjMembers.Status := ObjMembers.Status::"Awaiting Exit";
+            ObjMembers.Modify;
+        end;
+
+        message('The Member has been marked as awaiting exit.');
+
+    end;
 
     procedure FnGetUserBranch() branchCode: Code[20]
     begin

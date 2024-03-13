@@ -17,4 +17,8 @@ enum 51516023 "Position In the Sacco"
     {
         Caption = 'Board';
     }
+    value(4; Supervisory)
+    {
+
+    }
 }

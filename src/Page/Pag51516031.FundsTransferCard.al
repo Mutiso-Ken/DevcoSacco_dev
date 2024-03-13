@@ -14,6 +14,7 @@ Page 51516031 "Funds Transfer Card"
                 field("No."; "No.")
                 {
                     ApplicationArea = Basic;
+                    Editable = false;
                 }
                 field(Date; Date)
                 {
@@ -69,7 +70,7 @@ Page 51516031 "Funds Transfer Card"
                 field(Status; Status)
                 {
                     ApplicationArea = Basic;
-                    Editable = false;
+                   // Editable = false;
                     OptionCaption = 'Open,Pending Approval,Approved,Cancelled,Posted';
                 }
                 field(Posted; Posted)

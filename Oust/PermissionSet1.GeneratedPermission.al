@@ -794,7 +794,7 @@ permissionset 1 GeneratedPermission
         report "Loans to staffs-Insider" = X,
         report "Loans Underpaid" = X,
         report "Manage Fixed Deposit" = X,
-        report "Mark as Processed" = X,
+        // report "Mark as Processed" = X,
     
         report "Member Account  balances" = X,
         report "Member Account Statement" = X,
