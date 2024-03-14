@@ -24,30 +24,30 @@ Page 51516032 "Funds Transfer Lines"
                     Editable = false;
 
                 }
-                field("Bank Balance(LCY)"; "Bank Balance(LCY)")
-                {
-                    ApplicationArea = Basic;
-                    Editable = false;
-                    Visible = false;
-                }
+                // field("Bank Balance(LCY)"; "Bank Balance(LCY)")
+                // {
+                //     ApplicationArea = Basic;
+                //     Editable = false;
+                //     Visible = false;
+                // }
                 field("Pay Mode"; "Pay Mode")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Bank Account No."; "Bank Account No.")
-                {
-                    ApplicationArea = Basic;
-                }
-                field("Currency Code"; "Currency Code")
-                {
-                    ApplicationArea = Basic;
-                    Visible = false;
-                }
-                field("Currency Factor"; "Currency Factor")
-                {
-                    ApplicationArea = Basic;
-                    Visible = false;
-                }
+                // field("Bank Account No."; "Bank Account No.")
+                // {
+                //     ApplicationArea = Basic;
+                // }
+                // field("Currency Code"; "Currency Code")
+                // {
+                //     ApplicationArea = Basic;
+                //     Visible = false;
+                // }
+                // field("Currency Factor"; "Currency Factor")
+                // {
+                //     ApplicationArea = Basic;
+                //     Visible = false;
+                // }
                 field("Amount to Receive"; "Amount to Receive")
                 {
                     ApplicationArea = Basic;
@@ -57,10 +57,10 @@ Page 51516032 "Funds Transfer Lines"
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field("External Doc No."; "External Doc No.")
-                {
-                    ApplicationArea = Basic;
-                }
+                // field("External Doc No."; "External Doc No.")
+                // {
+                //     ApplicationArea = Basic;
+                // }
             }
         }
     }

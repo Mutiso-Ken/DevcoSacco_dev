@@ -55,6 +55,10 @@ Page 51516271 "Sacco General Set-Up"
                 {
                     ApplicationArea = Basic;
                 }
+                   field("Interest on Deposits (%)"; "Interest on Deposits (%)")
+                {
+                    ApplicationArea = Basic;
+                }
 
                 field("Min. Dividend Proc. Period"; "Min. Dividend Proc. Period")
                 {
@@ -125,10 +129,7 @@ Page 51516271 "Sacco General Set-Up"
                     ApplicationArea = Basic;
                     Caption = 'Pepea Shares';
                 }
-                field("Interest on Deposits (%)"; "Interest on Deposits (%)")
-                {
-                    ApplicationArea = Basic;
-                }
+             
                 field("Registration Fee"; "Registration Fee")
                 {
                     ApplicationArea = Basic;

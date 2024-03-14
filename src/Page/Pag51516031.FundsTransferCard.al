@@ -45,6 +45,7 @@ Page 51516031 "Funds Transfer Card"
                 field("Total Line Amount"; "Total Line Amount")
                 {
                     ApplicationArea = Basic;
+                    Editable = false;
                 }
                 field("Cheque/Doc. No"; "Cheque/Doc. No")
                 {
@@ -62,25 +63,20 @@ Page 51516031 "Funds Transfer Card"
                 field("Date Created"; "Date Created")
                 {
                     ApplicationArea = Basic;
+                    Editable = false;
                 }
                 field("Time Created"; "Time Created")
                 {
                     ApplicationArea = Basic;
+                    Editable = false;
                 }
                 field(Status; Status)
                 {
                     ApplicationArea = Basic;
-                   // Editable = false;
+                    Editable = false;
                     OptionCaption = 'Open,Pending Approval,Approved,Cancelled,Posted';
                 }
-                field(Posted; Posted)
-                {
-                    ApplicationArea = Basic;
-                }
-                field("Posted By"; "Posted By")
-                {
-                    ApplicationArea = Basic;
-                }
+
             }
             part(Control24; "Funds Transfer Lines")
             {
@@ -330,12 +326,12 @@ Page 51516031 "Funds Transfer Card"
 
                     trigger OnAction()
                     begin
-                        /*RESET;
-                        SETRANGE(No,No);
-                        REPORT.RUN(51516400,TRUE,TRUE,Rec);
-                        RESET;
-                                */
-
+                        rec.Reset();
+                        rec.SetRange(rec."No.", "No.");
+                        if Rec.FindFirst()
+                        then begin
+                            Report.RunModal(Report::"Funds Transfer Voucher", true, false, Rec);
+                        end;
                     end;
                 }
                 separator(Action28)

@@ -2030,7 +2030,7 @@ Page 51516462 "Devco Sacco"
                             {
                                 Caption = 'Dividends Processing-Prorated';
                                 Image = Setup;
-                                RunObject = report "Dividend Processing-Prorated";
+                                RunObject = report "Dividend Processing Prorated";
                             }
                             action("Dividends Register")
                             {

@@ -1,4 +1,4 @@
-codeunit 51516053 "Jamii Yetu Loans Management"
+codeunit 51516053 "Devco Management"
 {
     trigger OnRun()
     begin

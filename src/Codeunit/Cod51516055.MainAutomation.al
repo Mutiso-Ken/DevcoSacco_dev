@@ -160,7 +160,7 @@ codeunit 51516055 "Main Automation"
         GenerateLoanInterestDue: Codeunit GenerateLoanInterestDue;
         UpdateCustLedgeEntryLoanType: Codeunit "Update CustLedgeEntryLoanType";
         SendLoanNotifications: Codeunit "Send Loan Notifications";
-        LoanRecoverys: Codeunit "Jamii Yetu Loans Management";
+        LoanRecoverys: Codeunit "Devco Management";
         GenerateLoanSchedule: Codeunit "Regenerate loan repayment sch";
         SASRALoanClassification: Codeunit "Live SASRA Loan Classification";
         msg: Text;

@@ -445,9 +445,6 @@ table 50317 "Payroll Employee."
             begin
                 if ObjCust.Get("Payroll No") then begin
                "Full Name" := ObjCust.Name;
-                    // "Middle Name" := ObjCust."Middle Name";
-                    // "First Name" := ObjCust."First Name";
-
                     "Employee Email" := ObjCust."E-Mail";
                     "National ID No" := ObjCust."ID No.";
                     "PIN No" := ObjCust.Pin;

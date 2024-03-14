@@ -253,24 +253,24 @@ codeunit 51516036 "System General Setup"
         end;
     end;
     //.................Ordinary accounts are dormant,hence blocked...hence we have to exempt them
-    [EventSubscriber(ObjectType::Table, 23, 'OnBeforeCheckBlockedVend', '', false, false)]
-    local procedure CheckIfAccountIsOrdinary(Vendor: Record Vendor; Source: Option Journal,Document; DocType: Option; Transaction: Boolean; var IsHandled: Boolean)
-    var
-        VendorTable: Record Vendor;
-    begin
-        VendorTable.Reset();
-        VendorTable.SetRange(VendorTable."Account Type", 'ORDINARY');
-        VendorTable.SetRange(VendorTable."No.", Vendor."No.");
-        if VendorTable.Find('-') then begin
-            IsHandled := true;
-            exit;
-        end;
-        //................................................
-        if (UserId = 'AGENCY@JAMIIYETUSACCO.CO.KE') or (UserId = 'MOBILE@JAMIIYETUSACCO.CO.KE') then begin
-            IsHandled := true;
-            exit;
-        end;
-    end;
+    // [EventSubscriber(ObjectType::Table, 23, 'OnBeforeCheckBlockedVend', '', false, false)]
+    // local procedure CheckIfAccountIsOrdinary(Vendor: Record Vendor; Source: Option Journal,Document; DocType: Option; Transaction: Boolean; var IsHandled: Boolean)
+    // var
+    //     VendorTable: Record Vendor;
+    // begin
+    //     VendorTable.Reset();
+    //     VendorTable.SetRange(VendorTable."Account Type", 'ORDINARY');
+    //     VendorTable.SetRange(VendorTable."No.", Vendor."No.");
+    //     if VendorTable.Find('-') then begin
+    //         IsHandled := true;
+    //         exit;
+    //     end;
+    //     //................................................
+    //     if (UserId = 'AGENCY@JAMIIYETUSACCO.CO.KE') or (UserId = 'MOBILE@JAMIIYETUSACCO.CO.KE') then begin
+    //         IsHandled := true;
+    //         exit;
+    //     end;
+    // end;
 
     procedure FnCheckNoOfLoansLimit(LoanNo: Code[30]; LoanProductType: Code[20]; ClientCode: Code[50])//Ensure you dont have two loans same product
     Var

@@ -38,7 +38,7 @@ codeunit 51516057 "Job Qeue Automations"
         GenerateLoanInterestDue: Codeunit GenerateLoanInterestDue;
         UpdateCustLedgeEntryLoanType: Codeunit "Update CustLedgeEntryLoanType";
         SendLoanNotifications: Codeunit "Send Loan Notifications";
-        LoanRecoverys: Codeunit "Jamii Yetu Loans Management";
+        LoanRecoverys: Codeunit "Devco Management";
         GenerateLoanSchedule: Codeunit "Regenerate loan repayment sch";
         msg: Text;
         SurestepFactory: Codeunit "SURESTEP Factory";

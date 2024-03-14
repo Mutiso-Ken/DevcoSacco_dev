@@ -37,14 +37,19 @@ codeunit 51516037 "EventSubscribers"
     local procedure UpdatePostingDate()
     var
         UserSetUp: Record "User Setup";
+        StartDate: Date;
+        EndDate: Date;
+
     begin
-        UserSetUp.Reset();
-        UserSetUp.SetRange(UserSetUp."User ID", UserId);
-        if UserSetUp.Find('-') = true then begin
-            UserSetUp."Allow Posting From" := Today;
-            UserSetUp."Allow Posting To" := Today;
-            UserSetUp.Modify();
-        end;
+        // StartDate := CalcDate('<-CM>', Today);
+        // EndDate := CalcDate('<CM>', Today);
+        // UserSetUp.Reset();
+        // UserSetUp.SetRange(UserSetUp."User ID", UserId);
+        // if UserSetUp.Find('-') = true then begin
+        //     UserSetUp."Allow Posting From" := StartDate;
+        //     UserSetUp."Allow Posting To" := EndDate;
+        //     UserSetUp.Modify();
+        // end;
     end;
     //5)---------------------------------Over look the printed option when making payment vouches
     [EventSubscriber(ObjectType::Codeunit, 229, 'OnBeforePrintCheckProcedure', '', false, false)]
@@ -66,7 +71,7 @@ codeunit 51516037 "EventSubscribers"
     end;
 
 
-     [EventSubscriber(ObjectType::Table, Database::Customer, 'OnBeforeCheckBlockedCust', '', false, false)]
+    [EventSubscriber(ObjectType::Table, Database::Customer, 'OnBeforeCheckBlockedCust', '', false, false)]
     local procedure OnBeforeCheckBlockedCust(Customer: Record Customer; Source: Option; DocType: Option; Shipment: Boolean; Transaction: Boolean; var IsHandled: Boolean);
     begin
         if ((DocType = 0) AND (Customer."No." = '50000')) then begin

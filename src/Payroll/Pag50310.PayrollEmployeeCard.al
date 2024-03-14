@@ -13,16 +13,17 @@ page 50310 "Payroll Employee Card."
         {
             group(General)
             {
-                field("No."; "No.")
-                {
-                    ApplicationArea = All;
-                    Caption = 'Staff No';
-                }
                 field("Payroll No"; "Payroll No")
                 {
                     ApplicationArea = All;
                     Caption = 'Sacco Member No.';
                 }
+                field("No."; "No.")
+                {
+                    ApplicationArea = All;
+                    Caption = 'Staff No';
+                }
+
                 field("Full Name"; "Full Name")
                 {
                     ApplicationArea = All;
@@ -47,6 +48,7 @@ page 50310 "Payroll Employee Card."
                 field("Next Increment Date"; "Next Increment Date") //transaction priod month
                 {
                     ApplicationArea = All;
+                    Visible = false;
                 }
                 field(Gender; Gender)
                 {
@@ -307,29 +309,30 @@ page 50310 "Payroll Employee Card."
                     ContrInfo.Reset;
                     objPeriod.Reset;
                     objPeriod.SetRange(objPeriod.Closed, false);
-                    if objPeriod.Find('-')then begin
-                        SelectedPeriod:=objPeriod."Date Opened";
-                        varPeriodMonth:=objPeriod."Period Month";
+                    if objPeriod.Find('-') then begin
+                        SelectedPeriod := objPeriod."Date Opened";
+                        varPeriodMonth := objPeriod."Period Month";
                         SalCard.Get("No.");
                     end;
                     //For Multiple Payroll
                     if ContrInfo."Multiple Payroll" then begin
-                        PayrollDefined:='';
+                        PayrollDefined := '';
                         PayrollType.Reset;
                         PayrollType.SetCurrentKey(EntryNo);
                         if PayrollType.FindFirst then begin
-                            NoofRecords:=PayrollType.Count;
-                            i:=0;
-                            repeat i+=1;
-                                PayrollDefined:=PayrollDefined + '&' + PayrollType."Payroll Code";
-                                if i < NoofRecords then PayrollDefined:=PayrollDefined + ',' until PayrollType.Next = 0;
+                            NoofRecords := PayrollType.Count;
+                            i := 0;
+                            repeat
+                                i += 1;
+                                PayrollDefined := PayrollDefined + '&' + PayrollType."Payroll Code";
+                                if i < NoofRecords then PayrollDefined := PayrollDefined + ',' until PayrollType.Next = 0;
                         end;
                         //Selection := STRMENU(PayrollDefined,NoofRecords);
                         PayrollType.Reset;
                         PayrollType.SetRange(PayrollType.EntryNo, Selection);
-                        if PayrollType.Find('-')then begin
+                        if PayrollType.Find('-') then begin
                             //PayrollCode:=PayrollType."Payroll Code";
-                            PayrollCode:=HrEmployee."Posting Group";
+                            PayrollCode := HrEmployee."Posting Group";
                         end;
                     end;
                     //Delete all Records from the prPeriod Transactions for Reprocessing
@@ -340,20 +343,21 @@ page 50310 "Payroll Employee Card."
                         ObjPayrollTransactions.Reset;
                         ObjPayrollTransactions.SetRange(ObjPayrollTransactions."Payroll Period", objPeriod."Date Opened");
                         ObjPayrollTransactions.SetRange("Employee Code", "No.");
-                        if ObjPayrollTransactions.Find('-')then begin
+                        if ObjPayrollTransactions.Find('-') then begin
                             ObjPayrollTransactions.DeleteAll;
                         end;
                     end;
                     PayrollEmployerDed.Reset;
                     PayrollEmployerDed.SetRange(PayrollEmployerDed."Payroll Period", SelectedPeriod);
                     PayrollEmployerDed.SetRange("Employee Code", "No.");
-                    if PayrollEmployerDed.Find('-')then PayrollEmployerDed.DeleteAll;
+                    if PayrollEmployerDed.Find('-') then PayrollEmployerDed.DeleteAll;
                     //*********************************************************************************************add interest
                     PayrollEmployDed.Reset;
                     PayrollEmployDed.SetRange(PayrollEmployDed."No.", "No.");
                     PayrollEmployDed.SetRange(PayrollEmployDed."IsCoop/LnRep", true);
-                    if PayrollEmployDed.FindSet()then begin
-                        repeat PayrollEmployDed."Interest Charged":=Round(PayrollEmployDed.Balance * PayrollEmployDed."Interest Rate" / 12 / 100, 1, '=');
+                    if PayrollEmployDed.FindSet() then begin
+                        repeat
+                            PayrollEmployDed."Interest Charged" := Round(PayrollEmployDed.Balance * PayrollEmployDed."Interest Rate" / 12 / 100, 1, '=');
                             //Message('Interest%1', Format(PayrollEmployDed."Interest Charged"));
                             PayrollEmployDed.Modify;
                         until PayrollEmployDed.Next = 0;
@@ -363,12 +367,13 @@ page 50310 "Payroll Employee Card."
                     HrEmployee.Reset;
                     HrEmployee.SetRange(HrEmployee.Status, HrEmployee.Status::Active);
                     HrEmployee.SetRange(HrEmployee."No.", "No.");
-                    if HrEmployee.Find('-')then begin
+                    if HrEmployee.Find('-') then begin
                         ProgressWindow.Open('Processing Salary for Employee No. #1#######');
-                        repeat Sleep(100);
+                        repeat
+                            Sleep(100);
                             if not SalCard."Suspend Pay" then begin
                                 ProgressWindow.Update(1, HrEmployee."No." + ':' + HrEmployee."First Name" + ' ' + HrEmployee."Middle Name" + ' ' + HrEmployee.Surname);
-                                if SalCard.Get(HrEmployee."No.")then ProcessPayroll.fnProcesspayroll(HrEmployee."No.", HrEmployee."Joining Date", SalCard."Basic Pay", SalCard."Pays PAYE", SalCard."Pays NSSF", SalCard."Pays NHIF", SelectedPeriod, SelectedPeriod, HrEmployee."Payroll No", '', HrEmployee."Date of Leaving", true, HrEmployee."Branch Code", PayrollCode);
+                                if SalCard.Get(HrEmployee."No.") then ProcessPayroll.fnProcesspayroll(HrEmployee."No.", HrEmployee."Joining Date", SalCard."Basic Pay", SalCard."Pays PAYE", SalCard."Pays NSSF", SalCard."Pays NHIF", SelectedPeriod, SelectedPeriod, HrEmployee."Payroll No", '', HrEmployee."Date of Leaving", true, HrEmployee."Branch Code", PayrollCode);
                             end;
                         until HrEmployee.Next = 0;
                         ProgressWindow.Close;
@@ -385,8 +390,8 @@ page 50310 "Payroll Employee Card."
                 PromotedIsBig = true;
                 PromotedOnly = true;
                 RunObject = Page "Payroll Employee Earnings.";
-                RunPageLink = "No."=FIELD("No.");
-                RunPageView = WHERE("Transaction Type"=FILTER(Income));
+                RunPageLink = "No." = FIELD("No.");
+                RunPageView = WHERE("Transaction Type" = FILTER(Income));
             }
             action("Employee Deductions")
             {
@@ -397,8 +402,8 @@ page 50310 "Payroll Employee Card."
                 PromotedIsBig = true;
                 PromotedOnly = true;
                 RunObject = Page "Payroll Employee Deductions.";
-                RunPageLink = "No."=FIELD("No.");
-                RunPageView = WHERE("Transaction Type"=FILTER(Deduction));
+                RunPageLink = "No." = FIELD("No.");
+                RunPageView = WHERE("Transaction Type" = FILTER(Deduction));
             }
             action("Employee Assignments")
             {
@@ -409,7 +414,7 @@ page 50310 "Payroll Employee Card."
                 PromotedIsBig = true;
                 PromotedOnly = true;
                 RunObject = Page "Payroll Employee Assignments.";
-                RunPageLink = "No."=FIELD("No.");
+                RunPageLink = "No." = FIELD("No.");
             }
             action("Employee Cummulatives")
             {
@@ -420,7 +425,7 @@ page 50310 "Payroll Employee Card."
                 PromotedIsBig = true;
                 PromotedOnly = true;
                 RunObject = Page "Payroll Employee Cummulatives.";
-                RunPageLink = "No."=FIELD("No.");
+                RunPageLink = "No." = FIELD("No.");
             }
             action("Send Payslip Via Email")
             {
@@ -431,7 +436,7 @@ page 50310 "Payroll Employee Card."
                 PromotedIsBig = true;
                 PromotedOnly = true;
                 RunObject = Page "Payroll Employee Cummulatives.";
-                RunPageLink = "No."=FIELD("No.");
+                RunPageLink = "No." = FIELD("No.");
             }
             action("View PaySlip")
             {
@@ -462,45 +467,47 @@ page 50310 "Payroll Employee Card."
 
                 trigger OnAction()
                 begin
-                    "Living with disability":=true;
+                    "Living with disability" := true;
                     Modify;
                 end;
             }
         }
     }
-    var PayrollEmp: Record "Payroll Employee.";
-    PayrollManager: Codeunit "Payroll Management";
-    "Payroll Period": Date;
-    PayrollCalender: Record "Payroll Calender.";
-    // PayrollMonthlyTrans: Record "Payroll Monthly Transactions.";
-    //  PayrollEmployeeDed: Record "Payroll Employee Deductions.";
-    PayrollEmployerDed: Record "Payroll Employer Deductions.";
-    objEmp: Record "Salary Processing Header";
-    SalCard: Record "Payroll Employee.";
-    objPeriod: Record "Payroll Calender.";
-    SelectedPeriod: Date;
-    PeriodName: Text[30];
-    PeriodMonth: Integer;
-    PeriodYear: Integer;
-    ProcessPayroll: Codeunit "Payroll Processing";
-    HrEmployee: Record "Payroll Employee.";
-    ProgressWindow: Dialog;
-    // prPeriodTransactions: Record "prPeriod Transactions..";
-    prEmployerDeductions: Record "Payroll Employer Deductions.";
-    PayrollType: Record "Payroll Type.";
-    Selection: Integer;
-    PayrollDefined: Text[30];
-    PayrollCode: Code[10];
-    NoofRecords: Integer;
-    i: Integer;
-    ContrInfo: Record "Control-Information.";
-    UserSetup: Record "User Setup";
-    ObjPayrollTransactions: Record "prPeriod Transactions.";
-    varPeriodMonth: Integer;
+    var
+        PayrollEmp: Record "Payroll Employee.";
+        PayrollManager: Codeunit "Payroll Management";
+        "Payroll Period": Date;
+        PayrollCalender: Record "Payroll Calender.";
+        // PayrollMonthlyTrans: Record "Payroll Monthly Transactions.";
+        //  PayrollEmployeeDed: Record "Payroll Employee Deductions.";
+        PayrollEmployerDed: Record "Payroll Employer Deductions.";
+        objEmp: Record "Salary Processing Header";
+        SalCard: Record "Payroll Employee.";
+        objPeriod: Record "Payroll Calender.";
+        SelectedPeriod: Date;
+        PeriodName: Text[30];
+        PeriodMonth: Integer;
+        PeriodYear: Integer;
+        ProcessPayroll: Codeunit "Payroll Processing";
+        HrEmployee: Record "Payroll Employee.";
+        ProgressWindow: Dialog;
+        // prPeriodTransactions: Record "prPeriod Transactions..";
+        prEmployerDeductions: Record "Payroll Employer Deductions.";
+        PayrollType: Record "Payroll Type.";
+        Selection: Integer;
+        PayrollDefined: Text[30];
+        PayrollCode: Code[10];
+        NoofRecords: Integer;
+        i: Integer;
+        ContrInfo: Record "Control-Information.";
+        UserSetup: Record "User Setup";
+        ObjPayrollTransactions: Record "prPeriod Transactions.";
+        varPeriodMonth: Integer;
     //Scale: Record "MSEA Salary Scales";
     local procedure RemoveTrans(EmpNo: Code[20]; PayrollPeriod: Date)
     begin
     end;
+
     procedure FnSendReceiptviaEmail(TransactionNo: Code[30])
     var
         MemberReg: Record Customer;
@@ -528,17 +535,17 @@ page 50310 "Payroll Employee Card."
     begin
         DialogBox.Open('Sending Payslip to  ' + Format(Receipt.Surname) + ' for period' + Format(Receipt."Selected Period"));
         //------------------->Get Key Details of Send Email
-        SendEmailTo:='';
-        SendEmailTo:=FnGetClientCodeEmail("No.");
-        EmailSubject:='';
-        EmailSubject:='Payslip for ' + Format("Selected Period");
-        EmailBody:='';
-        EmailBody:='Dear ' + Format(Surname) + '  We hope this email finds you well. Please find attached your Payslip.';
+        SendEmailTo := '';
+        SendEmailTo := FnGetClientCodeEmail("No.");
+        EmailSubject := '';
+        EmailSubject := 'Payslip for ' + Format("Selected Period");
+        EmailBody := '';
+        EmailBody := 'Dear ' + Format(Surname) + '  We hope this email finds you well. Please find attached your Payslip.';
         //------------------->Generate The Report Attachments To Send
         //---------Attachment 1
         //reportparameters := reportrun.RunRequestPage();
-        reportparameters:='<?xml version="1.0" standalone="yes"?><ReportParameters name="Payroll Payslip" id="50010"><DataItems><DataItem name="Payslip &amp; Payments">VERSION(1) SORTING(Field1) WHERE(Field1=1(' + format("No.") + '))</DataItem><DataItem name="Receipt Allocation">VERSION(1) SORTING(Field1,Field3,Field5,Field51516161,Field51516160,Field2)</DataItem></DataItems></ReportParameters>';
-        FileName:=Format("Selected Period") + '-Payslip.pdf';
+        reportparameters := '<?xml version="1.0" standalone="yes"?><ReportParameters name="Payroll Payslip" id="50010"><DataItems><DataItem name="Payslip &amp; Payments">VERSION(1) SORTING(Field1) WHERE(Field1=1(' + format("No.") + '))</DataItem><DataItem name="Receipt Allocation">VERSION(1) SORTING(Field1,Field3,Field5,Field51516161,Field51516160,Field2)</DataItem></DataItems></ReportParameters>';
+        FileName := Format("Selected Period") + '-Payslip.pdf';
         TempBlob.CreateOutStream(Outstr);
         Report.SaveAs(Report::"Payroll Payslip", reportparameters, ReportFormat::Pdf, Outstr);
         TempBlob.CreateInStream(Instr);
@@ -549,13 +556,15 @@ page 50310 "Payroll Employee Card."
         FnEmail.Send(MailToSend);
         DialogBox.Close();
     end;
-    local procedure FnGetClientCodeEmail(ClientCode: Code[50]): Text[100]var
+
+    local procedure FnGetClientCodeEmail(ClientCode: Code[50]): Text[100]
+    var
         PayrollEmp: Record "Payroll Employee.";
         receipt: Record "Payroll Employee.";
     begin
         PayrollEmp.Reset();
         PayrollEmp.SetRange(PayrollEmp."No.", ClientCode);
-        if PayrollEmp.Find('-')then begin
+        if PayrollEmp.Find('-') then begin
             exit(PayrollEmp."Employee Email");
         end;
     end;

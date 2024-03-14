@@ -46,6 +46,8 @@ Table 51516005 "Funds Transfer Line"
         }
         field(18; "Bank Balance"; Decimal)
         {
+            CalcFormula = sum("Bank Account Ledger Entry".Amount where("Bank Account No." = field("Receiving Bank Account")));
+            FieldClass = FlowField;
         }
         field(19; "Bank Balance(LCY)"; Decimal)
         {

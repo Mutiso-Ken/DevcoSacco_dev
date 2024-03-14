@@ -42,7 +42,7 @@
 //         LogInTimeReg.LineNo := LineNo;
 //         LogInTimeReg.Name := USERID;
 //         LogInTimeReg.TimeLogIn := LogInTime;
-//         LogInTimeReg.DateLogIn := LogInDate;
+//        LogInTimeReg.DateLogIn := LogInDate;
 //         LogInTimeReg.Date := LogInDate;
 //         LogInTimeReg.INSERT;
 //     end;

@@ -84,35 +84,40 @@ Page 51516001 "Payment Card"
                 field(Amount; Amount)
                 {
                     ApplicationArea = Basic;
+                    trigger OnValidate()
+                    begin
+                         CurrPage.Update();
+                    end;
+                    
                 }
-                field("Amount(LCY)"; "Amount(LCY)")
-                {
-                    ApplicationArea = Basic;
-                }
-                field("VAT Amount"; "VAT Amount")
-                {
-                    ApplicationArea = Basic;
-                }
-                field("VAT Amount(LCY)"; "VAT Amount(LCY)")
-                {
-                    ApplicationArea = Basic;
-                    Visible = false;
-                }
-                field("WithHolding Tax Amount"; "WithHolding Tax Amount")
-                {
-                    ApplicationArea = Basic;
-                    Visible = false;
-                }
-                field("WithHolding Tax Amount(LCY)"; "WithHolding Tax Amount(LCY)")
-                {
-                    ApplicationArea = Basic;
-                    Visible = false;
-                }
-                field("Net Amount"; "Net Amount")
-                {
-                    ApplicationArea = Basic;
-                    Visible = false;
-                }
+                // field("Amount(LCY)"; "Amount(LCY)")
+                // {
+                //     ApplicationArea = Basic;
+                // }
+                // field("VAT Amount"; "VAT Amount")
+                // {
+                //     ApplicationArea = Basic;
+                // }
+                // field("VAT Amount(LCY)"; "VAT Amount(LCY)")
+                // {
+                //     ApplicationArea = Basic;
+                //     Visible = false;
+                // }
+                // field("WithHolding Tax Amount"; "WithHolding Tax Amount")
+                // {
+                //     ApplicationArea = Basic;
+                //     Visible = false;
+                // }
+                // field("WithHolding Tax Amount(LCY)"; "WithHolding Tax Amount(LCY)")
+                // {
+                //     ApplicationArea = Basic;
+                //     Visible = false;
+                // }
+                // field("Net Amount"; "Net Amount")
+                // {
+                //     ApplicationArea = Basic;
+                //     Visible = false;
+                // }
                 field("Net Amount(LCY)"; "Net Amount(LCY)")
                 {
                     ApplicationArea = Basic;
@@ -121,23 +126,24 @@ Page 51516001 "Payment Card"
                 field(Status; Status)
                 {
                     ApplicationArea = Basic;
+                    Editable = false;
                 }
-                field(Posted; Posted)
-                {
-                    ApplicationArea = Basic;
-                }
-                field("Posted By"; "Posted By")
-                {
-                    ApplicationArea = Basic;
-                }
-                field("Date Posted"; "Date Posted")
-                {
-                    ApplicationArea = Basic;
-                }
-                field("Time Posted"; "Time Posted")
-                {
-                    ApplicationArea = Basic;
-                }
+                // field(Posted; Posted)
+                // {
+                //     ApplicationArea = Basic;
+                // }
+                // field("Posted By"; "Posted By")
+                // {
+                //     ApplicationArea = Basic;
+                // }
+                // field("Date Posted"; "Date Posted")
+                // {
+                //     ApplicationArea = Basic;
+                // }
+                // field("Time Posted"; "Time Posted")
+                // {
+                //     ApplicationArea = Basic;
+                // }
                 field(Cashier; Cashier)
                 {
                     ApplicationArea = Basic;
@@ -226,9 +232,14 @@ Page 51516001 "Payment Card"
 
                 trigger OnAction()
                 begin
-                    if Confirm('Send  Approval request?', false) = true then begin
-                        SrestepApprovalsCodeUnit.SendPaymentVoucherRequestForApproval(rec."No.", Rec);
+                    rec.CalcFields(Amount);
+                    if Amount <> 0 then begin
+                        if Confirm('Send  Approval request?', false) = true then begin
+                            SrestepApprovalsCodeUnit.SendPaymentVoucherRequestForApproval(rec."No.", Rec);
+                        end else
+                            Message('Amount can Not be 0');
                     end;
+
                 end;
             }
             action("Cancel Approval Request")

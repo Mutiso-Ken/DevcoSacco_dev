@@ -342,7 +342,7 @@ Report 51516000 "Payment Voucher"
                   END;
                 TTotal:=0;*/
                 
-                 DOCNAME:='CHEQUE PAYMENT VOUCHER';
+                 DOCNAME:='PAYMENT VOUCHER';
                 
                 //End;
                 CalcFields("Payment Header".Amount,"Payment Header"."Net Amount","Payment Header"."WithHolding Tax Amount");

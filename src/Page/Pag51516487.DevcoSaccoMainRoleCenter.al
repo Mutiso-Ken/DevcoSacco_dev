@@ -13,7 +13,7 @@ Page 51516487 "Devco Sacco Main Role Center"
             part(Control75; "Custom Headline")
             {
                 ApplicationArea = All;
-                Visible = false;
+                Visible = true;
 
             }
 
@@ -293,7 +293,7 @@ Page 51516487 "Devco Sacco Main Role Center"
                         ApplicationArea = Basic, Suite;
                         Caption = 'Payment Reconcilations';
                         RunObject = page "Posted Payment Reconciliations";
-
+                        Visible = false;
 
                     }
 
@@ -302,6 +302,7 @@ Page 51516487 "Devco Sacco Main Role Center"
                         ApplicationArea = Basic, Suite;
                         Caption = 'Payment Reconcilations Journals';
                         RunObject = page "Payment Reconciliation Journal";
+                        Visible = false;
 
                     }
 
@@ -500,7 +501,7 @@ Page 51516487 "Devco Sacco Main Role Center"
                 Group(FundsTranfer)
                 {
                     Caption = 'Funds Tranfer';
-              
+
 
                     action("FundTransList")
                     {
@@ -1648,7 +1649,7 @@ Page 51516487 "Devco Sacco Main Role Center"
                             {
                                 Caption = 'Dividends Processing-Prorated';
                                 Image = Setup;
-                                RunObject = report "Dividend Processing-Prorated";
+                                RunObject = report "Dividend Processing Prorated";
                             }
                             action("Dividends Register")
                             {
