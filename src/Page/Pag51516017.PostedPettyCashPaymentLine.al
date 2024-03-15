@@ -41,14 +41,17 @@ Page 51516017 "Posted PettyCash Payment Line"
                 field("Amount(LCY)";"Amount(LCY)")
                 {
                     ApplicationArea = Basic;
+                    Visible=false;
                 }
                 field("Net Amount";"Net Amount")
                 {
                     ApplicationArea = Basic;
+                    Visible=false;
                 }
                 field("Net Amount(LCY)";"Net Amount(LCY)")
                 {
                     ApplicationArea = Basic;
+                    Visible=false;
                 }
             }
         }

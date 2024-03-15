@@ -8,7 +8,7 @@
         <ConnectString />
       </ConnectionProperties>
       <rd:SecurityType>None</rd:SecurityType>
-      <rd:DataSourceID>ab99fbb0-bca8-4e4a-9151-403f49d75dfc</rd:DataSourceID>
+      <rd:DataSourceID>2cdcae24-bbc2-4562-8ce2-5231a72d963d</rd:DataSourceID>
     </DataSource>
   </DataSources>
   <ReportSections>
@@ -19,7 +19,7 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>1.42448cm</Width>
+                  <Width>1.78127cm</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>1.85776cm</Width>
@@ -34,7 +34,7 @@
                   <Width>1.5138cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.70404cm</Width>
+                  <Width>1.7519cm</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>1.40795cm</Width>
@@ -43,25 +43,25 @@
                   <Width>1.4609cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>2.32914cm</Width>
+                  <Width>2.4663cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>2.91608cm</Width>
+                  <Width>3.23358cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.8842cm</Width>
+                  <Width>1.96357cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.49756cm</Width>
+                  <Width>1.77836cm</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>1.35598cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.50976cm</Width>
+                  <Width>1.58914cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>2.20169cm</Width>
+                  <Width>2.41336cm</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -77,10 +77,10 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>MONTH</Value>
+                                  <Value EvaluationMode="Auto">MONTH</Value>
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
-                                    <FontSize>8pt</FontSize>
+                                    <FontSize>9pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
@@ -132,10 +132,10 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Basic Salary</Value>
+                                  <Value EvaluationMode="Auto">Basic Salary</Value>
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
-                                    <FontSize>8pt</FontSize>
+                                    <FontSize>9pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
@@ -187,10 +187,10 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Benefits Non-Cash</Value>
+                                  <Value EvaluationMode="Auto">Benefits Non-Cash</Value>
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
-                                    <FontSize>8pt</FontSize>
+                                    <FontSize>9pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
@@ -242,10 +242,10 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Value Of Quarters</Value>
+                                  <Value EvaluationMode="Auto">Value Of Quarters</Value>
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
-                                    <FontSize>8pt</FontSize>
+                                    <FontSize>9pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
@@ -297,10 +297,10 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Total Gross Pay</Value>
+                                  <Value EvaluationMode="Auto">Total Gross Pay</Value>
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
-                                    <FontSize>8pt</FontSize>
+                                    <FontSize>9pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
@@ -352,7 +352,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Defined Contribution Retirement Scheme</Value>
+                                  <Value EvaluationMode="Auto">Defined Contribution Retirement Scheme</Value>
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -410,7 +410,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Owner Occupier  interest</Value>
+                                  <Value EvaluationMode="Auto">Owner Occupier  interest</Value>
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -465,10 +465,10 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Retirement Contribution &amp;  Owner Occupier</Value>
+                                  <Value EvaluationMode="Auto">Retirement Contribution &amp;  Owner Occupier</Value>
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
-                                    <FontSize>8pt</FontSize>
+                                    <FontSize>9pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
@@ -520,7 +520,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Taxable Pay Payroll </Value>
+                                  <Value EvaluationMode="Auto">Taxable Pay Payroll </Value>
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -575,7 +575,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Tax Charged </Value>
+                                  <Value EvaluationMode="Auto">Tax Charged </Value>
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -630,7 +630,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Tax Relief </Value>
+                                  <Value EvaluationMode="Auto">Tax Relief </Value>
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -687,7 +687,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>PAYE</Value>
+                                  <Value EvaluationMode="Auto">PAYE</Value>
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -747,7 +747,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value />
+                                  <Value EvaluationMode="Auto" />
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -802,7 +802,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>A</Value>
+                                  <Value EvaluationMode="Auto">A</Value>
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -857,7 +857,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>B</Value>
+                                  <Value EvaluationMode="Auto">B</Value>
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -912,7 +912,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>C</Value>
+                                  <Value EvaluationMode="Auto">C</Value>
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -967,7 +967,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>D</Value>
+                                  <Value EvaluationMode="Auto">D</Value>
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -1022,7 +1022,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>E</Value>
+                                  <Value EvaluationMode="Auto">E</Value>
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -1080,7 +1080,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>F </Value>
+                                  <Value EvaluationMode="Auto">F </Value>
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -1135,7 +1135,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>G</Value>
+                                  <Value EvaluationMode="Auto">G</Value>
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -1190,7 +1190,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>H</Value>
+                                  <Value EvaluationMode="Auto">H</Value>
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -1245,7 +1245,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>J</Value>
+                                  <Value EvaluationMode="Auto">J</Value>
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -1300,7 +1300,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>K</Value>
+                                  <Value EvaluationMode="Auto">K</Value>
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -1357,7 +1357,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>L</Value>
+                                  <Value EvaluationMode="Auto">L</Value>
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -1417,7 +1417,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value />
+                                  <Value EvaluationMode="Auto" />
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -1472,7 +1472,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value />
+                                  <Value EvaluationMode="Auto" />
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -1527,7 +1527,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value />
+                                  <Value EvaluationMode="Auto" />
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -1582,7 +1582,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value />
+                                  <Value EvaluationMode="Auto" />
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -1637,7 +1637,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value />
+                                  <Value EvaluationMode="Auto" />
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -1692,7 +1692,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>E1</Value>
+                                  <Value EvaluationMode="Auto">E1</Value>
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -1707,7 +1707,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>30%</Value>
+                                  <Value EvaluationMode="Auto">30%</Value>
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -1762,7 +1762,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>E2</Value>
+                                  <Value EvaluationMode="Auto">E2</Value>
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -1777,7 +1777,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Actual</Value>
+                                  <Value EvaluationMode="Auto">Actual</Value>
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -1832,7 +1832,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>E3</Value>
+                                  <Value EvaluationMode="Auto">E3</Value>
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -1847,7 +1847,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>FIXED</Value>
+                                  <Value EvaluationMode="Auto">FIXED</Value>
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -1902,7 +1902,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Amount of Interest</Value>
+                                  <Value EvaluationMode="Auto">Amount of Interest</Value>
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -1957,7 +1957,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Lowest of E added to F</Value>
+                                  <Value EvaluationMode="Auto">Lowest of E added to F</Value>
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -2012,7 +2012,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>D - G</Value>
+                                  <Value EvaluationMode="Auto">D - G</Value>
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -2067,7 +2067,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value />
+                                  <Value EvaluationMode="Auto" />
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -2122,7 +2122,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>PersonalRelief</Value>
+                                  <Value EvaluationMode="Auto">PersonalRelief</Value>
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -2177,7 +2177,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Insurance Relief </Value>
+                                  <Value EvaluationMode="Auto">Insurance Relief </Value>
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -2232,7 +2232,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value />
+                                  <Value EvaluationMode="Auto" />
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -2292,7 +2292,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!MonthText.Value</Value>
+                                  <Value EvaluationMode="Auto">=Fields!MonthText.Value</Value>
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
                                     <FontSize>7pt</FontSize>
@@ -2344,7 +2344,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Sum(Fields!BasicPay_PayrollEmployeeP9.Value)</Value>
+                                  <Value EvaluationMode="Auto">=Sum(Fields!BasicPay_PayrollEmployeeP9.Value)</Value>
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
                                     <FontSize>7pt</FontSize>
@@ -2397,7 +2397,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Sum(Fields!Benefits_PayrollEmployeeP9.Value)</Value>
+                                  <Value EvaluationMode="Auto">=Sum(Fields!Benefits_PayrollEmployeeP9.Value)</Value>
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
                                     <FontSize>7pt</FontSize>
@@ -2450,7 +2450,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Sum(Fields!ValueOfQuarters_PayrollEmployeeP9.Value)</Value>
+                                  <Value EvaluationMode="Auto">=Sum(Fields!ValueOfQuarters_PayrollEmployeeP9.Value)</Value>
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
                                     <FontSize>7pt</FontSize>
@@ -2503,7 +2503,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!GrossPay_PayrollEmployeeP9.Value</Value>
+                                  <Value EvaluationMode="Auto">=Fields!GrossPay_PayrollEmployeeP9.Value</Value>
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
                                     <FontSize>7pt</FontSize>
@@ -2556,7 +2556,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!BasicPay_PayrollEmployeeP9.Value*0.3</Value>
+                                  <Value EvaluationMode="Auto">=Fields!BasicPay_PayrollEmployeeP9.Value*0.3</Value>
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
                                     <FontSize>7pt</FontSize>
@@ -2609,7 +2609,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!PenNSSF.Value</Value>
+                                  <Value EvaluationMode="Auto">=Fields!PenNSSF.Value</Value>
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
                                     <FontSize>7pt</FontSize>
@@ -2662,7 +2662,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Sum(Fields!FixedContribution.Value)</Value>
+                                  <Value EvaluationMode="Auto">=Sum(Fields!FixedContribution.Value)</Value>
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
                                     <FontSize>7pt</FontSize>
@@ -2715,7 +2715,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Sum(Fields!OwnerOccupierInterest_PayrollEmployeeP9.Value)</Value>
+                                  <Value EvaluationMode="Auto">=Sum(Fields!OwnerOccupierInterest_PayrollEmployeeP9.Value)</Value>
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
                                     <FontSize>7pt</FontSize>
@@ -2768,7 +2768,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=First(Fields!Amount1.Value)</Value>
+                                  <Value EvaluationMode="Auto">=First(Fields!Amount1.Value)</Value>
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
                                     <FontSize>7pt</FontSize>
@@ -2821,7 +2821,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=First(Fields!Amount3.Value)</Value>
+                                  <Value EvaluationMode="Auto">=First(Fields!Amount3.Value)</Value>
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
                                     <FontSize>7pt</FontSize>
@@ -2874,7 +2874,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Sum(Fields!TaxCharged_PayrollEmployeeP9.Value)</Value>
+                                  <Value EvaluationMode="Auto">=Sum(Fields!TaxCharged_PayrollEmployeeP9.Value)</Value>
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
                                     <FontSize>7pt</FontSize>
@@ -2927,7 +2927,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Sum(Fields!TaxRelief_PayrollEmployeeP9.Value)</Value>
+                                  <Value EvaluationMode="Auto">=Sum(Fields!TaxRelief_PayrollEmployeeP9.Value)</Value>
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
                                     <FontSize>7pt</FontSize>
@@ -2980,7 +2980,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Sum(Fields!InsuranceRelief_PayrollEmployeeP9.Value)</Value>
+                                  <Value EvaluationMode="Auto">=Sum(Fields!InsuranceRelief_PayrollEmployeeP9.Value)</Value>
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
                                     <FontSize>7pt</FontSize>
@@ -3033,7 +3033,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Sum(Fields!TaxCharged_PayrollEmployeeP9.Value)-(Fields!TaxRelief_PayrollEmployeeP9.Value)-(Fields!InsuranceRelief_PayrollEmployeeP9.Value)</Value>
+                                  <Value EvaluationMode="Auto">=Sum(Fields!TaxCharged_PayrollEmployeeP9.Value)-(Fields!TaxRelief_PayrollEmployeeP9.Value)-(Fields!InsuranceRelief_PayrollEmployeeP9.Value)</Value>
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
                                     <FontSize>7pt</FontSize>
@@ -3091,7 +3091,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Total</Value>
+                                  <Value EvaluationMode="Auto">Total</Value>
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
                                     <FontSize>7pt</FontSize>
@@ -3144,7 +3144,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Sum(Fields!BasicPay_PayrollEmployeeP9.Value)</Value>
+                                  <Value EvaluationMode="Auto">=Sum(Fields!BasicPay_PayrollEmployeeP9.Value)</Value>
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
                                     <FontSize>7pt</FontSize>
@@ -3198,7 +3198,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Sum(Fields!Benefits_PayrollEmployeeP9.Value)</Value>
+                                  <Value EvaluationMode="Auto">=Sum(Fields!Benefits_PayrollEmployeeP9.Value)</Value>
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
                                     <FontSize>7pt</FontSize>
@@ -3252,7 +3252,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Sum(Fields!ValueOfQuarters_PayrollEmployeeP9.Value)</Value>
+                                  <Value EvaluationMode="Auto">=Sum(Fields!ValueOfQuarters_PayrollEmployeeP9.Value)</Value>
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
                                     <FontSize>7pt</FontSize>
@@ -3306,7 +3306,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=sum(Fields!GrossPay_PayrollEmployeeP9.Value)</Value>
+                                  <Value EvaluationMode="Auto">=sum(Fields!GrossPay_PayrollEmployeeP9.Value)</Value>
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
                                     <FontSize>7pt</FontSize>
@@ -3360,7 +3360,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Sum(Fields!BasicPay_PayrollEmployeeP9.Value*0.3)</Value>
+                                  <Value EvaluationMode="Auto">=Sum(Fields!BasicPay_PayrollEmployeeP9.Value*0.3)</Value>
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
                                     <FontSize>7pt</FontSize>
@@ -3414,7 +3414,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=SUM(Fields!PenNSSF.Value)</Value>
+                                  <Value EvaluationMode="Auto">=SUM(Fields!PenNSSF.Value)</Value>
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
                                     <FontSize>7pt</FontSize>
@@ -3468,7 +3468,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Sum(Fields!FixedContribution.Value+Fields!Pension.Value)</Value>
+                                  <Value EvaluationMode="Auto">=Sum(Fields!FixedContribution.Value)</Value>
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
                                     <FontSize>7pt</FontSize>
@@ -3522,7 +3522,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Sum(Fields!OwnerOccupierInterest_PayrollEmployeeP9.Value)</Value>
+                                  <Value EvaluationMode="Auto">=Sum(Fields!OwnerOccupierInterest_PayrollEmployeeP9.Value)</Value>
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
                                     <FontSize>7pt</FontSize>
@@ -3576,12 +3576,12 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=sum(Fields!Amount1.Value)</Value>
+                                  <Value EvaluationMode="Auto">=sum(Fields!Amount1.Value)</Value>
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
                                     <FontSize>7pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
-                                    <Format>#,0.00;(#,0.00)</Format>
+                                    <Format>0.00;(0.00)</Format>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -3593,6 +3593,26 @@
                             <Border>
                               <Style>Solid</Style>
                             </Border>
+                            <TopBorder>
+                              <Color>Black</Color>
+                              <Style>Solid</Style>
+                              <Width>1pt</Width>
+                            </TopBorder>
+                            <BottomBorder>
+                              <Color>Black</Color>
+                              <Style>Solid</Style>
+                              <Width>1pt</Width>
+                            </BottomBorder>
+                            <LeftBorder>
+                              <Color>Black</Color>
+                              <Style>Solid</Style>
+                              <Width>1pt</Width>
+                            </LeftBorder>
+                            <RightBorder>
+                              <Color>Black</Color>
+                              <Style>Solid</Style>
+                              <Width>1pt</Width>
+                            </RightBorder>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -3610,7 +3630,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=sum(Fields!Amount3.Value)</Value>
+                                  <Value EvaluationMode="Auto">=sum(Fields!Amount3.Value)</Value>
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
                                     <FontSize>7pt</FontSize>
@@ -3664,7 +3684,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Sum(Fields!TaxCharged_PayrollEmployeeP9.Value)</Value>
+                                  <Value EvaluationMode="Auto">=Sum(Fields!TaxCharged_PayrollEmployeeP9.Value)</Value>
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
                                     <FontSize>7pt</FontSize>
@@ -3718,7 +3738,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Sum(Fields!InsuranceRelief_PayrollEmployeeP9.Value)+Sum(Fields!TaxRelief_PayrollEmployeeP9.Value)</Value>
+                                  <Value EvaluationMode="Auto">=Sum(Fields!InsuranceRelief_PayrollEmployeeP9.Value)+Sum(Fields!TaxRelief_PayrollEmployeeP9.Value)</Value>
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
                                     <FontSize>7pt</FontSize>
@@ -3774,11 +3794,13 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=(Sum(Fields!TaxCharged_PayrollEmployeeP9.Value)-Sum((Fields!TaxRelief_PayrollEmployeeP9.Value)+(Fields!InsuranceRelief_PayrollEmployeeP9.Value)))</Value>
+                                  <Value EvaluationMode="Auto">=Sum(Fields!PAYE_PayrollEmployeeP9.Value)</Value>
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
                                     <FontSize>7pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
                                     <Format>n2</Format>
+                                    <Color>Red</Color>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -3861,10 +3883,10 @@
               </TablixMembers>
             </TablixRowHierarchy>
             <DataSetName>DataSet_Result</DataSetName>
-            <Top>2.28906cm</Top>
-            <Left>0.0635cm</Left>
+            <Top>2.11574cm</Top>
+            <Left>0.73025cm</Left>
             <Height>3.87312cm</Height>
-            <Width>26.51429cm</Width>
+            <Width>28.02481cm</Width>
             <Style>
               <Border>
                 <Style>Solid</Style>
@@ -3898,7 +3920,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=First(Fields!FirstName_HREmployees.Value, "DataSet_Result")</Value>
+                    <Value EvaluationMode="Auto">=First(Fields!FirstName_HREmployees.Value, "DataSet_Result")</Value>
                     <Style>
                       <FontFamily>Segoe UI</FontFamily>
                       <FontSize>9pt</FontSize>
@@ -3909,8 +3931,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>FirstName_HREmployees</rd:DefaultName>
-            <Top>0.34971cm</Top>
-            <Left>4.91984cm</Left>
+            <Top>0.17639cm</Top>
+            <Left>5.58659cm</Left>
             <Height>0.6cm</Height>
             <Width>5.60797cm</Width>
             <ZIndex>1</ZIndex>
@@ -3931,7 +3953,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>Employee First Name</Value>
+                    <Value EvaluationMode="Auto">Employee First Name</Value>
                     <Style>
                       <FontFamily>Segoe UI</FontFamily>
                       <FontSize>9pt</FontSize>
@@ -3943,8 +3965,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox55</rd:DefaultName>
-            <Top>0.34971cm</Top>
-            <Left>0.22966cm</Left>
+            <Top>0.17639cm</Top>
+            <Left>0.89641cm</Left>
             <Height>0.53121cm</Height>
             <Width>4.61257cm</Width>
             <ZIndex>2</ZIndex>
@@ -3965,7 +3987,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>Employee Last Name</Value>
+                    <Value EvaluationMode="Auto">Employee Last Name</Value>
                     <Style>
                       <FontFamily>Segoe UI</FontFamily>
                       <FontSize>9pt</FontSize>
@@ -3977,8 +3999,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox55</rd:DefaultName>
-            <Top>0.92325cm</Top>
-            <Left>0.22966cm</Left>
+            <Top>0.74993cm</Top>
+            <Left>0.89641cm</Left>
             <Height>0.56296cm</Height>
             <Width>4.61257cm</Width>
             <ZIndex>3</ZIndex>
@@ -3999,7 +4021,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>Personal File No.</Value>
+                    <Value EvaluationMode="Auto">Personal File No.</Value>
                     <Style>
                       <FontFamily>Segoe UI</FontFamily>
                       <FontSize>9pt</FontSize>
@@ -4011,8 +4033,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox55</rd:DefaultName>
-            <Top>1.51796cm</Top>
-            <Left>0.22966cm</Left>
+            <Top>1.34464cm</Top>
+            <Left>0.89641cm</Left>
             <Height>0.59471cm</Height>
             <Width>4.61257cm</Width>
             <ZIndex>4</ZIndex>
@@ -4033,21 +4055,21 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Fields!MiddleName_HREmployees.Value</Value>
+                    <Value EvaluationMode="Auto">=Fields!MiddleName_HREmployees.Value</Value>
                     <Style>
                       <FontFamily>Segoe UI</FontFamily>
                       <FontSize>9pt</FontSize>
                     </Style>
                   </TextRun>
                   <TextRun>
-                    <Value xml:space="preserve"> </Value>
+                    <Value xml:space="preserve" EvaluationMode="Auto"> </Value>
                     <Style>
                       <FontFamily>Segoe UI</FontFamily>
                       <FontSize>9pt</FontSize>
                     </Style>
                   </TextRun>
                   <TextRun>
-                    <Value>=First(Fields!LastName_HREmployees.Value, "DataSet_Result")</Value>
+                    <Value EvaluationMode="Auto">=First(Fields!LastName_HREmployees.Value, "DataSet_Result")</Value>
                     <Style>
                       <FontFamily>Segoe UI</FontFamily>
                       <FontSize>9pt</FontSize>
@@ -4058,8 +4080,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>LastName_HREmployees</rd:DefaultName>
-            <Top>0.92325cm</Top>
-            <Left>4.91984cm</Left>
+            <Top>0.74993cm</Top>
+            <Left>5.58659cm</Left>
             <Height>0.6cm</Height>
             <Width>5.60797cm</Width>
             <ZIndex>5</ZIndex>
@@ -4080,7 +4102,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>TOTAL CHARGEABLE PAY (COL h)</Value>
+                    <Value EvaluationMode="Auto">TOTAL CHARGEABLE PAY (COL h)</Value>
                     <Style>
                       <FontStyle>Normal</FontStyle>
                       <FontFamily>Tahoma</FontFamily>
@@ -4094,8 +4116,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox38</rd:DefaultName>
-            <Top>6.43382cm</Top>
-            <Left>0.22966cm</Left>
+            <Top>6.48275cm</Top>
+            <Left>0.89641cm</Left>
             <Height>0.6cm</Height>
             <Width>5.70146cm</Width>
             <ZIndex>6</ZIndex>
@@ -4116,7 +4138,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>IMPORTANT</Value>
+                    <Value EvaluationMode="Auto">IMPORTANT</Value>
                     <Style>
                       <FontStyle>Normal</FontStyle>
                       <FontFamily>Tahoma</FontFamily>
@@ -4130,9 +4152,9 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox49</rd:DefaultName>
-            <Top>7.09285cm</Top>
-            <Left>0.22966cm</Left>
-            <Height>0.473cm</Height>
+            <Top>7.14178cm</Top>
+            <Left>0.89641cm</Left>
+            <Height>0.6cm</Height>
             <Width>5.70146cm</Width>
             <ZIndex>7</ZIndex>
             <Style>
@@ -4152,7 +4174,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>1. Use P9A</Value>
+                    <Value EvaluationMode="Auto">1. Use P9A</Value>
                     <Style>
                       <FontStyle>Normal</FontStyle>
                       <FontSize>7pt</FontSize>
@@ -4165,8 +4187,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox61</rd:DefaultName>
-            <Top>7.58796cm</Top>
-            <Left>0.23967cm</Left>
+            <Top>7.73214cm</Top>
+            <Left>0.90642cm</Left>
             <Height>0.44125cm</Height>
             <Width>2.5cm</Width>
             <ZIndex>8</ZIndex>
@@ -4187,7 +4209,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>(a) For all liable employees and where director/employee</Value>
+                    <Value EvaluationMode="Auto">(a) For all liable employees and where director/employee</Value>
                     <Style>
                       <FontStyle>Normal</FontStyle>
                       <FontSize>7pt</FontSize>
@@ -4200,8 +4222,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox62</rd:DefaultName>
-            <Top>7.58796cm</Top>
-            <Left>2.91606cm</Left>
+            <Top>7.73214cm</Top>
+            <Left>3.58281cm</Left>
             <Height>0.44125cm</Height>
             <Width>7.09846cm</Width>
             <ZIndex>9</ZIndex>
@@ -4222,7 +4244,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>(b) Where an employee is eligible to deduction on owner occupier interest.</Value>
+                    <Value EvaluationMode="Auto">(b) Where an employee is eligible to deduction on owner occupier interest.</Value>
                     <Style>
                       <FontStyle>Normal</FontStyle>
                       <FontSize>7pt</FontSize>
@@ -4235,8 +4257,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox63</rd:DefaultName>
-            <Top>8.07154cm</Top>
-            <Left>2.88078cm</Left>
+            <Top>8.27922cm</Top>
+            <Left>3.54753cm</Left>
             <Height>0.44125cm</Height>
             <Width>9.8025cm</Width>
             <ZIndex>10</ZIndex>
@@ -4257,7 +4279,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>2. (a) Allowable interest in respect of any month mustnot exceed Kshs.12,500/= per year.</Value>
+                    <Value EvaluationMode="Auto">2. (a) Allowable interest in respect of any month mustnot exceed Kshs.12,500/= per year.</Value>
                     <Style>
                       <FontStyle>Normal</FontStyle>
                       <FontSize>7pt</FontSize>
@@ -4270,9 +4292,9 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox64</rd:DefaultName>
-            <Top>8.55513cm</Top>
-            <Left>0.23967cm</Left>
-            <Height>0.44125cm</Height>
+            <Top>8.82631cm</Top>
+            <Left>0.90642cm</Left>
+            <Height>0.473cm</Height>
             <Width>12.45362cm</Width>
             <ZIndex>11</ZIndex>
             <Style>
@@ -4292,7 +4314,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>(See back of this card for further information required by the department).</Value>
+                    <Value EvaluationMode="Auto">(See back of this card for further information required by the department).</Value>
                     <Style>
                       <FontStyle>Normal</FontStyle>
                       <FontSize>7pt</FontSize>
@@ -4307,9 +4329,9 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox65</rd:DefaultName>
-            <Top>9.07399cm</Top>
-            <Left>0.22966cm</Left>
-            <Height>0.43067cm</Height>
+            <Top>9.44042cm</Top>
+            <Left>0.89641cm</Left>
+            <Height>0.50475cm</Height>
             <Width>12.49948cm</Width>
             <ZIndex>12</ZIndex>
             <Style>
@@ -4329,7 +4351,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>TOTAL TAX CHARGED(COL.L)</Value>
+                    <Value EvaluationMode="Auto">TOTAL TAX CHARGED(COL.L)</Value>
                     <Style>
                       <FontStyle>Normal</FontStyle>
                       <FontFamily>Tahoma</FontFamily>
@@ -4343,8 +4365,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox66</rd:DefaultName>
-            <Top>6.43382cm</Top>
-            <Left>11.90307cm</Left>
+            <Top>6.48275cm</Top>
+            <Left>14.60182cm</Left>
             <Height>0.6cm</Height>
             <Width>4.69604cm</Width>
             <ZIndex>13</ZIndex>
@@ -4365,7 +4387,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>(b) Attach</Value>
+                    <Value EvaluationMode="Auto">(b) Attach</Value>
                     <Style>
                       <FontStyle>Normal</FontStyle>
                       <FontSize>7pt</FontSize>
@@ -4378,8 +4400,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox67</rd:DefaultName>
-            <Top>7.03382cm</Top>
-            <Left>11.90307cm</Left>
+            <Top>7.08275cm</Top>
+            <Left>14.60182cm</Left>
             <Height>0.56825cm</Height>
             <Width>2.5cm</Width>
             <ZIndex>14</ZIndex>
@@ -4400,7 +4422,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value> (i) Photostat copy of interest certificate and statement of account from the Financial Institution.</Value>
+                    <Value EvaluationMode="Auto"> (i) Photostat copy of interest certificate and statement of account from the Financial Institution.</Value>
                     <Style>
                       <FontStyle>Normal</FontStyle>
                       <FontSize>7pt</FontSize>
@@ -4413,8 +4435,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox68</rd:DefaultName>
-            <Top>7.06882cm</Top>
-            <Left>14.553cm</Left>
+            <Top>7.11775cm</Top>
+            <Left>17.25175cm</Left>
             <Height>0.5365cm</Height>
             <Width>11.84632cm</Width>
             <ZIndex>15</ZIndex>
@@ -4435,7 +4457,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value> (ii) THE DECLARATION duly signed by the employee.</Value>
+                    <Value EvaluationMode="Auto"> (ii) THE DECLARATION duly signed by the employee.</Value>
                     <Style>
                       <FontStyle>Normal</FontStyle>
                       <FontSize>7pt</FontSize>
@@ -4448,8 +4470,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox69</rd:DefaultName>
-            <Top>7.68321cm</Top>
-            <Left>14.553cm</Left>
+            <Top>7.73214cm</Top>
+            <Left>17.25175cm</Left>
             <Height>0.44125cm</Height>
             <Width>11.84632cm</Width>
             <ZIndex>16</ZIndex>
@@ -4470,7 +4492,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>NAMES OF MORTGAGE FINANCIAL INSTITUTION .....................................................</Value>
+                    <Value EvaluationMode="Auto">NAMES OF MORTGAGE FINANCIAL INSTITUTION .....................................................</Value>
                     <Style>
                       <FontStyle>Normal</FontStyle>
                       <FontSize>7pt</FontSize>
@@ -4483,8 +4505,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox70</rd:DefaultName>
-            <Top>8.15526cm</Top>
-            <Left>14.553cm</Left>
+            <Top>8.20419cm</Top>
+            <Left>17.25175cm</Left>
             <Height>0.473cm</Height>
             <Width>11.84632cm</Width>
             <ZIndex>17</ZIndex>
@@ -4505,7 +4527,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>L.R. No. OF OWNER OCCUPIED HOUSE........................................................................</Value>
+                    <Value EvaluationMode="Auto">L.R. No. OF OWNER OCCUPIED HOUSE........................................................................</Value>
                     <Style>
                       <FontStyle>Normal</FontStyle>
                       <FontSize>7pt</FontSize>
@@ -4518,8 +4540,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox71</rd:DefaultName>
-            <Top>8.68592cm</Top>
-            <Left>14.553cm</Left>
+            <Top>8.73485cm</Top>
+            <Left>17.25175cm</Left>
             <Height>0.473cm</Height>
             <Width>11.84632cm</Width>
             <ZIndex>18</ZIndex>
@@ -4540,7 +4562,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>DATE OF OCCUPATION...............................................................................................</Value>
+                    <Value EvaluationMode="Auto">DATE OF OCCUPATION...............................................................................................</Value>
                     <Style>
                       <FontStyle>Normal</FontStyle>
                       <FontSize>7pt</FontSize>
@@ -4553,8 +4575,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox72</rd:DefaultName>
-            <Top>9.20831cm</Top>
-            <Left>14.553cm</Left>
+            <Top>9.25724cm</Top>
+            <Left>17.25175cm</Left>
             <Height>0.473cm</Height>
             <Width>11.84632cm</Width>
             <ZIndex>19</ZIndex>
@@ -4575,7 +4597,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>Ksh. </Value>
+                    <Value EvaluationMode="Auto">Ksh. </Value>
                     <Style>
                       <FontFamily>Segoe UI</FontFamily>
                       <FontSize>8pt</FontSize>
@@ -4583,7 +4605,7 @@
                     </Style>
                   </TextRun>
                   <TextRun>
-                    <Value>=sum(Fields!Amount3.Value)</Value>
+                    <Value EvaluationMode="Auto">=sum(Fields!Amount3.Value)</Value>
                     <Style>
                       <FontFamily>Segoe UI</FontFamily>
                       <FontSize>7pt</FontSize>
@@ -4598,8 +4620,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>HTotal</rd:DefaultName>
-            <Top>6.43382cm</Top>
-            <Left>5.93112cm</Left>
+            <Top>6.48275cm</Top>
+            <Left>6.59787cm</Left>
             <Height>0.58099cm</Height>
             <Width>3.17676cm</Width>
             <ZIndex>20</ZIndex>
@@ -4620,7 +4642,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>Ksh.</Value>
+                    <Value EvaluationMode="Auto">Ksh.</Value>
                     <Style>
                       <FontFamily>Segoe UI</FontFamily>
                       <FontSize>8pt</FontSize>
@@ -4629,7 +4651,7 @@
                     </Style>
                   </TextRun>
                   <TextRun>
-                    <Value>=First(Fields!TotalL.Value, "DataSet_Result")</Value>
+                    <Value EvaluationMode="Auto">=Sum(Fields!PAYE_PayrollEmployeeP9.Value)</Value>
                     <Style>
                       <FontFamily>Segoe UI</FontFamily>
                       <FontSize>8pt</FontSize>
@@ -4644,8 +4666,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>TotalL</rd:DefaultName>
-            <Top>6.43382cm</Top>
-            <Left>16.63439cm</Left>
+            <Top>6.48275cm</Top>
+            <Left>19.33314cm</Left>
             <Height>0.6cm</Height>
             <Width>2.84396cm</Width>
             <ZIndex>21</ZIndex>
@@ -4666,7 +4688,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>EMPLOYER PIN</Value>
+                    <Value EvaluationMode="Auto">EMPLOYER PIN</Value>
                     <Style>
                       <FontFamily>Segoe UI</FontFamily>
                       <FontSize>9pt</FontSize>
@@ -4678,8 +4700,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox6</rd:DefaultName>
-            <Top>0.34971cm</Top>
-            <Left>14.79484cm</Left>
+            <Top>0.17639cm</Top>
+            <Left>15.46159cm</Left>
             <Height>0.55788cm</Height>
             <Width>3.65125cm</Width>
             <ZIndex>22</ZIndex>
@@ -4700,7 +4722,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>EMPLOYEE PIN</Value>
+                    <Value EvaluationMode="Auto">EMPLOYEE PIN</Value>
                     <Style>
                       <FontFamily>Segoe UI</FontFamily>
                       <FontSize>9pt</FontSize>
@@ -4712,8 +4734,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox6</rd:DefaultName>
-            <Top>0.95698cm</Top>
-            <Left>14.79484cm</Left>
+            <Top>0.78366cm</Top>
+            <Left>15.46159cm</Left>
             <Height>0.55788cm</Height>
             <Width>3.65125cm</Width>
             <ZIndex>23</ZIndex>
@@ -4734,7 +4756,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=First(Fields!PIN.Value, "DataSet_Result")</Value>
+                    <Value EvaluationMode="Auto">=First(Fields!PIN.Value, "DataSet_Result")</Value>
                     <Style>
                       <FontFamily>Segoe UI</FontFamily>
                       <FontSize>9pt</FontSize>
@@ -4745,11 +4767,44 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>PINNo_HREmployees</rd:DefaultName>
-            <Top>0.95698cm</Top>
-            <Left>18.44609cm</Left>
+            <Top>0.78366cm</Top>
+            <Left>19.11284cm</Left>
             <Height>0.5365cm</Height>
             <Width>5.63972cm</Width>
             <ZIndex>24</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox75">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value EvaluationMode="Auto">=First(Fields!TaxRegNo.Value, "DataSet_Result")</Value>
+                    <Style>
+                      <FontFamily>Segoe UI</FontFamily>
+                      <FontSize>9pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox6</rd:DefaultName>
+            <Top>0.17639cm</Top>
+            <Left>19.14812cm</Left>
+            <Height>0.55788cm</Height>
+            <Width>3.65125cm</Width>
+            <ZIndex>25</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -4767,7 +4822,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=First(Fields!No_HREmployees.Value, "DataSet_Result")</Value>
+                    <Value EvaluationMode="Auto">=First(Fields!No_HREmployees.Value, "DataSet_Result")</Value>
                     <Style>
                       <FontFamily>Segoe UI</FontFamily>
                       <FontSize>9pt</FontSize>
@@ -4778,43 +4833,10 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>No_HREmployees</rd:DefaultName>
-            <Top>1.51796cm</Top>
-            <Left>4.87751cm</Left>
+            <Top>1.34464cm</Top>
+            <Left>5.54426cm</Left>
             <Height>0.6cm</Height>
             <Width>5.6503cm</Width>
-            <ZIndex>25</ZIndex>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-            </Style>
-          </Textbox>
-          <Textbox Name="CompPINNo">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>P051131287S</Value>
-                    <Style>
-                      <FontFamily>Segoe UI</FontFamily>
-                      <FontSize>9pt</FontSize>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style />
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>CompPINNo</rd:DefaultName>
-            <Top>0.3464cm</Top>
-            <Left>18.44609cm</Left>
-            <Height>0.50475cm</Height>
-            <Width>5.63972cm</Width>
             <ZIndex>26</ZIndex>
             <Style>
               <Border>
@@ -4827,13 +4849,13 @@
             </Style>
           </Textbox>
         </ReportItems>
-        <Height>4.06154in</Height>
+        <Height>16.07633cm</Height>
         <Style />
       </Body>
-      <Width>10.51635in</Width>
+      <Width>29.6537cm</Width>
       <Page>
         <PageHeader>
-          <Height>0.94792in</Height>
+          <Height>3.66099cm</Height>
           <PrintOnFirstPage>true</PrintOnFirstPage>
           <PrintOnLastPage>true</PrintOnLastPage>
           <ReportItems>
@@ -4844,7 +4866,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>DOMESTIC TAXES DEPARTMENT</Value>
+                      <Value EvaluationMode="Auto">DOMESTIC TAXES DEPARTMENT</Value>
                       <Style>
                         <FontFamily>Segoe UI</FontFamily>
                         <FontSize>12pt</FontSize>
@@ -4859,7 +4881,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>EMPLOYER:   </Value>
+                      <Value EvaluationMode="Auto">EMPLOYER:   </Value>
                       <Style>
                         <FontFamily>Segoe UI</FontFamily>
                         <FontSize>9pt</FontSize>
@@ -4867,7 +4889,7 @@
                       </Style>
                     </TextRun>
                     <TextRun>
-                      <Value>=First(Fields!CName.Value, "DataSet_Result")</Value>
+                      <Value EvaluationMode="Auto">=First(Fields!CName.Value, "DataSet_Result")</Value>
                       <Style>
                         <FontWeight>Bold</FontWeight>
                       </Style>
@@ -4880,7 +4902,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>TAX DEDUCTION CARD YEAR :  </Value>
+                      <Value EvaluationMode="Auto">TAX DEDUCTION CARD YEAR :  </Value>
                       <Style>
                         <FontFamily>Segoe UI</FontFamily>
                         <FontSize>9pt</FontSize>
@@ -4888,7 +4910,7 @@
                       </Style>
                     </TextRun>
                     <TextRun>
-                      <Value>=First(Fields!PeriodYear_PayrollEmployeeP9.Value, "DataSet_Result")</Value>
+                      <Value EvaluationMode="Auto">=First(Fields!PeriodYear_PayrollEmployeeP9.Value, "DataSet_Result")</Value>
                       <Style>
                         <FontWeight>Bold</FontWeight>
                       </Style>
@@ -4900,8 +4922,8 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox10</rd:DefaultName>
-              <Top>0.30807cm</Top>
-              <Left>9.8525cm</Left>
+              <Top>0.8475cm</Top>
+              <Left>8.32298cm</Left>
               <Height>1.76911cm</Height>
               <Width>12.26662cm</Width>
               <Style>
@@ -4918,8 +4940,8 @@
               <Source>Embedded</Source>
               <Value>kra_logo</Value>
               <Sizing>FitProportional</Sizing>
-              <Top>0.28643cm</Top>
-              <Left>2.35032cm</Left>
+              <Top>0.82586cm</Top>
+              <Left>0.8208cm</Left>
               <Height>1.96714cm</Height>
               <Width>7.32579cm</Width>
               <ZIndex>1</ZIndex>
@@ -4934,8 +4956,8 @@
               <Value>=First(Fields!CPic.Value, "DataSet_Result")</Value>
               <MIMEType>image/png</MIMEType>
               <Sizing>FitProportional</Sizing>
-              <Top>0.28643cm</Top>
-              <Left>23.93541cm</Left>
+              <Top>0.82586cm</Top>
+              <Left>22.40589cm</Left>
               <Height>1.79075cm</Height>
               <Width>2.34667cm</Width>
               <ZIndex>2</ZIndex>
@@ -4952,10 +4974,22 @@
             </Border>
           </Style>
         </PageHeader>
-        <PageHeight>8.5in</PageHeight>
-        <PageWidth>11in</PageWidth>
-        <RightMargin>0.2in</RightMargin>
-        <BottomMargin>0.2in</BottomMargin>
+        <PageFooter>
+          <Height>0.84667cm</Height>
+          <PrintOnFirstPage>true</PrintOnFirstPage>
+          <PrintOnLastPage>true</PrintOnLastPage>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+          </Style>
+        </PageFooter>
+        <PageHeight>21cm</PageHeight>
+        <PageWidth>29.7cm</PageWidth>
+        <LeftMargin>0cm</LeftMargin>
+        <RightMargin>0cm</RightMargin>
+        <TopMargin>0cm</TopMargin>
+        <BottomMargin>0cm</BottomMargin>
         <Style />
       </Page>
     </ReportSection>
@@ -5008,8 +5042,8 @@ OOFhmJTJEjBkGo6CA1a4D41CLgdZmaCpEK8IER7jPlQjGfZmYwYZmqxZEhiCG2nACHyhb79GGdfUmq2J
   </EmbeddedImages>
   <Language>=User!Language</Language>
   <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
-  <rd:ReportUnitType>Inch</rd:ReportUnitType>
-  <rd:ReportID>0eeb6585-38ae-40f1-885b-8d50088d51b4</rd:ReportID>
+  <rd:ReportUnitType>Cm</rd:ReportUnitType>
+  <rd:ReportID>b219e91b-fba0-44fb-875c-97e39ed43d02</rd:ReportID>
   <DataSets>
     <DataSet Name="DataSet_Result">
       <Fields>

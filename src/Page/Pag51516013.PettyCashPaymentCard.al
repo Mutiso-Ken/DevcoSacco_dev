@@ -3,6 +3,7 @@ Page 51516013 "PettyCash Payment Card"
 {
     PageType = Card;
     SourceTable = "Payment Header";
+    Caption = 'Petty Cash Application';
     SourceTableView = where("Payment Type" = const("Petty Cash"),
                             Posted = const(false));
 
@@ -84,23 +85,24 @@ Page 51516013 "PettyCash Payment Card"
                 field(Status; Status)
                 {
                     ApplicationArea = Basic;
+                    Editable = false;
                 }
-                field(Posted; Posted)
-                {
-                    ApplicationArea = Basic;
-                }
-                field("Posted By"; "Posted By")
-                {
-                    ApplicationArea = Basic;
-                }
-                field("Date Posted"; "Date Posted")
-                {
-                    ApplicationArea = Basic;
-                }
-                field("Time Posted"; "Time Posted")
-                {
-                    ApplicationArea = Basic;
-                }
+                // field(Posted; Posted)
+                // {
+                //     ApplicationArea = Basic;
+                // }
+                // field("Posted By"; "Posted By")
+                // {
+                //     ApplicationArea = Basic;
+                // }
+                // field("Date Posted"; "Date Posted")
+                // {
+                //     ApplicationArea = Basic;
+                // }
+                // field("Time Posted"; "Time Posted")
+                // {
+                //     ApplicationArea = Basic;
+                // }
                 field(Cashier; Cashier)
                 {
                     ApplicationArea = Basic;
@@ -176,16 +178,17 @@ Page 51516013 "PettyCash Payment Card"
                 PromotedIsBig = true;
 
                 trigger OnAction()
+                var
+                    Text001: label 'This request is already pending approval';
                 begin
-                    TestField(Status, Status::New);
+                    rec.CalcFields(Amount);
+                    if Status <> Status::New then
+                        Error(Text001);
 
-                    /*DocType:=DocType::"Payment Voucher";
-                    CLEAR(TableID);
-                    TableID:=DATABASE::"Payment Header";
-                    IF ApprovalMgt.SendApproval(TableID,Rec."No.",DocType,Status) THEN;
-                    */
-                    //  if ApprovalsMgmt.CheckPaymentApprovalsWorkflowEnabled(Rec) then
-                    //   ApprovalsMgmt.OnSendPaymentDocForApproval(Rec);
+                    if Confirm('Send  Approval request?', false) = true then begin
+                        SrestepApprovalsCodeUnit.SendPaymentVoucherRequestForApproval(rec."No.", Rec);
+
+                    end;
 
                 end;
             }
@@ -240,6 +243,7 @@ Page 51516013 "PettyCash Payment Card"
     var
         FundsUser: Record "Funds User Setup";
         FundsManager: Codeunit "Funds Management";
+        SrestepApprovalsCodeUnit: Codeunit SurestepApprovalsCodeUnit;
         JTemplate: Code[20];
         JBatch: Code[20];
         DocType: Option Quote,"Order",Invoice,"Credit Memo","Blanket Order","Return Order","None","Payment Voucher","Petty Cash",Imprest,Requisition,ImprestSurrender,Interbank,TransportRequest,Maintenance,Fuel,ImporterExporter,"Import Permit","Export Permit",TR,"Safari Notice","Student Applications","Water Research","Consultancy Requests","Consultancy Proposals","Meals Bookings","General Journal","Student Admissions","Staff Claim",KitchenStoreRequisition,"Leave Application","Staff Advance","Staff Advance Accounting";

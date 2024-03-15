@@ -181,7 +181,14 @@ Page 51516487 "Devco Sacco Main Role Center"
                 Caption = 'Financial Management';
                 Image = Journals;
                 ToolTip = 'Collect and make payments, prepare statements, and reconcile bank accounts.';
-
+                action("Budgets")
+                {
+                    ApplicationArea = Basic, Suite;
+                    Caption = 'G/L Budgets';
+                    Image = Journal;
+                    RunObject = Page "G/L Budget Names";
+                    ToolTip = 'Post financial transactions directly to general ledger accounts and other accounts, such as bank, customer, vendor, and employee accounts. Posting with a general journal always creates entries on general ledger accounts. This is true even when, for example, you post a journal line to a customer account, because an entry is posted to a general ledger receivables account through a posting group.';
+                }
                 action("General Journals")
                 {
                     ApplicationArea = Basic, Suite;

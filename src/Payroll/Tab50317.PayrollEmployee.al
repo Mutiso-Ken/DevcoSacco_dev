@@ -36,7 +36,7 @@ table 50317 "Payroll Employee."
         field(10; "No."; Code[50])
         {
             Editable = true;
-            NotBlank=true;
+            NotBlank = true;
         }
         field(11; Surname; Text[30])
         {
@@ -424,7 +424,7 @@ table 50317 "Payroll Employee."
         field(91; "Job Group"; Code[25])
         {
             //TableRelation = "Job Grades".Code;
-            
+
         }
         field(92; Category; Option)
         {
@@ -444,7 +444,7 @@ table 50317 "Payroll Employee."
             trigger OnValidate()
             begin
                 if ObjCust.Get("Payroll No") then begin
-               "Full Name" := ObjCust.Name;
+                    "Full Name" := ObjCust.Name;
                     "Employee Email" := ObjCust."E-Mail";
                     "National ID No" := ObjCust."ID No.";
                     "PIN No" := ObjCust.Pin;
@@ -479,20 +479,24 @@ table 50317 "Payroll Employee."
             // TableRelation = "Dimension Value".Code WHERE("Global Dimension No." = CONST(2),
             //                                               "Dimension Value Type" = CONST(Standard));
         }
-        field(104; "Date Of Retirement"; Date)
+        field(105; "Date Of Retirement"; Date)
         {
             DataClassification = ToBeClassified;
             Editable = FALSE;
         }
-        field(105; "Date of Birth"; Date)
+        field(104; "Date of Birth"; Date)
         {
             DataClassification = ToBeClassified;
 
             trigger OnValidate()
+            Var
+                CurrentDate: date;
             begin
                 if "Date of Birth" > Today then
                     Error('Date of birth cannot be greater than today');
                 Age := Dates.DetermineAge("Date of Birth", Today);
+                // CurrentDate := "Date of Birth" - today;
+                // "Date Of Retirement" :=
 
             end;
         }
@@ -552,7 +556,7 @@ table 50317 "Payroll Employee."
         field(115; "Job scale"; Code[10])
         {
             DataClassification = ToBeClassified;
-           // TableRelation = Scales.Scales;
+            // TableRelation = Scales.Scales;
             //ValidateTableRelation = false;
 
             // trigger OnValidate()
@@ -669,7 +673,7 @@ table 50317 "Payroll Employee."
         empl: Record "Payroll Employee.";
         // hrset: Record "HR Setup";
         Dates: Codeunit "Dates Calculation";
-       // MSEASalaryScales: Record "MSEA Salary Scales";
+        // MSEASalaryScales: Record "MSEA Salary Scales";
         prperiod: Record "prPeriod Transactions.";
         // pen: Record "Pension Test";
         PrTrans2: Record "Payroll Employee Transactions.";

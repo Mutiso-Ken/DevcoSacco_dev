@@ -34,6 +34,7 @@ Page 51516016 "Posted PettyCash Payment Card"
                 field("Currency Code";"Currency Code")
                 {
                     ApplicationArea = Basic;
+                    Visible=false;
                 }
                 field("Bank Account";"Bank Account")
                 {
@@ -50,10 +51,12 @@ Page 51516016 "Posted PettyCash Payment Card"
                 field("Cheque Type";"Cheque Type")
                 {
                     ApplicationArea = Basic;
+                    Visible=false;
                 }
                 field("Cheque No";"Cheque No")
                 {
                     ApplicationArea = Basic;
+                    Visible=false;
                 }
                 field(Payee;Payee)
                 {
@@ -74,14 +77,17 @@ Page 51516016 "Posted PettyCash Payment Card"
                 field("Amount(LCY)";"Amount(LCY)")
                 {
                     ApplicationArea = Basic;
+                    Visible=false;
                 }
                 field("Net Amount";"Net Amount")
                 {
                     ApplicationArea = Basic;
+                    Visible=false;
                 }
                 field("Net Amount(LCY)";"Net Amount(LCY)")
                 {
                     ApplicationArea = Basic;
+                    Visible=false;
                 }
                 field("Global Dimension 1 Code";"Global Dimension 1 Code")
                 {
@@ -94,6 +100,7 @@ Page 51516016 "Posted PettyCash Payment Card"
                 field("Responsibility Center";"Responsibility Center")
                 {
                     ApplicationArea = Basic;
+                    Visible=false;
                 }
                 field(Status;Status)
                 {
@@ -102,6 +109,7 @@ Page 51516016 "Posted PettyCash Payment Card"
                 field(Posted;Posted)
                 {
                     ApplicationArea = Basic;
+                    Visible=false;
                 }
                 field("Posted By";"Posted By")
                 {
