@@ -17,21 +17,30 @@ report 51516300 "Update Member Dormancy"
                 DateFormula: Text;
                 Lastdate: Date;
             begin
-                DateFormula := '<6M>';
-                CalcFields(Customer."Last Payment Date");
-                if (Customer.Status <> Customer.Status::Withdrawal) and (Customer."Last Payment Date" <> 0D) then begin
-                    Lastdate := CalcDate(DateFormula, Customer."Last Payment Date");
-                    if Lastdate < Today then begin
-                        Customer.Status := Customer.Status::Dormant;
-                        Customer.Modify();
-                    end else
-                        if Lastdate >= Today then begin
-                            Customer.Status := Customer.Status::Active;
-                            Customer.Modify();
-                        end;
+                IF (Customer.Status = Customer.Status::Withdrawal) OR (Customer.Status = Customer.Status::Deceased) THEN
+                    CurrReport.SKIP;
+                GenSetup.GET();
+                Cust.Reset();
+                Cust.SetRange(Cust."No.", "No.");
+                if Cust.FindSet() then begin
+                    repeat
+                        DormancyDate := 0D;
+                        cust.CalcFields(Cust."Last Payment Date");
+                        if Cust."Last Payment Date" <> 0D then begin
+                            DormancyDate := CALCDATE(GenSetup."Max. Non Contribution Periods", Cust."Last Payment Date");
+                            IF DormancyDate > Today THEN begin
+                                Cust.Status := Cust.Status::Active;
+                                Cust.Modify;
+                            end;
+                            IF DormancyDate < Today THEN begin
+                                Cust.Status := Cust.Status::Dormant;
+                                Cust.MODIFY;
+                            end;
+                        END;
+                    until Cust.next = 0;
                 end;
-
             end;
+
 
         }
     }
@@ -68,4 +77,7 @@ report 51516300 "Update Member Dormancy"
 
     var
         myInt: Integer;
+        DormancyDate: Date;
+        Cust: Record Customer;
+        GenSetup: Record "Sacco General Set-Up";
 }

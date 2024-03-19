@@ -25,7 +25,8 @@ Page 51516511 "Membership Exit Card"
                 field("Member No."; "Member No.")
                 {
                     ApplicationArea = Basic;
-                    Editable = MNoEditable;
+
+                    Editable = false;
                 }
                 field("Member Name"; "Member Name")
                 {
@@ -36,6 +37,7 @@ Page 51516511 "Membership Exit Card"
                 {
                     ApplicationArea = Basic;
                     Editable = ClosingDateEditable;
+                    Caption = 'Expected Maturity Date';
                 }
                 field("Posting Date"; "Posting Date")
                 {
@@ -51,10 +53,7 @@ Page 51516511 "Membership Exit Card"
                     ApplicationArea = Basic;
                     Editable = ClosureTypeEditable;
                 }
-                field("Exit Type"; "Exit Type")
-                {
-                    ApplicationArea = Basic;
-                }
+
                 field("Total Loan"; "Total Loan")
                 {
                     ApplicationArea = Basic;
@@ -85,16 +84,17 @@ Page 51516511 "Membership Exit Card"
                 field(Payee; Payee)
                 {
                     ApplicationArea = Basic;
+                    Editable = false;
                 }
-                field("Mode Of Disbursement"; "Mode Of Disbursement")
-                {
-                    ApplicationArea = Basic;
-                    Caption = 'Payment mode';
-                    trigger OnValidate()
-                    begin
-                        UpdateControl();
-                    end;
-                }
+                // field("Mode Of Disbursement"; "Mode Of Disbursement")
+                // {
+                //     ApplicationArea = Basic;
+                //     Caption = 'Payment mode';
+                //     trigger OnValidate()
+                //     begin
+                //         UpdateControl();
+                //     end;
+                // }
                 field("Paying Bank"; "Paying Bank")
                 {
                     ApplicationArea = Basic;
@@ -106,6 +106,7 @@ Page 51516511 "Membership Exit Card"
                     ApplicationArea = Basic;
                     Caption = 'Cheque No';
                     Enabled = EnableCheque;
+                    Visible = false;
                 }
                 field("EFT Charge"; "EFT Charge")
                 {
@@ -127,11 +128,9 @@ Page 51516511 "Membership Exit Card"
                 field("Notice Date"; "Notice Date")
                 {
                     ApplicationArea = Basic;
+                    Editable = false;
                 }
-                field("Muturity Date"; "Muturity Date")
-                {
-                    ApplicationArea = Basic;
-                }
+
 
             }
         }
@@ -141,6 +140,7 @@ Page 51516511 "Membership Exit Card"
             {
                 Caption = 'Member Statistics FactBox';
                 SubPageLink = "No." = field("Member No.");
+                ApplicationArea = all;
             }
         }
     }
@@ -155,23 +155,30 @@ Page 51516511 "Membership Exit Card"
                 action("Member is  a Guarantor")
                 {
                     ApplicationArea = Basic;
-                    Caption = 'Loans Guaranteed';
+                    Caption = 'Member is  a Guarantor';
                     Image = "Report";
-                    Promoted = true;
-                    PromotedCategory = Process;
-                    PromotedIsBig = true;
-                    PromotedOnly = true;
-                    Visible = false;
 
                     trigger OnAction()
                     begin
 
-                        cust.Reset;
+                        Cust.Reset;
                         cust.SetRange(cust."No.", "Member No.");
-                        if cust.Find('-') then begin
-                            //Report.run(50503, true, false, cust);
-                        end;
+                        if Cust.Find('-') then
+                            Report.Run(51516226, true, false, Cust);
+                    end;
+                }
+                action("Member is  Guaranteed")
+                {
+                    ApplicationArea = Basic;
+                    Caption = 'Member is  Guaranteed';
+                    Image = "Report";
 
+                    trigger OnAction()
+                    begin
+                        Cust.Reset;
+                        cust.SetRange(cust."No.", "Member No.");
+                        if Cust.Find('-') then
+                            Report.Run(51516225, true, false, Cust);
                     end;
                 }
                 action("Send Approval Request")
@@ -187,20 +194,23 @@ Page 51516511 "Membership Exit Card"
                     trigger OnAction()
                     var
                         text001: label 'This batch is already pending approval';
-                        ApprovalsMgmt: Codeunit "Approvals Mgmt.";
+                        SrestepApprovalsCodeUnit: Codeunit SurestepApprovalsCodeUnit;
                     begin
-                        TESTFIELD("FOSA Account No.");
+
                         if "Mode Of Disbursement" = "Mode Of Disbursement"::Cheque then begin
                             TestField("Cheque No.");
                         end;
                         if Status <> Status::Open then
                             Error(text001);
+                        //.................................
+                        SrestepApprovalsCodeUnit.SendMembershipExitApplicationsRequestForApproval(rec."No.", Rec);
+                        //.................................
                         GenSetUp.Get();
                         //..................Send Withdrawal Approval request
-                        //FnSendWithdrawalApplicationSMS();
+                        FnSendWithdrawalApplicationSMS();
                         //...................................................
-                        Status := Status::Approved;
-                        Modify();
+
+
                     end;
                 }
                 action("Cancel Approval Request")
@@ -255,7 +265,7 @@ Page 51516511 "Membership Exit Card"
                             "closure type"::"Member Exit - Normal":
                                 FnRunPostNormalExitApplication("Member No.");
                             "closure type"::"Member Exit - Deceased":
-                                FnRunPostNormalExitApplication("Member No.");
+                                FnRunPostDeceasedExitApplication("Member No.");
                         end;
                         FnSendWithdrawalApplicationSMS
                     end;
@@ -296,7 +306,7 @@ Page 51516511 "Membership Exit Card"
         Totalavailable: Decimal;
         UnpaidDividends: Decimal;
         TotalOustanding: Decimal;
-        Vend: Record Vendor;
+        // Vend: Record Vendor;
         value2: Decimal;
         Gnljnline: Record "Gen. Journal Line";
         Totalrecovered: Decimal;
@@ -477,6 +487,7 @@ Page 51516511 "Membership Exit Card"
                 //....................Loan Posting Lines
                 NetMemberAmounts := 0;
                 InterestTobeRecovered := 0;
+                LoanTobeRecovered := 0;
                 GenSetUp.Validate(GenSetUp."Banks Charges");
                 //................................................
                 DActivity := Cust."Global Dimension 1 Code";
@@ -486,33 +497,49 @@ Page 51516511 "Membership Exit Card"
                 RunningBal := "Member Deposits";
                 Doc_No := Rec."No.";
 
+                //Debit Member Deposist
+                LineNo := LineNo + 10000;
+                SFactory.FnCreateGnlJournalLine(TemplateName, BatchName, Doc_No, LineNo, GenJournalLine."Transaction Type"::"Deposit Contribution",
+                GenJournalLine."Account Type"::Customer, MemberNo, "Posting Date", RunningBal, 'BOSA', MemberNo, 'Deposits on exit - ' + MemberNo, '');
+                //Interest Repayment
                 Loans.Reset;
                 Loans.SetRange(Loans."Client Code", MemberNo);
-                Loans.CalcFields(Loans."Outstanding Balance", Loans."Outstanding Interest");
-
-                if Loans.Find('-') then begin
+                if Loans.Findset then begin
                     repeat
+                        Loans.CalcFields(Loans."Outstanding Balance", Loans."Outstanding Interest");
                         if Loans."Oustanding Interest" > 0 then begin
                             //...........................Recover Loan Interest
                             if Loans."Oustanding Interest" > RunningBal then
                                 InterestTobeRecovered := RunningBal else
                                 InterestTobeRecovered := Loans."Oustanding Interest";
-
                             LineNo := LineNo + 10000;
-                            SFactory.FnCreateGnlJournalLine(TemplateName, BatchName, Doc_No, LineNo, GenJournalLine."Transaction Type"::"Interest Paid", GenJournalLine."Account Type"::Customer, Loans."Client Code", "Posting Date", InterestTobeRecovered * -1, 'BOSA', Loans."Loan  No.", 'Interest Due Paid on Exit - ', Loans."Loan  No.");
-                            //Loans Recovered On Exit
+                            SFactory.FnCreateGnlJournalLine(TemplateName, BatchName, Doc_No, LineNo, GenJournalLine."Transaction Type"::"Interest Paid",
+                            GenJournalLine."Account Type"::Customer, Loans."Client Code", "Posting Date", InterestTobeRecovered * -1, 'BOSA', Loans."Loan  No.", 'Interest Due Paid on Exit - ', Loans."Loan  No.");
+                            RunningBal := RunningBal - InterestTobeRecovered;
                         end;
 
-                        if Loans."Outstanding Balance" > 0 then begin
-                            if Loans."Outstanding Balance" > RunningBal then
-                                LoanTobeRecovered := RunningBal else
-                                LoanTobeRecovered := Loans."Outstanding Balance";
-                            LineNo := LineNo + 10000;
-                            SFactory.FnCreateGnlJournalLine(TemplateName, BatchName, Doc_No, LineNo, GenJournalLine."Transaction Type"::Repayment, GenJournalLine."Account Type"::Customer, Loans."Client Code", "Posting Date", LoanTobeRecovered * -1, 'BOSA', Loans."Loan  No.", 'Loan Balance paid on exit - ' + Loans."Loan  No.", Loans."Loan  No.");
-                        end;
-
-                        RunningBal := RunningBal - (InterestTobeRecovered + LoanTobeRecovered);
                     until Loans.Next = 0;
+
+                end;
+
+                //Loan Repayment
+                Loans.Reset;
+                Loans.SetRange(Loans."Client Code", MemberNo);
+                if Loans.Findset then begin
+                    repeat
+                        Loans.CalcFields(Loans."Outstanding Balance", Loans."Outstanding Interest");
+                        if Loans."Outstanding Balance" > 0 then begin
+                            If RunningBal > Loans."Outstanding Balance" then
+                                LoanTobeRecovered := Loans."Outstanding Balance" else
+                                LoanTobeRecovered := RunningBal;
+                            LineNo := LineNo + 10000;
+                            SFactory.FnCreateGnlJournalLine(TemplateName, BatchName, Doc_No, LineNo, GenJournalLine."Transaction Type"::Repayment, GenJournalLine."Account Type"::Customer, Loans."Client Code", "Posting Date", LoanTobeRecovered * -1,
+                            'BOSA', Loans."Loan  No.", 'Loan Balance paid on exit - ' + Loans."Loan  No.", Loans."Loan  No.");
+                            RunningBal := RunningBal - LoanTobeRecovered;
+                        end;
+
+                    until Loans.Next = 0;
+
                 end;
 
                 //Bank Charges
@@ -520,6 +547,8 @@ Page 51516511 "Membership Exit Card"
                 SFactory.FnCreateGnlJournalLine(TemplateName, BatchName, Doc_No, LineNo, GenJournalLine."Transaction Type"::" ", GenJournalLine."Account Type"::"G/L Account", GenSetUp."Banks Charges", "Posting Date", "EFT Charge" * -1, 'BOSA', MemberNo, 'Bank Charges for exit', '');
                 RunningBal := RunningBal - "EFT Charge";
 
+
+                //Credit Bank
                 LineNo := LineNo + 10000;
                 SFactory.FnCreateGnlJournalLine(TemplateName, BatchName, Doc_No, LineNo, GenJournalLine."Transaction Type"::" ", GenJournalLine."Account Type"::"Bank Account", "Paying Bank", "Posting Date", RunningBal * -1, 'BOSA', MemberNo, 'credit Bank Member Exit', '');
             end;
@@ -530,14 +559,18 @@ Page 51516511 "Membership Exit Card"
         GenJournalLine.SETRANGE("Journal Template Name", TemplateName);
         GenJournalLine.SETRANGE("Journal Batch Name", BatchName);
         IF GenJournalLine.FIND('-') THEN BEGIN
-            Codeunit.Run(Codeunit::"Gen. Jnl.-Post Batch", GenJournalLine);
+            //Codeunit.Run(Codeunit::"Gen. Jnl.-Post Batch", GenJournalLine);
             //Exit Member
             Cust.Reset();
             cust.SETRANGE(cust."No.", "Member No.");
             IF cust.FIND('-') THEN BEGIN
                 if (Cust."Outstanding Balance" <= 0) and (Cust."Outstanding Interest" <= 0) then begin
                     cust.Status := cust.Status::Withdrawal;
-                    cust.Blocked := cust.Blocked::All;
+                    cust."Withdrawal Application Date" := "Notice Date";
+                    Cust."Withdrawal Date" := Today;
+                    Cust."Withdrawal Fee" := "EFT Charge";
+                    Cust."Reason For Membership Withdraw" := "Reason For Withdrawal";
+                    Cust."Status - Withdrawal App." := Cust."Status - Withdrawal App."::Approved;
                     if cust.Modify(true) then begin
                         Posted := true;
                         "Closed By" := UserId;
@@ -558,6 +591,140 @@ Page 51516511 "Membership Exit Card"
 
 
     //......................................
+    local procedure FnRunPostDeceasedExitApplication(MemberNo: Code[20])
+    Var
+        Gnljnline: Record "Gen. Journal Line";
+        TotalAmount: Decimal;
+        NetMemberAmounts: Decimal;
+        Doc_No: Code[20];
+        DActivity: code[20];
+        DBranch: Code[50];
+        Cust: Record customer;
+        Generalsetup: Record "Sacco General Set-Up";
+        RunningBal: Decimal;
+        SFactory: Codeunit "SURESTEP Factory";
+        InterestTobeRecovered: Decimal;
+        LoanTobeRecovered: Decimal;
+    begin
+        GenSetUp.Get;
+        IF Cust.get(MemberNo) then begin
+            if Confirm('Proceed With Account Closure ?', false) = false then begin
+                exit;
+            end else begin
+                //....................Ensure that If Batch doesnt exist then create
+                IF NOT GenBatch.GET(TemplateName, BatchName) THEN BEGIN
+                    GenBatch.INIT;
+                    GenBatch."Journal Template Name" := TemplateName;
+                    GenBatch.Name := BatchName;
+                    GenBatch.INSERT;
+                END;
+                //....................Reset General Journal Lines
+                GenJournalLine.RESET;
+                GenJournalLine.SETRANGE("Journal Template Name", TemplateName);
+                GenJournalLine.SETRANGE("Journal Batch Name", BatchName);
+                GenJournalLine.DELETEALL;
+                //....................Loan Posting Lines
+                NetMemberAmounts := 0;
+                InterestTobeRecovered := 0;
+                LoanTobeRecovered := 0;
+                GenSetUp.Validate(GenSetUp."Banks Charges");
+                //................................................
+                DActivity := Cust."Global Dimension 1 Code";
+                DBranch := Cust."Global Dimension 2 Code";
+                //.................................
+                RunningBal := 0;
+                RunningBal := "Member Deposits";
+                Doc_No := Rec."No.";
+
+                //Debit Member Deposist
+                LineNo := LineNo + 10000;
+                SFactory.FnCreateGnlJournalLine(TemplateName, BatchName, Doc_No, LineNo, GenJournalLine."Transaction Type"::"Deposit Contribution",
+                GenJournalLine."Account Type"::Customer, MemberNo, "Posting Date", RunningBal, 'BOSA', MemberNo, 'Deposits on exit - ' + MemberNo, '');
+                //Interest Repayment
+                Loans.Reset;
+                Loans.SetRange(Loans."Client Code", MemberNo);
+                if Loans.Findset then begin
+                    repeat
+                        Loans.CalcFields(Loans."Outstanding Balance", Loans."Outstanding Interest");
+                        if Loans."Oustanding Interest" > 0 then begin
+                            //...........................Recover Loan Interest
+                            if Loans."Oustanding Interest" > RunningBal then
+                                InterestTobeRecovered := RunningBal else
+                                InterestTobeRecovered := Loans."Oustanding Interest";
+
+                            LineNo := LineNo + 10000;
+                            SFactory.FnCreateGnlJournalLine(TemplateName, BatchName, Doc_No, LineNo, GenJournalLine."Transaction Type"::"Interest Paid", GenJournalLine."Account Type"::Customer, Loans."Client Code", "Posting Date", InterestTobeRecovered * -1, 'BOSA', Loans."Loan  No.", 'Interest Due Paid on Exit - ', Loans."Loan  No.");
+
+                            RunningBal := RunningBal - InterestTobeRecovered;
+                        end;
+
+                    until Loans.Next = 0;
+                end;
+
+                //Loan Repayment
+                Loans.Reset;
+                Loans.SetRange(Loans."Client Code", MemberNo);
+                if Loans.Findset then begin
+                    repeat
+                        Loans.CalcFields(Loans."Outstanding Balance", Loans."Outstanding Interest");
+                        if Loans."Outstanding Balance" > 0 then begin
+                            if Loans."Outstanding Balance" > RunningBal then
+                                LoanTobeRecovered := RunningBal else
+                                LoanTobeRecovered := Loans."Outstanding Balance";
+                            LineNo := LineNo + 10000;
+                            SFactory.FnCreateGnlJournalLine(TemplateName, BatchName, Doc_No, LineNo, GenJournalLine."Transaction Type"::Repayment, GenJournalLine."Account Type"::Customer, Loans."Client Code", "Posting Date", LoanTobeRecovered * -1, 'BOSA', Loans."Loan  No.", 'Loan Balance paid on exit - ' + Loans."Loan  No.", Loans."Loan  No.");
+                            RunningBal := RunningBal - LoanTobeRecovered;
+                        end;
+                    until Loans.Next = 0;
+                end;
+
+                //Bank Charges
+                LineNo := LineNo + 10000;
+                SFactory.FnCreateGnlJournalLine(TemplateName, BatchName, Doc_No, LineNo, GenJournalLine."Transaction Type"::" ", GenJournalLine."Account Type"::"G/L Account", GenSetUp."Banks Charges", "Posting Date", "EFT Charge" * -1, 'BOSA', MemberNo, 'Bank Charges for exit', '');
+                RunningBal := RunningBal - "EFT Charge";
+
+
+                //Credit Bank
+                LineNo := LineNo + 10000;
+                SFactory.FnCreateGnlJournalLine(TemplateName, BatchName, Doc_No, LineNo, GenJournalLine."Transaction Type"::" ", GenJournalLine."Account Type"::"Bank Account", "Paying Bank", "Posting Date", RunningBal * -1, 'BOSA', MemberNo, 'credit Bank Member Exit', '');
+            end;
+
+        end;
+        //............................Post Lines
+        GenJournalLine.RESET;
+        GenJournalLine.SETRANGE("Journal Template Name", TemplateName);
+        GenJournalLine.SETRANGE("Journal Batch Name", BatchName);
+        IF GenJournalLine.FIND('-') THEN BEGIN
+            Codeunit.Run(Codeunit::"Gen. Jnl.-Post Batch", GenJournalLine);
+            //Exit Member
+            Cust.Reset();
+            cust.SETRANGE(cust."No.", "Member No.");
+            IF cust.FIND('-') THEN BEGIN
+                cust.CalcFields("Outstanding Balance", "Outstanding Interest");
+                if (Cust."Outstanding Balance" <= 0) and (Cust."Outstanding Interest" <= 0) then begin
+                    cust.Status := cust.Status::Deceased;
+                    cust."Withdrawal Application Date" := "Notice Date";
+                    Cust."Reason For Membership Withdraw" := "Reason For Withdrawal"::Death;
+                    Cust."Withdrawal Date" := Today;
+                    Cust."Withdrawal Fee" := "EFT Charge";
+                    Cust."Status - Withdrawal App." := Cust."Status - Withdrawal App."::Approved;
+                    if cust.Modify(true) then begin
+                        Posted := true;
+                        "Closed By" := UserId;
+                        "Closing Date" := Today;
+                        "Branch Code" := Cust."Global Dimension 2 Code";
+                        "Closed On" := Today;
+                        Status := Status::Closed;
+                        Modify(true);
+                        Message('Member Account Closure was successful');
+                        CurrPage.Close();
+                    end;
+                end else
+                    Message('The Member cannot be withdrawn because of pending Balances');
+
+            END;
+        end;
+    END;
 
 }
 

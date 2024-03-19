@@ -1080,15 +1080,10 @@ tableextension 51516079 "CustomerExt" extends Customer
                                                                    "Document No." = field("Document No. Filter")));
             FieldClass = FlowField;
         }
-        // field(69083; "Computer Shares"; Decimal)
-        // {
-        //     CalcFormula = - sum("Cust. Ledger Entry"."Amount Posted" where("Customer No." = field("No."),
-        //                                                            "Transaction Type" = filter("Computer Shares"),
-        //                                                            "Posting Date" = field("Date Filter"),
-        //                                                            Reversed = filter(false),
-        //                                                            "Document No." = field("Document No. Filter")));
-        //     FieldClass = FlowField;
-        // }
+        field(69083; "Rejoined By"; Text[100])
+        {
+           
+        }
         field(69084; "van Shares"; Decimal)
         {
             CalcFormula = - sum("Cust. Ledger Entry"."Amount Posted" where("Customer No." = field("No."),
@@ -1525,14 +1520,18 @@ tableextension 51516079 "CustomerExt" extends Customer
         {
             DataClassification = ToBeClassified;
         }
-            field(69463; "Nature of Business"; Text[100])
+        field(69463; "Nature of Business"; Text[100])
+        {
+            DataClassification = ToBeClassified;
+        }
+        field(69464; Age; Integer)
         {
             DataClassification = ToBeClassified;
         }
         field(69195; "Reason For Membership Withdraw"; Option)
         {
-            OptionCaption = 'Relocation,Financial Constraints,House/Group Challages,Join another Institution,Personal Reasons,Other';
-            OptionMembers = Relocation,"Financial Constraints","House/Group Challages","Join another Institution","Personal Reasons",Other;
+  
+            OptionMembers = ,Relocation,Expulsion,"Financial Constraints","Personal Reasons",Death;
         }
 
     }

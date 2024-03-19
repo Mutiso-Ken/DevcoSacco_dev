@@ -169,17 +169,17 @@ Report 51516250 "Account Closure Slip"
             column(Batch_No_Caption;Batch_No_CaptionLbl)
             {
             }
-        //    column(DataItem1000000004;Prepared_By________________________________________________________________Lbl)
+        //    column(DataItem1000000004;Prepared_By___________________________________Lbl)
         //    {
         //    }
-        //    column(DataItem1000000005;Certified_By______________________________________________Lbl)
+        //    column(DataItem1000000005;Certified_By____________________________Lbl)
         //    {
         //    }
         //    column(DataItem1000000007;Signature_Date______________________________________________Lbl)
         //    {
         //    }
-        //    column(DataItem1000000008;Signature_Date____________________________________________________________________________________________________________000Lbl)
-        //    // {
+        //    column(DataItem1000000008;Signature_Date_____________________________________________________________________________________________________000Lbl)
+        //    {
         //    }
             column(Member_StatusCaption;Member_StatusCaptionLbl)
             {

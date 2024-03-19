@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Report xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner" xmlns:cl="http://schemas.microsoft.com/sqlserver/reporting/2010/01/componentdefinition" xmlns="http://schemas.microsoft.com/sqlserver/reporting/2010/01/reportdefinition">
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
   <AutoRefresh>0</AutoRefresh>
   <DataSources>
     <DataSource Name="DataSource">
@@ -58,7 +58,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">=Fields!Member_No_Caption.Value</Value>
+                                  <Value>=Fields!Member_No_Caption.Value</Value>
                                   <Style>
                                     <FontFamily>Tahoma</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -86,7 +86,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">=Fields!Members__No__.Value</Value>
+                                  <Value>=Fields!Members__No__.Value</Value>
                                   <Style>
                                     <FontFamily>Tahoma</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -116,7 +116,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto" />
+                                  <Value />
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -141,7 +141,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">=Fields!Batch_No_Caption.Value</Value>
+                                  <Value>=Fields!Batch_No_Caption.Value</Value>
                                   <Style>
                                     <FontFamily>Tahoma</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -169,7 +169,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">=Fields!Members_Members__Batch_No__.Value</Value>
+                                  <Value>=Fields!Members_Members__Batch_No__.Value</Value>
                                   <Style>
                                     <FontFamily>Tahoma</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -200,7 +200,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">=Fields!COMPANYNAME.Value</Value>
+                                  <Value>=Fields!COMPANYNAME.Value</Value>
                                   <Style>
                                     <Color>#ff0000</Color>
                                   </Style>
@@ -230,7 +230,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">=Fields!CurrReport_PAGENOCaption.Value</Value>
+                                  <Value>=Fields!CurrReport_PAGENOCaption.Value</Value>
                                   <Style>
                                     <Color>#ff0000</Color>
                                   </Style>
@@ -260,7 +260,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">=Fields!ACCOUNT_CLOSURE_SLIPCaption.Value</Value>
+                                  <Value>=Fields!ACCOUNT_CLOSURE_SLIPCaption.Value</Value>
                                   <Style>
                                     <Color>#ff0000</Color>
                                   </Style>
@@ -290,7 +290,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">=Fields!P_O_BOX_75629___00200__NAIROBICaption.Value</Value>
+                                  <Value>=Fields!P_O_BOX_75629___00200__NAIROBICaption.Value</Value>
                                   <Style>
                                     <Color>#ff0000</Color>
                                   </Style>
@@ -325,7 +325,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">=Fields!Members_NameCaption.Value</Value>
+                                  <Value>=Fields!Members_NameCaption.Value</Value>
                                   <Style>
                                     <FontFamily>Tahoma</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -353,7 +353,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">=Fields!Members_Name.Value</Value>
+                                  <Value>=Fields!Members_Name.Value</Value>
                                   <Style>
                                     <FontFamily>Tahoma</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -383,7 +383,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto" />
+                                  <Value />
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -408,7 +408,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto" />
+                                  <Value />
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -433,7 +433,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">=Fields!Members__Current_Shares_.Value</Value>
+                                  <Value>=Fields!Members__Current_Shares_.Value</Value>
                                   <Style>
                                     <FontSize>7pt</FontSize>
                                     <Format>=Fields!Members__Current_Shares_Format.Value</Format>
@@ -466,7 +466,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto" />
+                                  <Value />
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -500,7 +500,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">=Fields!Members__ID_No__Caption.Value</Value>
+                                  <Value>=Fields!Members__ID_No__Caption.Value</Value>
                                   <Style>
                                     <FontFamily>Tahoma</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -528,7 +528,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">=Fields!Members__ID_No__.Value</Value>
+                                  <Value>=Fields!Members__ID_No__.Value</Value>
                                   <Style>
                                     <FontFamily>Tahoma</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -558,7 +558,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto" />
+                                  <Value />
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -583,7 +583,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto" />
+                                  <Value />
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -608,7 +608,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">=Fields!Members__Insurance_Fund_.Value</Value>
+                                  <Value>=Fields!Members__Insurance_Fund_.Value</Value>
                                   <Style>
                                     <FontSize>7pt</FontSize>
                                     <Format>=Fields!Members__Insurance_Fund_Format.Value</Format>
@@ -641,7 +641,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto" />
+                                  <Value />
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -675,7 +675,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">=Fields!Members__Payroll_Staff_No_Caption.Value</Value>
+                                  <Value>=Fields!Members__Payroll_Staff_No_Caption.Value</Value>
                                   <Style>
                                     <FontFamily>Tahoma</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -703,7 +703,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">=Fields!Members__Payroll_Staff_No_.Value</Value>
+                                  <Value>=Fields!Members__Payroll_Staff_No_.Value</Value>
                                   <Style>
                                     <FontFamily>Tahoma</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -733,7 +733,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto" />
+                                  <Value />
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -758,7 +758,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto" />
+                                  <Value />
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -783,7 +783,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">=Fields!Members__Current_Investment_Total_.Value</Value>
+                                  <Value>=Fields!Members__Current_Investment_Total_.Value</Value>
                                   <Style>
                                     <FontSize>7pt</FontSize>
                                     <Format>=Fields!Members__Current_Investment_Total_Format.Value</Format>
@@ -814,7 +814,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto" />
+                                  <Value />
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -848,7 +848,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">=Fields!Member_StatusCaption.Value</Value>
+                                  <Value>=Fields!Member_StatusCaption.Value</Value>
                                   <Style>
                                     <FontFamily>Tahoma</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -878,7 +878,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">=Fields!Members_Members_Status.Value</Value>
+                                  <Value>=Fields!Members_Members_Status.Value</Value>
                                   <Style>
                                     <FontFamily>Tahoma</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -908,7 +908,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto" />
+                                  <Value />
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -933,7 +933,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto" />
+                                  <Value />
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -958,7 +958,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">=Fields!Members__Dividend_Amount_.Value</Value>
+                                  <Value>=Fields!Members__Dividend_Amount_.Value</Value>
                                   <Style>
                                     <FontFamily>Tahoma</FontFamily>
                                     <FontSize>7pt</FontSize>
@@ -990,7 +990,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto" />
+                                  <Value />
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -1024,7 +1024,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">=Fields!Deposit_ContributionCaption.Value</Value>
+                                  <Value>=Fields!Deposit_ContributionCaption.Value</Value>
                                   <Style>
                                     <FontFamily>Tahoma</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -1055,7 +1055,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto" />
+                                  <Value />
                                   <Style>
                                     <FontFamily>Tahoma</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -1086,7 +1086,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">=Fields!Current_Shares___1.Value</Value>
+                                  <Value>=Fields!Current_Shares___1.Value</Value>
                                   <Style>
                                     <FontFamily>Tahoma</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -1117,7 +1117,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto" />
+                                  <Value />
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -1142,7 +1142,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto" />
+                                  <Value />
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -1167,7 +1167,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto" />
+                                  <Value />
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -1201,7 +1201,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">=Fields!ADD_Caption.Value</Value>
+                                  <Value>=Fields!ADD_Caption.Value</Value>
                                   <Style>
                                     <FontFamily>Tahoma</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -1230,7 +1230,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">=Fields!ADD__Unpaid_DividendsCaption.Value</Value>
+                                  <Value>=Fields!ADD__Unpaid_DividendsCaption.Value</Value>
                                   <Style>
                                     <FontFamily>Tahoma</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -1260,7 +1260,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">=Fields!UnpaidDividends.Value</Value>
+                                  <Value>=Fields!UnpaidDividends.Value</Value>
                                   <Style>
                                     <FontFamily>Tahoma</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -1291,7 +1291,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto" />
+                                  <Value />
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -1316,7 +1316,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto" />
+                                  <Value />
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -1341,7 +1341,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto" />
+                                  <Value />
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -1375,7 +1375,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto" />
+                                  <Value />
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -1400,7 +1400,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">=Fields!Insurance_Fund_Caption.Value</Value>
+                                  <Value>=Fields!Insurance_Fund_Caption.Value</Value>
                                   <Style>
                                     <FontFamily>Tahoma</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -1431,7 +1431,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto" />
+                                  <Value />
                                   <Style>
                                     <FontFamily>Tahoma</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -1462,7 +1462,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">=Fields!Members_Members__Shares_Retained_.Value</Value>
+                                  <Value>=Fields!Members_Members__Shares_Retained_.Value</Value>
                                   <Style>
                                     <FontFamily>Tahoma</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -1496,7 +1496,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto" />
+                                  <Value />
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -1521,7 +1521,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto" />
+                                  <Value />
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -1555,7 +1555,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto" />
+                                  <Value />
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -1580,7 +1580,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">=Fields!Funeral_ExpensesCaption.Value</Value>
+                                  <Value>=Fields!Funeral_ExpensesCaption.Value</Value>
                                   <Style>
                                     <FontFamily>Tahoma</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -1610,7 +1610,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">=Fields!FExpenses.Value</Value>
+                                  <Value>=Fields!FExpenses.Value</Value>
                                   <Style>
                                     <FontFamily>Tahoma</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -1641,7 +1641,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto" />
+                                  <Value />
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -1666,7 +1666,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto" />
+                                  <Value />
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -1691,7 +1691,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto" />
+                                  <Value />
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -1725,7 +1725,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto" />
+                                  <Value />
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -1750,7 +1750,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">=Fields!Insurance__CIC_Caption.Value</Value>
+                                  <Value>=Fields!Insurance__CIC_Caption.Value</Value>
                                   <Style>
                                     <FontFamily>Tahoma</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -1780,7 +1780,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">=Fields!CICLoan.Value</Value>
+                                  <Value>=Fields!CICLoan.Value</Value>
                                   <Style>
                                     <FontFamily>Tahoma</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -1811,7 +1811,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto" />
+                                  <Value />
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -1836,7 +1836,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto" />
+                                  <Value />
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -1861,7 +1861,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto" />
+                                  <Value />
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -1895,7 +1895,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto" />
+                                  <Value />
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -1920,7 +1920,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">=Fields!TotalCaption.Value</Value>
+                                  <Value>=Fields!TotalCaption.Value</Value>
                                   <Style>
                                     <FontFamily>Tahoma</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -1951,7 +1951,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">=Fields!CICLoan___Current_Shares___1__UnpaidDividends___Insurance_Fund___1__FExpenses.Value</Value>
+                                  <Value>=Fields!CICLoan___Current_Shares___1__UnpaidDividends___Insurance_Fund___1__FExpenses.Value</Value>
                                   <Style>
                                     <FontFamily>Tahoma</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -1983,7 +1983,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto" />
+                                  <Value />
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -2008,7 +2008,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto" />
+                                  <Value />
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -2033,7 +2033,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto" />
+                                  <Value />
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -2067,7 +2067,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">=Fields!LESS_Caption.Value</Value>
+                                  <Value>=Fields!LESS_Caption.Value</Value>
                                   <Style>
                                     <FontFamily>Tahoma</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -2096,7 +2096,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">=Fields!Current_Oustanding_LoanCaption.Value</Value>
+                                  <Value>=Fields!Current_Oustanding_LoanCaption.Value</Value>
                                   <Style>
                                     <FontFamily>Tahoma</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -2126,7 +2126,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">=Fields!Members__Outstanding_Balance_.Value</Value>
+                                  <Value>=Fields!Members__Outstanding_Balance_.Value</Value>
                                   <Style>
                                     <FontFamily>Tahoma</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -2157,7 +2157,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto" />
+                                  <Value />
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -2182,7 +2182,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto" />
+                                  <Value />
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -2207,7 +2207,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto" />
+                                  <Value />
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -2241,7 +2241,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto" />
+                                  <Value />
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -2266,7 +2266,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">=Fields!Members__Accrued_Interest_Caption.Value</Value>
+                                  <Value>=Fields!Members__Accrued_Interest_Caption.Value</Value>
                                   <Style>
                                     <FontFamily>Tahoma</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -2296,7 +2296,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">=Fields!OutstandingInterest_Members.Value</Value>
+                                  <Value>=Fields!OutstandingInterest_Members.Value</Value>
                                   <Style>
                                     <FontFamily>Tahoma</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -2327,7 +2327,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto" />
+                                  <Value />
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -2352,7 +2352,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto" />
+                                  <Value />
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -2377,7 +2377,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto" />
+                                  <Value />
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -2411,7 +2411,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto" />
+                                  <Value />
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -2436,7 +2436,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">=Fields!Other_DeductionsCaption.Value</Value>
+                                  <Value>=Fields!Other_DeductionsCaption.Value</Value>
                                   <Style>
                                     <FontFamily>Tahoma</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -2466,7 +2466,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto" />
+                                  <Value />
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -2491,7 +2491,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto" />
+                                  <Value />
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -2516,7 +2516,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto" />
+                                  <Value />
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -2541,7 +2541,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto" />
+                                  <Value />
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -2575,7 +2575,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto" />
+                                  <Value />
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -2600,7 +2600,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">=Fields!Withdrawal_FeesCaption.Value</Value>
+                                  <Value>=Fields!Withdrawal_FeesCaption.Value</Value>
                                   <Style>
                                     <FontFamily>Tahoma</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -2630,7 +2630,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">=Fields!FWithdrawal.Value</Value>
+                                  <Value>=Fields!FWithdrawal.Value</Value>
                                   <Style>
                                     <FontFamily>Tahoma</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -2661,7 +2661,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto" />
+                                  <Value />
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -2686,7 +2686,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto" />
+                                  <Value />
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -2711,7 +2711,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto" />
+                                  <Value />
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -2746,7 +2746,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto" />
+                                  <Value />
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -2773,7 +2773,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">EFT Charge</Value>
+                                  <Value>EFT Charge</Value>
                                   <Style>
                                     <FontFamily>Tahoma</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -2805,7 +2805,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">=Fields!EFT.Value</Value>
+                                  <Value>=Fields!EFT.Value</Value>
                                   <Style>
                                     <FontFamily>Tahoma</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -2837,7 +2837,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto" />
+                                  <Value />
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -2864,7 +2864,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto" />
+                                  <Value />
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -2891,7 +2891,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto" />
+                                  <Value />
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -2918,7 +2918,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto" />
+                                  <Value />
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -2945,7 +2945,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto" />
+                                  <Value />
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -2972,7 +2972,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto" />
+                                  <Value />
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -3004,7 +3004,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto" />
+                                  <Value />
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -3031,7 +3031,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">Transfer Fee</Value>
+                                  <Value>Transfer Fee</Value>
                                   <Style>
                                     <FontFamily>Tahoma</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -3063,7 +3063,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">=Fields!TranferFee.Value</Value>
+                                  <Value>=Fields!TranferFee.Value</Value>
                                   <Style>
                                     <FontFamily>Tahoma</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -3095,7 +3095,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto" />
+                                  <Value />
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -3122,7 +3122,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto" />
+                                  <Value />
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -3149,7 +3149,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto" />
+                                  <Value />
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -3176,7 +3176,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto" />
+                                  <Value />
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -3203,7 +3203,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto" />
+                                  <Value />
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -3230,7 +3230,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto" />
+                                  <Value />
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -3261,7 +3261,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto" />
+                                  <Value />
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -3286,7 +3286,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">=Fields!Under_Excess_InsuranceCaption.Value</Value>
+                                  <Value>=Fields!Under_Excess_InsuranceCaption.Value</Value>
                                   <Style>
                                     <FontFamily>Tahoma</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -3316,7 +3316,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">=Fields!InsFund__1.Value</Value>
+                                  <Value>=Fields!InsFund__1.Value</Value>
                                   <Style>
                                     <FontFamily>Tahoma</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -3347,7 +3347,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto" />
+                                  <Value />
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -3372,7 +3372,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto" />
+                                  <Value />
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -3397,7 +3397,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto" />
+                                  <Value />
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -3431,7 +3431,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto" />
+                                  <Value />
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -3456,7 +3456,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">=Fields!TotalCaption_Control1102760055.Value</Value>
+                                  <Value>=Fields!TotalCaption_Control1102760055.Value</Value>
                                   <Style>
                                     <FontFamily>Tahoma</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -3487,7 +3487,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">=Fields!NetPayable.Value</Value>
+                                  <Value>=Fields!NetPayable.Value</Value>
                                   <Style>
                                     <FontFamily>Tahoma</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -3519,7 +3519,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto" />
+                                  <Value />
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -3544,7 +3544,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto" />
+                                  <Value />
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -3569,7 +3569,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto" />
+                                  <Value />
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -3603,7 +3603,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto" />
+                                  <Value />
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -3628,7 +3628,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">=Fields!Net_RefundCaption.Value</Value>
+                                  <Value>=Fields!Net_RefundCaption.Value</Value>
                                   <Style>
                                     <FontFamily>Tahoma</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -3658,7 +3658,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">=Fields!NetPayable.Value</Value>
+                                  <Value>=Fields!NetPayable.Value</Value>
                                   <Style>
                                     <FontFamily>Tahoma</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -3689,7 +3689,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto" />
+                                  <Value />
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -3714,7 +3714,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto" />
+                                  <Value />
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -3739,7 +3739,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto" />
+                                  <Value />
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -3773,7 +3773,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto" />
+                                  <Value />
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -3792,13 +3792,22 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Prepared_By______________________________________________________________________________________________________________________________________________________________________Caption">
+                        <Textbox Name="Textbox6">
+                          <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">=Fields!Prepared_By______________________________________________________________________________________________________________________________________________________________________Caption.Value</Value>
+                                  <Value>Prepared By  </Value>
+                                  <Style>
+                                    <FontStyle>Italic</FontStyle>
+                                    <FontFamily>Tahoma</FontFamily>
+                                    <FontSize>8pt</FontSize>
+                                  </Style>
+                                </TextRun>
+                                <TextRun>
+                                  <Value>=Fields!USERID.Value</Value>
                                   <Style>
                                     <FontStyle>Italic</FontStyle>
                                     <FontFamily>Tahoma</FontFamily>
@@ -3809,6 +3818,7 @@
                               <Style />
                             </Paragraph>
                           </Paragraphs>
+                          <rd:DefaultName>Textbox6</rd:DefaultName>
                           <Style>
                             <VerticalAlign>Bottom</VerticalAlign>
                             <PaddingLeft>0.075cm</PaddingLeft>
@@ -3827,7 +3837,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto" />
+                                  <Value />
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -3852,7 +3862,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">=Fields!Signature_Date______________________________________________________________________________________________________________________________________________________________________Caption.Value</Value>
+                                  <Value>Signature .....................</Value>
                                   <Style>
                                     <FontStyle>Italic</FontStyle>
                                     <FontFamily>Tahoma</FontFamily>
@@ -3883,7 +3893,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto" />
+                                  <Value />
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -3917,7 +3927,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto" />
+                                  <Value />
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -3936,13 +3946,14 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Certified_By______________________________________________________________________________________________________________________________________________________________________Caption">
+                        <Textbox Name="Textbox29">
+                          <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">=Fields!Certified_By______________________________________________________________________________________________________________________________________________________________________Caption.Value</Value>
+                                  <Value>Certified By ..............................</Value>
                                   <Style>
                                     <FontStyle>Italic</FontStyle>
                                     <FontFamily>Tahoma</FontFamily>
@@ -3953,6 +3964,7 @@
                               <Style />
                             </Paragraph>
                           </Paragraphs>
+                          <rd:DefaultName>Textbox29</rd:DefaultName>
                           <Style>
                             <VerticalAlign>Bottom</VerticalAlign>
                             <PaddingLeft>0.075cm</PaddingLeft>
@@ -3971,7 +3983,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto" />
+                                  <Value />
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -3996,7 +4008,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">=Fields!Signature_Date______________________________________________________________________________________________________________________________________________________________________Caption_Control1000000008.Value</Value>
+                                  <Value>signature.....................</Value>
                                   <Style>
                                     <FontStyle>Italic</FontStyle>
                                     <FontFamily>Tahoma</FontFamily>
@@ -4027,7 +4039,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto" />
+                                  <Value />
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -4123,7 +4135,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value EvaluationMode="Auto">=ReportItems!CurrReport_PAGENOCaption.Value</Value>
+                      <Value>=ReportItems!CurrReport_PAGENOCaption.Value</Value>
                       <Style>
                         <FontSize>7pt</FontSize>
                       </Style>
@@ -4146,7 +4158,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value EvaluationMode="Auto">=ReportItems!ACCOUNT_CLOSURE_SLIPCaption.Value</Value>
+                      <Value>=ReportItems!ACCOUNT_CLOSURE_SLIPCaption.Value</Value>
                       <Style>
                         <FontFamily>Tahoma</FontFamily>
                         <FontSize>9pt</FontSize>
@@ -4172,7 +4184,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value EvaluationMode="Auto">=ReportItems!P_O_BOX_75629___00200__NAIROBICaption.Value</Value>
+                      <Value>=ReportItems!P_O_BOX_75629___00200__NAIROBICaption.Value</Value>
                       <Style>
                         <FontFamily>Tahoma</FontFamily>
                         <FontSize>9pt</FontSize>
@@ -4200,7 +4212,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value EvaluationMode="Auto">=ReportItems!COMPANYNAME.Value</Value>
+                      <Value>=ReportItems!COMPANYNAME.Value</Value>
                       <Style>
                         <FontWeight>Bold</FontWeight>
                       </Style>
@@ -4224,7 +4236,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value EvaluationMode="Auto">=Globals!PageNumber</Value>
+                      <Value>=Globals!PageNumber</Value>
                       <Style>
                         <FontSize>7pt</FontSize>
                       </Style>
@@ -4250,7 +4262,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value EvaluationMode="Auto">=User!UserID</Value>
+                      <Value>=User!UserID</Value>
                       <Style>
                         <FontSize>7pt</FontSize>
                       </Style>
@@ -4276,7 +4288,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value EvaluationMode="Auto">=Globals!ExecutionTime</Value>
+                      <Value>=Globals!ExecutionTime</Value>
                       <Style>
                         <FontSize>7pt</FontSize>
                         <Format>g</Format>
@@ -4302,7 +4314,6 @@
               <Value>=First(Fields!COMPANYPIC.Value, "DataSet_Result")</Value>
               <MIMEType>image/jpeg</MIMEType>
               <Sizing>FitProportional</Sizing>
-              <Top>0cm</Top>
               <Left>0.1cm</Left>
               <Height>2.05562cm</Height>
               <Width>4.09557cm</Width>

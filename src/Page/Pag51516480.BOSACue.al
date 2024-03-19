@@ -41,61 +41,61 @@ Page 51516480 "BOSA Cue"
 
                     ApplicationArea = Basic;
                     Image = none;
+                    Caption = 'Dormant Members';
+                    Style = Favorable;
+                    StyleExpr = true;
+                    DrillDownPageId = "Member List";
+                }
+                field(Deceased; Deceased)
+                {
+                    ApplicationArea = Basic;
+                    Image = none;
+                    Style = Favorable;
+                    StyleExpr = true;
+                    DrillDownPageId = "Member List";
+                }
+                field("Awaiting Exit"; "Awaiting Exit")
+                {
+                    ApplicationArea = Basic;
+                    Image = none;
                     Style = Favorable;
                     StyleExpr = true;
                     DrillDownPageId = "Member List";
                 }
 
+                field(Exited; Exited)
+                {
+                    ApplicationArea = Basic;
+                    Image = none;
+                    Style = Favorable;
+                    StyleExpr = true;
+                    DrillDownPageId = "Member List";
+                }
+            }
+            cuegroup(Gender)
+            {
+                field(Female; Female)
+                {
+                    ApplicationArea = Basic;
+                    Image = none;
+                    Style = Favorable;
+                    StyleExpr = true;
+                    DrillDownPageId = "Member List";
+                }
+                field(Male; Male)
+                {
+                    ApplicationArea = Basic;
+                    Image = none;
+                    Style = Favorable;
+                    StyleExpr = true;
+                    DrillDownPageId = "Member List";
+
+                }
+
             }
 
-
-            // cuegroup("CEEP Members")
-
-            // {
-            //     Caption = 'CEEP Member Accounts ';
-            //     field("All CEEP Mbrs"; "All CEEP Mbrs")
-            //     {
-
-            //         ApplicationArea = Basic;
-            //         Image = none;
-            //         Style = Favorable;
-            //         StyleExpr = true;
-            //         DrillDownPageId = "Member List";
-            //     }
-            // field("Active CEEP Mbrs"; "Active CEEP Mbrs")
-            // {
-
-            //     ApplicationArea = Basic;
-            //     Image = none;
-            //     Style = Favorable;
-            //     StyleExpr = true;
-            //     DrillDownPageId = "Member List";
-            // }
-
-            // field("InActive CEEP Mbrs"; "Inactive CEEP Mbrs")
-            // {
-
-            //     ApplicationArea = Basic;
-            //     Image = none;
-            //     Style = Favorable;
-            //     StyleExpr = true;
-            //     DrillDownPageId = "Member List";
-            // }
-
-            // field("CEEP Groups"; "CEEP Groups")
-            // {
-
-            //     ApplicationArea = Basic;
-            //     Image = none;
-            //     Style = Favorable;
-            //     StyleExpr = true;
-            //     DrillDownPageId = "Member List";
-            // }
-
         }
-
     }
-
 
     actions
     {

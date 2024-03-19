@@ -31,6 +31,11 @@ Page 51516271 "Sacco General Set-Up"
                 {
                     ApplicationArea = Basic;
                 }
+                field("Retained Shares"; "Retained Shares")
+                {
+                    ApplicationArea = Basic;
+                    Caption = 'Minimum Share Capital';
+                }
                 field("Maximum No of Loans Guaranteed"; "Maximum No of Loans Guaranteed")
                 {
                     ApplicationArea = Basic;
@@ -55,7 +60,7 @@ Page 51516271 "Sacco General Set-Up"
                 {
                     ApplicationArea = Basic;
                 }
-                   field("Interest on Deposits (%)"; "Interest on Deposits (%)")
+                field("Interest on Deposits (%)"; "Interest on Deposits (%)")
                 {
                     ApplicationArea = Basic;
                 }
@@ -69,10 +74,10 @@ Page 51516271 "Sacco General Set-Up"
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field("Days for Checkoff"; "Days for Checkoff")
+                field("Withdrawal Period"; "Withdrawal Period")
                 {
                     ApplicationArea = Basic;
-                    Visible = false;
+
                 }
 
                 field("Use Bands"; "Use Bands")
@@ -124,12 +129,8 @@ Page 51516271 "Sacco General Set-Up"
                 {
                     ApplicationArea = Basic;
                 }
-                field("Retained Shares"; "Retained Shares")
-                {
-                    ApplicationArea = Basic;
-                    Caption = 'Pepea Shares';
-                }
-             
+
+
                 field("Registration Fee"; "Registration Fee")
                 {
                     ApplicationArea = Basic;
@@ -222,11 +223,11 @@ Page 51516271 "Sacco General Set-Up"
                     ApplicationArea = Basic;
                     Visible = false;
                 }
-                field("share Capital"; "share Capital")
-                {
-                    ApplicationArea = Basic;
+                // field("share Capital"; "share Capital")
+                // {
+                //     ApplicationArea = Basic;
 
-                }
+                // }
                 field("Form Fee Account"; "Form Fee Account")
                 {
                     ApplicationArea = Basic;

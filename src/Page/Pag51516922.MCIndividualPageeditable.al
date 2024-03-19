@@ -415,11 +415,11 @@ Page 51516922 "MC Individual Page-editable"
                 }
                 action("Fosa Card")
                 {
-                    ApplicationArea = Basic;
-                    Image = Card;
-                    Promoted = true;
-                    RunObject = Page "Account Details Master";
-                    RunPageLink = "No." = field("FOSA Account");
+                    // ApplicationArea = Basic;
+                    // Image = Card;
+                    // Promoted = true;
+                    // RunObject = Page "Account Details Master";
+                    // RunPageLink = "No." = field("FOSA Account");
                 }
                 separator(Action1102755028)
                 {

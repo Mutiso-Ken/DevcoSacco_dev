@@ -39,9 +39,7 @@ Report 50016 "Next of Kin Report"
             column(Name; Name)
             {
             }
-            column(Test; Test)
-            {
-            }
+
             column(CIName; CI.Name)
             {
             }
@@ -51,16 +49,16 @@ Report 50016 "Next of Kin Report"
 
             trigger OnAfterGetRecord()
             begin
-                // MembersRegister.Reset;
-                // MembersRegister.SetRange(MembersRegister."No.", "Account No");
-                // // MembersRegister.SetAutocalcFields(MembersRegister."Shares Retained");
-                // // MembersRegister.SetFilter(MembersRegister."Shares Retained", '>%1', 1);
-                // if MembersRegister.find('-') then begin
-                //     //IF "Members Next Kin Details".GET("Members Next Kin Details"."Account No") THEN
-                //     Test := MembersRegister.Name;
-                //     //MESSAGE(FORMAT(MembersRegister."Shares Retained"));
-                // end else
-                //     CurrReport.Skip;
+                MembersRegister.Reset;
+                MembersRegister.SetRange(MembersRegister."No.", "Account No");
+                // MembersRegister.SetAutocalcFields(MembersRegister."Shares Retained");
+                // MembersRegister.SetFilter(MembersRegister."Shares Retained", '>%1', 1);
+                if MembersRegister.find('-') then begin
+                    //IF "Members Next Kin Details".GET("Members Next Kin Details"."Account No") THEN
+                    Name := MembersRegister.Name;
+                    //MESSAGE(FORMAT(MembersRegister."Shares Retained"));
+                end else
+                    CurrReport.Skip;
             end;
         }
     }
@@ -85,14 +83,19 @@ Report 50016 "Next of Kin Report"
     begin
         CI.Get();
         CI.CalcFields(CI.Picture);
+        StatusPermissions.Reset;
+        StatusPermissions.SetRange(StatusPermissions."User Id", UserId);
+        StatusPermissions.SetRange(StatusPermissions."Function", StatusPermissions."function"::Nominee);
+        if StatusPermissions.Find('-') = false then
+            Error('You do not have permissions to View This information.');
     end;
 
     var
         MembersRegister: Record Customer;
         Name: Text[100];
         Test: Text[100];
-#pragma warning disable AL0275
+
         CI: Record "Company Information";
-#pragma warning restore AL0275
+        StatusPermissions: Record "Status Change Permision";
 }
 

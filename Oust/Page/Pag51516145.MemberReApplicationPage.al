@@ -4,7 +4,7 @@ page 51516145 "Member Re-Application Page"
     Caption = 'Member Re-Application Page';
     PageType = Card;
     SourceTable = "Member Reapplication";
-    
+
     layout
     {
         area(content)
@@ -12,11 +12,11 @@ page 51516145 "Member Re-Application Page"
             group(General)
             {
                 Caption = 'General';
-                
+
                 field("No."; Rec."No.")
                 {
                     ToolTip = 'Specifies the value of the No. field.';
-                    Editable=false;
+                    Editable = false;
                 }
                 field("Member No."; Rec."Member No.")
                 {
@@ -25,7 +25,20 @@ page 51516145 "Member Re-Application Page"
                 field("Member Name"; Rec."Member Name")
                 {
                     ToolTip = 'Specifies the value of the Member Name field.';
-                         Editable=false;
+                    Editable = false;
+                }
+                field("Share Capital"; "Share Capital")
+                {
+                    ApplicationArea = all;
+                    Editable = false;
+                    Caption = 'Current Share capital';
+                }
+                field(Status; Status)
+                {
+                    ApplicationArea = all;
+                    Editable = false;
+                    Caption = 'Workflow Status';
+
                 }
                 field("Reason for Re-Application"; Rec."Reason for Re-Application")
                 {
@@ -34,39 +47,106 @@ page 51516145 "Member Re-Application Page"
                 field("Reason for Exit"; Rec."Reason for Exit")
                 {
                     ToolTip = 'Specifies the value of the Reason for Exit field.';
-                         Editable=false;
+                    Editable = false;
                 }
                 field("Re-Application By"; Rec."Re-Application By")
                 {
                     ToolTip = 'Specifies the value of the Re-Application By field.';
-                         Editable=false;
+                    Editable = false;
                 }
                 field("Re-Application On"; Rec."Re-Application On")
                 {
                     ToolTip = 'Specifies the value of the Re-Application On field.';
-                         Editable=false;
+                    Editable = false;
                 }
                 field("Re-Application status"; Rec."Re-Application status")
                 {
                     ToolTip = 'Specifies the value of the Re-Application status field.';
-                         Editable=false;
+                    Editable = false;
                 }
                 field("Status on Exit"; Rec."Status on Exit")
                 {
                     ToolTip = 'Specifies the value of the Status on Exit field.';
-                         Editable=false;
+                    Editable = false;
                 }
                 field("Exit Date"; Rec."Exit Date")
                 {
                     ToolTip = 'Specifies the value of the Exit Date field.';
-                         Editable=false;
+                    Editable = false;
                 }
                 field("Exited By"; Rec."Exited By")
                 {
                     ToolTip = 'Specifies the value of the Exited By field.';
-                         Editable=false;
+                    Editable = false;
                 }
+            }
+
+        }
+
+
+    }
+    actions
+    {
+        area(Processing)
+        {
+            action("Reactivate Member")
+            {
+                Promoted = true;
+                PromotedCategory = Process;
+                trigger OnAction()
+                var
+                    myInt: Integer;
+                begin
+                    Cust.reset;
+                    Cust.SetRange(Cust."No.", "Member No.");
+                    if Cust.FindSet() then begin
+                        Cust.Status := Cust.Status::Active;
+                        Cust."Reason For Membership Withdraw" := ' ';
+                        Cust."Re-instated" := true;
+                        Cust."Rejoining Date" := "Re-Application On";
+                        Cust."Rejoined By" := "Re-Application By";
+                        Cust.Modify();
+                    end;
+                    Reactivated := true;
+
+                end;
+            }
+            action("Send Approval Request")
+            {
+                Promoted = true;
+                PromotedCategory = Process;
+                trigger OnAction()
+                var
+                    myInt: Integer;
+                begin
+                    if Status <> Status::Open then
+                        Message('The docuement has already be send for approval')
+                    else
+                        SrestepApprovalsCodeUnit.SendMemberReapplicationRequestForApproval(rec."No.", rec);
+                end;
+
+            }
+            action("Cancel Approval Request")
+            {
+                ApplicationArea = Basic;
+                Caption = 'Cancel Approval Request';
+                Image = Cancel;
+
+                Promoted = true;
+                PromotedCategory = Process;
+
+                trigger OnAction()
+
+                begin
+                    if Confirm('Cancel Approval?', false) = true then begin
+                        SrestepApprovalsCodeUnit.CancelMemberReapplicationRequestForApproval(rec."No.", Rec);
+                    end;
+                end;
             }
         }
     }
+    var
+        Cust: Record Customer;
+        SrestepApprovalsCodeUnit: Codeunit SurestepApprovalsCodeUnit;
+
 }

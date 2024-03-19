@@ -61,6 +61,7 @@
                                 <TextRun>
                                   <Value>Account Holder Name</Value>
                                   <Style>
+                                    <FontFamily>Cambria</FontFamily>
                                     <FontSize>9pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
@@ -72,7 +73,6 @@
                           <rd:DefaultName>Textbox15</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
                             <PaddingLeft>2pt</PaddingLeft>
@@ -94,6 +94,7 @@
                                 <TextRun>
                                   <Value>Account No</Value>
                                   <Style>
+                                    <FontFamily>Cambria</FontFamily>
                                     <FontSize>9pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
@@ -105,7 +106,6 @@
                           <rd:DefaultName>Textbox13</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
                             <PaddingLeft>2pt</PaddingLeft>
@@ -127,6 +127,7 @@
                                 <TextRun>
                                   <Value>Next of Kin Name</Value>
                                   <Style>
+                                    <FontFamily>Cambria</FontFamily>
                                     <FontSize>9pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
@@ -138,7 +139,6 @@
                           <rd:DefaultName>Textbox11</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
                             <PaddingLeft>2pt</PaddingLeft>
@@ -158,8 +158,9 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Dateof Birth</Value>
+                                  <Value>Date of Birth</Value>
                                   <Style>
+                                    <FontFamily>Cambria</FontFamily>
                                     <FontSize>9pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                     <Format>d</Format>
@@ -172,7 +173,6 @@
                           <rd:DefaultName>Textbox9</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
                             <PaddingLeft>2pt</PaddingLeft>
@@ -194,6 +194,7 @@
                                 <TextRun>
                                   <Value>Address</Value>
                                   <Style>
+                                    <FontFamily>Cambria</FontFamily>
                                     <FontSize>9pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
@@ -205,7 +206,6 @@
                           <rd:DefaultName>Textbox7</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
                             <PaddingLeft>2pt</PaddingLeft>
@@ -227,6 +227,7 @@
                                 <TextRun>
                                   <Value>Telephone</Value>
                                   <Style>
+                                    <FontFamily>Cambria</FontFamily>
                                     <FontSize>9pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
@@ -238,7 +239,6 @@
                           <rd:DefaultName>Textbox1</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
                             <PaddingLeft>2pt</PaddingLeft>
@@ -260,6 +260,7 @@
                                 <TextRun>
                                   <Value>Email</Value>
                                   <Style>
+                                    <FontFamily>Cambria</FontFamily>
                                     <FontSize>9pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
@@ -271,7 +272,6 @@
                           <rd:DefaultName>Textbox3</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
                             <PaddingLeft>2pt</PaddingLeft>
@@ -291,8 +291,9 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>IDNo</Value>
+                                  <Value>ID No.</Value>
                                   <Style>
+                                    <FontFamily>Cambria</FontFamily>
                                     <FontSize>9pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
@@ -304,7 +305,6 @@
                           <rd:DefaultName>Textbox5</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
                             <PaddingLeft>2pt</PaddingLeft>
@@ -326,6 +326,7 @@
                                 <TextRun>
                                   <Value>Relationship</Value>
                                   <Style>
+                                    <FontFamily>Cambria</FontFamily>
                                     <FontSize>9pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
@@ -337,7 +338,6 @@
                           <rd:DefaultName>Textbox17</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
                             <PaddingLeft>2pt</PaddingLeft>
@@ -355,15 +355,16 @@
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Test">
+                        <Textbox Name="Name">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!Test.Value</Value>
+                                  <Value>=Fields!Name.Value</Value>
                                   <Style>
+                                    <FontFamily>Cambria</FontFamily>
                                     <FontSize>9pt</FontSize>
                                   </Style>
                                 </TextRun>
@@ -371,10 +372,9 @@
                               <Style />
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Test</rd:DefaultName>
+                          <rd:DefaultName>Name</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
                             <PaddingLeft>2pt</PaddingLeft>
@@ -396,6 +396,7 @@
                                 <TextRun>
                                   <Value>=Fields!AccountNo.Value</Value>
                                   <Style>
+                                    <FontFamily>Cambria</FontFamily>
                                     <FontSize>9pt</FontSize>
                                   </Style>
                                 </TextRun>
@@ -406,7 +407,6 @@
                           <rd:DefaultName>AccountNo</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
                             <PaddingLeft>2pt</PaddingLeft>
@@ -428,6 +428,7 @@
                                 <TextRun>
                                   <Value>=Fields!Name_MembersNextKinDetails.Value</Value>
                                   <Style>
+                                    <FontFamily>Cambria</FontFamily>
                                     <FontSize>9pt</FontSize>
                                   </Style>
                                 </TextRun>
@@ -438,7 +439,6 @@
                           <rd:DefaultName>Name_MembersNextKinDetails</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
                             <PaddingLeft>2pt</PaddingLeft>
@@ -460,6 +460,7 @@
                                 <TextRun>
                                   <Value>=Fields!DateofBirth.Value</Value>
                                   <Style>
+                                    <FontFamily>Cambria</FontFamily>
                                     <FontSize>9pt</FontSize>
                                     <Format>d</Format>
                                   </Style>
@@ -471,7 +472,6 @@
                           <rd:DefaultName>DateofBirth</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
                             <PaddingLeft>2pt</PaddingLeft>
@@ -493,6 +493,7 @@
                                 <TextRun>
                                   <Value>=Fields!Address.Value</Value>
                                   <Style>
+                                    <FontFamily>Cambria</FontFamily>
                                     <FontSize>9pt</FontSize>
                                   </Style>
                                 </TextRun>
@@ -503,7 +504,6 @@
                           <rd:DefaultName>Address</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
                             <PaddingLeft>2pt</PaddingLeft>
@@ -525,6 +525,7 @@
                                 <TextRun>
                                   <Value>=Fields!Telephone.Value</Value>
                                   <Style>
+                                    <FontFamily>Cambria</FontFamily>
                                     <FontSize>9pt</FontSize>
                                   </Style>
                                 </TextRun>
@@ -535,7 +536,6 @@
                           <rd:DefaultName>Telephone</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
                             <PaddingLeft>2pt</PaddingLeft>
@@ -557,6 +557,7 @@
                                 <TextRun>
                                   <Value>=Fields!Email.Value</Value>
                                   <Style>
+                                    <FontFamily>Cambria</FontFamily>
                                     <FontSize>9pt</FontSize>
                                   </Style>
                                 </TextRun>
@@ -567,7 +568,6 @@
                           <rd:DefaultName>Email</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
                             <PaddingLeft>2pt</PaddingLeft>
@@ -589,6 +589,7 @@
                                 <TextRun>
                                   <Value>=Fields!IDNo.Value</Value>
                                   <Style>
+                                    <FontFamily>Cambria</FontFamily>
                                     <FontSize>9pt</FontSize>
                                   </Style>
                                 </TextRun>
@@ -599,7 +600,6 @@
                           <rd:DefaultName>IDNo</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
                             <PaddingLeft>2pt</PaddingLeft>
@@ -621,6 +621,7 @@
                                 <TextRun>
                                   <Value>=Fields!Relationship.Value</Value>
                                   <Style>
+                                    <FontFamily>Cambria</FontFamily>
                                     <FontSize>9pt</FontSize>
                                   </Style>
                                 </TextRun>
@@ -631,7 +632,6 @@
                           <rd:DefaultName>Relationship</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
                             <PaddingLeft>2pt</PaddingLeft>
@@ -679,10 +679,10 @@
                 </FilterValues>
               </Filter>
             </Filters>
-            <Top>1.38889in</Top>
+            <Top>0.26389in</Top>
             <Left>0.07166in</Left>
             <Height>0.5in</Height>
-            <Width>10.91667in</Width>
+            <Width>10.91666in</Width>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -696,8 +696,9 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>NEXT OF KIN DETAILS</Value>
+                    <Value>Benificiary Report</Value>
                     <Style>
+                      <FontFamily>Cambria</FontFamily>
                       <FontWeight>Bold</FontWeight>
                     </Style>
                   </TextRun>
@@ -708,10 +709,10 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox19</rd:DefaultName>
-            <Top>1.13889in</Top>
+            <Top>0.01389in</Top>
             <Left>0.07166in</Left>
             <Height>0.25in</Height>
-            <Width>10.91667in</Width>
+            <Width>10.91666in</Width>
             <ZIndex>1</ZIndex>
             <Style>
               <Border>
@@ -723,62 +724,151 @@
               <PaddingBottom>2pt</PaddingBottom>
             </Style>
           </Textbox>
-          <Textbox Name="Textbox24">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>=First(Fields!CIName.Value, "DataSet_Result")</Value>
-                    <Style>
-                      <FontWeight>Bold</FontWeight>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style>
-                  <TextAlign>Center</TextAlign>
-                </Style>
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>Textbox24</rd:DefaultName>
-            <Top>0.7743in</Top>
-            <Left>0.07166in</Left>
-            <Height>0.25in</Height>
-            <Width>10.91667in</Width>
+          <Line Name="Line1">
+            <Top>0.25917in</Top>
+            <Left>0.12375in</Left>
+            <Height>0in</Height>
+            <Width>10.86458in</Width>
             <ZIndex>2</ZIndex>
             <Style>
               <Border>
-                <Style>None</Style>
-              </Border>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-            </Style>
-          </Textbox>
-          <Image Name="Image1">
-            <Source>Database</Source>
-            <Value>=First(Fields!CIPicture.Value, "DataSet_Result")</Value>
-            <MIMEType>image/jpeg</MIMEType>
-            <Sizing>Fit</Sizing>
-            <Top>0.20485in</Top>
-            <Left>4.86333in</Left>
-            <Height>0.5in</Height>
-            <Width>1.47917in</Width>
-            <ZIndex>3</ZIndex>
-            <Style>
-              <Border>
-                <Style>None</Style>
+                <Style>Solid</Style>
+                <Width>2pt</Width>
               </Border>
             </Style>
-          </Image>
+          </Line>
         </ReportItems>
-        <Height>1.92708in</Height>
+        <Height>0.77083in</Height>
         <Style />
       </Body>
-      <Width>11.05084in</Width>
+      <Width>11.17582in</Width>
       <Page>
+        <PageHeader>
+          <Height>0.79167in</Height>
+          <PrintOnFirstPage>true</PrintOnFirstPage>
+          <PrintOnLastPage>true</PrintOnLastPage>
+          <ReportItems>
+            <Image Name="Image1">
+              <Source>Database</Source>
+              <Value>=First(Fields!CIPicture.Value, "DataSet_Result")</Value>
+              <MIMEType>image/jpeg</MIMEType>
+              <Sizing>Fit</Sizing>
+              <Top>0.12181in</Top>
+              <Left>0.07166in</Left>
+              <Height>0.5in</Height>
+              <Width>1.47917in</Width>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+              </Style>
+            </Image>
+            <Textbox Name="Textbox2">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>Devco Sacco</Value>
+                      <Style>
+                        <FontFamily>Cambria</FontFamily>
+                        <FontWeight>Bold</FontWeight>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style />
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>Textbox2</rd:DefaultName>
+              <Top>0.12181in</Top>
+              <Left>9.73834in</Left>
+              <Height>0.20264in</Height>
+              <Width>1.24999in</Width>
+              <ZIndex>1</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+            <Textbox Name="Textbox4">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=Globals!ExecutionTime</Value>
+                      <Style>
+                        <FontFamily>Cambria</FontFamily>
+                        <FontWeight>Bold</FontWeight>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style />
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>Textbox2</rd:DefaultName>
+              <Top>0.33834in</Top>
+              <Left>9.73834in</Left>
+              <Height>0.20264in</Height>
+              <Width>1.24999in</Width>
+              <ZIndex>2</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+            <Textbox Name="Textbox6">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=User!UserID</Value>
+                      <Style>
+                        <FontFamily>Cambria</FontFamily>
+                        <FontWeight>Bold</FontWeight>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style />
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>Textbox2</rd:DefaultName>
+              <Top>0.54098in</Top>
+              <Left>9.73834in</Left>
+              <Height>0.20264in</Height>
+              <Width>1.24999in</Width>
+              <ZIndex>3</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+          </ReportItems>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+          </Style>
+        </PageHeader>
         <PageHeight>8.5in</PageHeight>
         <PageWidth>14in</PageWidth>
         <LeftMargin>0in</LeftMargin>
@@ -860,9 +950,6 @@ End Function
         </Field>
         <Field Name="Name">
           <DataField>Name</DataField>
-        </Field>
-        <Field Name="Test">
-          <DataField>Test</DataField>
         </Field>
         <Field Name="CIName">
           <DataField>CIName</DataField>

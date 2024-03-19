@@ -415,5 +415,33 @@ Codeunit 51516009 "Surestep Workflow Responses"
             TOP.Modify;
         end;
     end;
+
+    ///Member Re-Application
+    procedure ReleaseMemberReapplication(var Reapplication: Record "Member Reapplication")
+    var
+        MembReaplication: Record "Member Reapplication";
+
+    begin
+        MembReaplication.Reset;
+        MembReaplication.SetRange(MembReaplication."No.", Reapplication."No.");
+        if MembReaplication.FindFirst then begin
+            MembReaplication.Status := MembReaplication.Status::Approved;
+            MembReaplication.Modify;
+        end;
+    end;
+
+
+    procedure ReopenMeberReapplication(var Reapplication: Record "Member Reapplication")
+    var
+       MembReaplication: Record "Member Reapplication";
+    begin
+        MembReaplication.Reset;
+        MembReaplication.SetRange(MembReaplication."No.", Reapplication."No.");
+        if MembReaplication.FindFirst then begin
+            MembReaplication.Status := MembReaplication.Status::Open;
+            MembReaplication.Modify;
+        end;
+    end;
+
 }
 

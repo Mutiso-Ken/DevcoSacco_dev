@@ -75,7 +75,7 @@ table 51516129 "Membership Applied Products"
             OptionCaption = ' ,Male,Female';
 
         }
-        field(13; "Applicant Age"; Text[100])
+        field(13; "Applicant Age"; Integer)
         {
             DataClassification = ToBeClassified;
 

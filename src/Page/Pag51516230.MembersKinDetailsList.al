@@ -4,7 +4,7 @@ Page 51516230 "Members Kin Details List"
     PageType = List;
     Editable = false;
     SourceTable = "Members Next Kin Details";
-    SourceTableView = where(Type = const("Next of Kin"));
+   // SourceTableView = where(Type = const("Next of Kin"));
 
     layout
     {

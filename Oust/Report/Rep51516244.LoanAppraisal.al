@@ -58,9 +58,9 @@ Report 51516244 "Loan Appraisal"
             column(Psalary; Psalary)
             {
             }
-            // column(JazaDeposits;"Jaza Deposits")
-            // {
-            // }
+            column(JazaDeposits; LoanInsurance)
+            {
+            }
             // column(DepositReinstatement;"Deposit Reinstatement")
             // {
             // }
@@ -70,18 +70,19 @@ Report 51516244 "Loan Appraisal"
             column(Upfronts; Upfronts)
             {
             }
+            column(Remarks; Remarks) { }
             column(Netdisbursed; Netdisbursed)
             {
             }
-            // column(AmountBoosted_LoansRegister;"Loans Register"."Amount Boosted")
-            // {
-            // }
+            column(AmountBoosted_LoansRegister; "Loans Register"."Boosting Shares")
+            {
+            }
             column(TotalBridgeAmount; TotalBridgeAmount)
             {
             }
-            // column(CommissiononBoosting_LoansRegister;"Loans Register"."Commission on Boosting")
-            // {
-            // }
+            column(CommissiononBoosting_LoansRegister; "Loans Register"."Boosting Commision")
+            {
+            }
             column(LoanInsurance; LoanInsurance)
             {
             }

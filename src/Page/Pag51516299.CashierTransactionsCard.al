@@ -738,16 +738,16 @@ Page 51516299 "Cashier Transactions Card"
                     RunObject = Page "Member Account Card";
                     RunPageLink = "No." = field("Member No.");
                 }
-                action("Account Page")
-                {
-                    ApplicationArea = Basic;
-                    Image = Planning;
-                    Caption = 'FOSA Acc Details';
-                    Promoted = true;
-                    PromotedCategory = Process;
-                    RunObject = Page "Account Card";
-                    RunPageLink = "No." = field("Account No");
-                }
+                // action("Account Page")
+                // {
+                //     ApplicationArea = Basic;
+                //     Image = Planning;
+                //     Caption = 'FOSA Acc Details';
+                //     Promoted = true;
+                //     PromotedCategory = Process;
+                //     RunObject = Page "Account Card";
+                //     RunPageLink = "No." = field("Account No");
+                // }
 
 
 

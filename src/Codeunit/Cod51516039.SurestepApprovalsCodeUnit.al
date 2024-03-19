@@ -270,46 +270,90 @@ Codeunit 51516039 "SurestepApprovalsCodeUnit"
     procedure FnOnCancelMemberChangeRequestApprovalRequest(var ChangeRequest: Record "Change Request")
     begin
     end;
+
+
+    //Send MemberReapplication Card
+
+    procedure SendMemberReapplicationRequestForApproval(DocNo: Code[40]; var MemberReapplication: Record "Member Reapplication")
+    begin
+        if FnCheckIfMemberMemberReapplicationApprovalsWorkflowEnabled(MemberReapplication) then begin
+            FnOnSendMemberReapplicationForApproval(MemberReapplication);
+        end;
+    end;
+
+    local procedure FnCheckIfMemberMemberReapplicationApprovalsWorkflowEnabled(var MemberReapplication: Record "Member Reapplication"): Boolean;
+    begin
+        if not IsMemberReapplicationApprovalsWorkflowEnabled(MemberReapplication) then
+            Error(NoWorkflowEnabledErr);
+        exit(true);
+    end;
+
+    //.
+    procedure CancelMemberReapplicationRequestForApproval(MemberRea: Code[40]; var MemberReapplication: Record "Member Reapplication")
+    begin
+        FnOnCancelMemberReapplicationApprovalRequest(MemberReapplication);
+    end;
+
+
+    local procedure IsMemberReapplicationApprovalsWorkflowEnabled(var MemberReapplication: Record "Member Reapplication"): Boolean
+    begin
+        exit(WorkflowManagement.CanExecuteWorkflow(MemberReapplication, Psalmkitswfevents.RunWorkflowOnSendMemberReapplicationForApprovalCode));
+    end;
+
+     [IntegrationEvent(false, false)]
+
+    procedure FnOnSendMemberReapplicationForApproval(var MemberReapplication: Record "Member Reapplication")
+    begin
+    end;
+
+    [IntegrationEvent(false, false)]
+
+    procedure FnOnCancelMemberReapplicationApprovalRequest(var MemberReapplication: Record "Member Reapplication")
+    begin
+    end;
     //------------------------------------------------------------------------------------------------------
-    //7)--------------------------------------------------------------------Send Membership Applications request For Approval start
-    // procedure SendLeaveApplicationsRequestForApproval(LeaveApplicationNo: Code[40]; var "HR Leave Application": Record "HR Leave Application")
-    // begin
-    //     if FnCheckIfLeaveApplicationApprovalsWorkflowEnabled("HR Leave Application") then begin
-    //         FnOnSendLeaveApplicationForApproval("HR Leave Application");
-    //     end;
-    // end;
+    //7)--------------------------------------------------------------------Send MembershipExit  Applications request For Approval start
+    
+    procedure SendMembershipExitApplicationsRequestForApproval(MemberApplicationNo: Code[40]; var "Membership Exist": Record "Membership Exist")
+    begin
+        if FnCheckIfMembershipExitApplicationApprovalsWorkflowEnabled("Membership Exist") then begin
+            FnOnSendMembershipExitApplicationForApproval("Membership Exist");
+        end;
+    end;
 
-    // local procedure FnCheckIfLeaveApplicationApprovalsWorkflowEnabled(var "HR Leave Application": Record "HR Leave Application"): Boolean;
-    // begin
-    //     if not IsLeaveApplicationApprovalsWorkflowEnabled("HR Leave Application") then
-    //         Error(NoWorkflowEnabledErr);
-    //     exit(true);
-    // end;
+    local procedure FnCheckIfMembershipExitApplicationApprovalsWorkflowEnabled(var "Membership Exist": Record "Membership Exist"): Boolean;
+    begin
+        if not IsMembershipApplicationExitApprovalsWorkflowEnabled("Membership Exist") then
+            Error(NoWorkflowEnabledErr);
+        exit(true);
+    end;
 
-    // //.
-    // procedure CancelLeaveApplicationsRequestForApproval(LeaveApplicationNo: Code[40]; var "HR Leave Application": Record "HR Leave Application")
-    // begin
-    //     FnOnCancelLeaveApplicationApprovalRequest("HR Leave Application");
-    // end;
-
-
-    // local procedure IsLeaveApplicationApprovalsWorkflowEnabled(var LeaveApplication: Record "HR Leave Application"): Boolean
-    // begin
-    //     exit(WorkflowManagement.CanExecuteWorkflow(LeaveApplication, Psalmkitswfevents.RunWorkflowOnSendLeaveApplicationForApprovalCode));
-    // end;
+    //.
+    procedure CancelMembershipExitApplicationsRequestForApproval(MemberApplicationNo: Code[40]; var "Membership Exist": Record "Membership Exist")
+    begin
+        FnOnCancelMembershipExitApplicationApprovalRequest("Membership Exist");
+    end;
 
 
-    // [IntegrationEvent(false, false)]
+    local procedure IsMembershipApplicationExitApprovalsWorkflowEnabled(var "Membership Exist": Record "Membership Exist"): Boolean
+    begin
+        exit(WorkflowManagement.CanExecuteWorkflow("Membership Exist", Psalmkitswfevents.RunWorkflowOnSendMembershipExitApplicationForApprovalCode));
+    end;
 
-    // procedure FnOnSendLeaveApplicationForApproval(var LeaveApplication: Record "HR Leave Application")
-    // begin
-    // end;
 
-    // [IntegrationEvent(false, false)]
 
-    // procedure FnOnCancelLeaveApplicationApprovalRequest(var LeaveApplication: Record "HR Leave Application")
-    // begin
-    // end;
+    [IntegrationEvent(false, false)]
+
+    procedure FnOnSendMembershipExitApplicationForApproval(var "Membership Exist": Record "Membership Exist")
+    begin
+    end;
+
+    [IntegrationEvent(false, false)]
+
+    procedure FnOnCancelMembershipExitApplicationApprovalRequest(var "Membership Exist": Record "Membership Exist")
+    begin
+    end;
+
     //8)--------------------------------------------------------------------Guarantor Substitution request For Approval start
     procedure SendGuarantorSubRequestForApproval(GuarantorSubNo: Code[40]; var "Guarantorship Substitution H": Record "Guarantorship Substitution H")
     begin

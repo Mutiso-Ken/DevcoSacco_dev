@@ -1,7 +1,7 @@
 report 51516024 "Member Accounts List"
 {
     ApplicationArea = All;
-    Caption = 'Member Accounts List';
+    Caption = ' Member register report.';
     UsageCategory = ReportsAndAnalysis;
     RDLCLayout = './Layouts/MemberListReport.rdlc';
 
@@ -68,6 +68,10 @@ report 51516024 "Member Accounts List"
             }
             column(Date_of_Birth; "Date of Birth")
             {
+            }
+            column(Age;Age)
+            {
+                
             }
             trigger OnAfterGetRecord();
             var

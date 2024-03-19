@@ -102,13 +102,13 @@ page 51516989 MbradmnList
             {
                 action("Account Page")
                 {
-                    ApplicationArea = Basic;
-                    Image = Planning;
-                    Caption = 'FOSA Account Page';
-                    Promoted = true;
-                    PromotedCategory = Process;
-                    RunObject = Page "Account Card";
-                    RunPageLink = "No." = field("FOSA Account");
+                    // ApplicationArea = Basic;
+                    // Image = Planning;
+                    // Caption = 'FOSA Account Page';
+                    // Promoted = true;
+                    // PromotedCategory = Process;
+                    // RunObject = Page "Account Card";
+                    // RunPageLink = "No." = field("FOSA Account");
                 }
             }
             group(ActionGroup1102755007)

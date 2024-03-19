@@ -171,8 +171,8 @@ Table 51516138 "Membership Exist"
         }
         field(29; "Reason For Withdrawal"; Option)
         {
-            OptionCaption = 'Relocation,Financial Constraints,House/Group Challages,Join another Institution,Personal Reasons,Other';
-            OptionMembers = Relocation,"Financial Constraints","House/Group Challages","Join another Institution","Personal Reasons",Other;
+      
+            OptionMembers =  ,Relocation,Expulsion,"Financial Constraints","Personal Reasons",Death;
         }
         field(30; "Sell Share Capital to"; Code[20])
         {

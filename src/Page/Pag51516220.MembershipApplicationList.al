@@ -404,7 +404,7 @@ Page 51516220 "Membership Application List"
 
     trigger OnOpenPage()
     begin
-        if UserId <> 'MMHSACCO\ADMINISTRATOR' then
+       
             SetRange("User ID", UserId);
     end;
 

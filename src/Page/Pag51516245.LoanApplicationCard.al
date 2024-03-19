@@ -69,12 +69,12 @@ Page 51516245 "Loan Application Card"
                     Style = StrongAccent;
                     Editable = LProdTypeEditable;
                     ShowMandatory = true;
-                    // trigger OnValidate()
-                    // begin
-                    //     if FnMemberHasAnExistingLoanSameProduct() = true then begin
-                    //         error('Member Has An Existing Loan Of Product-' + Format("Loan Product Type") + ' with an outstanding balance of Ksh. ' + Format(FnGetProductOutstandingBal()));
-                    //     end;
-                    // end;
+                    trigger OnValidate()
+                    begin
+                        if FnMemberHasAnExistingLoanSameProduct() = true then begin
+                            error('Member Has An Existing Loan Of Product-' + Format("Loan Product Type") + ' with an outstanding balance of Ksh. ' + Format(FnGetProductOutstandingBal()));
+                        end;
+                    end;
                 }
                 field(Installments; Installments)
                 {

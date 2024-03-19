@@ -43,8 +43,26 @@ Codeunit 51516041 "Custom Workflow Responses"
         FOSAProductApplication: Record "Accounts Applications Details";
         LoanRecoveryApplication: Record "Loan Recovery Header";
         CEEPChangeRequest: Record "CEEP Change Request";
+        MembershipExit: Record "Membership Exist";
+        MemberReapplication: Record "Member Reapplication";
     begin
         case RecRef.Number of
+            //Membership Reapplication
+            Database::"Member Reapplication":
+                begin
+                    RecRef.SetTable(MemberReapplication);
+                    MemberReapplication.Validate(Status, MemberReapplication.Status::Pending);
+                    MemberReapplication.Modify(true);
+                    Variant := MemberReapplication;
+                end;
+            //Member Exit
+            Database::"Membership Exist":
+                begin
+                    RecRef.SetTable(MembershipExit);
+                    MembershipExit.Validate(Status, MembershipExit.Status::Pending);
+                    MembershipExit.Modify(true);
+                    Variant := MembershipExit;
+                end;
             //PettyCash Reimbursement
             Database::"Funds Transfer Header":
                 begin
@@ -69,14 +87,7 @@ Codeunit 51516041 "Custom Workflow Responses"
                     GuarantorSubstitution.Modify(true);
                     Variant := GuarantorSubstitution;
                 end;
-            //Leave Application
-            // Database::"HR Leave Application":
-            //     begin
-            //         RecRef.SetTable(LeaveApplication);
-            //         LeaveApplication.Validate(Status, LeaveApplication.Status::"Pending Approval");
-            //         LeaveApplication.Modify(true);
-            //         Variant := LeaveApplication;
-            //     end;
+
             //Membership Application
             Database::"Membership Applications":
                 begin
@@ -171,9 +182,27 @@ Codeunit 51516041 "Custom Workflow Responses"
         FOSAProductApplication: Record "Accounts Applications Details";
         LoanRecoveryApplication: Record "Loan Recovery Header";
         CEEPChangeRequest: Record "CEEP Change Request";
+        MembershipExist: Record "Membership Exist";
+        MemberReapplication: Record "Member Reapplication";
 
     begin
         case RecRef.Number of
+            //Member Reapplication
+            Database::"Member Reapplication":
+                begin
+                    RecRef.SetTable(MemberReapplication);
+                    MemberReapplication.Validate(Status, MemberReapplication.Status::open);
+                    MemberReapplication.Modify(true);
+                    Handled := true;
+                end;
+            //Member Exit
+            Database::"Membership Exist":
+                begin
+                    RecRef.SetTable(MembershipExist);
+                    MembershipExist.Validate(Status, MembershipExist.Status::open);
+                    MembershipExist.Modify(true);
+                    Handled := true;
+                end;
             //Pettycash payment
             DATABASE::"Funds Transfer Header":
                 begin
@@ -300,9 +329,27 @@ Codeunit 51516041 "Custom Workflow Responses"
         FOSAProductApplication: Record "Accounts Applications Details";
         LoanRecoveryApplication: Record "Loan Recovery Header";
         CEEPChangeRequest: Record "CEEP Change Request";
+        MembershipExist: Record "Membership Exist";
+        MemberReapplication: Record "Member Reapplication";
     begin
         RecRef.GetTable(Variant);
         case RecRef.Number of
+            //Membership Reapplication
+            Database::"Member Reapplication":
+                begin
+                    RecRef.SetTable(MemberReapplication);
+                    MemberReapplication.Validate(Status, MemberReapplication.Status::Pending);
+                    MemberReapplication.Modify(true);
+                    IsHandled := true;
+                end;
+            //Membership exit
+            Database::"Membership Exist":
+                begin
+                    RecRef.SetTable(MembershipExist);
+                    MembershipExist.Validate(Status, MembershipExist.Status::Pending);
+                    MembershipExist.Modify(true);
+                    IsHandled := true;
+                end;
             //PettyCash Reimbursement
             Database::"Funds Transfer Header":
                 begin
@@ -432,8 +479,27 @@ Codeunit 51516041 "Custom Workflow Responses"
         FOSAProductApplication: Record "Accounts Applications Details";
         LoanRecoveryApplication: Record "Loan Recovery Header";
         CEEPChangeRequest: Record "CEEP Change Request";
+        MembershipExist: Record "Membership Exist";
+        MemberReapplication: Record "Member Reapplication";
     begin
+        RecRef.GetTable(Variant);
         case RecRef.Number of
+            //Membership Reapplication
+            Database::"Member Reapplication":
+                begin
+                    RecRef.SetTable(MemberReapplication);
+                    MemberReapplication.Validate(Status, MemberReapplication.Status::Pending);
+                    MemberReapplication.Modify(true);
+                    Variant := MemberReapplication;
+                end;
+            //Membership Exit
+            Database::"Membership Exist":
+                begin
+                    RecRef.SetTable(MembershipExist);
+                    MembershipExist.Validate(Status, MembershipExist.Status::Pending);
+                    MembershipExist.Modify(true);
+                    Variant := MembershipExist;
+                end;
             //PettyCash Reimbursement
             Database::"Funds Transfer Header":
                 begin
@@ -553,15 +619,32 @@ Codeunit 51516041 "Custom Workflow Responses"
         LoanBatchDisbursements: Record "Loan Disburesment-Batching";
         LoanTopUp: Record "Loan Top Up.";
         ChangeRequest: Record "Change Request";
-        // LeaveApplication: Record "HR Leave Application";
         GuarantorSubstitution: Record "Guarantorship Substitution H";
         PaymentVoucher: Record "Payment Header";
         PettyCashReimbersement: Record "Funds Transfer Header";
         FOSAProductApplication: Record "Accounts Applications Details";
         LoanRecoveryApplication: Record "Loan Recovery Header";
         CEEPChangeRequest: Record "CEEP Change Request";
+        MembershipExist: Record "Membership Exist";
+        MemberReapplication: Record "Member Reapplication";
     begin
         case RecRef.Number of
+            //Membership Reapplication
+            DATABASE::"Member Reapplication":
+                begin
+                    RecRef.SetTable(MemberReapplication);
+                    MemberReapplication.Status := MemberReapplication.Status::Approved;
+                    MemberReapplication.Modify(true);
+                    Handled := true;
+                end;
+            //Membership Exit
+            DATABASE::"Membership Exist":
+                begin
+                    RecRef.SetTable(MembershipExist);
+                    MembershipExist.Status := MembershipExist.Status::Approved;
+                    MembershipExist.Modify(true);
+                    Handled := true;
+                end;
             //Petty Cash Reimbursement
             DATABASE::"Funds Transfer Header":
                 begin
@@ -586,14 +669,7 @@ Codeunit 51516041 "Custom Workflow Responses"
                     GuarantorSubstitution.Modify(true);
                     Handled := true;
                 end;
-            //Leave applications
-            // DATABASE::"HR Leave Application":
-            //     begin
-            //         RecRef.SetTable(LeaveApplication);
-            //         LeaveApplication.Status := LeaveApplication.Status::Approved;
-            //         LeaveApplication.Modify(true);
-            //         Handled := true;
-            //     end;
+          
             //Membership applications
             DATABASE::"Membership Applications":
                 begin

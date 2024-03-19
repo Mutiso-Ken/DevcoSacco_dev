@@ -4,9 +4,12 @@ page 51516146 "Member Re-Application List"
     Caption = 'Member Re-Application List';
     PageType = List;
     SourceTable = "Member Reapplication";
+    SourceTableView = sorting("No.") order(ascending) where(Reactivated = const(false));
     UsageCategory = Lists;
     CardPageId = "Member Re-Application Page";
+
     Editable = false;
+
 
     layout
     {

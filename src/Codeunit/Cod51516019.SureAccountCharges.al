@@ -140,7 +140,7 @@ Codeunit 51516019 "SureAccountCharges"
         GenJournalLine.Validate(GenJournalLine."Account No.");
         GenJournalLine."Posting Date" := Today;
         GenJournalLine.Description := 'Share Capital';
-        GenJournalLine.Amount := GenSetup."share Capital";
+        // GenJournalLine.Amount := GenSetup."share Capital";
         GenJournalLine.Validate(GenJournalLine.Amount);
         GenJournalLine."Shortcut Dimension 1 Code" := globdim1;
         GenJournalLine."Shortcut Dimension 2 Code" := globdim2;
@@ -161,7 +161,7 @@ Codeunit 51516019 "SureAccountCharges"
         GenJournalLine.Validate(GenJournalLine."Account No.");
         GenJournalLine."Posting Date" := Today;
         GenJournalLine.Description := 'Share Capital';
-        GenJournalLine.Amount := (GenSetup."share Capital") * -1;
+        // GenJournalLine.Amount := (GenSetup."share Capital") * -1;
         GenJournalLine.Validate(GenJournalLine.Amount);
         GenJournalLine."Transaction Type" := GenJournalLine."transaction type"::"Shares Capital";
         GenJournalLine."Shortcut Dimension 1 Code" := 'BOSA';

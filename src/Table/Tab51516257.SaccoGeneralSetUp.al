@@ -331,7 +331,7 @@ Table 51516257 "Sacco General Set-Up"
         {
             TableRelation = "G/L Account";
         }
-        field(101; "Funeral Expense Amount"; Decimal)
+        field(101; "Withdrawal Period"; DateFormula)
         {
         }
         field(102; "Rejoining Fee"; Decimal)
@@ -435,9 +435,9 @@ Table 51516257 "Sacco General Set-Up"
         field(133; "Passcard Fee"; Decimal)
         {
         }
-        field(134; "share Capital"; Decimal)
-        {
-        }
+        // field(134; "share Capital"; Decimal)
+        // {
+        // }
         field(135; "Form Fee Account"; Code[30])
         {
             TableRelation = "G/L Account";

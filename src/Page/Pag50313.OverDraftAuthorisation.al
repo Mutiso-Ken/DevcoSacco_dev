@@ -312,12 +312,12 @@ Page 50313 "Over Draft Authorisation"
                 }
                 action(Account)
                 {
-                    ApplicationArea = Basic;
-                    Image = Planning;
-                    Promoted = true;
-                    PromotedCategory = Process;
-                    RunObject = Page "Account Card";
-                    RunPageLink = "No." = field("Account No.");
+                    // ApplicationArea = Basic;
+                    // Image = Planning;
+                    // Promoted = true;
+                    // PromotedCategory = Process;
+                    // RunObject = Page "Account Card";
+                    // RunPageLink = "No." = field("Account No.");
                 }
             }
         }

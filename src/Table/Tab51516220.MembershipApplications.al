@@ -135,7 +135,9 @@ Table 51516220 "Membership Applications"
                         end;
                     end;
                 end;
-                Age := Dates.DetermineAge("Date of Birth", Today);
+                // Age := Dates.DetermineAge("Date of Birth", Today);
+                if "Date of Birth" <> 0D then
+                    Age := Round((Today - "Date of Birth") / 365, 1);
             end;
         }
         field(68005; "E-Mail (Personal)"; Text[50])
@@ -627,7 +629,7 @@ Table 51516220 "Membership Applications"
         field(68102; "E-Mail (Personal2)"; Text[50])
         {
         }
-        field(68103; Age; Text[50])
+        field(68103; Age; Integer)
         {
         }
         field(68104; "Copy of constitution"; Boolean)

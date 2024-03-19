@@ -67,6 +67,11 @@ Page 51516227 "Member Account Card"
                     Caption = 'Date of Birth';
                     Editable = false;
                 }
+                field(Age; Age)
+                {
+                    ApplicationArea = Basic;
+                    Editable = false;
+                }
                 field("E-Mail"; "E-Mail")
                 {
                     ApplicationArea = Basic;
@@ -242,7 +247,7 @@ Page 51516227 "Member Account Card"
                 field("Nature of Business"; "Nature of Business")
                 {
                     ApplicationArea = Basic;
-                    Caption='Group Nature of Business';
+                    Caption = 'Group Nature of Business';
 
 
                 }
@@ -657,10 +662,10 @@ Page 51516227 "Member Account Card"
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                   field("Reason For Membership Withdraw";"Reason For Membership Withdraw")
+                field("Reason For Membership Withdraw"; "Reason For Membership Withdraw")
                 {
                     ApplicationArea = Basic;
-                    
+
                 }
                 field("Status - Withdrawal App."; "Status - Withdrawal App.")
                 {
@@ -1073,7 +1078,7 @@ Page 51516227 "Member Account Card"
                         END;
                     end;
                 }
-                             action("Create Withdrawal Application")
+                action("Create Withdrawal Application")
                 {
                     ApplicationArea = Basic;
                     Image = Document;
@@ -1082,6 +1087,8 @@ Page 51516227 "Member Account Card"
 
                     trigger OnAction()
                     begin
+                        CalcFields("Current Shares","Outstanding Balance");
+                       
                         if "Current Shares" >= "Outstanding Balance" then begin
                             if Confirm('Are you sure you want to create a Withdrawal Application for this Member', false) = true then begin
                                 SurestepFactory.FnCreateMembershipWithdrawalApplication("No.", "Withdrawal Application Date", "Reason For Membership Withdraw", "Withdrawal Date");
@@ -1796,7 +1803,7 @@ Page 51516227 "Member Account Card"
     end;
 
     var
-    SurestepFactory:Codeunit "SURESTEP Factory";
+        SurestepFactory: Codeunit "SURESTEP Factory";
         CustomizedCalEntry: Record "Customized Calendar Entry";
         Text001: label 'Do you want to allow payment tolerance for entries that are currently open?';
         CustomizedCalendar: Record "Customized Calendar Change";

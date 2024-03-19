@@ -15,31 +15,26 @@ Table 51516345 "Members Cues"
 
         field(3; "Active Members"; Integer)
         {
-            CalcFormula = count(Customer where(Status = const("Active"), "Customer Posting Group" = filter('Member'), "Current Shares" = filter(>= 500)));
+            CalcFormula = count(Customer where(Status = const("Active"), "Customer Posting Group" = filter('Member')));
             FieldClass = FlowField;
         }
         field(4; "NonActive Mbrs"; Integer)
         {
-            CalcFormula = count(Customer where("Customer Posting Group" = filter('Member'), "Current Shares" = filter(< 500)));
+            CalcFormula = count(Customer where(Status = const(Dormant), "Customer Posting Group" = filter('Member')));
             FieldClass = FlowField;
         }
 
-        field(5; "ALL CEEP Mbrs"; Integer)
+        field(5; Deceased; Integer)
         {
-            CalcFormula = count(Customer where("Customer Posting Group" = filter('MICRO'), "Account Category" = filter('Individual')));
-            FieldClass = FlowField;
-        }
-        field(6; "Active CEEP Mbrs"; Integer)
-        {
-            CalcFormula = count(Customer where("Customer Posting Group" = filter('MICRO'), "Current Shares" = filter(>= 500), "Account Category" = filter('Individual')));
-            FieldClass = FlowField;
-        }
-        field(7; "Inactive CEEP Mbrs"; Integer)
-        {
-            CalcFormula = count(Customer where("Customer Posting Group" = filter('MICRO'), "Current Shares" = filter(< 500), "Account Category" = filter('Individual')));
+            CalcFormula = count(Customer where(Status = const(Deceased), "Customer Posting Group" = filter('Member')));
             FieldClass = FlowField;
         }
 
+        field(6; Exited; Integer)
+        {
+            CalcFormula = count(Customer where(Status = const(Withdrawal), "Customer Posting Group" = filter('Member')));
+            FieldClass = FlowField;
+        }
         field(8; "Requests to Approve"; Integer)
         {
             CalcFormula = count("Approval Entry" where("Approver ID" = field("User ID"),
@@ -54,33 +49,21 @@ Table 51516345 "Members Cues"
             Caption = 'Requests Sent for Approval';
             FieldClass = FlowField;
         }
-        field(10; "Working Mobile Bal"; Integer)
-        {
-            // CalcFormula = count("Approval Entry" where("Sender ID" = field("User ID"),
-            //                                             Status = filter(Open)));
-            // Caption = 'Requests Sent for Approval';
-            // FieldClass = FlowField;
-        }
 
-        field(11; "Utility Mobile Bal"; Integer)
-        {
-            // CalcFormula = count("Approval Entry" where("Sender ID" = field("User ID"),
-            //                                             Status = filter(Open)));
-            // Caption = 'Requests Sent for Approval';
-            // FieldClass = FlowField;
-        }
 
-        field(12; "SMS Bal"; Integer)
+        field(10; "Awaiting Exit"; Integer)
         {
-            // CalcFormula = count("Approval Entry" where("Sender ID" = field("User ID"),
-            //                                             Status = filter(Open)));
-            // Caption = 'Requests Sent for Approval';
-            // FieldClass = FlowField;
+               CalcFormula = count(Customer where(Status = const("Awaiting exit"), "Customer Posting Group" = filter('Member')));
+            FieldClass = FlowField;
         }
-
-        field(13; "CEEP Groups"; Integer)
+        field(13; Female; Integer)
         {
-            CalcFormula = count(Customer where("Customer Posting Group" = filter('MICRO'), "Account Category" = filter('GROUP')));
+            CalcFormula = count(Customer where(Status = const("Active"), Gender = Const(Female), "Customer Posting Group" = filter('Member')));
+            FieldClass = FlowField;
+        }
+        field(14; Male; Integer)
+        {
+            CalcFormula = count(Customer where(Status = const("Active"), Gender = Const(Male), "Customer Posting Group" = filter('Member')));
             FieldClass = FlowField;
         }
     }

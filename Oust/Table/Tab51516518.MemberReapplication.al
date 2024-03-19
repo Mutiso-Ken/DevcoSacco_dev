@@ -2,6 +2,9 @@ table 51516518 "Member Reapplication"
 {
     Caption = 'Member Reapplication';
     DataClassification = ToBeClassified;
+    DrillDownPageId = "Member Re-Application List";
+    LookupPageId = "Member Re-Application List";
+
 
     fields
     {
@@ -27,8 +30,10 @@ table 51516518 "Member Reapplication"
             begin
                 if cust.get("Member No.") then
                     "Member Name" := cust.Name;
-                    "Status on Exit":=cust.Status;
-                  
+                "Status on Exit" := cust.Status;
+                cust.CalcFields("Share Capital");
+                "Share Capital" := Cust."Share Capital";
+
             end;
         }
         field(3; "Member Name"; Text[100])
@@ -69,6 +74,16 @@ table 51516518 "Member Reapplication"
             DataClassification = ToBeClassified;
         }
         field(12; "No. Series"; Code[50])
+        {
+            DataClassification = ToBeClassified;
+        }
+        field(13; Status; Option)
+        {
+            OptionCaption = 'Open,Pending,Approved';
+            OptionMembers = Open,Pending,Approved;
+        }
+        field(14; Reactivated; Boolean) { }
+        field(15; "Share Capital"; Decimal)
         {
             DataClassification = ToBeClassified;
         }

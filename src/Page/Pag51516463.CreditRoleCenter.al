@@ -52,12 +52,12 @@ Page 51516463 "Credit Role Center"
             }
             action(FOSAAccounts)
             {
-                ApplicationArea = Basic, Suite;
-                Caption = 'FOSA Accounts';
-                Image = Vendor;
-                RunObject = Page "Account Details Master";
-                ToolTip = 'View detailed information for the FOSA Savings Accounts.';
-                Visible = true;
+                // ApplicationArea = Basic, Suite;
+                // Caption = 'FOSA Accounts';
+                // Image = Vendor;
+                // RunObject = Page "Account Details Master";
+                // ToolTip = 'View detailed information for the FOSA Savings Accounts.';
+                // Visible = true;
             }
             action("General Journals")
             {
@@ -153,9 +153,9 @@ Page 51516463 "Credit Role Center"
 
                 action("Savings Products")
                 {
-                    ApplicationArea = Basic, Suite;
-                    RunObject = page "Account Details Master";
-                    ToolTip = 'All Saving Products';
+                    // ApplicationArea = Basic, Suite;
+                    // RunObject = page "Account Details Master";
+                    // ToolTip = 'All Saving Products';
                 }
                 // group(StandingOrders)
                 // {
@@ -328,10 +328,10 @@ Page 51516463 "Credit Role Center"
 
                     action("Active FDR ")
                     {
-                        Caption = 'Active FDR';
-                        Image = Receipt;
-                        RunObject = page "Account Details Master";
-                        RunPageView = WHERE("Account Type" = CONST('FIXED'), "Balance" = filter(> 0));
+                        // Caption = 'Active FDR';
+                        // Image = Receipt;
+                        // RunObject = page "Account Details Master";
+                        // RunPageView = WHERE("Account Type" = CONST('FIXED'), "Balance" = filter(> 0));
 
                     }
                 }

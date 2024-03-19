@@ -997,7 +997,24 @@ Page 51516487 "Devco Sacco Main Role Center"
 
 
                 }
+                group("Membership Re-Application")
+                {
+                    action("Member Re-Application List")
+                    {
 
+                        RunObject = page "Member Re-Application List";
+                        Enabled = true;
+                        ApplicationArea = all;
+                    }
+                    action("Member Re-Application posted")
+                    {
+
+                        RunObject = page "MemberRe-ApplicationListPosted";
+                        Enabled = true;
+                        Caption = ' Member Re-Application Posted';
+                        ApplicationArea = all;
+                    }
+                }
                 group("Member Reports")
                 {
 
@@ -1013,9 +1030,56 @@ Page 51516487 "Devco Sacco Main Role Center"
                     {
                         ApplicationArea = all;
                         RunObject = report "Member Account  balances";
-                        ToolTip = 'Member Account Balances Report';
+                        ToolTip = 'Member Account Summary Report.';
+                    }
+                    action(MembersavingReport)
+                    {
+                        ApplicationArea = all;
+                        Caption = 'Member savings columnar report.';
+                        RunObject = report "Member savings report";
+
+                    }
+                    action(memberwithoutsharecapitalReport)
+                    {
+                        ApplicationArea = all;
+                        Caption = 'Members without minimum share capital report.';
+                        RunObject = report MemberwithoutMinshapitalreport;
+
                     }
 
+                    action(MemberwithoutPassportReport)
+                    {
+                        ApplicationArea = all;
+                        Caption = 'Members without passports report.';
+                        RunObject = report Memberswithoutpassportsreport;
+
+                    }
+                    action(MemberwithoutSignatureReport)
+                    {
+                        ApplicationArea = all;
+                        Caption = ' Members without signature report.';
+                        RunObject = report Memberwithoutsignaturereport;
+
+                    }
+                    action(MemberApplicationReport)
+                    {
+                        ApplicationArea = all;
+                        Caption = 'Member application report';
+                        RunObject = report MembershipApplicationReport;
+                    }
+                    action(MemberswithoutLoanReport)
+                    {
+                        ApplicationArea = all;
+                        Caption = 'Members Without Loan report';
+                        RunObject = report MemberwithoutLoanReport;
+                    }
+                    action(MembersReport)
+                    {
+                        ApplicationArea = all;
+                        Caption = 'Members report';
+                        RunObject = report MemberReport;
+                        ToolTip = 'Members Report Contains all Members status';
+                    }
                     action("Membership Closure Report")
                     {
                         ApplicationArea = all;
@@ -1023,11 +1087,19 @@ Page 51516487 "Devco Sacco Main Role Center"
                         RunObject = report "Membership Closure Report";
 
                     }
+
+
+                    //
                     action("Member Next Of Kin Details")
                     {
                         ApplicationArea = All;
-
+                        Caption = 'Benificiary Report';
                         RunObject = report "Next of Kin Report";
+                    }
+                    action("Members Without Next of Kin")
+                    {
+                        ApplicationArea = All;
+                        RunObject = report MemberWithoutNextOfKin;
                     }
                     action("Member shares Report")
                     {
@@ -1307,22 +1379,7 @@ Page 51516487 "Devco Sacco Main Role Center"
                         RunObject = page "Posted BOSA Receipts List";
                     }
                 }
-                group(SharecapitalTrading)
-                {
-                    action(SharecapitalTradingList)
-                    {
-                        ApplicationArea = Basic, Suite;
-                        RunObject = page "Share Capital Trading List";
-                        Caption = 'Sharecapital Trading List';
-                    }
-                    action(SharecapitalTradingListPosted)
-                    {
-                        ApplicationArea = Basic, Suite;
-                        RunObject = page "Share Capital Trading Posted";
-                        Caption = 'Sharecapital Trading List Posted';
 
-                    }
-                }
 
                 //.............................Collateral Management..........................................
 
@@ -1544,6 +1601,12 @@ Page 51516487 "Devco Sacco Main Role Center"
                 group(BOSAPeriodicActivities)
                 {
                     Caption = 'Periodic Activities';
+
+                    action("Update Member Dormancy")
+                    {
+                        RunObject = report "Update Member Dormancy";
+                        ApplicationArea = all;
+                    }
                     group(LoanDefaulter)
                     {
                         Caption = 'Loan Defaulter Notices';
@@ -1665,6 +1728,33 @@ Page 51516487 "Devco Sacco Main Role Center"
                                 RunObject = report "Dividend Register";
                             }
                         }
+                        group("Share capital Manangement")
+                        {
+                            action("Share Capital Recovery")
+                            {
+                                Image = ReceiveLoaner;
+                                ApplicationArea = all;
+                                Caption = 'Recover Sharecapital from Deposits';
+                                RunObject = report "Share Capital Recovery";
+                            }
+                            group(SharecapitalTrading)
+                            {
+                                action(SharecapitalTradingList)
+                                {
+                                    ApplicationArea = Basic, Suite;
+                                    RunObject = page "Share Capital Trading List";
+                                    Caption = 'Sharecapital Trading List';
+                                }
+                                action(SharecapitalTradingListPosted)
+                                {
+                                    ApplicationArea = Basic, Suite;
+                                    RunObject = page "Share Capital Trading Posted";
+                                    Caption = 'Sharecapital Trading List Posted';
+
+                                }
+                            }
+                        }
+
 
 
                     }
@@ -3588,9 +3678,9 @@ Page 51516487 "Devco Sacco Main Role Center"
 
                     action("Adminset ")
                     {
-                        Caption = 'Code Set';
-                        Image = Receipt;
-                        RunObject = page accadminlist;
+                        // Caption = 'Code Set';
+                        // Image = Receipt;
+                        // RunObject = page accadminlist;
 
                     }
 
@@ -4059,13 +4149,7 @@ Page 51516487 "Devco Sacco Main Role Center"
                     ToolTip = 'Generate Loan Performance Classification and New Schedule';
                     Enabled = true;
                 }
-                action("Member Re-Application List")
-                {
 
-                    RunObject = page "Member Re-Application List";
-                    Enabled = true;
-                    ApplicationArea = all;
-                }
 
             }
             group("Ledger Accounting")

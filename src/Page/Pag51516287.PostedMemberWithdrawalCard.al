@@ -560,7 +560,7 @@ Page 51516287 "Posted Member Withdrawal Card"
                             GenJournalLine."Account No." := "Paying Bank";
                             GenJournalLine.Validate(GenJournalLine."Account No.");
                             GenJournalLine.Description := 'Member Withdrawal(Death)' + ' ' + "Member No.";
-                            GenJournalLine.Amount := -Generalsetup."Funeral Expense Amount";
+                            //GenJournalLine.Amount := -Generalsetup."Funeral Expense Amount";
                             GenJournalLine.Validate(GenJournalLine.Amount);
                             GenJournalLine."Shortcut Dimension 1 Code" := DActivity;
                             GenJournalLine."Shortcut Dimension 2 Code" := DBranch;

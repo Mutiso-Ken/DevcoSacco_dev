@@ -189,11 +189,11 @@ Page 51516917 "Customer Care Card"
                     ApplicationArea = Basic;
                 }
             }
-            part(Control1000000007;"Account Details Master")
-            {
-                Caption = 'Savings Product Details';
-                SubPageLink = "BOSA Account No"=field("No.");
-            }
+            // part(Control1000000007;"Account Details Master")
+            // {
+            //     Caption = 'Savings Product Details';
+            //     SubPageLink = "BOSA Account No"=field("No.");
+            // }
             group("Withdrawal Details")
             {
                 Caption = 'Withdrawal Details';

@@ -543,13 +543,13 @@ Page 51516414 "NonMember Account Card"
 
                 action("Account Page")
                 {
-                    ApplicationArea = Basic;
-                    Image = Planning;
-                    Promoted = true;
-                    PromotedCategory = Process;
-                    PromotedIsBig = true;
-                    RunObject = Page "Account Card";
-                    RunPageLink = "No." = field("FOSA Account");
+                    // ApplicationArea = Basic;
+                    // Image = Planning;
+                    // Promoted = true;
+                    // PromotedCategory = Process;
+                    // PromotedIsBig = true;
+                    // RunObject = Page "Account Card";
+                    // RunPageLink = "No." = field("FOSA Account");
                 }
                 action("Members Kin Details List")
                 {

@@ -178,11 +178,14 @@ Page 51516221 "Membership Application Card"
                     ShowMandatory = true;
 
                     trigger OnValidate()
+
                     begin
-                        DAge := Dates.DetermineAge("Date of Birth", Today);
+                        // Age := Dates.DetermineAge("Date of Birth", Today);
+                        if "Date of Birth" <> 0D then
+                            Age := Round((Today - "Date of Birth") / 365, 1);
                     end;
                 }
-                field(Age; DAge)
+                field(Age; Age)
                 {
                     ApplicationArea = Basic;
                     Editable = ageEditable;
@@ -222,7 +225,7 @@ Page 51516221 "Membership Application Card"
                 field("E-Mail (Personal)"; "E-Mail (Personal)")
                 {
                     ApplicationArea = Basic;
-                    Editable = EmailEdiatble;
+                    // Editable = EmailEdiatble;
                     ShowMandatory = false;
                 }
                 field("Recruited By"; "Recruited By")
@@ -402,16 +405,18 @@ Page 51516221 "Membership Application Card"
                     Editable = gender2editable;
                     ShowMandatory = true;
 
-                    // trigger OnValidate()
-                    // begin
-                    //     DAge := Dates.DetermineAge("Date of Birth", Today);
-                    // end;
+                    trigger OnValidate()
+                    begin
+                        // Age := Dates.DetermineAge("Date of Birth", Today);
+                        if "Date of Birth" <> 0D then
+                            Age := Round((Today - "Date of Birth") / 365, 1);
+                    end;
                 }
-                field(JointAge; DAge)
+                field(JointAge; Age)
                 {
                     ApplicationArea = Basic;
                     Editable = ageEditable;
-                    Visible = false;
+                    // Visible = false;
                 }
                 field("JointEmployer Code"; "Employer Code")
                 {
@@ -1068,6 +1073,9 @@ Page 51516221 "Membership Application Card"
                     trigger OnAction()
                     var
                         dialogBox: Dialog;
+                        TheMessage: Codeunit "Email Message";
+                        Email: Codeunit Email;
+
                     begin
                         if Status <> Status::Approved then
                             Error('This application has not been approved');
@@ -1098,11 +1106,11 @@ Page 51516221 "Membership Application Card"
 
 
                             GenSetUp.Get;
-                            if GenSetUp."Auto Open FOSA Savings Acc." = true then begin
-                                dialogBox.Open('Creating New BOSA Account for applicant ' + Format(MembApp.Name));
-                                FnCreateFOSAMemberAccounts();
-                                dialogBox.Close();
-                            end;
+                            // if GenSetUp."Auto Open FOSA Savings Acc." = true then begin
+                            //     dialogBox.Open('Creating New BOSA Account for applicant ' + Format(MembApp.Name));
+                            //     FnCreateFOSAMemberAccounts();
+                            //     dialogBox.Close();
+                            // end;
 
                             dialogBox.Open('Registering Next Of Kin for ' + Format(MembApp.Name));
                             FnCreateNextOfKinDetails();
@@ -1116,19 +1124,20 @@ Page 51516221 "Membership Application Card"
                             FnCreateGroupMembers();
                             dialogBox.Close();
                             //
-                            if rec."AutoFill Mobile Details" = true then begin
-                                dialogBox.Open('Autofilling Mobile Application for ' + Format(MembApp.Name));
-                                FnAutoCreateMobileApplication();
-                                dialogBox.close();
-                            end;
-                            if rec."AutoFill Agency Details" = true then begin
-                                dialogBox.Open('Autofilling Agency Application for ' + Format(MembApp.Name));
-                                FnAutoCreateAgencyApplication();
-                                dialogBox.close();
-                            end;
+                            // if rec."AutoFill Mobile Details" = true then begin
+                            //     dialogBox.Open('Autofilling Mobile Application for ' + Format(MembApp.Name));
+                            //     FnAutoCreateMobileApplication();
+                            //     dialogBox.close();
+                            // end;
+                            // if rec."AutoFill Agency Details" = true then begin
+                            //     dialogBox.Open('Autofilling Agency Application for ' + Format(MembApp.Name));
+                            //     FnAutoCreateAgencyApplication();
+                            //     dialogBox.close();
+                            // end;
                             //...............................Close The Card
                             //-----Send Email
-                            SendMail();
+
+                            SendMail(Rec."No.");
                             //-----Send SMS
                             FnSendSMSOnAccountOpening();
                             //-----
@@ -1281,7 +1290,7 @@ Page 51516221 "Membership Application Card"
         StatusPermissions: Record "Status Change Permision";
         Cust: Record Customer;
         Accounts: Record Vendor;
-        AcctNo: Code[20];
+        //AcctNo: Code[20];
         NextOfKinApp: Record "Member App Next Of kin";
         NextofKinFOSA: Record "Members Next Kin Details";
         AccountSign: Record "Member Account Signatories";
@@ -1408,7 +1417,8 @@ Page 51516221 "Membership Application Card"
         AccountCategory: Boolean;
         DimensionValue: Record "Dimension Value";
         Dates: Codeunit "Dates Calculation";
-        DAge: Text[100];
+        // Age: Text[100];
+
         NationalRe: Boolean;
         Jooint: Boolean;
         Vendor: Record Vendor;
@@ -1910,22 +1920,30 @@ Page 51516221 "Membership Application Card"
     end;
 
 
-    procedure SendMail()
+    procedure SendMail(MemberNo: Code[30])
     Var
-        EmailBody: Text[150];
-        EmailSubject: Text[100];
-        Emailaddress: Text[100];
+        // EmailBody: Text[1000];
+        // EmailSubject: Text[100];
+        // Emailaddress: Text[100];
+        Email: Codeunit Email;
+        EmailMsg: Codeunit "Email Message";
+        EmailBody: Label 'Dear Member, <br> On behalf of Devco Sacco am Pleased to inform you that your application for   ';
+
 
     begin
         GenSetUp.Get;
         if GenSetUp."Send Email Notifications" = true then begin
-            Emailaddress := Rec."E-Mail (Personal)";
-            EmailSubject := 'Membership Application Subject';
-            EMailBody := ' <b> Dear ' + Rec.Name + '</b> ,</br></br>' +
-                'On behalf of Devco Sacco am pleased to inform you that your application for Membership has been accepted.' + '<br></br>' +
-                'Congratulations ' + '</br></br>' + 'Regards' + '</br></br>' + ' Devco sacco';
-            SFactory.SendMail(Emailaddress, EmailSubject, EmailBody);
-
+            Rec.Reset();
+            rec.SetRange(rec."No.", MemberNo);
+            if Rec.Findset then begin
+                rec.TestField("E-Mail (Personal)");
+                EmailMsg.Create("E-Mail (Personal)", Name + 'Membership Application', '', true);
+                // EmailSubject := 'Membership Application Subject';
+                // EMailBody := 'Dear ' + Rec.Name + ',   ' +
+                //     'On behalf of Devco Sacco am pleased to inform you that your application for Membership has been accepted.' +
+                //     'Congratulations ' + 'Regards' + ' Devco sacco';
+                // SFactory.SendMail(Emailaddress, EmailSubject, EmailBody);
+            end;
         end;
     end;
 
@@ -2028,6 +2046,7 @@ Page 51516221 "Membership Application Card"
         Cust."Customer Type" := Cust."customer type"::Member;
         Cust.Gender := Gender;
         Cust."Sms Notification" := "Sms Notification";
+        Cust.Age := Age;
 
         Cust.Image := Picture;
         Cust.Signature := Signature;
@@ -2060,77 +2079,77 @@ Page 51516221 "Membership Application Card"
 
     end;
 
-    local procedure FnCreateFOSAMemberAccounts()
-    var
+    // local procedure FnCreateFOSAMemberAccounts()
+    // var
 
-    begin
-        IncrementNo := '';
-        MemberAppliedProducts.Reset();
-        MemberAppliedProducts.SetRange(MemberAppliedProducts."Membership Applicaton No", "No.");
-        if MemberAppliedProducts.Find('-') then begin
-            repeat
-                if "Fosa Account No" = '' then begin
-                    AcctNo := FnGetFosaAccountTypeNumber(MemberAppliedProducts."Product Code", MembApp."Global Dimension 2 Code", BOSAACC);
-                    Accounts.Init;
-                    Accounts."No." := AcctNo;
-                    Accounts."Date of Birth" := "Date of Birth";
-                    Accounts.Name := UpperCase(Name);
-                    Accounts."Creditor Type" := Accounts."creditor type"::Account;
-                    Accounts."Staff No" := "Payroll/Staff No";
-                    Accounts."ID No." := "ID No.";
-                    Accounts."Phone No." := "Mobile Phone No";
-                    Accounts."MPESA Mobile No" := "Mobile Phone No";
-                    Accounts."Registration Date" := "Registration Date";
-                    Accounts."Post Code" := "Postal Code";
-                    Accounts.County := City;
-                    Accounts."BOSA Account No" := Cust."No.";
-                    Accounts."Marital Status" := "Marital Status";
-                    Accounts.Image := Picture;
-                    Accounts.Signature := Signature;
-                    Accounts."Passport No." := "Passport No.";
-                    Accounts."Company Code" := "Employer Code";
-                    Accounts.Status := Accounts.Status::New;
-                    Accounts."Account Type" := MemberAppliedProducts."Product Code";
-                    Accounts."Date of Birth" := "Date of Birth";
-                    Accounts."Global Dimension 1 Code" := 'FOSA';
-                    Accounts."Global Dimension 2 Code" := "Global Dimension 2 Code";
-                    Accounts.Address := Address;
-                    Accounts."Address 2" := "Address 2";
-                    Accounts."Registration Date" := Today;
-                    Accounts.Status := Accounts.Status::Active;
-                    Accounts.Section := Section;
-                    Accounts."Home Address" := "Home Address";
-                    Accounts.District := District;
-                    Accounts.Location := Location;
-                    Accounts."Sub-Location" := "Sub-Location";
-                    Accounts."Registration Date" := Today;
-                    Accounts."Monthly Contribution" := "Monthly Contribution";
-                    Accounts."E-Mail" := "E-Mail (Personal)";
-                    Accounts."Vendor Posting Group" := FnGetPostingGroup(MemberAppliedProducts."Product Code");
-                    Accounts.Insert;
+    // begin
+    //     IncrementNo := '';
+    //     MemberAppliedProducts.Reset();
+    //     MemberAppliedProducts.SetRange(MemberAppliedProducts."Membership Applicaton No", "No.");
+    //     if MemberAppliedProducts.Find('-') then begin
+    //         repeat
+    //             if "Fosa Account No" = '' then begin
+    //                 AcctNo := FnGetFosaAccountTypeNumber(MemberAppliedProducts."Product Code", MembApp."Global Dimension 2 Code", BOSAACC);
+    //                 Accounts.Init;
+    //                 Accounts."No." := AcctNo;
+    //                 Accounts."Date of Birth" := "Date of Birth";
+    //                 Accounts.Name := UpperCase(Name);
+    //                 Accounts."Creditor Type" := Accounts."creditor type"::Account;
+    //                 Accounts."Staff No" := "Payroll/Staff No";
+    //                 Accounts."ID No." := "ID No.";
+    //                 Accounts."Phone No." := "Mobile Phone No";
+    //                 Accounts."MPESA Mobile No" := "Mobile Phone No";
+    //                 Accounts."Registration Date" := "Registration Date";
+    //                 Accounts."Post Code" := "Postal Code";
+    //                 Accounts.County := City;
+    //                 Accounts."BOSA Account No" := Cust."No.";
+    //                 Accounts."Marital Status" := "Marital Status";
+    //                 Accounts.Image := Picture;
+    //                 Accounts.Signature := Signature;
+    //                 Accounts."Passport No." := "Passport No.";
+    //                 Accounts."Company Code" := "Employer Code";
+    //                 Accounts.Status := Accounts.Status::New;
+    //                 Accounts."Account Type" := MemberAppliedProducts."Product Code";
+    //                 Accounts."Date of Birth" := "Date of Birth";
+    //                 Accounts."Global Dimension 1 Code" := 'FOSA';
+    //                 Accounts."Global Dimension 2 Code" := "Global Dimension 2 Code";
+    //                 Accounts.Address := Address;
+    //                 Accounts."Address 2" := "Address 2";
+    //                 Accounts."Registration Date" := Today;
+    //                 Accounts.Status := Accounts.Status::Active;
+    //                 Accounts.Section := Section;
+    //                 Accounts."Home Address" := "Home Address";
+    //                 Accounts.District := District;
+    //                 Accounts.Location := Location;
+    //                 Accounts."Sub-Location" := "Sub-Location";
+    //                 Accounts."Registration Date" := Today;
+    //                 Accounts."Monthly Contribution" := "Monthly Contribution";
+    //                 Accounts."E-Mail" := "E-Mail (Personal)";
+    //                 Accounts."Vendor Posting Group" := FnGetPostingGroup(MemberAppliedProducts."Product Code");
+    //                 Accounts.Insert;
 
-                    //Update BOSA with FOSA Account
-                    if Cust.Get(BOSAACC) then begin
-                        Cust."FOSA Account" := AcctNo;
-                        Cust.Modify;
-                    end;
-                end;
-            until MemberAppliedProducts.Next = 0;
-        end;
+    //                 //Update BOSA with FOSA Account
+    //                 if Cust.Get(BOSAACC) then begin
+    //                     Cust."FOSA Account" := AcctNo;
+    //                     Cust.Modify;
+    //                 end;
+    //             end;
+    //         until MemberAppliedProducts.Next = 0;
+    //     end;
 
 
-    end;
+    // end;
 
-    local procedure FnGetFosaAccountTypeNumber(ProductCode: Code[40]; Dimension2: Code[10]; BOSAAC: code[40]): Code[20]
-    var
-        SavingsAccountTypes: Record "Account Types-Saving Products";
-    begin
-        SavingsAccountTypes.Reset();
-        SavingsAccountTypes.SetRange(SavingsAccountTypes.Code, ProductCode);
-        if SavingsAccountTypes.find('-') then begin
-            exit(format(SavingsAccountTypes."Account No Prefix" + "Global Dimension 2 Code" + BOSAAC));
-        end;
-    end;
+    // local procedure FnGetFosaAccountTypeNumber(ProductCode: Code[40]; Dimension2: Code[10]; BOSAAC: code[40]): Code[20]
+    // var
+    //     SavingsAccountTypes: Record "Account Types-Saving Products";
+    // begin
+    //     SavingsAccountTypes.Reset();
+    //     SavingsAccountTypes.SetRange(SavingsAccountTypes.Code, ProductCode);
+    //     if SavingsAccountTypes.find('-') then begin
+    //         exit(format(SavingsAccountTypes."Account No Prefix" + "Global Dimension 2 Code" + BOSAAC));
+    //     end;
+    // end;
 
     local procedure FnGetPostingGroup(ProductCode: Code[40]): Code[20]
     var
@@ -2153,7 +2172,8 @@ Page 51516221 "Membership Application Card"
             repeat
                 //......................................BOSA
                 NextofKinBOSA.Init;
-                NextofKinBOSA."Account No" := AcctNo;
+                NextofKinBOSA."Account No" := NewMembNo;
+
                 NextofKinBOSA.Name := NextOfKinApp.Name;
                 NextofKinBOSA.Relationship := NextOfKinApp.Relationship;
                 NextofKinBOSA.Beneficiary := NextOfKinApp.Beneficiary;
@@ -2178,11 +2198,12 @@ Page 51516221 "Membership Application Card"
         if AccountSignApp.Find('-') then begin
             repeat
                 AccountSign.Init;
-                AccountSign."Account No" := AcctNo;
+                AccountSign."Account No" := NewMembNo;
                 AccountSign.Names := AccountSignApp.Names;
                 AccountSign."Date Of Birth" := AccountSignApp."Date Of Birth";
                 AccountSign."Staff/Payroll" := AccountSignApp."Staff/Payroll";
                 AccountSign."ID No." := AccountSignApp."ID No.";
+                
                 AccountSign.Signatory := AccountSignApp.Signatory;
                 AccountSign."Must Sign" := AccountSignApp."Must Sign";
                 AccountSign."Must be Present" := AccountSignApp."Must be Present";
@@ -2203,7 +2224,7 @@ Page 51516221 "Membership Application Card"
             repeat
                 //......................................BOSA
                 BosacustGroup.Init;
-                BosacustGroup."Account No" := AcctNo;
+                BosacustGroup."Account No" := NewMembNo;
                 BosacustGroup."Date of Birth" := BosaAPPGroup."Date of Birth";
                 BosacustGroup.E_Mail := BosaAPPGroup.E_Mail;
                 BosacustGroup.Employer := BosaAPPGroup.Employer;
@@ -2218,52 +2239,52 @@ Page 51516221 "Membership Application Card"
         end;
     end;
 
-    local procedure FnAutoCreateATMApplication()
-    begin
-        if GenSetUp."Auto Fill Msacco Application" = true then begin
-            MpesaAppH.Init;
-            MpesaAppH.No := '';
-            MpesaAppH."Date Entered" := Today;
-            MpesaAppH."Time Entered" := Time;
-            MpesaAppH."Entered By" := UserId;
-            MpesaAppH."Document Serial No" := "ID No.";
-            MpesaAppH."Document Date" := Today;
-            MpesaAppH."Customer ID No" := "ID No.";
-            MpesaAppH."Customer Name" := Name;
-            MpesaAppH."MPESA Mobile No" := "Phone No.";
-            MpesaAppH."App Status" := MpesaAppH."app status"::Pending;
-            MpesaAppH.Insert(true);
+    // local procedure FnAutoCreateATMApplication()
+    // begin
+    //     if GenSetUp."Auto Fill Msacco Application" = true then begin
+    //         MpesaAppH.Init;
+    //         MpesaAppH.No := '';
+    //         MpesaAppH."Date Entered" := Today;
+    //         MpesaAppH."Time Entered" := Time;
+    //         MpesaAppH."Entered By" := UserId;
+    //         MpesaAppH."Document Serial No" := "ID No.";
+    //         MpesaAppH."Document Date" := Today;
+    //         MpesaAppH."Customer ID No" := "ID No.";
+    //         MpesaAppH."Customer Name" := Name;
+    //         MpesaAppH."MPESA Mobile No" := "Phone No.";
+    //         MpesaAppH."App Status" := MpesaAppH."app status"::Pending;
+    //         MpesaAppH.Insert(true);
 
-            MpesaAppNo := MpesaAppH.No;
-            MpesaAppD.Init;
-            MpesaAppD."Application No" := MpesaAppNo;
-            MpesaAppD."Account Type" := MpesaAppD."account type"::Vendor;
-            MpesaAppD."Account No." := AcctNo;
-            MpesaAppD.Description := Name;
-            MpesaAppD.Insert;
-        end;
-    end;
+    //         MpesaAppNo := MpesaAppH.No;
+    //         MpesaAppD.Init;
+    //         MpesaAppD."Application No" := MpesaAppNo;
+    //         MpesaAppD."Account Type" := MpesaAppD."account type"::Vendor;
+    //         MpesaAppD."Account No." := AcctNo;
+    //         MpesaAppD.Description := Name;
+    //         MpesaAppD.Insert;
+    //     end;
+    // end;
 
-    local procedure FnAutoCreateMobileApplication()
-    var
-        MobileApplications: Record "SurePESA Applications";
-    begin
-        MobileApplications.reset;
-        MobileApplications.Init();
-        MobileApplications."No." := FnGenerateNextNumberSeries();
-        MobileApplications."Account No" := AcctNo;
-        MobileApplications."Account Name" := rec.Name;
-        MobileApplications.Telephone := rec."Phone No.";
-        MobileApplications."ID No" := rec."ID No.";
-        MobileApplications.Status := MobileApplications.Status::Application;
-        MobileApplications."Date Applied" := Today;
-        MobileApplications."Time Applied" := Time;
-        MobileApplications."Created By" := UserId;
-        MobileApplications.Sent := false;
-        MobileApplications."No. Series" := 'SUREPESA';
-        MobileApplications.Insert(true);
+    // local procedure FnAutoCreateMobileApplication()
+    // var
+    //     MobileApplications: Record "SurePESA Applications";
+    // begin
+    //     MobileApplications.reset;
+    //     MobileApplications.Init();
+    //     MobileApplications."No." := FnGenerateNextNumberSeries();
+    //     MobileApplications."Account No" := AcctNo;
+    //     MobileApplications."Account Name" := rec.Name;
+    //     MobileApplications.Telephone := rec."Phone No.";
+    //     MobileApplications."ID No" := rec."ID No.";
+    //     MobileApplications.Status := MobileApplications.Status::Application;
+    //     MobileApplications."Date Applied" := Today;
+    //     MobileApplications."Time Applied" := Time;
+    //     MobileApplications."Created By" := UserId;
+    //     MobileApplications.Sent := false;
+    //     MobileApplications."No. Series" := 'SUREPESA';
+    //     MobileApplications.Insert(true);
 
-    end;
+    // end;
 
     local procedure FnGenerateNextNumberSeries(): Code[20]
     var
@@ -2276,24 +2297,24 @@ Page 51516221 "Membership Application Card"
         exit('Error generating No series of mobile applications');
     end;
 
-    local procedure FnAutoCreateAgencyApplication()
-    var
-        AgencyTable: Record "Agency Members App";
-    begin
-        AgencyTable.Init();
-        AgencyTable."Account No" := AcctNo;
-        AgencyTable."Account Name" := Name;
-        AgencyTable.Telephone := "Phone No.";
-        AgencyTable."ID No" := "ID No.";
-        AgencyTable.Status := AgencyTable.Status::Application;
-        AgencyTable."Date Applied" := Today;
-        AgencyTable."Time Applied" := Time;
-        AgencyTable."Created By" := UserId;
-        AgencyTable.Sent := false;
-        AgencyTable."No. Series" := '';
-        AgencyTable.SentToServer := false;
-        AgencyTable.Insert(true);
-    end;
+    // local procedure FnAutoCreateAgencyApplication()
+    // var
+    //     AgencyTable: Record "Agency Members App";
+    // begin
+    //     AgencyTable.Init();
+    //     AgencyTable."Account No" := AcctNo;
+    //     AgencyTable."Account Name" := Name;
+    //     AgencyTable.Telephone := "Phone No.";
+    //     AgencyTable."ID No" := "ID No.";
+    //     AgencyTable.Status := AgencyTable.Status::Application;
+    //     AgencyTable."Date Applied" := Today;
+    //     AgencyTable."Time Applied" := Time;
+    //     AgencyTable."Created By" := UserId;
+    //     AgencyTable.Sent := false;
+    //     AgencyTable."No. Series" := '';
+    //     AgencyTable.SentToServer := false;
+    //     AgencyTable.Insert(true);
+    // end;
 
     local procedure FnSendSMSOnAccountOpening()
     var

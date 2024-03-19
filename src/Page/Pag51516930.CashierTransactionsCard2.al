@@ -534,12 +534,12 @@ Page 51516930 "Cashier Transactions Card2"
                 Caption = 'Transaction';
                 action("Account Card")
                 {
-                    ApplicationArea = Basic;
-                    Caption = 'Account Card';
-                    Image = Vendor;
-                    Promoted = true;
-                    RunObject = Page "Account Card";
-                    RunPageLink = "No."=field("Account No");
+                    // ApplicationArea = Basic;
+                    // Caption = 'Account Card';
+                    // Image = Vendor;
+                    // Promoted = true;
+                    // RunObject = Page "Account Card";
+                    // RunPageLink = "No."=field("Account No");
                 }
                 separator(Action1102760031)
                 {

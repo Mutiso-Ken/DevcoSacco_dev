@@ -34,7 +34,7 @@ Codeunit 51516022 "SURESTEP Factory"
 
     procedure SendMail(EmailAddress: Text[60]; EmailSubject: text[100]; EmailBody: Text[200])
     begin
-        TheMessage.Create(EmailAddress, EmailSubject, EmailBody, true);
+        TheMessage.Create('kmutiso@gmail.com', EmailSubject, EmailBody, true);
         Email.Send(TheMessage);
 
     end;
@@ -62,11 +62,16 @@ Codeunit 51516022 "SURESTEP Factory"
         ObjNextNo: Code[20];
         PostingDate: Date;
         ObjMembershipWithdrawal: Record "Membership Exist";
+
     begin
         DateExp := '<60D>';
+        ObjGenSetUp.Get();
+        //DateExp:=ObjGenSetUp."Withdrawal Period";
+
         PostingDate := WorkDate;
         ObjSalesSetup.GET;
         ApplicationDate := today;
+        ObjSalesSetup.TestField(ObjSalesSetup."Closure  Nos");
         ObjNextNo := ObjNoSeriesManagement.TryGetNextNo(ObjSalesSetup."Closure  Nos", PostingDate);
         ObjNoSeries.RESET;
         ObjNoSeries.SETRANGE(ObjNoSeries."Series Code", ObjSalesSetup."Closure  Nos");
@@ -91,6 +96,7 @@ Codeunit 51516022 "SURESTEP Factory"
 
         if ObjMembers.Get(MemberNo) then begin
             ObjMembers.Status := ObjMembers.Status::"Awaiting Exit";
+            ObjMembers."Status - Withdrawal App." := ObjMembers."Status - Withdrawal App."::"Being Processed";
             ObjMembers.Modify;
         end;
 

@@ -142,11 +142,11 @@ Page 51516462 "Devco Sacco"
             }
             action(FOSAAccounts)
             {
-                ApplicationArea = Basic, Suite;
-                Caption = 'FOSA Accounts';
-                Image = Vendor;
-                RunObject = Page "Account Details Master";
-                ToolTip = 'View or edit detailed information for the FOSA Savings Accounts.';
+                // ApplicationArea = Basic, Suite;
+                // Caption = 'FOSA Accounts';
+                // Image = Vendor;
+                // RunObject = Page "Account Details Master";
+                // ToolTip = 'View or edit detailed information for the FOSA Savings Accounts.';
 
             }
             action(FOSAAccountsBalance)
@@ -753,9 +753,9 @@ Page 51516462 "Devco Sacco"
 
                 action("Savings Products")
                 {
-                    ApplicationArea = Basic, Suite;
-                    RunObject = page "Account Details Master";
-                    ToolTip = 'All Saving Products';
+                    // ApplicationArea = Basic, Suite;
+                    // RunObject = page "Account Details Master";
+                    // ToolTip = 'All Saving Products';
                 }
 
                 group(ProductManagement)
@@ -1197,10 +1197,10 @@ Page 51516462 "Devco Sacco"
 
                     action("Active FDR ")
                     {
-                        Caption = 'Active FDR';
-                        Image = Receipt;
-                        RunObject = page "Account Details Master";
-                        RunPageView = WHERE("Account Type" = CONST('FIXED'), "Balance" = filter(> 0));
+                        // Caption = 'Active FDR';
+                        // Image = Receipt;
+                        // RunObject = page "Account Details Master";
+                        // RunPageView = WHERE("Account Type" = CONST('FIXED'), "Balance" = filter(> 0));
 
                     }
                 }
