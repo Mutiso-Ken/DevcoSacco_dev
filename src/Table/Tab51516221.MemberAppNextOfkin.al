@@ -66,7 +66,7 @@ Table 51516221 "Member App Next Of kin"
 
     keys
     {
-        key(Key1; "Account No", Name)
+        key(Key1; "Account No", Name,Type)
         {
             Clustered = true;
         }

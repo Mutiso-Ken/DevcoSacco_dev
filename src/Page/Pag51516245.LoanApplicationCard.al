@@ -90,7 +90,11 @@ Page 51516245 "Loan Application Card"
                         TestField(Posted, false);
                     end;
                 }
-
+                field("Estimated Years to Retire"; "Estimated Years to Retire")
+                {
+                    ApplicationArea = all;
+                    Editable = false;
+                }
                 field(Installments; Installments)
                 {
                     ApplicationArea = Basic;

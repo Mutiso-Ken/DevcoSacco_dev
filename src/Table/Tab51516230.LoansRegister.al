@@ -261,8 +261,8 @@ Table 51516230 "Loans Register"
                     "Existing Loan" := CustomerRecord."Outstanding Balance";
                     "Account No" := CustomerRecord."FOSA Account";
                     "Staff No" := CustomerRecord."Payroll/Staff No";
-                    // "Deposits Mulitiplier" := Savings * Mulitiplier;
-                    Gender := CustomerRecord.Gender;
+                    "Estimated Years to Retire":= (Calcdate(GenSetUp."Retirement Age", Cust."Date of Birth")-Today);
+
                     "ID NO" := CustomerRecord."ID No.";
                     "Member Deposits" := CustomerRecord."Current Shares";
                     "Group Name" := CustomerRecord."Group Account Name";
@@ -2156,6 +2156,10 @@ Table 51516230 "Loans Register"
             DataClassification = ToBeClassified;
         }
         field(51516298; "Deboost Amount"; Decimal)
+        {
+            DataClassification = ToBeClassified;
+        }
+        Field(51516299; "Estimated Years to Retire"; Integer)
         {
             DataClassification = ToBeClassified;
         }

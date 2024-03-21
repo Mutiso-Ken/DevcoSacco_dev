@@ -177,11 +177,13 @@ Page 51516221 "Membership Application Card"
                     ShowMandatory = true;
 
                     trigger OnValidate()
-
+                    var
+                        DateofRetirement: Date;
                     begin
-                        // Age := Dates.DetermineAge("Date of Birth", Today);
-                        if "Date of Birth" <> 0D then
-                            Age := Round((Today - "Date of Birth") / 365, 1);
+                        Age := Dates.DetermineAge("Date of Birth", Today);
+                        GenSetUp.Get();
+                        DateofRetirement := CalcDate(GenSetUp."Retirement Age", "Date of Birth");
+                        Message('Date of Retiremtn %1',DateofRetirement);
                     end;
                 }
                 field(Age; Age)
@@ -406,9 +408,9 @@ Page 51516221 "Membership Application Card"
 
                     trigger OnValidate()
                     begin
-                        // Age := Dates.DetermineAge("Date of Birth", Today);
-                        if "Date of Birth" <> 0D then
-                            Age := Round((Today - "Date of Birth") / 365, 1);
+                        Age := Dates.DetermineAge("Date of Birth", Today);
+                        // if "Date of Birth" <> 0D then
+                        //     Age := Round((Today - "Date of Birth") / 365, 1);
                     end;
                 }
                 field(JointAge; Age)
@@ -910,7 +912,7 @@ Page 51516221 "Membership Application Card"
                                     ObjProductsApp.INIT;
                                     ObjProductsApp."Membership Applicaton No" := xRec."No.";
                                     ObjProductsApp."Applicant Name" := xRec.Name;
-                                    ObjProductsApp."Applicant Age" := xRec.Age;
+                                    // ObjProductsApp."Applicant Age" := xRec.Age;
                                     ObjProductsApp."Applicant Gender" := xRec.Gender;
                                     ObjProductsApp."Applicant ID" := xRec."ID No.";
                                     ObjProductsApp."Product Code" := AccoutTypes.Code;
@@ -2140,7 +2142,7 @@ Page 51516221 "Membership Application Card"
         end;
     end;
 
-    local procedure FnCreateNextOfKinDetails(MemberNo:text[70])
+    local procedure FnCreateNextOfKinDetails(MemberNo: text[70])
     var
         NextofKinBOSA: Record "Members Next Kin Details";
     begin
@@ -2169,7 +2171,7 @@ Page 51516221 "Membership Application Card"
         end;
     end;
 
-    local procedure FnCreateAccountSignatories(MemberNo:text[70])
+    local procedure FnCreateAccountSignatories(MemberNo: text[70])
     begin
         AccountSignApp.Reset;
         AccountSignApp.SetRange(AccountSignApp."Account No", "No.");

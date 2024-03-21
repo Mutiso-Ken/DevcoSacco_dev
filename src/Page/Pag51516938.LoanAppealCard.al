@@ -69,7 +69,7 @@ page 51516938 "Loan Appeal Card"
                 }
                 field(NewInterest; NewInterest)
                 {
-                    
+
                     ApplicationArea = all;
                     Editable = false;
                 }
@@ -182,6 +182,8 @@ page 51516938 "Loan Appeal Card"
                             LoanReg."Instalment Period" := NewInstalmentPeriod;
                             LoanReg."Loan Product Type" := "New Loan Product Type";
                             LoanReg.Modify();
+                            Appealed := true;
+                            Rec.Modify();
                         end;
 
                     end;

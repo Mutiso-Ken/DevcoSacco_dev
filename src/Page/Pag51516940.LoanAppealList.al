@@ -5,7 +5,8 @@ page 51516940 "Loan Appeal List"
     Caption = 'Loan Appeal List';
     PageType = List;
     SourceTable = "Loan Appeal";
-    Editable=false;
+    Editable = false;
+    SourceTableView = where(Appealed = const(false));
 
 
 
@@ -39,7 +40,7 @@ page 51516940 "Loan Appeal List"
                 {
                     ToolTip = 'Specifies the value of the New Amount field.';
                     Editable = false;
-                    Visible=false;
+                    Visible = false;
                 }
                 field("Oustanding Balance"; Rec."Oustanding Balance")
                 {
@@ -54,8 +55,8 @@ page 51516940 "Loan Appeal List"
 
             }
         }
-   
+
     }
-   
-    
+
+
 }

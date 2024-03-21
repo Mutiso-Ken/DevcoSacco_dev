@@ -63,11 +63,11 @@ table 51516403 "Loan Appeal"
             var
                 myInt: Integer;
             begin
-                if LoanType.Get("New Loan Product Type") then begin   
+                if LoanType.Get("New Loan Product Type") then begin
                     NewInterest := LoanType."Interest rate";
                     NewInstalmentPeriod := LoanType."Instalment Period";
-                    NewInstallment:= LoanType."Default Installements";
-                 
+                    NewInstallment := LoanType."Default Installements";
+
                 end;
             end;
         }
@@ -113,7 +113,11 @@ table 51516403 "Loan Appeal"
         {
             DataClassification = ToBeClassified;
         }
-           field(16; NewInstallment; Decimal)
+        field(16; NewInstallment; Decimal)
+        {
+            DataClassification = ToBeClassified;
+        }
+        field(17; Appealed; Boolean)
         {
             DataClassification = ToBeClassified;
         }
@@ -131,6 +135,7 @@ table 51516403 "Loan Appeal"
     begin
         "Captured By" := UpperCase(UserId);
     end;
+
     var
-    LoanType: Record "Loan Products Setup";
+        LoanType: Record "Loan Products Setup";
 }

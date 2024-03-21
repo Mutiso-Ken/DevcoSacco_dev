@@ -1524,7 +1524,7 @@ tableextension 51516079 "CustomerExt" extends Customer
         {
             DataClassification = ToBeClassified;
         }
-        field(69464; Age; Integer)
+        field(69464; Age; Text[120])
         {
             DataClassification = ToBeClassified;
         }

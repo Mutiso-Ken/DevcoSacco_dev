@@ -87,7 +87,7 @@ Page 51516220 "Membership Application List"
                     Promoted = true;
                     PromotedCategory = Process;
                     RunObject = Page "Membership App Kin Details";
-                    RunPageLink = Name = const('name');
+                    RunPageLink = "Account No" = field("No.");
                 }
                 action("Account Signatories ")
                 {
