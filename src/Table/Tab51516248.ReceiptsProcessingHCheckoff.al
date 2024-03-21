@@ -55,7 +55,7 @@ Table 51516248 "ReceiptsProcessing_H-Checkoff"
         {
             TableRelation = if ("Account Type" = const("G/L Account")) "G/L Account"
             else
-            if ("Account Type" = const(Customer)) Customer where("Customer Type" = const(Checkoff));
+            if ("Account Type" = const(Customer)) Customer where("Customer Type" = const(Member));
             // else
             // if ("Account Type" = const(Vendor)) Vendor
             // else
@@ -68,7 +68,7 @@ Table 51516248 "ReceiptsProcessing_H-Checkoff"
                 if "Account Type" = "account type"::Customer then begin
                     cust.Reset;
                     cust.SetRange(cust."No.", "Account No");
-                    cust.SetFilter(cust."Customer Type", '%1', cust."Customer Type"::Checkoff);
+                    cust.SetFilter(cust."Customer Type", '%1', cust."Customer Type"::Member);
                     if cust.Find('-') then begin
                         "Employer Name" := cust.Name;
 

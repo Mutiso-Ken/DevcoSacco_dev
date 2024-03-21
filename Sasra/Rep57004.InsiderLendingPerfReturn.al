@@ -190,10 +190,6 @@ Report 57004 "Insider Lending & Perf Return"
                         LoanApp.Reset;
                         LoanApp.SetRange(LoanApp."Loan  No.","Loans Register"."Loan  No.");
                         if LoanApp.Find('-') then begin
-                          if LoanApp."Loan Product Type"='D315' then begin
-                            //AMOUNT:=LoanApp."Loan Disbursed Amount";
-                            AMOUNT:= "Loans Register"."Loan Amount";
-                            end else
                             AMOUNT:=LoanApp."Approved Amount";
                           end;
 

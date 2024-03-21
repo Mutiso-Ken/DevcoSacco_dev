@@ -79,7 +79,7 @@ Page 51516271 "Sacco General Set-Up"
                     ApplicationArea = Basic;
 
                 }
-
+           
                 field("Use Bands"; "Use Bands")
                 {
                     ApplicationArea = Basic;

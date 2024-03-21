@@ -3427,11 +3427,11 @@ Page 51516462 "Devco Sacco"
                         ApplicationArea = Basic, Suite;
                         RunObject = report "Loans Defaulters Aging -(Auto)";
                     }
-                    action("Update Loans Category2")
-                    {
-                        ApplicationArea = Basic, Suite;
-                        RunObject = report "Consolidated loan report-sasra";
-                    }
+                    // action("Update Loans Category2")
+                    // {
+                    //     ApplicationArea = Basic, Suite;
+                    //     RunObject = report "Consolidated loan report-sasra";
+                    // }
 
 
                 }
@@ -3625,11 +3625,11 @@ Page 51516462 "Devco Sacco"
                         RunObject = xmlport 51516003;
                         //RunObject = codeunit 51516048;
                     }
-                    action("Bulk Insert Vendor Pics")
-                    {
-                        ApplicationArea = Basic, Suite;
-                        RunObject = report "get pictures-FOSA";
-                    }
+                    // action("Bulk Insert Vendor Pics")
+                    // {
+                    //     ApplicationArea = Basic, Suite;
+                    //     RunObject = report "get pictures-FOSA";
+                    // }
                     action("Update Closed Member Apps")
                     {
                         ApplicationArea = Basic, Suite;

@@ -220,6 +220,8 @@ Page 51516215 "Guarantor Sub Card"
                                     NewLGuar.Name := GSubLine."Substitute Member Name";
                                     NewLGuar."Amont Guaranteed" := CalculateAmountGuaranteed(GSubLine."Sub Amount Guaranteed", TotalReplaced, GSubLine."Amount Guaranteed");
                                     NewLGuar."Substituted Guarantor" := GSubLine."Member No";
+                                    NewLGuar.Shares:= GSubLine."Substitute Member Deposits";
+                                    
                                     NewLGuar.Insert();
                                 until GSubLine.Next = 0;
                             end;

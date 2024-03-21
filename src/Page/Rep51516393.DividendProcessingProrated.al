@@ -2,7 +2,7 @@
 Report 51516393 "Dividend Processing Prorated"
 {
     DefaultLayout = RDLC;
-    RDLCLayout = './Layouts/Dividend Processing Register.rdlc';
+   // RDLCLayout = './Layouts/Dividend Processing Register.rdlc';
 
     dataset
     {

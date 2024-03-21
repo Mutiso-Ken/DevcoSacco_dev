@@ -4,10 +4,10 @@ pageextension 51516873 "vendorledgerentry" extends "Vendor Ledger Entries"
     {
         addafter(Amount)
         {
-            field("Amount Posted"; "Amount Posted")
-            {
-                ApplicationArea = Basic;
-            }
+            // field("Amount Posted"; "Amount Posted")
+            // {
+            //     ApplicationArea = Basic;
+            // }
             field("CreditAmount"; "Credit Amount")
             {
                 ApplicationArea = Basic;

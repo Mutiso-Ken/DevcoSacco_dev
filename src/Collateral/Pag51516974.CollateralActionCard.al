@@ -116,33 +116,33 @@ Page 51516974 "Collateral Action Card"
                 field("Asset Value"; "Asset Value")
                 {
                     ApplicationArea = Basic;
-                    Editable = false;
+                    Editable = true;
                 }
                 field("Depreciation Completion Date"; "Depreciation Completion Date")
                 {
                     ApplicationArea = Basic;
                     Caption = 'Expected Date of Loan Complition';
-                    Editable = false;
+                    Visible = false;
                 }
                 field("Depreciation Percentage"; "Depreciation Percentage")
                 {
                     ApplicationArea = Basic;
-                    Editable = false;
+                    Visible = false;
                 }
                 field("Collateral Depreciation Method"; "Collateral Depreciation Method")
                 {
-                    ApplicationArea = Basic;
-                 
+                    Visible = false;
+
                 }
                 field("Asset Depreciation Amount"; "Asset Depreciation Amount")
                 {
                     ApplicationArea = Basic;
-                    Editable = false;
+                    Visible = false;
                 }
                 field("Asset Value @Loan Completion"; "Asset Value @Loan Completion")
                 {
                     ApplicationArea = Basic;
-                    Editable = false;
+                    Visible = false;
                 }
             }
             group("Actions")

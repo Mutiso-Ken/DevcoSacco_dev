@@ -4933,8 +4933,8 @@ END;
         MemberLedgerEntry.Reset;
         MemberLedgerEntry.SetRange(MemberLedgerEntry."Loan No", LoanNo);
         MemberLedgerEntry.SetFilter(MemberLedgerEntry."Transaction Type", '=%1|=%2', MemberLedgerEntry."transaction type"::"Interest Paid", MemberLedgerEntry."transaction type"::Repayment);
-        MemberLedgerEntry.CalcSums(MemberLedgerEntry."Credit Amount (LCY)");
-        amout := MemberLedgerEntry."Credit Amount (LCY)";
+        MemberLedgerEntry.CalcSums(MemberLedgerEntry."Amount Posted");
+        amout := MemberLedgerEntry."Amount Posted";
     end;
 
 

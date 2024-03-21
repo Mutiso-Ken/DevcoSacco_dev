@@ -3832,17 +3832,17 @@ Page 51516487 "Devco Sacco Main Role Center"
                         ApplicationArea = Basic, Suite;
                         RunObject = report "Loans Defaulters Aging -(Auto)";
                     }
-                    action("Update Loans Category2")
-                    {
-                        ApplicationArea = Basic, Suite;
-                        RunObject = report "Consolidated loan report-sasra";
-                    }
+                    // action("Update Loans Category2")
+                    // {
+                    //     ApplicationArea = Basic, Suite;
+                    //     RunObject = report "Consolidated loan report-sasra";
+                    // }
 
-                    action("Fosa loans admin")
-                    {
-                        RunObject = page AdminLoansList;
-                        visible = false;
-                    }
+                    // action("Fosa loans admin")
+                    // {
+                    //     RunObject = page AdminLoansList;
+                    //     visible = false;
+                    // }
 
                 }
 

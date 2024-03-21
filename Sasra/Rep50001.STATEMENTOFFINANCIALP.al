@@ -449,7 +449,7 @@ Report 50001 "STATEMENT OF FINANCIAL P"
                 //current year surplus
                 CurrentYearSurplus:=0;
                 GLAccount.Reset;
-                GLAccount.SetRange(GLAccount."No.",'2999');
+                GLAccount.SetRange(GLAccount."No.",'20800');
                 GLAccount.SetFilter(GLAccount."Date Filter",'<=%1',Asat);
                 if GLAccount.FindSet then begin
                   GLAccount.CalcFields(GLAccount."Net Change");

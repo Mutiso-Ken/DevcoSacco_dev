@@ -211,7 +211,7 @@ Table 51516424 "Loan Top Up."
         MembLedEntry.SetRange(MembLedEntry."Loan No", LoanNo);
         MembLedEntry.SetRange(MembLedEntry."Transaction Type", MembLedEntry."transaction type"::Loan);
         if MembLedEntry.FindSet then begin
-            MembLedEntry.CalcSums(MembLedEntry.Amount);
+            MembLedEntry.CalcSums(MembLedEntry."Amount Posted");
             exit(MembLedEntry.Amount);
         end;
     end;

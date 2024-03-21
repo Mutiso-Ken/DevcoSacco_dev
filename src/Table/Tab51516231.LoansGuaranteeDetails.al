@@ -196,9 +196,9 @@ Table 51516231 "Loans Guarantee Details"
         {
             DataClassification = ToBeClassified;
         }
-            field(40;LoanCount;Integer)
+        field(40; LoanCount; Integer)
         {
-            CalcFormula = count("Loans Guarantee Details" where ("Loan No"=field("Loan No")));
+            CalcFormula = count("Loans Guarantee Details" where("Loan No" = field("Loan No")));
             FieldClass = FlowField;
         }
         field(41; "Transferable shares"; Decimal)
@@ -209,14 +209,13 @@ Table 51516231 "Loans Guarantee Details"
 
     keys
     {
-        key(Key1; "Loan No", "Member No", "Group Account No.")
-        {
-        }
-        key(Key2; "Loan No", "Member No")
+
+        key(Key1; "Loan No", "Member No")
         {
             Clustered = true;
             SumIndexFields = Shares;
         }
+
     }
 
     fieldgroups

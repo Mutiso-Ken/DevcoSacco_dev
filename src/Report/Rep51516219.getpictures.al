@@ -2,7 +2,7 @@
 Report 51516219 "get pictures"
 {
     DefaultLayout = RDLC;
-    RDLCLayout = './Layouts/get pictures.rdlc';
+    //RDLCLayout = './Layouts/get pictures.rdlc';
 
     dataset
     {

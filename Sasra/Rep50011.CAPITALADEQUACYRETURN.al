@@ -191,7 +191,7 @@ Report 50011 "CAPITAL ADEQUACY RETURN"
                  //current year surplus
                 NetSurplusaftertax:=0;
                 GLAccount.Reset;
-                GLAccount.SetRange(GLAccount."No.",'2999');
+                GLAccount.SetRange(GLAccount."No.",'20800');
                 GLAccount.SetFilter(GLAccount."Date Filter",'<=%1',AsAt);
                 if GLAccount.FindSet then begin
                   GLAccount.CalcFields(GLAccount."Net Change");
@@ -242,7 +242,7 @@ Report 50011 "CAPITAL ADEQUACY RETURN"
                 //total assets as per the balance sheet
                 totalassetsPBSheet:=0;
                 GLAccount.Reset;
-                GLAccount.SetRange(GLAccount."No.",'1499');
+                GLAccount.SetRange(GLAccount."No.",'14300');
                 GLAccount.SetFilter(GLAccount."Date Filter",'<=%1',AsAt);
                 if GLAccount.FindSet then begin
                   GLAccount.CalcFields(GLAccount."Net Change");
@@ -288,7 +288,7 @@ Report 50011 "CAPITAL ADEQUACY RETURN"
                  //KUSCO SHARES
                  Kuscoshares:=0;
                 GLAccount.Reset;
-                GLAccount.SetRange(GLAccount."No.",'1171');
+                GLAccount.SetRange(GLAccount."No.",'12301');
                 if GLAccount.FindSet then begin
                   repeat
                     GLEntry.Reset;

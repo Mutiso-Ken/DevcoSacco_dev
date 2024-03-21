@@ -1,4 +1,3 @@
-#pragma warning disable AA0005, AA0008, AA0018, AA0021, AA0072, AA0137, AA0201, AA0206, AA0218, AA0228, AL0254, AL0424, AS0011, AW0006 // ForNAV settings
 Page 51516221 "Membership Application Card"
 {
     ApplicationArea = Basic;
@@ -225,7 +224,7 @@ Page 51516221 "Membership Application Card"
                 field("E-Mail (Personal)"; "E-Mail (Personal)")
                 {
                     ApplicationArea = Basic;
-                    // Editable = EmailEdiatble;
+                    Editable = EmailEdiatble;
                     ShowMandatory = false;
                 }
                 field("Recruited By"; "Recruited By")
@@ -1113,31 +1112,21 @@ Page 51516221 "Membership Application Card"
                             // end;
 
                             dialogBox.Open('Registering Next Of Kin for ' + Format(MembApp.Name));
-                            FnCreateNextOfKinDetails();
+                            FnCreateNextOfKinDetails(Cust."No.");
                             dialogBox.Close();
 
                             dialogBox.Open('Registering Account Signatories for ' + Format(MembApp.Name));
-                            FnCreateAccountSignatories();
+                            FnCreateAccountSignatories(Cust."No.");
                             dialogBox.Close();
 
                             dialogBox.Open('Registering Account Group Members for ' + Format(MembApp.Name));
                             FnCreateGroupMembers();
                             dialogBox.Close();
-                            //
-                            // if rec."AutoFill Mobile Details" = true then begin
-                            //     dialogBox.Open('Autofilling Mobile Application for ' + Format(MembApp.Name));
-                            //     FnAutoCreateMobileApplication();
-                            //     dialogBox.close();
-                            // end;
-                            // if rec."AutoFill Agency Details" = true then begin
-                            //     dialogBox.Open('Autofilling Agency Application for ' + Format(MembApp.Name));
-                            //     FnAutoCreateAgencyApplication();
-                            //     dialogBox.close();
-                            // end;
+
                             //...............................Close The Card
                             //-----Send Email
 
-                            SendMail(Rec."No.");
+                            SendMail(Cust."No.");
                             //-----Send SMS
                             FnSendSMSOnAccountOpening();
                             //-----
@@ -1432,7 +1421,7 @@ Page 51516221 "Membership Application Card"
         IEntry: integer;
         SMSToSend: Text[250];
         CoveragePercentStyle: Text;
-
+        SurestepFactory: Codeunit "SURESTEP Factory";
 
 
     procedure UpdateControls()
@@ -1920,31 +1909,20 @@ Page 51516221 "Membership Application Card"
     end;
 
 
-    procedure SendMail(MemberNo: Code[30])
-    Var
-        // EmailBody: Text[1000];
-        // EmailSubject: Text[100];
-        // Emailaddress: Text[100];
-        Email: Codeunit Email;
-        EmailMsg: Codeunit "Email Message";
-        EmailBody: Label 'Dear Member, <br> On behalf of Devco Sacco am Pleased to inform you that your application for   ';
-
-
+    procedure SendMail(MemberNumber: Text[70])
+    var
+        EmailBody: Text[700];
+        EmailSubject: Text[100];
+        Emailaddress: Text[100];
     begin
-        GenSetUp.Get;
-        if GenSetUp."Send Email Notifications" = true then begin
-            Rec.Reset();
-            rec.SetRange(rec."No.", MemberNo);
-            if Rec.Findset then begin
-                rec.TestField("E-Mail (Personal)");
-                EmailMsg.Create("E-Mail (Personal)", Name + 'Membership Application', '', true);
-                // EmailSubject := 'Membership Application Subject';
-                // EMailBody := 'Dear ' + Rec.Name + ',   ' +
-                //     'On behalf of Devco Sacco am pleased to inform you that your application for Membership has been accepted.' +
-                //     'Congratulations ' + 'Regards' + ' Devco sacco';
-                // SFactory.SendMail(Emailaddress, EmailSubject, EmailBody);
-            end;
-        end;
+
+        Emailaddress := Rec."E-Mail (Personal)";
+        EmailSubject := 'Devco Membership Application';
+
+        EMailBody := 'Dear <b>' + Name + '</b>,<br></br>' +
+'On behalf of Devco Sacco am pleased to inform you that your application for membership has been accepted. Your Membership Number is' + MemberNumber + '<br></br>' +
+'Congratulations';
+        SurestepFactory.SendMail(Emailaddress, EmailSubject, EmailBody);
     end;
 
     local procedure FnCreateBOSAMemberAccounts()
@@ -2162,7 +2140,7 @@ Page 51516221 "Membership Application Card"
         end;
     end;
 
-    local procedure FnCreateNextOfKinDetails()
+    local procedure FnCreateNextOfKinDetails(MemberNo:text[70])
     var
         NextofKinBOSA: Record "Members Next Kin Details";
     begin
@@ -2191,7 +2169,7 @@ Page 51516221 "Membership Application Card"
         end;
     end;
 
-    local procedure FnCreateAccountSignatories()
+    local procedure FnCreateAccountSignatories(MemberNo:text[70])
     begin
         AccountSignApp.Reset;
         AccountSignApp.SetRange(AccountSignApp."Account No", "No.");
@@ -2203,7 +2181,7 @@ Page 51516221 "Membership Application Card"
                 AccountSign."Date Of Birth" := AccountSignApp."Date Of Birth";
                 AccountSign."Staff/Payroll" := AccountSignApp."Staff/Payroll";
                 AccountSign."ID No." := AccountSignApp."ID No.";
-                
+
                 AccountSign.Signatory := AccountSignApp.Signatory;
                 AccountSign."Must Sign" := AccountSignApp."Must Sign";
                 AccountSign."Must be Present" := AccountSignApp."Must be Present";

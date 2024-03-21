@@ -3,7 +3,7 @@ report 51516041 "CRM UnResolved Cases Report"
     ApplicationArea = All;
     Caption = 'CRM UnResolved Cases Report';
     UsageCategory = ReportsAndAnalysis;
-    RDLCLayout = './Layouts/CRM Resolved Cases Report.rdlc';
+    RDLCLayout = './Layouts/CRM Un-Resolved Cases Report.rdlc';
     DefaultLayout = RDLC;
     dataset
     {

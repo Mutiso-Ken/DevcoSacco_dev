@@ -68,23 +68,12 @@ Table 51516230 "Loans Register"
         field(3; "Loan Product Type"; Code[20])
         {
             Editable = true;
-            TableRelation = if (Source = const(BOSA)) "Loan Products Setup".Code where(Source = const(BOSA))
-            else
-            // if (Source = const(FOSA)) "Loan Products Setup".Code where(Source = const(FOSA))
-            //else
-            if (Source = const(MICRO)) "Loan Products Setup".Code where(Source = const(MICRO));
+            TableRelation = "Loan Products Setup".Code;// where(Source = const(BOSA));
 
             trigger OnValidate()
             begin
-                if Source = Source::BOSA then begin
-                    "Batch Source" := "batch source"::BOSA;
-                end else
-                    if Source = Source::FOSA then begin
-                        //"Batch Source" := "batch source"::FOSA;
-                    end else
-                        if Source = Source::MICRO then begin
-                            //"Batch Source" := "batch source"::MICRO;
-                        end;
+                // if Source = Source::BOSA then begin
+                "Batch Source" := "batch source"::BOSA;
                 //............................
                 if LoanType.Get("Loan Product Type") then begin
                     LoanType.SetRange(LoanType.Code, "Loan Product Type");
@@ -156,6 +145,8 @@ Table 51516230 "Loans Register"
                         if LoanType.Get("Loan Product Type") then begin
                             "Loan Product Type Name" := LoanType."Product Description";
                             Interest := LoanType."Interest rate";
+                            Mulitiplier := LoanType."Deposits Multiplier";
+                            "Deposits Mulitiplier" := sHARES * Mulitiplier;
                             "Instalment Period" := LoanType."Instalment Period";
                             "Grace Period" := LoanType."Grace Period";
                             "Grace Period - Principle (M)" := LoanType."Grace Period - Principle (M)";
@@ -230,7 +221,7 @@ Table 51516230 "Loans Register"
             trigger OnValidate()
             begin
                 //--------------------------------------------------------
-                GenSetUp.Get(0);
+                GenSetUp.Get();
 
                 "BOSA No" := "Client Code";
 
@@ -270,6 +261,7 @@ Table 51516230 "Loans Register"
                     "Existing Loan" := CustomerRecord."Outstanding Balance";
                     "Account No" := CustomerRecord."FOSA Account";
                     "Staff No" := CustomerRecord."Payroll/Staff No";
+                    // "Deposits Mulitiplier" := Savings * Mulitiplier;
                     Gender := CustomerRecord.Gender;
                     "ID NO" := CustomerRecord."ID No.";
                     "Member Deposits" := CustomerRecord."Current Shares";
@@ -547,6 +539,14 @@ Table 51516230 "Loans Register"
         }
         field(67; "Date Approved"; Date)
         {
+        }
+        field(68; Mulitiplier; Decimal)
+        {
+
+        }
+        field(69; "Deposits Mulitiplier"; Decimal)
+        {
+
         }
         field(53048; "Grace Period"; DateFormula)
         {
@@ -1596,7 +1596,7 @@ Table 51516230 "Loans Register"
         {
             CalcFormula = sum("Cust. Ledger Entry"."Amount Posted" where("Customer No." = field("Client Code"),
                                                                   "Transaction Type" = filter(Loan | Repayment),
-                                                                //   "Loan Type" = filter(<> 'ADV' | 'ASSET' | 'B/L' | 'FL' | 'IPF'),
+                                                                   //   "Loan Type" = filter(<> 'ADV' | 'ASSET' | 'B/L' | 'FL' | 'IPF'),
                                                                    Reversed = const(false)));
             FieldClass = FlowField;
         }

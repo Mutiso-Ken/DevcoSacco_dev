@@ -120,6 +120,7 @@ Table 51516128 "Guarantorship Substitution L"
                 if Cust.Get("Substitute Member") then begin
                     Cust.CalcFields("Current Shares");
                     "Substitute Member Name" := Cust.Name;
+                    "Substitute Member Deposits" := cust."Current Shares";
                     If CusT."Current Shares" >= "Current Commitment" then
                         "Sub Amount Guaranteed" := "Current Commitment" else
                         "Sub Amount Guaranteed" := cust."Current Shares";
@@ -150,6 +151,7 @@ Table 51516128 "Guarantorship Substitution L"
         {
             DataClassification = ToBeClassified;
         }
+        field(24; "Substitute Member Deposits"; Decimal) { }
     }
 
     keys

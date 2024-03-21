@@ -52,16 +52,7 @@ Page 51516245 "Loan Application Card"
                 {
                     ApplicationArea = Basic;
                     Style = Unfavorable;
-                }
-                field("Application Date"; "Application Date")
-                {
-                    ApplicationArea = Basic;
                     Editable = false;
-
-                    trigger OnValidate()
-                    begin
-                        TestField(Posted, false);
-                    end;
                 }
                 field("Loan Product Type"; "Loan Product Type")
                 {
@@ -76,6 +67,30 @@ Page 51516245 "Loan Application Card"
                         end;
                     end;
                 }
+                field(Mulitiplier; Mulitiplier)
+                {
+                    ApplicationArea = Basic;
+                    Editable = true;
+                    Style = StrongAccent;
+                }
+                field("Deposits Mulitiplier"; "Deposits Mulitiplier")
+                {
+                    ApplicationArea = Basic;
+                    Editable = true;
+                    Style = StrongAccent;
+                }
+
+                field("Application Date"; "Application Date")
+                {
+                    ApplicationArea = Basic;
+                    Editable = false;
+
+                    trigger OnValidate()
+                    begin
+                        TestField(Posted, false);
+                    end;
+                }
+
                 field(Installments; Installments)
                 {
                     ApplicationArea = Basic;
@@ -385,7 +400,7 @@ Page 51516245 "Loan Application Card"
                         SystemGenSet: Codeunit "System General Setup";
                     begin
                         //................Ensure than you cant have two loans same product
-                        // SystemGenSet.FnCheckNoOfLoansLimit("Loan  No.", "Loan Product Type", "Client Code");
+                        SystemGenSet.FnCheckNoOfLoansLimit("Loan  No.", "Loan Product Type", "Client Code");
                         //----------------
                         FnCheckForTestFields();
                         if Confirm('Send Approval Request For Loan Application of Ksh. ' + Format("Approved Amount") + ' applied by ' + Format("Client Name") + ' ?', false) = false then begin
@@ -557,6 +572,7 @@ Page 51516245 "Loan Application Card"
         GnljnlineCopy: Record "Gen. Journal Line";
         NewLNApplicNo: Code[10];
         Cust: Record Customer;
+        SurestepFactory: Codeunit "SURESTEP Factory";
         LoanApp: Record "Loans Register";
         TestAmt: Decimal;
         CustRec: Record Customer;
@@ -845,6 +861,29 @@ Page 51516245 "Loan Application Card"
         //         end;
         //     end;
         // end;
+    end;
+
+    local procedure FnSendEmailAprovalNottifications()
+    var
+        EmailBody: Text[700];
+        EmailSubject: Text[100];
+        Emailaddress: Text[100];
+    begin
+        ///...............Notify Via Email
+        Cust.Reset();
+        Cust.SetRange(Cust."No.", "Client Code");
+        if Cust.FindSet()
+        then begin
+            if Cust."E-Mail (Personal)" <> ' ' then begin
+                Emailaddress := Cust."E-Mail (Personal)";
+                EmailSubject := 'Loan Application Approval';
+                EMailBody := 'Dear <b>' + '</b>,</br></br>' + 'Your loan application of KSHs.' + FORMAT("Requested Amount") +
+                          ' has been Approved by Credit. Devco Sacco Ltd.' + '<br></br>' +
+'Congratulations';
+                SurestepFactory.SendMail(Emailaddress, EmailSubject, EmailBody);
+            end;
+        end;
+
     end;
 
     local procedure FnSendLoanApprovalNotifications()

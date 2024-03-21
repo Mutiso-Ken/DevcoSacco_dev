@@ -38,8 +38,8 @@ tableextension 51516079 "CustomerExt" extends Customer
         }
         field(68000; "Customer Type"; Option)
         {
-            OptionCaption = ' ,Member,Checkoff,FOSA,Investments,Property,MicroFinance';
-            OptionMembers = " ",Member,Checkoff,FOSA,Investments,Property,MicroFinance;
+         
+            OptionMembers = " ",Member,FOSA,Investments,Property,MicroFinance;
         }
         field(68001; "Registration Date"; Date)
         {

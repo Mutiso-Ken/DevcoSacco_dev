@@ -1,4 +1,5 @@
 pageextension 51516881 CustomerList extends "Customer List"
+
 {
     
     layout
@@ -10,7 +11,13 @@ pageextension 51516881 CustomerList extends "Customer List"
     {
         // Add changes to page actions here
     }
-    
+    trigger OnOpenPage()
+    var
+        myInt: Integer;
+    begin
+        Rec.Reset();
+        Rec.SetRange(rec."Customer Type",Rec."Customer Type"::Member);
+    end;
     var
         myInt: Integer;
 }

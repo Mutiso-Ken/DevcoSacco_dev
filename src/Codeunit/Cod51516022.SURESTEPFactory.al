@@ -30,11 +30,18 @@ Codeunit 51516022 "SURESTEP Factory"
         TheMessage: Codeunit "Email Message";
         Email: Codeunit Email;
 
-
+//  procedure SendEmailWithAttachment(FileName:Text[100];EmailAddress:Text[100]; EmailSubject: text[100]; EmailBody: Text[200])
+// var
+//  "; 
+// begin
+//     TheMessage.Create(EmailAddress,EmailSubject,'',true);
+//     TheMessage.AddAttachment();
+//           Email.Send(TheMessage);
+// end;
 
     procedure SendMail(EmailAddress: Text[60]; EmailSubject: text[100]; EmailBody: Text[200])
     begin
-        TheMessage.Create('kmutiso@gmail.com', EmailSubject, EmailBody, true);
+        TheMessage.Create(EmailAddress, EmailSubject, EmailBody, true);
         Email.Send(TheMessage);
 
     end;

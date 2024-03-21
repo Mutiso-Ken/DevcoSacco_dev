@@ -14,6 +14,7 @@ Page 51516247 "Loans Guarantee Details"
                 field("Loan No"; "Loan No")
                 {
                     Editable = false;
+                    Visible=false;
                 }
                 field("Member No"; "Member No")
                 {
@@ -26,9 +27,10 @@ Page 51516247 "Loans Guarantee Details"
                             cust.CalcFields(cust."Current Shares");
                             Rec.Name := cust.Name;
                             rec.Shares := cust."Current Shares";
+                            Rec."Total Loans Guaranteed" := cust."Loans Guaranteed";
+                            Rec."Free Shares" := rec.Shares - Rec."Total Loans Guaranteed";
                             rec."ID No." := cust."ID No.";
                             rec.Date := Today;
-                            // rec."Group Account No." := cust."Group Account No";
                             rec."Loan Balance" := FnGetPersonGuarantingLoanBal(rec."Member No");
                             rec."Outstanding Balance" := FnGetPersonGuarantingLoanBal(rec."Member No");
                             rec."Self Guarantee" := FnIsSelfGuarantee(rec."Loan No", rec."Member No");
@@ -67,7 +69,7 @@ Page 51516247 "Loans Guarantee Details"
                     trigger OnValidate()
                     begin
                         rec.CalcFields("Outstanding Balance");
-                        if Shares < "Amont Guaranteed" then
+                        if "Free Shares" < "Amont Guaranteed" then
                             Error('The Guarantor has no enough Deposits to Guarantee') else
                             rec."Total Amount Guaranteed" := FnRunGetCummulativeAmountGuaranteed(Rec."Loan No");
                         rec.Modify();
