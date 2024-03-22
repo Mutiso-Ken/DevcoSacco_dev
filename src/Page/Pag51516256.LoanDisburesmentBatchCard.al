@@ -476,7 +476,7 @@ Page 51516256 "Loan Disburesment Batch Card"
                         SFactory.FnCreateGnlJournalLine(BATCH_TEMPLATE, BATCH_NAME, LoanApps."Loan  No.", LineNo, GenJournalLine."Transaction Type"::"Interest Paid", GenJournalLine."Account Type"::Customer, LoanApps."Client Code", DirbursementDate, LoanTopUp."Interest Top Up" * -1, 'BOSA', "Batch No.", 'Interest Due Paid on top up - ', LoanTopUp."Loan Top Up");
                         //If there is top up commission charged write it here start
                         LineNo := LineNo + 10000;
-                        SFactory.FnCreateGnlJournalLine(BATCH_TEMPLATE, BATCH_NAME, LoanApps."Loan  No.", LineNo, GenJournalLine."Transaction Type"::" ", GenJournalLine."Account Type"::"G/L Account", GenSetUp."Top up Account", DirbursementDate, LoanTopUp.Commision * -1, 'BOSA', "Batch No.", 'Commision on top up - ', LoanTopUp."Loan Top Up");
+                        SFactory.FnCreateGnlJournalLine(BATCH_TEMPLATE, BATCH_NAME, LoanApps."Loan  No.", LineNo, GenJournalLine."Transaction Type"::" ", GenJournalLine."Account Type"::"G/L Account", GenSetUp."Top up Account", DirbursementDate, Round(LoanTopUp.Commision, 0.05, '>') * -1, 'BOSA', "Batch No.", 'Commision on top up - ', LoanTopUp."Loan Top Up");
                         //If there is top up commission charged write it here end
                         AmountTop := (LoanTopUp."Principle Top Up" + LoanTopUp."Interest Top Up" + LoanTopUp.Commision);
                         VarAmounttoDisburse := VarAmounttoDisburse - (LoanTopUp."Principle Top Up" + LoanTopUp."Interest Top Up" + LoanTopUp.Commision);
@@ -536,7 +536,7 @@ Page 51516256 "Loan Disburesment Batch Card"
             VarAmounttoDisburse := VarAmounttoDisburse - LoanApps."Deboost Commision";
             //Debosting commsion
             LineNo := LineNo + 10000;
-            SFactory.FnCreateGnlJournalLine(BATCH_TEMPLATE, BATCH_NAME, LoanApps."Loan  No.", LineNo, GenJournalLine."Transaction Type"::"Deposit Contribution", GenJournalLine."Account Type"::Customer, LoanApps."Client Code", DirbursementDate, LoanApps."Deboost Amount" * -1, 'BOSA', "Batch No.", 'Debosted shares ' + Format(LoanApps."Loan  No."), '');
+            SFactory.FnCreateGnlJournalLine(BATCH_TEMPLATE, BATCH_NAME, LoanApps."Loan  No.", LineNo, GenJournalLine."Transaction Type"::"Deposit Contribution", GenJournalLine."Account Type"::Customer, LoanApps."Client Code", DirbursementDate, Round(LoanApps."Deboost Amount", 0.01, '=') * -1, 'BOSA', "Batch No.", 'Debosted shares ' + Format(LoanApps."Loan  No."), '');
             VarAmounttoDisburse := VarAmounttoDisburse - LoanApps."Deboost Amount";
             //..Legal Fees
             LineNo := LineNo + 10000;

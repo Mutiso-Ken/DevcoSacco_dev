@@ -1150,13 +1150,13 @@ Page 51516487 "Devco Sacco Main Role Center"
                     {
                         ApplicationArea = Basic, Suite;
                         RunObject = page "Loan Appeal List";
-                        // Caption = 'Loans Top-Up List';
+                        Caption = 'Loans Restructure List';
                     }
                     action("Loans Appealed Posted")
                     {
                         ApplicationArea = Basic, Suite;
                         RunObject = page "Loan Appeal List Posted";
-                        // Caption = 'Loans Top-Up Posted';
+                        Caption = 'Loans Restructured List';
                     }
                 }
 
@@ -1430,7 +1430,7 @@ Page 51516487 "Devco Sacco Main Role Center"
                 group("Defaulter's Management")
                 {
                     Caption = 'Defaulter Management';
-             
+
 
                     group(loanRecovery)
                     {
@@ -1733,7 +1733,7 @@ Page 51516487 "Devco Sacco Main Role Center"
             group(CloudPesa)
             {
                 Caption = 'Alternative Channels';
-               
+
 
                 group("SMS Messages")
                 {
@@ -2474,17 +2474,17 @@ Page 51516487 "Devco Sacco Main Role Center"
                     action("Postal codes")
                     {
                         RunObject = page "Post Codes";
-                        ApplicationArea=all;
+                        ApplicationArea = all;
                     }
                     action("Sacco Employers")
                     {
                         RunObject = page "Employer list";
-                         ApplicationArea=all;
+                        ApplicationArea = all;
                     }
                     action("Next of Kin Relations Types")
                     {
                         RunObject = page "Relationship list";
-                         ApplicationArea=all;
+                        ApplicationArea = all;
                     }
                 }
                 action("Sacco General Setup")
@@ -2533,7 +2533,7 @@ Page 51516487 "Devco Sacco Main Role Center"
                     }
                 }
 
-               
+
 
                 group(MembershipSetUps)
                 {

@@ -32,7 +32,7 @@ Page 51516273 "Sacco No. Series"
                 {
                     ApplicationArea = Basic;
                 }
-                field("Micro Loans"; "Micro Loans")
+                field("Loan Appeal Numbers"; "Loan Appeal Numbers")
                 {
                     ApplicationArea = Basic;
                 }

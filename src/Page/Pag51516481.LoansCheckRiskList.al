@@ -4,7 +4,7 @@ Page 51516481 "Loans CheckRisk List"
     Editable = true;
     PageType = ListPart;
     SourceTable = "Loans Register";
-    SourceTableView = where(Posted = const(true),"Total Balance" = filter(<>'0'));
+    SourceTableView = where(Posted = const(true), "Outstanding Balance" = filter(> 0));
     layout
     {
         area(content)
@@ -35,14 +35,14 @@ Page 51516481 "Loans CheckRisk List"
                     Style = StandardAccent;
                 }
 
-             
+
                 field("Approved Amount"; "Approved Amount")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                     Style = StrongAccent;
                 }
-               
+
                 field(Repayment; Repayment)
                 {
                     ApplicationArea = Basic;
@@ -88,7 +88,7 @@ Page 51516481 "Loans CheckRisk List"
                     Editable = false;
                     Style = StandardAccent;
                 }
-             
+
                 field("Application Date"; "Application Date")
                 {
                     ApplicationArea = Basic;

@@ -79,7 +79,7 @@ Page 51516271 "Sacco General Set-Up"
                     ApplicationArea = Basic;
 
                 }
-           
+
                 field("Use Bands"; "Use Bands")
                 {
                     ApplicationArea = Basic;
@@ -120,6 +120,14 @@ Page 51516271 "Sacco General Set-Up"
                 // {
                 //     ApplicationArea = Basic;
                 // }
+                field("Asset Valuation Cost"; "Asset Valuation Cost")
+                {
+                    ApplicationArea = all;
+                }
+                field("Legal Fees"; "Legal Fees")
+                {
+                    ApplicationArea = all;
+                }
                 field("Banks Charges"; "Banks Charges")
                 {
                     ApplicationArea = Basic;

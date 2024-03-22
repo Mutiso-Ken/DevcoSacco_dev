@@ -435,8 +435,12 @@ page 50310 "Payroll Employee Card."
                 PromotedCategory = Category4;
                 PromotedIsBig = true;
                 PromotedOnly = true;
-                RunObject = Page "Payroll Employee Cummulatives.";
-                RunPageLink = "No." = FIELD("No.");
+                trigger OnAction()
+                var
+                    myInt: Integer;
+                begin
+                    
+                end;
             }
             action("View PaySlip")
             {

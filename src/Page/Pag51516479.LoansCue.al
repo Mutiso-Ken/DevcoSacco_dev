@@ -64,14 +64,7 @@ Page 51516479 "Loans Cue"
                     StyleExpr = true;
                     DrillDownPageId = "Loan List";
                 }
-                field(DEBOOSTER; DEBOOSTER)
-                {
-                    ApplicationArea = Basic;
-                    Image = none;
-                    Style = Favorable;
-                    StyleExpr = true;
-                    DrillDownPageId = "Loan List";
-                }
+       
                 field(EMERGENCY; EMERGENCY)
                 {
                     ApplicationArea = Basic;
@@ -80,31 +73,9 @@ Page 51516479 "Loans Cue"
                     StyleExpr = true;
                     DrillDownPageId = "Loan List";
                 }
-                field(FURNITURE; FURNITURE)
-                {
-                    ApplicationArea = Basic;
-                    Image = none;
-                    Style = Favorable;
-                    StyleExpr = true;
-                    DrillDownPageId = "Loan List";
-                }
-                field(HOUSEHOLD; HOUSEHOLD)
-                {
-                    ApplicationArea = Basic;
-                    Image = none;
-                    Style = Favorable;
-                    StyleExpr = true;
-                    DrillDownPageId = "Loan List";
+          
 
-                }
-                field(IPF; IPF)
-                {
-                    ApplicationArea = Basic;
-                    Image = none;
-                    Style = Favorable;
-                    StyleExpr = true;
-                    DrillDownPageId = "Loan List";
-                }
+     
                 field(KARIBU; KARIBU)
                 {
                     ApplicationArea = Basic;

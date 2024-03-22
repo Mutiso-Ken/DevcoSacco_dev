@@ -381,6 +381,11 @@ Table 51516258 "Sacco No. Series"
         {
             TableRelation = "No. Series";
         }
+        field(51516021; "Loan Appeal Numbers"; Code[20])
+        {
+            DataClassification = ToBeClassified;
+            TableRelation = "No. Series";
+        }
     }
 
     keys

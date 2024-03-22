@@ -5,7 +5,7 @@ Page 51516920 "Loans Reschedule  List"
     CardPageID = "Loan Reschedule Card";
     DeleteAllowed = true;
     Editable = false;
-    InsertAllowed = true;
+    InsertAllowed = false;
     ModifyAllowed = true;
     PageType = List;
     SourceTable = "Loans Register";

@@ -83,6 +83,7 @@ Report 51516244 "Loan Appraisal"
             column(CommissiononBoosting_LoansRegister; "Loans Register"."Boosting Commision")
             {
             }
+            column(AmountRemainingAfterTopup; (LOANBALANCE - BRIGEDAMOUNT)) { }
             column(LoanInsurance; LoanInsurance)
             {
             }

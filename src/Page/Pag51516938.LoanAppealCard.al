@@ -1,7 +1,7 @@
 page 51516938 "Loan Appeal Card"
 {
     ApplicationArea = All;
-    Caption = 'Loan Appeal Card';
+    Caption = 'Loan Restructure Card';
     PageType = Card;
     SourceTable = "Loan Appeal";
     Editable = true;
@@ -14,16 +14,18 @@ page 51516938 "Loan Appeal Card"
             group(General)
             {
                 Caption = 'General';
-
+                Field("Document No."; "Document No.")
+                {
+                    ApplicationArea = all;
+                    Editable = false;
+                }
                 field("Loan Number"; Rec."Loan Number")
                 {
                     ToolTip = 'Specifies the value of the Loan Number field.';
                     ApplicationArea = all;
-                    Editable = false;
+
                 }
-                field(ClientCode; ClientCode)
-
-
+                field("Member No."; "Member No.")
                 {
                     ApplicationArea = all;
                     Editable = false;
@@ -72,14 +74,17 @@ page 51516938 "Loan Appeal Card"
 
                     ApplicationArea = all;
                     Editable = false;
+                    Caption = 'New Interest';
                 }
                 field(NewInstalmentPeriod; NewInstalmentPeriod)
                 {
                     ApplicationArea = all;
+                    Caption = 'New Installment Period';
                 }
                 field(NewInstallment; NewInstallment)
                 {
                     ApplicationArea = all;
+                    Caption = 'New Installment';
                 }
                 field("New Amount"; Rec."New Amount")
                 {
@@ -106,6 +111,28 @@ page 51516938 "Loan Appeal Card"
                     ApplicationArea = all;
                     Editable = FALSE;
                 }
+            }
+            part(Control1000000004; "Loans Guarantee Details")
+            {
+                Caption = 'Guarantors  Detail';
+                ApplicationArea = Basic;
+                SubPageLink = "Loan No" = field("Loan Number");
+
+            }
+            part(Control1000000005; "Loan Collateral Security")
+            {
+                Caption = 'Other Securities';
+                ApplicationArea = Basic;
+                SubPageLink = "Loan No" = field("Loan Number");
+
+            }
+        }
+        area(factboxes)
+        {
+            part("Member Statistics FactBox"; "Member Statistics FactBox")
+            {
+                SubPageLink = "No." = field("Member No.");
+                ApplicationArea = Basic;
             }
         }
     }
@@ -182,6 +209,7 @@ page 51516938 "Loan Appeal Card"
                             LoanReg."Instalment Period" := NewInstalmentPeriod;
                             LoanReg."Loan Product Type" := "New Loan Product Type";
                             LoanReg.Modify();
+                            SFactory.FnGenerateRepaymentSchedule("Loan Number");
                             Appealed := true;
                             Rec.Modify();
                         end;
@@ -191,10 +219,29 @@ page 51516938 "Loan Appeal Card"
                 end;
             }
 
+            action("View Schedule")
+            {
+                ApplicationArea = Basic;
+                Caption = 'View Schedule';
+                Image = ViewDetails;
+                Promoted = true;
+                PromotedCategory = Process;
+
+                trigger OnAction()
+                begin
+                    LoanApp.Reset;
+                    LoanApp.SetRange(LoanApp."Loan  No.", "Loan Number");
+                    if LoanApp.Find('-') then begin
+                        Report.Run(51516477, true, false, LoanApp);
+                    end;
+                end;
+            }
         }
+
     }
     var
         SFactory: Codeunit "SURESTEP Factory";
+        LoanApp: record "Loans Register";
         BATCH_TEMPLATE: Code[30];
         BATCH_NAME: Code[30];
         DOCUMENT_NO: Code[30];

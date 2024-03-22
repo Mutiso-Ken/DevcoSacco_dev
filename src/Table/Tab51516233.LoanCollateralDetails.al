@@ -15,6 +15,8 @@ Table 51516233 "Loan Collateral Details"
             begin
                 if LoanApplications.Get("Loan No") then
                     "Loan Type" := LoanApplications."Loan Product Type";
+                "Member No." := LoanApplications."Client Code";
+
             end;
         }
         field(2; Type; Option)
@@ -61,7 +63,7 @@ Table 51516233 "Loan Collateral Details"
         }
         field(8; "Code"; Code[20])
         {
-            TableRelation = "Loan Collateral Register"."Document No";
+            TableRelation = "Loan Collateral Register"."Document No" where("Member No." = field("Member No."));
 
             trigger OnValidate()
             begin
@@ -71,7 +73,7 @@ Table 51516233 "Loan Collateral Details"
                 if CollateralRegister.Find('-') then begin
                     Name := CollateralRegister."Collateral Description";
                     Value := CollateralRegister."Asset Value";
-                    "Assesment Done By":=CollateralRegister."Received By";
+                    "Assesment Done By" := CollateralRegister."Received By";
                     // "Security Details" := SecSetup."Security Description";
                     // "Collateral Multiplier" := SecSetup."Collateral Multiplier";
                     // "Guarantee Value" := Value * "Collateral Multiplier";
@@ -109,7 +111,10 @@ Table 51516233 "Loan Collateral Details"
         {
             DataClassification = ToBeClassified;
         }
-
+        field(14; "Member No."; Code[30])
+        {
+            DataClassification = ToBeClassified;
+        }
 
     }
 

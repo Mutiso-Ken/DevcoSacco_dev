@@ -77,10 +77,7 @@ Table 51516230 "Loans Register"
                 //............................
                 if LoanType.Get("Loan Product Type") then begin
                     LoanType.SetRange(LoanType.Code, "Loan Product Type");
-                    if Posted <> true then begin
-                        if Installments > LoanType."No of Installment" then
-                            Error('Installments cannot be greater than the maximum installments.%1', LoanType."No of Installment");
-                    end;
+
                     if (LoanType."Loan Product Expiry Date" = 0D) or (LoanType."Loan Product Expiry Date" > Today) then begin
                         sHARES := 0;
                         MonthlyRepayT := 0;
@@ -146,7 +143,7 @@ Table 51516230 "Loans Register"
                             "Loan Product Type Name" := LoanType."Product Description";
                             Interest := LoanType."Interest rate";
                             Mulitiplier := LoanType."Deposits Multiplier";
-                            "Deposits Mulitiplier" := sHARES * Mulitiplier;
+                            "Deposits Mulitiplier" := ((sHARES * Mulitiplier) * -1);
                             "Instalment Period" := LoanType."Instalment Period";
                             "Grace Period" := LoanType."Grace Period";
                             "Grace Period - Principle (M)" := LoanType."Grace Period - Principle (M)";
@@ -159,7 +156,7 @@ Table 51516230 "Loans Register"
                             "Max. Loan Amount" := LoanType."Max. Loan Amount";
                             "Repayment Frequency" := LoanType."Repayment Frequency";
                             "Paying Bank Account No" := LoanType."Loan Bank Account";
-
+                            rec.modify;
                             if LoanType."Use Cycles" = false then begin
                                 "Loan Cycle" := 0;
                                 "Max. Installments" := LoanType."No of Installment";
@@ -198,7 +195,10 @@ Table 51516230 "Loans Register"
                                         Installments := ProdCycles."Max. Installments";
                                     end;
                                 end;
-
+                                if Posted <> true then begin
+                                    if Installments > LoanType."No of Installment" then
+                                        Error('Installments cannot be greater than the maximum installments.%1', LoanType."No of Installment");
+                                end;
 
                             end;
                         end;
@@ -261,7 +261,10 @@ Table 51516230 "Loans Register"
                     "Existing Loan" := CustomerRecord."Outstanding Balance";
                     "Account No" := CustomerRecord."FOSA Account";
                     "Staff No" := CustomerRecord."Payroll/Staff No";
-                    "Estimated Years to Retire":= (Calcdate(GenSetUp."Retirement Age", Cust."Date of Birth")-Today);
+                    if Cust."Date of Birth" <> 0D then begin
+                        "Estimated Years to Retire" := (Calcdate(GenSetUp."Retirement Age", Cust."Date of Birth") - Today);
+                    end;
+
 
                     "ID NO" := CustomerRecord."ID No.";
                     "Member Deposits" := CustomerRecord."Current Shares";

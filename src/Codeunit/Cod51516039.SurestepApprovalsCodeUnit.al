@@ -12,13 +12,10 @@ Codeunit 51516039 "SurestepApprovalsCodeUnit"
         LoanApplications: Record "Loans Register";
         LoanBatches: Record "Loan Disburesment-Batching";
         GuarantorSubstitution: Record "Guarantorship Substitution H";
-        // LeaveApplications: Record "HR Leave Application";
         PaymentVoucher: Record "Payment Header";
         FundsTransferHeader: Record "Funds Transfer Header";
-
         FOSAProductApplicationTable: Record "Accounts Applications Details";
         LoanRecoveryApplicationTable: Record "Loan Recovery Header";
-
     var
         Psalmkitswfevents: Codeunit "Custom Workflow Events";
         NoWorkflowEnabledErr: Label 'No Approval workflow for this record type is enabled';

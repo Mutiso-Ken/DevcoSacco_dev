@@ -62,9 +62,9 @@ Page 51516245 "Loan Application Card"
                     ShowMandatory = true;
                     trigger OnValidate()
                     begin
-                        if FnMemberHasAnExistingLoanSameProduct() = true then begin
-                            error('Member Has An Existing Loan Of Product-' + Format("Loan Product Type") + ' with an outstanding balance of Ksh. ' + Format(FnGetProductOutstandingBal()));
-                        end;
+                        // if FnMemberHasAnExistingLoanSameProduct() = true then begin
+                        //     error('Member Has An Existing Loan Of Product-' + Format("Loan Product Type") + ' with an outstanding balance of Ksh. ' + Format(FnGetProductOutstandingBal()));
+                        // end;
                     end;
                 }
                 field(Mulitiplier; Mulitiplier)
@@ -404,7 +404,7 @@ Page 51516245 "Loan Application Card"
                         SystemGenSet: Codeunit "System General Setup";
                     begin
                         //................Ensure than you cant have two loans same product
-                        SystemGenSet.FnCheckNoOfLoansLimit("Loan  No.", "Loan Product Type", "Client Code");
+                       // SystemGenSet.FnCheckNoOfLoansLimit("Loan  No.", "Loan Product Type", "Client Code");
                         //----------------
                         FnCheckForTestFields();
                         if Confirm('Send Approval Request For Loan Application of Ksh. ' + Format("Approved Amount") + ' applied by ' + Format("Client Name") + ' ?', false) = false then begin
