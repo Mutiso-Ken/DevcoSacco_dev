@@ -1253,6 +1253,7 @@ Report 51516244 "Loan Appraisal"
                         "Loan Processing Fee" := LoanProcessingFee;
                         "Loan Dirbusement Fee" := DisbursementFee;
                         "Loan Insurance" := LoanInsurance;
+                        Appraised := true;
                         Modify;
                     end
 

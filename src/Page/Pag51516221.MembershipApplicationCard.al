@@ -183,7 +183,7 @@ Page 51516221 "Membership Application Card"
                         Age := Dates.DetermineAge("Date of Birth", Today);
                         GenSetUp.Get();
                         DateofRetirement := CalcDate(GenSetUp."Retirement Age", "Date of Birth");
-                        Message('Date of Retiremtn %1',DateofRetirement);
+                        Message('Date of Retiremtn %1', DateofRetirement);
                     end;
                 }
                 field(Age; Age)
@@ -1424,6 +1424,7 @@ Page 51516221 "Membership Application Card"
         SMSToSend: Text[250];
         CoveragePercentStyle: Text;
         SurestepFactory: Codeunit "SURESTEP Factory";
+        EmailCodeunit: Codeunit Emailcodeunit;
 
 
     procedure UpdateControls()
@@ -1905,7 +1906,7 @@ Page 51516221 "Membership Application Card"
         SMSMessages."Telephone No" := "Mobile Phone No";
         SMSMessages."Sent To Server" := SMSMessages."sent to server"::No;
         SMSMessages."SMS Message" := 'Dear Member your account has been created successfully, your Account No is '
-        + BOSAACC + '  Account Name ' + Name + ' .' + 'You can now Deposit Via PayBill 587649. Thank You For Choosing to Bank With Us';
+        + BOSAACC + '  Account Name ' + Name + ' .' + 'You can now Deposit Via PayBill 587649. Thank You For Choosing to Save With Us';
         SMSMessages.Insert;
 
     end;
@@ -1916,15 +1917,20 @@ Page 51516221 "Membership Application Card"
         EmailBody: Text[700];
         EmailSubject: Text[100];
         Emailaddress: Text[100];
+        Companyinfo: Record "Company Information";
     begin
 
         Emailaddress := Rec."E-Mail (Personal)";
         EmailSubject := 'Devco Membership Application';
 
-        EMailBody := 'Dear <b>' + Name + '</b>,<br></br>' +
-'On behalf of Devco Sacco am pleased to inform you that your application for membership has been accepted. Your Membership Number is' + MemberNumber + '<br></br>' +
-'Congratulations';
-        SurestepFactory.SendMail(Emailaddress, EmailSubject, EmailBody);
+        EMailBody := 'Dear <b>' + Name + '</b>,</br></br>' +
+        'On behalf of Devco Sacco am pleased to inform you that your application for membership has been accepted. Your Membership Number is' + MemberNumber + '<br></br>' +
+        'Thank You For Choosing to Save With Us' + '</br></br></br>' +
+        'Kind regards,' +
+        Companyinfo.Name + '</br> ' + Companyinfo.Address + '</br> ' + Companyinfo.City + '</br>' +
+       Companyinfo."Post Code" + '</br>' + Companyinfo."Country/Region Code" + '</br>'+
+        Companyinfo."Phone No." + '</br> ' + Companyinfo."E-Mail";
+        EmailCodeunit.SendMail(Emailaddress, EmailSubject, EmailBody);
     end;
 
     local procedure FnCreateBOSAMemberAccounts()

@@ -184,7 +184,7 @@ Page 51516397 "BOSA Loans Disbursement Card"
                 field("Approval Status"; "Approval Status")
                 {
                     ApplicationArea = Basic;
-                    Editable = false;
+                    Editable = true;
                 }
                 field("Repayment Frequency"; "Repayment Frequency")
                 {

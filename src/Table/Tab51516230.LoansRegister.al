@@ -18,41 +18,8 @@ Table 51516230 "Loans Register"
                         NoSeriesMgt.TestManual(SalesSetup."BOSA Loans Nos");
                         "No. Series" := '';
                     end;
-
-                    // end else
-                    //     if Source = Source::MICRO then begin
-                    //         if "Loan  No." <> xRec."Loan  No." then begin
-                    //             SalesSetup.Get;
-                    //             NoSeriesMgt.TestManual(SalesSetup."Micro Loans");
-                    //             "No. Series" := '';
-                    //         end;
-
-
-                    //     end else
-                    //         if (Source = Source::FOSA) AND ("Loan Product Type" <> 'OVERDRAFT') AND ("Loan Product Type" <> 'OKOA') then begin
-                    //             if "Loan  No." <> xRec."Loan  No." then begin
-                    //                 SalesSetup.Get;
-                    //                 NoSeriesMgt.TestManual(SalesSetup."FOSA Loans Nos");
-                    //                 "No. Series" := '';
-                    //             end;
-                    //         end
-                    //         else
-                    //             if (Source = Source::FOSA) AND ("Loan Product Type" = 'OVERDRAFT') AND ("Loan Product Type" <> 'OKOA') then begin
-                    //                 if "Loan  No." <> xRec."Loan  No." then begin
-                    //                     SalesSetup.Get;
-                    //                     NoSeriesMgt.TestManual(SalesSetup."OVerdraft Nos");
-                    //                     "No. Series" := '';
-                    //                 end;
-                    //             end
-                    //             else
-                    //                 if (Source = Source::FOSA) AND ("Loan Product Type" <> 'OVERDRAFT') AND ("Loan Product Type" = 'OKOA') then begin
-                    //                     if "Loan  No." <> xRec."Loan  No." then begin
-                    //                         SalesSetup.Get;
-                    //                         NoSeriesMgt.TestManual(SalesSetup."Okoa No.");
-                    //                         "No. Series" := '';
-                    //                     end;
                 end
-                //SURESTEP
+
 
             end;
         }
@@ -92,58 +59,43 @@ Table 51516230 "Loans Register"
                         end;
                         //.............................................................................
 
-                        LoanApp.Reset;
-                        LoanApp.SetRange(LoanApp."Client Code", "Client Code");
-                        LoanApp.SetRange(LoanApp."Loan Product Type", "Loan Product Type");
-                        LoanApp.SetRange(LoanApp.Posted, true);
-                        LoanApp.CalcFields(LoanApp."Outstanding Balance");
-                        LoanApp.SetFilter(LoanApp."Outstanding Balance", '>%1', 0);
-                        if LoanApp.Find('-') then begin
-                            repeat
-                                loannums := loannums + 1;
-                            until LoanApp.Next = 0;
-                        end;
+                        // LoanApp.Reset;
+                        // LoanApp.SetRange(LoanApp."Client Code", "Client Code");
+                        // LoanApp.SetRange(LoanApp."Loan Product Type", "Loan Product Type");
+                        // LoanApp.SetRange(LoanApp.Posted, true);
+                        // LoanApp.CalcFields(LoanApp."Outstanding Balance");
+                        // LoanApp.SetFilter(LoanApp."Outstanding Balance", '>%1', 0);
+                        // if LoanApp.Find('-') then begin
+                        //     repeat
+                        //         loannums := loannums + 1;
+                        //     until LoanApp.Next = 0;
+                        // end;
                         //.....................................................................
 
                         //Compute all loan repayments
-                        LoanApp.Reset;
-                        LoanApp.SetRange(LoanApp."Client Code", "Client Code");
-                        if LoanApp.Find('-') then begin
-                            LoanApp.CalcFields(LoanApp."Outstanding Balance");
-                            repeat
-                                LoanApp.CalcFields(LoanApp."Outstanding Balance");
-                                if (LoanApp."Outstanding Balance" > 0) then begin
-                                    if LoanApp."Outstanding Balance" < LoanApp."Loan Principle Repayment" then
-                                        MonthlyRepayT := (LoanApp."Outstanding Balance" + LoanApp."Loan Interest Repayment")
-                                    else
-                                        MonthlyRepay := (LoanApp."Loan Principle Repayment" + LoanApp."Loan Interest Repayment");
+                        // LoanApp.Reset;
+                        // LoanApp.SetRange(LoanApp."Client Code", "Client Code");
+                        // if LoanApp.Find('-') then begin
+                        //     LoanApp.CalcFields(LoanApp."Outstanding Balance");
+                        //     repeat
+                        //         LoanApp.CalcFields(LoanApp."Outstanding Balance");
+                        //         if (LoanApp."Outstanding Balance" > 0) then begin
+                        //             if LoanApp."Outstanding Balance" < LoanApp."Loan Principle Repayment" then
+                        //                 MonthlyRepayT := (LoanApp."Outstanding Balance" + LoanApp."Loan Interest Repayment")
+                        //             else
+                        //                 MonthlyRepay := (LoanApp."Loan Principle Repayment" + LoanApp."Loan Interest Repayment");
 
-                                    MonthlyRepayT := MonthlyRepayT + MonthlyRepay;
-                                end;
-                            until LoanApp.Next = 0;
-                        end;
-                        //..........................................................
-                        //Existing Pending Approval
-                        LoanApp.Reset;
-                        LoanApp.SetRange(LoanApp."Client Code", "Client Code");
-                        LoanApp.SetRange(LoanApp."Loan Product Type", "Loan Product Type");
-                        LoanApp.SetRange(LoanApp.Posted, false);
-                        // LoanApp.SetRange("Account Category"); nimekuwa confused
-                        LoanApp.SetRange(LoanApp."Approval Status", LoanApp."Approval Status"::Pending);
-                        if LoanApp.Find('-') then begin
-                            repeat
-                                if LoanApp."Loan Status" <> LoanApp."loan status"::Rejected then begin
-                                    if LoanApp."Loan  No." <> "Loan  No." then
-                                        Error('Member already has an existing %1 application pending approval: %2 - %3', LoanApp."Loan Product Type Name", "Account No", LoanApp."Loan  No.");
-                                end;
-                            until LoanApp.Next = 0;
-                        end;
+                        //             MonthlyRepayT := MonthlyRepayT + MonthlyRepay;
+                        //         end;
+                        //     until LoanApp.Next = 0;
+                        // end;
+
                         //------------------------------------------------------
                         if LoanType.Get("Loan Product Type") then begin
                             "Loan Product Type Name" := LoanType."Product Description";
                             Interest := LoanType."Interest rate";
                             Mulitiplier := LoanType."Deposits Multiplier";
-                            "Deposits Mulitiplier" := ((sHARES * Mulitiplier) * -1);
+
                             "Instalment Period" := LoanType."Instalment Period";
                             "Grace Period" := LoanType."Grace Period";
                             "Grace Period - Principle (M)" := LoanType."Grace Period - Principle (M)";
@@ -166,41 +118,41 @@ Table 51516230 "Loans Register"
 
                             end;
 
-                            if LoanType."Use Cycles" = true then begin
-                                LoanApp.Reset;
-                                LoanApp.SetRange(LoanApp."Client Code", "Client Code");
-                                LoanApp.SetRange(LoanApp."Loan Product Type", "Loan Product Type");
-                                LoanApp.SetRange(LoanApp.Posted, true);
-                                if LoanApp.Find('-') then
-                                    MemberCycle := LoanApp.Count + 1
-                                else
-                                    MemberCycle := 1;
+                            // if LoanType."Use Cycles" = true then begin
+                            //     LoanApp.Reset;
+                            //     LoanApp.SetRange(LoanApp."Client Code", "Client Code");
+                            //     LoanApp.SetRange(LoanApp."Loan Product Type", "Loan Product Type");
+                            //     LoanApp.SetRange(LoanApp.Posted, true);
+                            //     if LoanApp.Find('-') then
+                            //         MemberCycle := LoanApp.Count + 1
+                            //     else
+                            //         MemberCycle := 1;
 
 
-                                ProdCycles.Reset;
-                                ProdCycles.SetRange(ProdCycles."Product Code", "Loan Product Type");
-                                if ProdCycles.Find('-') then begin
-                                    repeat
-                                        if MemberCycle = ProdCycles.Cycle then begin
-                                            "Loan Cycle" := ProdCycles.Cycle;
-                                            "Max. Installments" := ProdCycles."Max. Installments";
-                                            "Max. Loan Amount" := ProdCycles."Max. Amount";
-                                            Installments := ProdCycles."Max. Installments";
-                                        end;
-                                    until ProdCycles.Next = 0;
-                                    if "Loan Cycle" = 0 then begin
-                                        "Loan Cycle" := ProdCycles.Cycle;
-                                        "Max. Installments" := ProdCycles."Max. Installments";
-                                        "Max. Loan Amount" := ProdCycles."Max. Amount";
-                                        Installments := ProdCycles."Max. Installments";
-                                    end;
-                                end;
-                                if Posted <> true then begin
-                                    if Installments > LoanType."No of Installment" then
-                                        Error('Installments cannot be greater than the maximum installments.%1', LoanType."No of Installment");
-                                end;
+                            //     ProdCycles.Reset;
+                            //     ProdCycles.SetRange(ProdCycles."Product Code", "Loan Product Type");
+                            //     if ProdCycles.Find('-') then begin
+                            //         repeat
+                            //             if MemberCycle = ProdCycles.Cycle then begin
+                            //                 "Loan Cycle" := ProdCycles.Cycle;
+                            //                 "Max. Installments" := ProdCycles."Max. Installments";
+                            //                 "Max. Loan Amount" := ProdCycles."Max. Amount";
+                            //                 Installments := ProdCycles."Max. Installments";
+                            //             end;
+                            //         until ProdCycles.Next = 0;
+                            //         if "Loan Cycle" = 0 then begin
+                            //             "Loan Cycle" := ProdCycles.Cycle;
+                            //             "Max. Installments" := ProdCycles."Max. Installments";
+                            //             "Max. Loan Amount" := ProdCycles."Max. Amount";
+                            //             Installments := ProdCycles."Max. Installments";
+                            //         end;
+                            //     end;
+                            //     if Posted <> true then begin
+                            //         if Installments > LoanType."No of Installment" then
+                            //             Error('Installments cannot be greater than the maximum installments.%1', LoanType."No of Installment");
+                            //     end;
 
-                            end;
+                            // end;
                         end;
                         //--------------------------------------------------------
                     end;
@@ -246,10 +198,10 @@ Table 51516230 "Loans Register"
                         end;
                     end;
                     //-------------------------------------------------------------------
-                    // IF CUST."Account Category" <> CUST."Account Category"::"Non-member" then
                     if CustomerRecord."Registration Date" <> 0D then begin
-                        if CalcDate(GenSetUp."Min. Loan Application Period", CustomerRecord."Registration Date") > Today then
-                            Error('Member is less than six months old therefor not eligible for loan application.');
+                        if "Loan Product Type" <> 'KARIBU' then
+                            if (CalcDate(GenSetUp."Min. Loan Application Period", CustomerRecord."Registration Date") > Today) then
+                                Error('Member is less than six months old therefor not eligible for loan application.');
                     end;
                     //-------------------------------------------------------------------
                     CustomerRecord.CalcFields(CustomerRecord."Current Shares", CustomerRecord."Outstanding Balance",
@@ -259,13 +211,10 @@ Table 51516230 "Loans Register"
                     "Shares Balance" := CustomerRecord."Current Shares";
                     Savings := CustomerRecord."Current Shares";
                     "Existing Loan" := CustomerRecord."Outstanding Balance";
-                    "Account No" := CustomerRecord."FOSA Account";
                     "Staff No" := CustomerRecord."Payroll/Staff No";
                     if Cust."Date of Birth" <> 0D then begin
-                        "Estimated Years to Retire" := (Calcdate(GenSetUp."Retirement Age", Cust."Date of Birth") - Today);
+                        "Estimated Years to Retire" := Round(((Calcdate(GenSetUp."Retirement Age", Cust."Date of Birth") - Today) / 365), 1, '=');
                     end;
-
-
                     "ID NO" := CustomerRecord."ID No.";
                     "Member Deposits" := CustomerRecord."Current Shares";
                     "Group Name" := CustomerRecord."Group Account Name";
@@ -275,6 +224,7 @@ Table 51516230 "Loans Register"
                     "Non-member Account" := true;
                     // "Account Category" := CustomerRecord."Account Category";// should it be non member or just account category
                     //---------------------------------------------------------
+                    "Deposits Mulitiplier" := (Savings * Mulitiplier);
 
                 end;
 
@@ -285,6 +235,27 @@ Table 51516230 "Loans Register"
                 if LoanApp.Find('-') then
                     Error('Member has a loan which has previously been recovered from gurantors. - %1', LoanApp."Loan  No.");
                 //-------------------------------------------------------------------
+
+                //..........................................................
+                //Existing Pending Approval
+                LoanApp.Reset;
+                LoanApp.SetRange(LoanApp."Client Code", "Client Code");
+                LoanApp.SetRange(LoanApp."Loan Product Type", "Loan Product Type");
+                LoanApp.SetRange(LoanApp.Posted, false);
+                LoanApp.SetRange(LoanApp."Approval Status", LoanApp."Approval Status"::Pending);
+                if LoanApp.Find('-') then begin
+                    repeat
+                        if LoanApp."Loan Status" <> LoanApp."loan status"::Rejected then begin
+                            if LoanApp."Loan  No." <> "Loan  No." then
+                                Error('Member already has an existing %1 application pending approval: %2 - %3', LoanApp."Loan Product Type Name", "Account No", LoanApp."Loan  No.");
+                        end;
+                    until LoanApp.Next = 0;
+                end;
+
+                //     if Posted <> true then begin
+                //         if Installments > LoanType."No of Installment" then
+                //             Error('Installments cannot be greater than the maximum installments.%1', LoanType."No of Installment");
+                //     end;
             end;
         }
         field(5; "Group Code"; Code[20])
@@ -455,11 +426,10 @@ Table 51516230 "Loans Register"
             trigger OnValidate()
             begin
                 if Posted <> true then begin
-                    if ("Loan Product Type" <> 'OVERDRAFT') AND ("Loan Product Type" <> 'OKOA') then begin
-                        if Installments > "Max. Installments" then
-                            ERROR('Installments cannot be greater than the maximum installments.');
-                    end;
+                    if Installments > "Max. Installments" then
+                        ERROR('Installments cannot be greater than the maximum installments.');
                 end;
+
 
                 Validate("Approved Amount");
 
@@ -2163,6 +2133,10 @@ Table 51516230 "Loans Register"
             DataClassification = ToBeClassified;
         }
         Field(51516299; "Estimated Years to Retire"; Integer)
+        {
+            DataClassification = ToBeClassified;
+        }
+        field(51516300; Appraised; Boolean)
         {
             DataClassification = ToBeClassified;
         }

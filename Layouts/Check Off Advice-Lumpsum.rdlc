@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Report xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner" xmlns:cl="http://schemas.microsoft.com/sqlserver/reporting/2010/01/componentdefinition" xmlns="http://schemas.microsoft.com/sqlserver/reporting/2010/01/reportdefinition">
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
   <AutoRefresh>0</AutoRefresh>
   <DataSources>
     <DataSource Name="DataSource">
@@ -22,7 +22,7 @@
                   <Width>1in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>2.5in</Width>
+                  <Width>3.30208in</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>1in</Width>
@@ -44,7 +44,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">Member No</Value>
+                                  <Value>Member No</Value>
                                   <Style>
                                     <FontFamily>Times New Roman</FontFamily>
                                     <FontSize>9pt</FontSize>
@@ -79,7 +79,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">Member Name</Value>
+                                  <Value>Member Name</Value>
                                   <Style>
                                     <FontFamily>Times New Roman</FontFamily>
                                     <FontSize>9pt</FontSize>
@@ -114,7 +114,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">Total Deduction</Value>
+                                  <Value>Total Deduction</Value>
                                   <Style>
                                     <FontFamily>Times New Roman</FontFamily>
                                     <FontSize>9pt</FontSize>
@@ -149,7 +149,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">Employer code</Value>
+                                  <Value>Employer code</Value>
                                   <Style>
                                     <FontFamily>Times New Roman</FontFamily>
                                     <FontSize>9pt</FontSize>
@@ -189,7 +189,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">=Fields!No_MembersRegister.Value</Value>
+                                  <Value>=Fields!No_MembersRegister.Value</Value>
                                   <Style>
                                     <FontFamily>Times New Roman</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -222,7 +222,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">=Fields!Name_MembersRegister.Value</Value>
+                                  <Value>=Fields!Name_MembersRegister.Value</Value>
                                   <Style>
                                     <FontFamily>Times New Roman</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -255,7 +255,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">=Fields!MonthlyAdvice.Value</Value>
+                                  <Value>=Fields!MonthlyAdvice.Value</Value>
                                   <Style>
                                     <FontFamily>Times New Roman</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -288,7 +288,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">=Fields!EmployerCode_MembersRegister.Value</Value>
+                                  <Value>=Fields!EmployerCode_MembersRegister.Value</Value>
                                   <Style>
                                     <FontFamily>Times New Roman</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -326,7 +326,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto" />
+                                  <Value />
                                   <Style>
                                     <FontFamily>Times New Roman</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -360,7 +360,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">TOTALS</Value>
+                                  <Value>TOTALS</Value>
                                   <Style>
                                     <FontFamily>Times New Roman</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -394,10 +394,11 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">=Sum(Fields!MonthlyAdvice.Value)</Value>
+                                  <Value>=Sum(Fields!MonthlyAdvice.Value)</Value>
                                   <Style>
                                     <FontFamily>Times New Roman</FontFamily>
                                     <FontSize>8pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -427,7 +428,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto" />
+                                  <Value />
                                   <Style>
                                     <FontFamily>Times New Roman</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -481,7 +482,7 @@
             <Top>1.11333in</Top>
             <Left>0.20708in</Left>
             <Height>0.56249in</Height>
-            <Width>5.5in</Width>
+            <Width>6.30208in</Width>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -495,7 +496,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value EvaluationMode="Auto">=First(Fields!CName.Value, "DataSet_Result")</Value>
+                    <Value>=First(Fields!CName.Value, "DataSet_Result")</Value>
                     <Style>
                       <FontFamily>Times New Roman</FontFamily>
                       <FontSize>16pt</FontSize>
@@ -510,7 +511,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value EvaluationMode="Auto">=First(Fields!Caddress.Value, "DataSet_Result")</Value>
+                    <Value>=First(Fields!Caddress.Value, "DataSet_Result")</Value>
                     <Style>
                       <FontFamily>Times New Roman</FontFamily>
                       <FontWeight>Bold</FontWeight>
@@ -524,7 +525,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value EvaluationMode="Auto">=First(Fields!CmobileNo.Value, "DataSet_Result")</Value>
+                    <Value>=First(Fields!CmobileNo.Value, "DataSet_Result")</Value>
                     <Style>
                       <FontFamily>Times New Roman</FontFamily>
                       <FontWeight>Bold</FontWeight>
@@ -538,7 +539,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value EvaluationMode="Auto">=First(Fields!Cwebsite.Value, "DataSet_Result")</Value>
+                    <Value>=First(Fields!Cwebsite.Value, "DataSet_Result")</Value>
                     <Style>
                       <FontFamily>Times New Roman</FontFamily>
                       <FontWeight>Bold</FontWeight>
@@ -552,7 +553,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value EvaluationMode="Auto" />
+                    <Value />
                     <Style>
                       <FontFamily>Times New Roman</FontFamily>
                       <FontWeight>Bold</FontWeight>
@@ -564,7 +565,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value EvaluationMode="Auto" />
+                    <Value />
                     <Style>
                       <FontFamily>Times New Roman</FontFamily>
                       <FontWeight>Bold</FontWeight>
@@ -597,7 +598,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value EvaluationMode="Auto">=First(Fields!DOCNAME.Value, "DataSet_Result")</Value>
+                    <Value>=First(Fields!DOCNAME.Value, "DataSet_Result")</Value>
                     <Style>
                       <FontFamily>Times New Roman</FontFamily>
                       <FontSize>14pt</FontSize>
@@ -650,7 +651,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value EvaluationMode="Auto">=First(Fields!Employer_Name.Value, "DataSet_Result")</Value>
+                    <Value>=First(Fields!Employer_Name.Value, "DataSet_Result")</Value>
                     <Style>
                       <FontFamily>Times New Roman</FontFamily>
                       <FontSize>14pt</FontSize>
@@ -683,7 +684,7 @@
         <Height>2in</Height>
         <Style />
       </Body>
-      <Width>14.90708in</Width>
+      <Width>6.75083in</Width>
       <Page>
         <Style />
       </Page>

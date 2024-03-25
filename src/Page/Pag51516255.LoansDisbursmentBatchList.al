@@ -45,6 +45,7 @@ Page 51516255 "Loans Disbursment Batch List"
                 {
                     ApplicationArea = Basic;
                     Editable = true;
+                    Visible = false;
                 }
             }
         }

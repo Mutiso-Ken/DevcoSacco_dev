@@ -302,7 +302,7 @@ Report 51516047 P9Report
         if ObjUserSetup."Payroll User"=false then Error ('You dont have permissions for payroll, Contact your system administrator! ')
         end;
 
-        //REPORT.RUN(REPORT::"Update P9Rports",TRUE,FALSE);
+        REPORT.RUN(REPORT::"Update P9Rports",TRUE,FALSE);
     end;
 
     trigger OnPreReport()

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Report xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner" xmlns:cl="http://schemas.microsoft.com/sqlserver/reporting/2010/01/componentdefinition" xmlns="http://schemas.microsoft.com/sqlserver/reporting/2010/01/reportdefinition">
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
   <AutoRefresh>0</AutoRefresh>
   <DataSources>
     <DataSource Name="DataSource">
@@ -31,7 +31,7 @@
                   <Width>1.27083in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.21667in</Width>
+                  <Width>1.14375in</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>1in</Width>
@@ -74,7 +74,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">Member No</Value>
+                                  <Value>Member No</Value>
                                   <Style>
                                     <FontFamily>Times New Roman</FontFamily>
                                     <FontSize>9pt</FontSize>
@@ -109,7 +109,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">Member Name</Value>
+                                  <Value>Member Name</Value>
                                   <Style>
                                     <FontFamily>Times New Roman</FontFamily>
                                     <FontSize>9pt</FontSize>
@@ -144,7 +144,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">Deposits Contribution</Value>
+                                  <Value>Deposits Contribution</Value>
                                   <Style>
                                     <FontFamily>Times New Roman</FontFamily>
                                     <FontSize>9pt</FontSize>
@@ -179,7 +179,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">Likizo contribution</Value>
+                                  <Value>Likizo contribution</Value>
                                   <Style>
                                     <FontFamily>Times New Roman</FontFamily>
                                     <FontSize>9pt</FontSize>
@@ -214,7 +214,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">Alpha contribution</Value>
+                                  <Value>Alpha contribution</Value>
                                   <Style>
                                     <FontFamily>Times New Roman</FontFamily>
                                     <FontSize>9pt</FontSize>
@@ -249,7 +249,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">Normal Loan</Value>
+                                  <Value>Normal Loan</Value>
                                   <Style>
                                     <FontFamily>Times New Roman</FontFamily>
                                     <FontSize>9pt</FontSize>
@@ -284,7 +284,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">College Loan</Value>
+                                  <Value>College Loan</Value>
                                   <Style>
                                     <FontFamily>Times New Roman</FontFamily>
                                     <FontSize>9pt</FontSize>
@@ -319,7 +319,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">School Fees</Value>
+                                  <Value>School Fees</Value>
                                   <Style>
                                     <FontFamily>Times New Roman</FontFamily>
                                     <FontSize>9pt</FontSize>
@@ -354,7 +354,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">Emmergency Loan</Value>
+                                  <Value>Emmergency Loan</Value>
                                   <Style>
                                     <FontFamily>Times New Roman</FontFamily>
                                     <FontSize>9pt</FontSize>
@@ -389,7 +389,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">Quick Loan</Value>
+                                  <Value>Quick Loan</Value>
                                   <Style>
                                     <FontFamily>Times New Roman</FontFamily>
                                     <FontSize>9pt</FontSize>
@@ -424,7 +424,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">karibu Loan</Value>
+                                  <Value>karibu Loan</Value>
                                   <Style>
                                     <FontFamily>Times New Roman</FontFamily>
                                     <FontSize>9pt</FontSize>
@@ -459,7 +459,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">Asset Loan</Value>
+                                  <Value>Asset Loan</Value>
                                   <Style>
                                     <FontFamily>Times New Roman</FontFamily>
                                     <FontSize>9pt</FontSize>
@@ -494,7 +494,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">Total Deduction</Value>
+                                  <Value>Total Deduction</Value>
                                   <Style>
                                     <FontFamily>Times New Roman</FontFamily>
                                     <FontSize>9pt</FontSize>
@@ -529,7 +529,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">Employer code</Value>
+                                  <Value>Employer code</Value>
                                   <Style>
                                     <FontFamily>Times New Roman</FontFamily>
                                     <FontSize>9pt</FontSize>
@@ -569,7 +569,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">=Fields!No_MembersRegister.Value</Value>
+                                  <Value>=Fields!No_MembersRegister.Value</Value>
                                   <Style>
                                     <FontFamily>Times New Roman</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -602,7 +602,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">=Fields!Name_MembersRegister.Value</Value>
+                                  <Value>=Fields!Name_MembersRegister.Value</Value>
                                   <Style>
                                     <FontFamily>Times New Roman</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -635,7 +635,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">=Fields!Deposit_Contribution.Value</Value>
+                                  <Value>=Fields!Deposit_Contribution.Value</Value>
                                   <Style>
                                     <FontFamily>Times New Roman</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -662,14 +662,14 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="LIKIZO_CONTRIBUTION">
+                        <Textbox Name="Premium">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">=Fields!LIKIZO_CONTRIBUTION.Value</Value>
+                                  <Value>=Fields!Premium.Value</Value>
                                   <Style>
                                     <FontFamily>Times New Roman</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -679,7 +679,7 @@
                               <Style />
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>LIKIZO_CONTRIBUTION</rd:DefaultName>
+                          <rd:DefaultName>Premium</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -695,14 +695,14 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Alpha">
+                        <Textbox Name="Makeover">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">=Fields!Alpha.Value</Value>
+                                  <Value>=Fields!Makeover.Value</Value>
                                   <Style>
                                     <FontFamily>Times New Roman</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -712,7 +712,7 @@
                               <Style />
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Alpha</rd:DefaultName>
+                          <rd:DefaultName>Makeover</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -735,7 +735,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">=Fields!normloan.Value</Value>
+                                  <Value>=Fields!normloan.Value</Value>
                                   <Style>
                                     <FontFamily>Times New Roman</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -768,7 +768,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">=Fields!College.Value</Value>
+                                  <Value>=Fields!College.Value</Value>
                                   <Style>
                                     <FontFamily>Times New Roman</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -802,7 +802,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">=Fields!scfee.Value</Value>
+                                  <Value>=Fields!scfee.Value</Value>
                                   <Style>
                                     <FontFamily>Times New Roman</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -836,7 +836,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">=Fields!emmerg.Value</Value>
+                                  <Value>=Fields!emmerg.Value</Value>
                                   <Style>
                                     <FontFamily>Times New Roman</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -869,7 +869,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">=Fields!Quick.Value</Value>
+                                  <Value>=Fields!Quick.Value</Value>
                                   <Style>
                                     <FontFamily>Times New Roman</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -902,7 +902,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">=Fields!karibu.Value</Value>
+                                  <Value>=Fields!karibu.Value</Value>
                                   <Style>
                                     <FontFamily>Times New Roman</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -935,7 +935,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">=Fields!AssetL.Value</Value>
+                                  <Value>=Fields!AssetL.Value</Value>
                                   <Style>
                                     <FontFamily>Times New Roman</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -968,7 +968,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">=Fields!MonthlyAdvice.Value</Value>
+                                  <Value>=Fields!MonthlyAdvice.Value</Value>
                                   <Style>
                                     <FontFamily>Times New Roman</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -1001,7 +1001,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">=Fields!EmployerCode_MembersRegister.Value</Value>
+                                  <Value>=Fields!EmployerCode_MembersRegister.Value</Value>
                                   <Style>
                                     <FontFamily>Times New Roman</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -1039,7 +1039,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto" />
+                                  <Value />
                                   <Style>
                                     <FontFamily>Times New Roman</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -1073,7 +1073,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">TOTALS</Value>
+                                  <Value>TOTALS</Value>
                                   <Style>
                                     <FontFamily>Times New Roman</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -1107,7 +1107,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">=Sum(Fields!Deposit_Contribution.Value)</Value>
+                                  <Value>=Sum(Fields!Deposit_Contribution.Value)</Value>
                                   <Style>
                                     <FontFamily>Times New Roman</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -1141,7 +1141,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">=Sum(Fields!LIKIZO_CONTRIBUTION.Value)</Value>
+                                  <Value>=Sum(Fields!Premium.Value)</Value>
                                   <Style>
                                     <FontFamily>Times New Roman</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -1175,10 +1175,11 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">=Sum(Fields!Alpha.Value)</Value>
+                                  <Value>=Sum(Fields!Makeover.Value)</Value>
                                   <Style>
                                     <FontFamily>Times New Roman</FontFamily>
                                     <FontSize>8pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -1208,10 +1209,11 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">=Fields!normloan.Value</Value>
+                                  <Value>=Sum(Fields!normloan.Value)</Value>
                                   <Style>
                                     <FontFamily>Times New Roman</FontFamily>
                                     <FontSize>8pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -1241,10 +1243,11 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">=Sum(Fields!College.Value)</Value>
+                                  <Value>=Sum(Fields!College.Value)</Value>
                                   <Style>
                                     <FontFamily>Times New Roman</FontFamily>
                                     <FontSize>8pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
                                     <Format>#,0.00;(#,0.00)</Format>
                                   </Style>
                                 </TextRun>
@@ -1275,10 +1278,11 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">=Sum(Fields!scfee.Value)</Value>
+                                  <Value>=Sum(Fields!scfee.Value)</Value>
                                   <Style>
                                     <FontFamily>Times New Roman</FontFamily>
                                     <FontSize>8pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
                                     <Format>#,0.00;(#,0.00)</Format>
                                   </Style>
                                 </TextRun>
@@ -1309,10 +1313,11 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">=Sum(Fields!emmerg.Value)</Value>
+                                  <Value>=Sum(Fields!emmerg.Value)</Value>
                                   <Style>
                                     <FontFamily>Times New Roman</FontFamily>
                                     <FontSize>8pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -1342,10 +1347,11 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">=Sum(Fields!emmerg.Value)</Value>
+                                  <Value>=Sum(Fields!emmerg.Value)</Value>
                                   <Style>
                                     <FontFamily>Times New Roman</FontFamily>
                                     <FontSize>8pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -1375,10 +1381,11 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">=Sum(Fields!karibu.Value)</Value>
+                                  <Value>=Sum(Fields!karibu.Value)</Value>
                                   <Style>
                                     <FontFamily>Times New Roman</FontFamily>
                                     <FontSize>8pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -1408,10 +1415,11 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">=Sum(Fields!AssetL.Value)</Value>
+                                  <Value>=Sum(Fields!AssetL.Value)</Value>
                                   <Style>
                                     <FontFamily>Times New Roman</FontFamily>
                                     <FontSize>8pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -1441,10 +1449,11 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto">=Sum(Fields!MonthlyAdvice.Value)</Value>
+                                  <Value>=Sum(Fields!MonthlyAdvice.Value)</Value>
                                   <Style>
                                     <FontFamily>Times New Roman</FontFamily>
                                     <FontSize>8pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -1474,7 +1483,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value EvaluationMode="Auto" />
+                                  <Value />
                                   <Style>
                                     <FontFamily>Times New Roman</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -1538,7 +1547,7 @@
             <Top>1.11333in</Top>
             <Left>0.20708in</Left>
             <Height>0.56249in</Height>
-            <Width>15.91667in</Width>
+            <Width>15.84375in</Width>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1552,7 +1561,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value EvaluationMode="Auto">=First(Fields!CName.Value, "DataSet_Result")</Value>
+                    <Value>=First(Fields!CName.Value, "DataSet_Result")</Value>
                     <Style>
                       <FontFamily>Times New Roman</FontFamily>
                       <FontSize>16pt</FontSize>
@@ -1567,7 +1576,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value EvaluationMode="Auto">=First(Fields!Caddress.Value, "DataSet_Result")</Value>
+                    <Value>=First(Fields!Caddress.Value, "DataSet_Result")</Value>
                     <Style>
                       <FontFamily>Times New Roman</FontFamily>
                       <FontWeight>Bold</FontWeight>
@@ -1581,7 +1590,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value EvaluationMode="Auto">=First(Fields!CmobileNo.Value, "DataSet_Result")</Value>
+                    <Value>=First(Fields!CmobileNo.Value, "DataSet_Result")</Value>
                     <Style>
                       <FontFamily>Times New Roman</FontFamily>
                       <FontWeight>Bold</FontWeight>
@@ -1595,7 +1604,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value EvaluationMode="Auto">=First(Fields!Cwebsite.Value, "DataSet_Result")</Value>
+                    <Value>=First(Fields!Cwebsite.Value, "DataSet_Result")</Value>
                     <Style>
                       <FontFamily>Times New Roman</FontFamily>
                       <FontWeight>Bold</FontWeight>
@@ -1609,7 +1618,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value EvaluationMode="Auto" />
+                    <Value />
                     <Style>
                       <FontFamily>Times New Roman</FontFamily>
                       <FontWeight>Bold</FontWeight>
@@ -1621,7 +1630,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value EvaluationMode="Auto" />
+                    <Value />
                     <Style>
                       <FontFamily>Times New Roman</FontFamily>
                       <FontWeight>Bold</FontWeight>
@@ -1654,7 +1663,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value EvaluationMode="Auto">=First(Fields!DOCNAME.Value, "DataSet_Result")</Value>
+                    <Value>=First(Fields!DOCNAME.Value, "DataSet_Result")</Value>
                     <Style>
                       <FontFamily>Times New Roman</FontFamily>
                       <FontSize>14pt</FontSize>
@@ -1707,7 +1716,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value EvaluationMode="Auto">=First(Fields!Employer_Name.Value, "DataSet_Result")</Value>
+                    <Value>=First(Fields!Employer_Name.Value, "DataSet_Result")</Value>
                     <Style>
                       <FontFamily>Times New Roman</FontFamily>
                       <FontSize>14pt</FontSize>
@@ -1740,8 +1749,14 @@
         <Height>2in</Height>
         <Style />
       </Body>
-      <Width>16.12375in</Width>
+      <Width>16.18625in</Width>
       <Page>
+        <PageHeight>11.69in</PageHeight>
+        <PageWidth>16.54in</PageWidth>
+        <LeftMargin>0in</LeftMargin>
+        <RightMargin>0in</RightMargin>
+        <TopMargin>0in</TopMargin>
+        <BottomMargin>0in</BottomMargin>
         <Style />
       </Page>
     </ReportSection>
@@ -1935,11 +1950,17 @@ End Function
         <Field Name="karibuFormat">
           <DataField>karibuFormat</DataField>
         </Field>
-        <Field Name="Alpha">
-          <DataField>Alpha</DataField>
+        <Field Name="Premium">
+          <DataField>Premium</DataField>
         </Field>
-        <Field Name="AlphaFormat">
-          <DataField>AlphaFormat</DataField>
+        <Field Name="PremiumFormat">
+          <DataField>PremiumFormat</DataField>
+        </Field>
+        <Field Name="Makeover">
+          <DataField>Makeover</DataField>
+        </Field>
+        <Field Name="MakeoverFormat">
+          <DataField>MakeoverFormat</DataField>
         </Field>
       </Fields>
       <Query>

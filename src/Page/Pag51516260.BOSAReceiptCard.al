@@ -222,7 +222,10 @@ Page 51516260 "BOSA Receipt Card"
                         TransType := 'Withdrawal'
                     else
                         TransType := 'Deposit';
-
+                    if FundsUSer.Get(UserId) then begin
+                        Jtemplate := FundsUSer."Receipt Journal Template";
+                        Jbatch := FundsUSer."Receipt Journal Batch";
+                    end;
                     BOSABank := "Employer No.";
                     if ("Account Type" = "account type"::Customer) then begin
 
@@ -231,16 +234,16 @@ Page 51516260 "BOSA Receipt Card"
                     end;
 
                     GenJournalLine.Reset;
-                    GenJournalLine.SetRange("Journal Template Name", 'GENERAL');
-                    GenJournalLine.SetRange("Journal Batch Name", 'FTRANS');
+                    GenJournalLine.SetRange("Journal Template Name", Jtemplate);
+                    GenJournalLine.SetRange("Journal Batch Name", Jbatch);
                     GenJournalLine.DeleteAll;
 
 
                     LineNo := LineNo + 10000;
 
                     GenJournalLine.Init;
-                    GenJournalLine."Journal Template Name" := 'GENERAL';
-                    GenJournalLine."Journal Batch Name" := 'FTRANS';
+                    GenJournalLine."Journal Template Name" := Jtemplate;
+                    GenJournalLine."Journal Batch Name" := Jbatch;
                     GenJournalLine."Document No." := "Transaction No.";
                     GenJournalLine."External Document No." := "Cheque No.";
                     GenJournalLine."Line No." := LineNo;
@@ -264,8 +267,8 @@ Page 51516260 "BOSA Receipt Card"
                     if ("Account Type" <> "account type"::Customer) then begin
                         LineNo := LineNo + 10000;
                         GenJournalLine.Init;
-                        GenJournalLine."Journal Template Name" := 'GENERAL';
-                        GenJournalLine."Journal Batch Name" := 'FTRANS';
+                        GenJournalLine."Journal Template Name" := Jtemplate;
+                        GenJournalLine."Journal Batch Name" := Jbatch;
                         GenJournalLine."Document No." := "Transaction No.";
                         GenJournalLine."External Document No." := "Cheque No.";
                         GenJournalLine."Line No." := LineNo;
@@ -309,8 +312,8 @@ Page 51516260 "BOSA Receipt Card"
                             repeat
                                 LineNo := LineNo + 10000;
                                 GenJournalLine.Init;
-                                GenJournalLine."Journal Template Name" := 'GENERAL';
-                                GenJournalLine."Journal Batch Name" := 'FTRANS';
+                                GenJournalLine."Journal Template Name" := Jtemplate;
+                                GenJournalLine."Journal Batch Name" := Jbatch;
                                 GenJournalLine."Line No." := LineNo;
                                 GenJournalLine."Document No." := "Transaction No.";
                                 GenJournalLine."External Document No." := "Cheque No.";
@@ -349,8 +352,8 @@ Page 51516260 "BOSA Receipt Card"
 
                     //Post New
                     GenJournalLine.Reset;
-                    GenJournalLine.SetRange("Journal Template Name", 'GENERAL');
-                    GenJournalLine.SetRange("Journal Batch Name", 'FTRANS');
+                    GenJournalLine."Journal Template Name" := Jtemplate;
+                    GenJournalLine."Journal Batch Name" := Jbatch;
                     if GenJournalLine.Find('-') then begin
                         Codeunit.Run(Codeunit::"Gen. Jnl.-Post Sacco", GenJournalLine);
                     end;
@@ -430,6 +433,11 @@ Page 51516260 "BOSA Receipt Card"
         Tdate: Date;
         Exp: Text;
         Pdate: Date;
+
+        UsersID: Record User;
+        FundsUSer: Record "Funds User Setup";
+        Jtemplate: Code[10];
+        Jbatch: Code[10];
 
     local procedure AllocatedAmountOnDeactivate()
     begin

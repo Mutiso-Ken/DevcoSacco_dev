@@ -439,7 +439,7 @@ page 50310 "Payroll Employee Card."
                 var
                     myInt: Integer;
                 begin
-                    
+                    FnSendReceiptviaEmail
                 end;
             }
             action("View PaySlip")
@@ -512,7 +512,7 @@ page 50310 "Payroll Employee Card."
     begin
     end;
 
-    procedure FnSendReceiptviaEmail(TransactionNo: Code[30])
+    procedure FnSendReceiptviaEmail()
     var
         MemberReg: Record Customer;
         FileName: Text[200];
@@ -536,29 +536,51 @@ page 50310 "Payroll Employee Card."
         reportrun: Report "Payroll Payslip";
         reportparameters: text;
         ReportTable: Record "Payroll Employee.";
+        CompanyInfo: Record "Company Information";
+        PeriodDate: Record "Payroll Calender.";
+
     begin
-        DialogBox.Open('Sending Payslip to  ' + Format(Receipt.Surname) + ' for period' + Format(Receipt."Selected Period"));
-        //------------------->Get Key Details of Send Email
-        SendEmailTo := '';
-        SendEmailTo := FnGetClientCodeEmail("No.");
-        EmailSubject := '';
-        EmailSubject := 'Payslip for ' + Format("Selected Period");
-        EmailBody := '';
-        EmailBody := 'Dear ' + Format(Surname) + '  We hope this email finds you well. Please find attached your Payslip.';
-        //------------------->Generate The Report Attachments To Send
-        //---------Attachment 1
-        //reportparameters := reportrun.RunRequestPage();
-        reportparameters := '<?xml version="1.0" standalone="yes"?><ReportParameters name="Payroll Payslip" id="50010"><DataItems><DataItem name="Payslip &amp; Payments">VERSION(1) SORTING(Field1) WHERE(Field1=1(' + format("No.") + '))</DataItem><DataItem name="Receipt Allocation">VERSION(1) SORTING(Field1,Field3,Field5,Field51516161,Field51516160,Field2)</DataItem></DataItems></ReportParameters>';
-        FileName := Format("Selected Period") + '-Payslip.pdf';
-        TempBlob.CreateOutStream(Outstr);
-        Report.SaveAs(Report::"Payroll Payslip", reportparameters, ReportFormat::Pdf, Outstr);
-        TempBlob.CreateInStream(Instr);
-        //------------------->Create Emails Start
-        MailToSend.Create(SendEmailTo, EmailSubject, EmailBody);
-        MailToSend.AddAttachment(FileName, FileType, Instr);
-        //.........................................
-        FnEmail.Send(MailToSend);
-        DialogBox.Close();
+
+        // PayrollCalender.Reset;
+        // PayrollCalender.SetRange(PayrollCalender."Date Opened", "Payroll Period");
+        // if PayrollCalender.FindLast then begin
+        //     PeriodName := PayrollCalender."Period Name";
+
+
+        if Confirm('Are you sure you want to create account application?', false) = false then begin
+            Message('Aborted');
+            exit
+        end else begin
+
+
+            DialogBox.Open('Sending Payslip to  ' + Format(Receipt.Surname) + ' for period' + Format(PeriodName));
+            //------------------->Get Key Details of Send Email
+            SendEmailTo := '';
+            SendEmailTo := FnGetClientCodeEmail("No.");
+            EmailSubject := '';
+            EmailSubject := 'Payslip for ' + Format("Payroll Period");
+            EmailBody := '';
+            EmailBody := 'Dear <b>' + Format("Full Name") + '</b>,</br></br>' +
+            'We hope this email finds you well. Please find attached your Payslip.' +
+                Companyinfo.Name + '</br> ' + Companyinfo.Address + '</br> ' + Companyinfo.City + '</br>' +
+           Companyinfo."Post Code" + '</br>' + Companyinfo."Country/Region Code" + '</br>' +
+            Companyinfo."Phone No." + '</br> ' + Companyinfo."E-Mail";
+            //------------------->Generate The Report Attachments To Send
+            //---------Attachment 1
+            reportparameters := reportrun.RunRequestPage();
+            //reportparameters :=  format("No.") + Format( "Payroll Period");
+            FileName := Format("Payroll Period") + '-Payslip.pdf';
+            TempBlob.CreateOutStream(Outstr);
+            Report.SaveAs(Report::"Payroll Payslip", reportparameters, ReportFormat::Pdf, Outstr);
+            TempBlob.CreateInStream(Instr);
+            //------------------->Create Emails Start
+            MailToSend.Create(SendEmailTo, EmailSubject, EmailBody, true);
+            MailToSend.AddAttachment(FileName, FileType, Instr);
+            //.........................................
+            FnEmail.Send(MailToSend);
+            DialogBox.Close();
+            Message('Email Send to %1 Succesfully', "Full Name");
+        end;
     end;
 
     local procedure FnGetClientCodeEmail(ClientCode: Code[50]): Text[100]

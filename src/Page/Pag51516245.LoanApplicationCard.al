@@ -21,7 +21,19 @@ Page 51516245 "Loan Application Card"
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-
+                field("Loan Product Type"; "Loan Product Type")
+                {
+                    ApplicationArea = Basic;
+                    Style = StrongAccent;
+                    Editable = LProdTypeEditable;
+                    ShowMandatory = true;
+                    trigger OnValidate()
+                    begin
+                        // if FnMemberHasAnExistingLoanSameProduct() = true then begin
+                        //     error('Member Has An Existing Loan Of Product-' + Format("Loan Product Type") + ' with an outstanding balance of Ksh. ' + Format(FnGetProductOutstandingBal()));
+                        // end;
+                    end;
+                }
                 field("Client Code"; "Client Code")
                 {
                     ApplicationArea = Basic;
@@ -54,19 +66,7 @@ Page 51516245 "Loan Application Card"
                     Style = Unfavorable;
                     Editable = false;
                 }
-                field("Loan Product Type"; "Loan Product Type")
-                {
-                    ApplicationArea = Basic;
-                    Style = StrongAccent;
-                    Editable = LProdTypeEditable;
-                    ShowMandatory = true;
-                    trigger OnValidate()
-                    begin
-                        // if FnMemberHasAnExistingLoanSameProduct() = true then begin
-                        //     error('Member Has An Existing Loan Of Product-' + Format("Loan Product Type") + ' with an outstanding balance of Ksh. ' + Format(FnGetProductOutstandingBal()));
-                        // end;
-                    end;
-                }
+
                 field(Mulitiplier; Mulitiplier)
                 {
                     ApplicationArea = Basic;
@@ -404,8 +404,9 @@ Page 51516245 "Loan Application Card"
                         SystemGenSet: Codeunit "System General Setup";
                     begin
                         //................Ensure than you cant have two loans same product
-                       // SystemGenSet.FnCheckNoOfLoansLimit("Loan  No.", "Loan Product Type", "Client Code");
+                        // SystemGenSet.FnCheckNoOfLoansLimit("Loan  No.", "Loan Product Type", "Client Code");
                         //----------------
+
                         FnCheckForTestFields();
                         if Confirm('Send Approval Request For Loan Application of Ksh. ' + Format("Approved Amount") + ' applied by ' + Format("Client Name") + ' ?', false) = false then begin
                             exit;
@@ -576,6 +577,7 @@ Page 51516245 "Loan Application Card"
         GnljnlineCopy: Record "Gen. Journal Line";
         NewLNApplicNo: Code[10];
         Cust: Record Customer;
+        EmailCodeunit: Codeunit Emailcodeunit;
         SurestepFactory: Codeunit "SURESTEP Factory";
         LoanApp: Record "Loans Register";
         TestAmt: Decimal;
@@ -849,6 +851,8 @@ Page 51516245 "Loan Application Card"
         if "Approval Status" <> "Approval Status"::Open then begin
             Error('Approval status MUST be Open');
         end;
+        if Appraised = false then
+            Error('Please Appraise the Loan');
         TestField("Requested Amount");
         TestField("Main Sector");
         TestField("Sub-Sector");
@@ -884,7 +888,7 @@ Page 51516245 "Loan Application Card"
                 EMailBody := 'Dear <b>' + '</b>,</br></br>' + 'Your loan application of KSHs.' + FORMAT("Requested Amount") +
                           ' has been Approved by Credit. Devco Sacco Ltd.' + '<br></br>' +
 'Congratulations';
-                SurestepFactory.SendMail(Emailaddress, EmailSubject, EmailBody);
+                EmailCodeunit.SendMail(Emailaddress, EmailSubject, EmailBody);
             end;
         end;
 

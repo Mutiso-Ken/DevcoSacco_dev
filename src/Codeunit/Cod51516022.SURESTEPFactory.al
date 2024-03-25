@@ -39,12 +39,6 @@ Codeunit 51516022 "SURESTEP Factory"
 //           Email.Send(TheMessage);
 // end;
 
-    procedure SendMail(EmailAddress: Text[60]; EmailSubject: text[100]; EmailBody: Text[200])
-    begin
-        TheMessage.Create(EmailAddress, EmailSubject, EmailBody, true);
-        Email.Send(TheMessage);
-
-    end;
 
     procedure FnGetCashierTransactionBudding(TransactionType: Code[100]; TransAmount: Decimal) TCharge: Decimal
     begin
