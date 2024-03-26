@@ -98,10 +98,10 @@ enum 51516022 "TransactionTypesEnum"
     {
         Caption = 'Penalty Paid';
     }
-    // value(24; "Dev Shares")
-    // {
-    //     Caption = 'Dev Shares';
-    // }
+    value(24; "Property Shares")
+    {
+  
+    }
     value(25; "Tax Shares")
     {
         Caption = 'Tax Shares';
@@ -140,7 +140,7 @@ enum 51516022 "TransactionTypesEnum"
     }
     value(34; "Housing Deposits Shares")
     {
-        Caption = 'Housing Deposits Shares';
+        Caption = 'Housing Savings Shares';
     }
     value(35; "M Pesa Charge ")
     {
@@ -181,6 +181,7 @@ enum 51516022 "TransactionTypesEnum"
     value(44; "CIC shares")
     {
         Caption = 'CIC shares';
+     
     }
     value(45; "COOP Shares")
     {
@@ -208,11 +209,11 @@ enum 51516022 "TransactionTypesEnum"
     }
     value(51; Investment)
     {
-        Caption = 'Investment';
+        Caption = 'Housing Shares';
     }
     value(52; Holiday_Savers)
     {
-        Caption = 'Holiday Savers';
+        Caption = 'Holiday Savings';
     }
     value(53; Alpha_savings)
     {
@@ -220,15 +221,15 @@ enum 51516022 "TransactionTypesEnum"
     }
     value(54; "Loan Application Fee Paid")
     {
-       
+
     }
-    value(55;"Loan Insurance Paid")
+    value(55; "Loan Insurance Paid")
     {
-       
+
     }
-     value(56; Junior_1)
+    value(56; Junior_1)
     {
-     
+
     }
     value(57; Junior_2)
     {
@@ -238,7 +239,7 @@ enum 51516022 "TransactionTypesEnum"
     value(58; "Withdrawable Deposits")
     {
     }
-    value(59; Junior)
+    value(59; Junior3)
     {
 
     }

@@ -596,7 +596,7 @@ Report 50008 "Other Disclosures"
                  xcessdeficiencyLast:=(CorecapitalDepositsliabilitiesLast-0.08);*/
                 //new
                 GLAccount.Reset;
-                GLAccount.SetRange(GLAccount."No.", '1499');
+                GLAccount.SetRange(GLAccount."No.", '14300');
                 GLAccount.SetFilter(GLAccount."Date Filter", DateFilter);
                 if GLAccount.FindSet then begin
                     repeat
@@ -606,7 +606,7 @@ Report 50008 "Other Disclosures"
                     until GLAccount.Next = 0;
                 end;
                 GLAccount.Reset;
-                GLAccount.SetRange(GLAccount."No.", '1499');
+                GLAccount.SetRange(GLAccount."No.", '14300');
                 GLAccount.SetFilter(GLAccount."Date Filter", LastYearFilter);
                 if GLAccount.FindSet then begin
                     repeat
@@ -736,7 +736,7 @@ Report 50008 "Other Disclosures"
                 //total assets as per the balance sheet
 
                 GLAccount.Reset;
-                GLAccount.SetRange(GLAccount."No.", '1499');
+                GLAccount.SetRange(GLAccount."No.", '14300');
                 GLAccount.SetFilter(GLAccount."Date Filter", DateFilter);
                 GLAccount.SetAutocalcFields(Balance);
                 if GLAccount.FindSet then begin
@@ -974,7 +974,7 @@ Report 50008 "Other Disclosures"
                     repeat
                         GLEntry.Reset;
                         GLEntry.SetRange(GLEntry."G/L Account No.", GLAccount."No.");
-                        GLEntry.SetFilter(GLEntry."Posting Date", NewFiterOk); //rkK
+                        GLEntry.SetFilter(GLEntry."Posting Date", NewFiterOk); 
                         if GLEntry.FindSet then begin
                             GLEntry.CalcSums(Amount);
                             NetSurplusaftertaxLast += (GLEntry.Amount * 50 / 100) * -1;
@@ -1004,7 +1004,7 @@ Report 50008 "Other Disclosures"
                 //total assets as per the balance sheet
 
                 GLAccount.Reset;
-                GLAccount.SetRange(GLAccount."No.", '1499');
+                GLAccount.SetRange(GLAccount."No.", '14300');
                 GLAccount.SetFilter(GLAccount."Date Filter", DateFilter);
                 GLAccount.SetAutocalcFields(Balance);
                 if GLAccount.FindSet then begin
@@ -1172,10 +1172,10 @@ Report 50008 "Other Disclosures"
                     until GLAccount.Next = 0;
 
                 end;
-                // TOTALOnBalanceSheet:=Cash+GovernmentSecurities+DepositsandBalancesatOtherInstitutions+LoansandAdvances+InvestmentsinSubsidiary+Otherassets+PropertyandEquipment+investment;
-                // Sub_Total:=ShareCapital+CapitalGrants+retainedEarnins+NetSurplusaftertax+StatutoryReserve+Otherreserves;
-                // TotalDeductions:=InvestmentsinSubsidiary+OtherDeductions;
-                // CORECAPITAL:=Sub_Total-TotalDeductions;
+                TOTALOnBalanceSheet:=Cash+GovernmentSecurities+DepositsandBalancesatOtherInstitutions+LoansandAdvances+InvestmentsinSubsidiary+Otherassets+PropertyandEquipment+investment;
+                Sub_Total:=ShareCapital+CapitalGrants+retainedEarnins+NetSurplusaftertax+StatutoryReserve+Otherreserves;
+                TotalDeductions:=InvestmentsinSubsidiary+OtherDeductions;
+                CORECAPITAL:=Sub_Total-TotalDeductions;
 
                 TOTALOnBalanceSheetLast := CashLast + GovernmentSecuritiesLast + DepositsandBalancesatOtherInstitutionsLast + LoansandAdvanceslast + InvestmentsinSubsidiaryLast + OtherassetsLast + PropertyandEquipmentLast;
                 Sub_TotalLast := ShareCapitalLast + CapitalGrantsLast + retainedEarninsLast + NetSurplusaftertaxLast + StatutoryReserveLast + OtherreservesLast;

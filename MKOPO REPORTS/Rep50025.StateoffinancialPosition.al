@@ -725,16 +725,24 @@ Report 50025 "State of financial Position"
                 //Account Receivable
                 ReceivableandPrepayments := 0;
                 GLAccount.Reset;
-                GLAccount.SetRange(GLAccount."No.", '1449');
+                GLAccount.SetRange(GLAccount."No.", '14100');
                 GLAccount.SetFilter(GLAccount."Date Filter", '<=%1', EndofLastyear);
                 if GLAccount.FindSet then begin
                     GLAccount.CalcFields(GLAccount."Net Change");
                     ReceivableandPrepayments := GLAccount."Net Change";
                 end;
+                   LReceivableandPrepayments := 0;
+                GLAccount.Reset;
+                GLAccount.SetRange(GLAccount."No.", '14100');
+                GLAccount.SetFilter(GLAccount."Date Filter", '<=%1', LastYearButOne);
+                if GLAccount.FindSet then begin
+                    GLAccount.CalcFields(GLAccount."Net Change");
+                    LReceivableandPrepayments := GLAccount."Net Change";
+                end;
                 //dividends Payable
                 DividendPayable := 0;
                 GLAccount.Reset;
-                GLAccount.SetRange(GLAccount."No.", '1807');
+                GLAccount.SetRange(GLAccount."No.", '16317');
                 GLAccount.SetFilter(GLAccount."Date Filter", '<=%1', EndofLastyear);
                 if GLAccount.FindSet then begin
                     GLAccount.CalcFields(GLAccount."Net Change");
@@ -743,25 +751,18 @@ Report 50025 "State of financial Position"
 
                 LDividendPayable := 0;
                 GLAccount.Reset;
-                GLAccount.SetRange(GLAccount."No.", '1807');
+                GLAccount.SetRange(GLAccount."No.", '16317');
                 GLAccount.SetFilter(GLAccount."Date Filter", '<=%1', LastYearButOne);
                 if GLAccount.FindSet then begin
                     GLAccount.CalcFields(GLAccount."Net Change");
                     LDividendPayable := GLAccount."Net Change";
                 end;
 
-                LReceivableandPrepayments := 0;
-                GLAccount.Reset;
-                GLAccount.SetRange(GLAccount."No.", '1449');
-                GLAccount.SetFilter(GLAccount."Date Filter", '<=%1', LastYearButOne);
-                if GLAccount.FindSet then begin
-                    GLAccount.CalcFields(GLAccount."Net Change");
-                    LReceivableandPrepayments := GLAccount."Net Change";
-                end;
+             
                 //current year surplus
                 CurrentYearSurplus := 0;
                 GLAccount.Reset;
-                GLAccount.SetRange(GLAccount."No.", '2999');
+                GLAccount.SetRange(GLAccount."No.", '20800');
                 GLAccount.SetFilter(GLAccount."Date Filter", '<=%1', Asat);
                 if GLAccount.FindSet then begin
                     GLAccount.CalcFields(GLAccount."Net Change");

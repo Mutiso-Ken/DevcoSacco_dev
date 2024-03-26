@@ -40,6 +40,49 @@ Page 51516228 "Members Statistics"
                 {
                     ApplicationArea = Basic;
                 }
+                field("Housing Contribution"; "Housing Contribution")
+                {
+                    ApplicationArea = Basic;
+                }
+                field("Alpha Savings"; "Alpha Savings")
+                {
+                    ApplicationArea = Basic;
+                    Editable = false;
+
+                }
+                field("Likizo Contribution"; "Likizo Contribution")
+                {
+                    ApplicationArea = Basic;
+                    Editable = false;
+                    Caption = 'Holiday Savings';
+
+                }
+                field("Property Savings"; "Property Savings")
+                {
+                    ApplicationArea = Basic;
+                    Editable = false;
+                 
+
+                }
+                   field("Junior Savings One";"Junior Savings One")
+                {
+                    ApplicationArea = Basic;
+                    Editable = false;
+                 
+
+                }
+                field("Junior Savings Two";"Junior Savings Two")
+                {
+                    ApplicationArea = Basic;
+                    Editable = false;
+
+                }
+                field("Junior Savings Three";"Junior Savings Three")
+                {
+                    ApplicationArea = Basic;
+                    Editable = false;
+
+                }
                 field("Monthly ShareCap Cont."; "Monthly ShareCap Cont.")
                 {
                     ApplicationArea = Basic;
@@ -55,7 +98,7 @@ Page 51516228 "Members Statistics"
             {
                 Editable = false;
                 SubPageLink = "Client Code" = field("No.");
-              
+
             }
         }
     }
