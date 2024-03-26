@@ -293,7 +293,7 @@ Page 50311 "Payroll Employee List."
                                             ObjPayrollEmployeeTrans."Period Year" := VarPeriodYear;
                                             ObjPayrollEmployeeTrans.Amount := ObjLoans."Oustanding Interest";
                                             ObjPayrollEmployeeTrans."Amount(LCY)" := ObjLoans."Oustanding Interest";
-                                            ObjPayrollEmployeeTrans.Balance :=ObjLoans."Oustanding Interest";
+                                            ObjPayrollEmployeeTrans.Balance := ObjLoans."Oustanding Interest";
                                             ObjPayrollEmployeeTrans."Balance(LCY)" := ObjLoans."Oustanding Interest";
                                             ObjPayrollEmployeeTrans."Amtzd Loan Repay Amt" := 0;
                                             ObjPayrollEmployeeTrans.Insert;
@@ -324,6 +324,15 @@ Page 50311 "Payroll Employee List."
                     if PayrollEmp.FindFirst then begin
                         Report.Run(50010, true, false, PayrollEmp);
                     end;
+                end;
+            }
+            action("Send P9")
+            {
+                ApplicationArea = All;
+
+                trigger OnAction()
+                begin
+                    FnSendP9Email;
                 end;
             }
         }
@@ -432,6 +441,82 @@ Page 50311 "Payroll Employee List."
         ObjLoanSchedule: Record "Loan Repayment Schedule";
         VarDateFilter: Text;
         VarEndMonthDate: Date;
+
+    procedure FnSendP9Email()
+    var
+        MemberReg: Record Customer;
+        FileName: Text[200];
+        FileName2: Text[200];
+        FileType: Text[100];
+        SendEmailTo: Text[100];
+        EmailBody: Text[1000];
+        EmailSubject: Text[100];
+        membersreg: Record Customer;
+        Outstr: OutStream;
+        Instr: InStream;
+        Outstr2: OutStream;
+        Instr2: InStream;
+        TempBlob: Codeunit "Temp Blob";
+        Receipt: Record "Payroll Employee.";
+        MailToSend: Codeunit "Email Message";
+        GenerateDoc: InStream; //Generate PDF/Document to be sent 
+        EncodeStream: Codeunit "Base64 Convert"; //To encode the stream of data form GenerateDoc
+        FnEmail: Codeunit Email;
+        DialogBox: Dialog;
+        reportrun: Report P9Report;
+        reportparameters: text;
+        ReportTable: Record "Payroll Employee.";
+        CompanyInfo: Record "Company Information";
+        PeriodDate: Record "Payroll Calender.";
+
+    begin
+        if Confirm('Are you sure you want to Send P9 to ' + Format(Receipt."Full Name") + '?', false) = false then begin
+            Message('Aborted');
+            exit
+        end else begin
+
+
+            DialogBox.Open('Sending P9 Slip to  ' + Format(Receipt."Full Name"));
+            //------------------->Get Key Details of Send Email
+            SendEmailTo := '';
+            SendEmailTo := FnGetClientCodeEmail("No.");
+            EmailSubject := '';
+            EmailSubject := 'P9 for ' + Format("Payroll Period");
+            EmailBody := '';
+            EmailBody := 'Dear <b>' + Format("Full Name") + '</b>,</br></br>' +
+            'We hope this email finds you well. Please find attached your P9.' +
+                Companyinfo.Name + '</br> ' + Companyinfo.Address + '</br> ' + Companyinfo.City + '</br>' +
+           Companyinfo."Post Code" + '</br>' + Companyinfo."Country/Region Code" + '</br>' +
+            Companyinfo."Phone No." + '</br> ' + Companyinfo."E-Mail";
+            //------------------->Generate The Report Attachments To Send
+            //---------Attachment 1
+            reportparameters := reportrun.RunRequestPage();
+            //reportparameters :=  format("No.") + Format( "Payroll Period");
+            FileName := Format("Payroll Period") + '-Payslip.pdf';
+            TempBlob.CreateOutStream(Outstr);
+            Report.SaveAs(Report::P9Report, reportparameters, ReportFormat::Pdf, Outstr);
+            TempBlob.CreateInStream(Instr);
+            //------------------->Create Emails Start
+            MailToSend.Create(SendEmailTo, EmailSubject, EmailBody, true);
+            MailToSend.AddAttachment(FileName, FileType, Instr);
+            //.........................................
+            FnEmail.Send(MailToSend);
+            DialogBox.Close();
+            Message('Email Send to %1 Succesfully', "Full Name");
+        end;
+    end;
+
+    local procedure FnGetClientCodeEmail(ClientCode: Code[50]): Text[100]
+    var
+        PayrollEmp: Record "Payroll Employee.";
+        receipt: Record "Payroll Employee.";
+    begin
+        PayrollEmp.Reset();
+        PayrollEmp.SetRange(PayrollEmp."No.", ClientCode);
+        if PayrollEmp.Find('-') then begin
+            exit(PayrollEmp."Employee Email");
+        end;
+    end;
 
     local procedure FnRunUpdateNewMemberLoans(VarMemberNo: Code[30])
     var

@@ -83,15 +83,15 @@ tableextension 51516044 "GlAccountExt" extends "G/L Account"
 
 
     }
-    trigger OnBeforeModify()
-    var
-        myInt: Integer;
-    begin
-        Reset();
-        GLEntry.SetRange("G/L Account No.", "No.");
-        if not GLEntry.IsEmpty() then
-            Error('The Account Cannot be Renamed');
-    end;
+    // trigger OnBeforeModify()
+    // var
+    //     myInt: Integer;
+    // begin
+    //     Reset();
+    //     GLEntry.SetRange("G/L Account No.", "No.");
+    //     if not GLEntry.IsEmpty() then
+    //         Error('You cannot Change the account details because it contains transactions');
+    // end;
 
     var
         GLEntry: Record "G/L Entry";

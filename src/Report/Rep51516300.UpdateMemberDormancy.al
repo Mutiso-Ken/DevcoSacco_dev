@@ -36,7 +36,9 @@ report 51516300 "Update Member Dormancy"
                                 Cust.Status := Cust.Status::Dormant;
                                 Cust.MODIFY;
                             end;
-                        END;
+                        END else if Cust."Last Payment Date" = 0D then
+                                Cust.Status := Cust.Status::Dormant;
+                        Cust.MODIFY;
                     until Cust.next = 0;
                 end;
             end;

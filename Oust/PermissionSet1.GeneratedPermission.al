@@ -839,7 +839,7 @@ permissionset 1 GeneratedPermission
         report "Risk Classification report" = X,
         report "Sacco Loan Disbursements" = X,
         report "SASRA Loans Classification" = X,
-        report "Send P9 Report Via Mail" = X,
+        // report "Send P9 Report Via Mail" = X,
         report "Session Tracker" = X,
         report "System Change Entry Log" = X,
         report "System Transaction Log" = X,

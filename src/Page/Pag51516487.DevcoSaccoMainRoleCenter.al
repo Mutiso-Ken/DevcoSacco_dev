@@ -1470,41 +1470,26 @@ Page 51516487 "Devco Sacco Main Role Center"
 
                     group(demandnotices)
                     {
-                        caption = 'Demand Notices';
-                        action(LoanDemandnoticeslist)
-                        {
-                            caption = 'Loan Demand Notices List';
-                            //RunObject = page "Loan Demand Notices List";
-                        }
-                        group(DemnandTask)
-                        {
-                            Caption = 'Create Demand Notices';
-                            action(CreateDemand)
-                            {
-                                Caption = 'Create Demand';
-                                //RunObject = report "Create Demand Notices";
-                                Image = Report2;
-                            }
-                        }
+                        
                         group(DemandReports)
                         {
                             action(Ldemandnotice1)
                             {
                                 Caption = 'Loan Defaulter 1st Notice';
-                                // RunObject = report "Loan Demand Notice";
+                                RunObject = report "Loan Defaulter 1st Notice";
                                 Image = Report;
 
                             }
                             action(Ldemandnotice2)
                             {
                                 Caption = 'Loan Defaulter 2nd Notice';
-                                //RunObject = report "Loan Demand Notice";
+                                RunObject = report "Loan Defaulter 2nd Notice";
                                 Image = Report;
                             }
                             action(Ldemandnotice3)
                             {
                                 Caption = 'Loan Defaulter 3rd Notice';
-                                //RunObject = report "Loan Demand Notice";
+                                RunObject = report "Loan Defaulter Final Notice";
                                 Image = Report;
                             }
                         }
@@ -2263,203 +2248,7 @@ Page 51516487 "Devco Sacco Main Role Center"
             }
 
 #if not CLEAN18
-            Group(SaccoPayroll)
-            {
-                Visible = false;
-                Caption = 'Payroll Management';
-                // group(payrollEmployees)
-                // {
-                //     Caption = 'Payroll Employee';
-                //     action(payrollemp)
-                //     {
-                //         Caption = 'Payroll Employee list';
-                //         ApplicationArea = basic, suite;
-                //         Image = Employee;
-                //         RunObject = page "Payroll Employee List";
-                //         tooltip = 'Open Payroll Employees list';
-                //     }
-
-                //     action("Payroll Earnings List.")
-                //     {
-                //         RunObject = page "Payroll Earnings List";
-                //         ApplicationArea = All;
-
-                //     }
-                //     action("Payroll Deductions List.")
-                //     {
-                //         RunObject = page "Payroll Deductions List";
-                //         ApplicationArea = All;
-
-                //     }
-                //     action("Payroll Employee Earnings.")
-                //     {
-                //         RunObject = page "Payroll Employee Earnings";
-                //         ApplicationArea = All;
-
-                //     }
-                //     action("Payroll Employee Deductions.")
-                //     {
-                //         RunObject = page "Payroll Employee Deductions";
-                //         ApplicationArea = All;
-
-                //     }
-
-                // }
-                group(PayrollReports)
-                {
-                    Caption = 'Payroll Reports';
-                    // action(PayrollSummary)
-                    // {
-                    //     Caption = 'Payroll Summary';
-                    //     ApplicationArea = basic, suite;
-                    //     Image = Report;
-                    //     RunObject = report "Payroll Summary";
-
-                    // }
-                    // action(CompanyPayrollSummary)
-                    // {
-                    //     Caption = 'Company Payroll Summary';
-                    //     ApplicationArea = basic, suite;
-                    //     Image = Report;
-                    //     RunObject = report "Company Payroll Summary";
-
-                    // }
-                    // action(AllDeductionsReport)
-                    // {
-                    //     Caption = 'All Deductions Summary';
-                    //     ApplicationArea = basic, suite;
-                    //     Image = Report;
-                    //     RunObject = report "All Deductions Summary";
-
-                    // }
-                    // action(AllEarningsReport)
-                    // {
-                    //     Caption = 'All Earnings Summary';
-                    //     ApplicationArea = basic, suite;
-                    //     Image = Report;
-                    //     RunObject = report "All Earnings Summary";
-
-                    // }
-                    // action(DeductionsReport)
-                    // {
-                    //     Caption = 'Deductions Summary';
-                    //     ApplicationArea = basic, suite;
-                    //     Image = Report;
-                    //     RunObject = report "Deductions Summary";
-
-                    // }
-                    // action(EarningsReport)
-                    // {
-                    //     Caption = 'Earnings Summary';
-                    //     ApplicationArea = basic, suite;
-                    //     Image = Report;
-                    //     RunObject = report "Earnings Summary";
-
-                    // }
-                    // action(PAYESchedule)
-                    // {
-                    //     Caption = 'PAYE Schedule';
-                    //     ApplicationArea = basic, suite;
-                    //     Image = Report;
-                    //     RunObject = report "PAYE Schedule";
-
-                    // }
-                    // action(NHIFSchedule)
-                    // {
-                    //     Caption = 'NHIF Schedule';
-                    //     ApplicationArea = basic, suite;
-                    //     Image = Report;
-                    //     RunObject = report "NHIF Schedule";
-
-                    // }
-                    // action(NSSFSchedule)
-                    // {
-                    //     Caption = 'NSSF Schedule';
-                    //     ApplicationArea = basic, suite;
-                    //     Image = Report;
-                    //     RunObject = report "NSSF Schedule";
-
-                    // }
-                    // action(HousingLevySchedule)
-                    // {
-                    //     Caption = 'Housing Levy Schedule';
-                    //     ApplicationArea = basic, suite;
-                    //     Image = Report;
-                    //     RunObject = report "Housing Levy Schedule";
-
-                    // }
-                    // action(GratuitySchedule)
-                    // {
-                    //     Caption = 'Gratuity Schedule';
-                    //     ApplicationArea = basic, suite;
-                    //     Image = Report;
-                    //     RunObject = report "Gratuity Report";
-
-                    // }
-                    // action(ProvidentSchedule)
-                    // {
-                    //     Caption = 'Provident Schedule';
-                    //     ApplicationArea = basic, suite;
-                    //     Image = Report;
-                    //     RunObject = report "Provident Schedule";
-
-                    // }
-                    // action(BIFUContribution)
-                    // {
-                    //     Caption = 'BIFU Contribution';
-                    //     ApplicationArea = basic, suite;
-                    //     Image = Report;
-                    //     RunObject = report "BIFU Contribution";
-
-                    // }
-                    // action(P9Report)
-                    // {
-                    //     Caption = 'P9 Report';
-                    //     ApplicationArea = basic, suite;
-                    //     Image = Report;
-                    //     RunObject = report "P9 Report";
-                    // }
-                }
-
-                group(payrollperiodicactivities)
-                {
-                    Caption = 'Payroll Periodic Activities';
-                    // action(payrollperiods)
-                    // {
-                    //     Caption = 'Payroll Periods';
-                    //     ApplicationArea = basic, suite;
-                    //     RunObject = page "Payroll Calender";
-                    // }
-                    // action(Transfertojournal)
-                    // {
-                    //     Caption = 'Payroll journal transfer';
-                    //     ApplicationArea = basic, suite;
-                    //     RunObject = report "Payroll Journal Transfer";
-                    // }
-                    // action(Payrolnettransfer)
-                    // {
-                    //     Caption = 'Payroll Net Transfer To FOSA';
-                    //     ApplicationArea = basic, suite;
-                    //     RunObject = report "NET Salary Transfer To FOSA";
-                    // }
-
-                    action(SendPaySlip)
-                    {
-                        Caption = 'Send Payslip via Mail';
-                        ApplicationArea = basic, suite;
-                        // RunObject = report "Send P9 Report Via Mail";
-                    }
-                    action(SendP9)
-                    {
-                        Caption = 'Send P9 via Mail';
-                        ApplicationArea = basic, suite;
-                        RunObject = report "Send P9 Report Via Mail";
-                    }
-
-                }
-
-
-            }
+          
 
 #if not CLEAN18
             group(SetupAndExtensions)

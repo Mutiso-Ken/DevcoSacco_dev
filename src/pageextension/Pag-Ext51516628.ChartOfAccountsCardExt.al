@@ -3,19 +3,7 @@ pageextension 51516628 "ChartOfAccountsCardExt" extends "G/L Account Card"
 
     layout
     {
-        modify(Name)
-        {
-            trigger OnBeforeValidate()
-            var
-                myInt: Integer;
-            begin
-                // if GlEntry.IsEmpty = false then begin
-                //     Editable := false;
-                // end else
-                //     Editable := true;
-            end;
-
-        }
+      
         addafter(Reporting)
         {
             group(Budgetary)

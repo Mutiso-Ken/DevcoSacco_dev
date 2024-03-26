@@ -507,10 +507,7 @@ page 50310 "Payroll Employee Card."
         UserSetup: Record "User Setup";
         ObjPayrollTransactions: Record "prPeriod Transactions.";
         varPeriodMonth: Integer;
-    //Scale: Record "MSEA Salary Scales";
-    local procedure RemoveTrans(EmpNo: Code[20]; PayrollPeriod: Date)
-    begin
-    end;
+
 
     procedure FnSendReceiptviaEmail()
     var
@@ -540,26 +537,19 @@ page 50310 "Payroll Employee Card."
         PeriodDate: Record "Payroll Calender.";
 
     begin
-
-        // PayrollCalender.Reset;
-        // PayrollCalender.SetRange(PayrollCalender."Date Opened", "Payroll Period");
-        // if PayrollCalender.FindLast then begin
-        //     PeriodName := PayrollCalender."Period Name";
-
-
-        if Confirm('Are you sure you want to create account application?', false) = false then begin
+        if Confirm('Are you sure you want to Send Payslip to ' + Format(Receipt."Full Name") +'?', false) = false then begin
             Message('Aborted');
             exit
         end else begin
 
 
-            DialogBox.Open('Sending Payslip to  ' + Format(Receipt.Surname) + ' for period' + Format(PeriodName));
+            DialogBox.Open('Sending Payslip to  ' + Format(Receipt."Full Name"));
             //------------------->Get Key Details of Send Email
             SendEmailTo := '';
             SendEmailTo := FnGetClientCodeEmail("No.");
             EmailSubject := '';
             EmailSubject := 'Payslip for ' + Format("Payroll Period");
-            EmailBody := '';
+   
             EmailBody := 'Dear <b>' + Format("Full Name") + '</b>,</br></br>' +
             'We hope this email finds you well. Please find attached your Payslip.' +
                 Companyinfo.Name + '</br> ' + Companyinfo.Address + '</br> ' + Companyinfo.City + '</br>' +

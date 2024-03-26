@@ -38,7 +38,7 @@ tableextension 51516079 "CustomerExt" extends Customer
         }
         field(68000; "Customer Type"; Option)
         {
-         
+
             OptionMembers = " ",Member,FOSA,Investments,Property,MicroFinance;
         }
         field(68001; "Registration Date"; Date)
@@ -411,7 +411,11 @@ tableextension 51516079 "CustomerExt" extends Customer
         }
         field(68077; "Last Payment Date"; Date)
         {
-            CalcFormula = max("Detailed Cust. Ledg. Entry"."Posting Date" where("Customer No." = field("No.")));
+            // CalcFormula = max("Detailed Cust. Ledg. Entry"."Posting Date" where("Customer No." = field("No.")));
+
+
+            CalcFormula = max("Cust. Ledger Entry"."Posting Date" where("Customer No." = field("No."), "Transaction Type" = filter("Deposit Contribution" | Repayment)
+                                                                       ));
             FieldClass = FlowField;
         }
         field(68078; "Discounted Amount"; Decimal)
@@ -1082,7 +1086,7 @@ tableextension 51516079 "CustomerExt" extends Customer
         }
         field(69083; "Rejoined By"; Text[100])
         {
-           
+
         }
         field(69084; "van Shares"; Decimal)
         {
@@ -1530,7 +1534,7 @@ tableextension 51516079 "CustomerExt" extends Customer
         }
         field(69195; "Reason For Membership Withdraw"; Option)
         {
-  
+
             OptionMembers = ,Relocation,Expulsion,"Financial Constraints","Personal Reasons",Death;
         }
 
