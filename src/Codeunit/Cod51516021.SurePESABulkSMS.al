@@ -17,7 +17,7 @@ Codeunit 51516021 "SurePESABulkSMS"
         GenJournalLine: Record "Gen. Journal Line";
         GenBatches: Record "Gen. Journal Batch";
         LineNo: Integer;
-    //GLPosting: Codeunit "Gen. Jnl.-Post Line";
+
 
 
     procedure PollPendingSMS() MessageDetails: Text

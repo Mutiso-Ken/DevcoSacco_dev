@@ -349,55 +349,55 @@ Report 51516223 "Member Detailed Statement"
                 end;
             }
 
-            dataitem(VanShares; "Cust. Ledger Entry")//
+            dataitem(HousingShares; "Cust. Ledger Entry")
             {
                 DataItemLink = "Customer No." = field("No."), "Posting Date" = field("Date Filter");
-                DataItemTableView = sorting("Transaction Type", "Loan No", "Posting Date") where("Transaction Type" = const("Van Shares"), Reversed = filter(false));
+                DataItemTableView = sorting("Transaction Type", "Loan No", "Posting Date") where("Transaction Type" = const("Housing Deposits Shares"), Reversed = filter(false));
 
-                column(OpenBalancesVanShares; OpenBalancesVanShares)
+                column(OpenBalancesHousingShares; OpenBalancesHousingShares)
                 {
                 }
-                column(CLosingBalancesVanShares; ClosingBalanceVanShares)
+                column(CLosingBalancesHousingShares; ClosingBalanceHousingShares)
                 {
                 }
-                column(Description_VanShares; VanShares.Description)
+                column(Description_HousingShares; HousingShares.Description)
                 {
                 }
-                column(DocumentNo_VanShares; VanShares."Document No.")
+                column(DocumentNo_HousingShares; HousingShares."Document No.")
                 {
                 }
-                column(PostingDate_VanShares; VanShares."Posting Date")
+                column(PostingDate_HousingShares; HousingShares."Posting Date")
                 {
                 }
-                column(CreditAmount_VanShares; VanShares."Credit Amount")
+                column(CreditAmount_HousingShares; HousingShares."Credit Amount")
                 {
                 }
-                column(DebitAmount_VanShares; VanShares."Debit Amount")
+                column(DebitAmount_HousingShares; HousingShares."Debit Amount")
                 {
                 }
-                column(Amount_VanShares; VanShares."Amount Posted")
+                column(Amount_HousingShares; HousingShares."Amount Posted")
                 {
                 }
-                column(TransactionType_VanShares; VanShares."Transaction Type")
+                column(TransactionType_HousingShares; HousingShares."Transaction Type")
                 {
                 }
-                column(BalAccountNo_VanShares; VanShares."Bal. Account No.")
+                column(BalAccountNo_HousingShares; HousingShares."Bal. Account No.")
                 {
                 }
-                column(BankCodeVanShares; BankCodeVanShares)
+                column(BankCodeHousingShares; BankCodeHousingShares)
                 {
                 }
 
                 trigger OnAfterGetRecord()
                 begin
-                    ClosingBalanceVanShares := ClosingBalanceVanShares - VanShares."Amount Posted";
-                    BankCodeVanShares := GetBankCode(VanShares);
+                    ClosingBalanceHousingShares := ClosingBalanceHousingShares - HousingShares."Amount Posted";
+                    BankCodeHousingShares := GetBankCode(HousingShares);
                     //............................................................
-                    if VanShares."Amount Posted" < 0 then begin
-                        VanShares."Credit Amount" := (VanShares."Amount Posted" * -1);
+                    if HousingShares."Amount Posted" < 0 then begin
+                        HousingShares."Credit Amount" := (HousingShares."Amount Posted" * -1);
                     end else
-                        if VanShares."Amount Posted" > 0 then begin
-                            VanShares."Debit Amount" := (VanShares."Amount Posted");
+                        if HousingShares."Amount Posted" > 0 then begin
+                            HousingShares."Debit Amount" := (HousingShares."Amount Posted");
                         end
                 end;
 
@@ -572,7 +572,6 @@ Report 51516223 "Member Detailed Statement"
 
                 trigger OnAfterGetRecord()
                 begin
-                    //abel ClosingBal := ClosingBal - Deposits.Amount;
                     BankCodeDeposits := GetBankCode(Deposits);
                     //........................
                     if Deposits."Amount Posted" < 0 then begin
@@ -810,9 +809,9 @@ Report 51516223 "Member Detailed Statement"
         OpenBalancesPepeaShares: Decimal;
         ClosingBalancePepeaShares: Decimal;
         BankCodePepeaShares: Code[50];
-        OpenBalancesVanShares: Decimal;
-        ClosingBalanceVanShares: Decimal;
-        BankCodeVanShares: Code[50];
+        OpenBalancesHousingShares: Decimal;
+        ClosingBalanceHousingShares: Decimal;
+        BankCodeHousingShares: Code[50];
         ApprovedAmount_Interest: Decimal;
         LonRepaymentSchedule: Record "Loan Repayment Schedule";
 

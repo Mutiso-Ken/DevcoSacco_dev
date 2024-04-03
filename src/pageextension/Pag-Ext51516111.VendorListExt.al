@@ -2,17 +2,7 @@ pageextension 51516111 VendorListExt extends "Vendor List"
 {
     layout
     {
-        addbefore(Name)
-        {
-            field("ID No."; "ID No.")
-            {
-                ApplicationArea = Basic;
-            }
-            field("BOSA Account No"; "BOSA Account No")
-            {
-                ApplicationArea = Basic;
-            }
-        }
+       
         modify("Responsibility Center")
         {
             Visible = false;

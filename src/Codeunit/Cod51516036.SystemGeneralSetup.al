@@ -239,19 +239,19 @@ codeunit 51516036 "System General Setup"
 
     end;
     //.................Junior Account
-    [EventSubscriber(ObjectType::Table, 23, 'OnBeforeCheckBlockedVend', '', false, false)]
-    local procedure CheckIfAccountIsJunior(Vendor: Record Vendor; Source: Option Journal,Document; DocType: Option; Transaction: Boolean; var IsHandled: Boolean)
-    var
-        VendorTable: Record Vendor;
-    begin
-        VendorTable.Reset();
-        VendorTable.SetFilter(VendorTable."Account Type", '=%1|%2', 'JUNIOR', 'FIXED');
-        VendorTable.SetRange(VendorTable."No.", Vendor."No.");
-        if VendorTable.Find('-') then begin
-            IsHandled := true;
-            exit;
-        end;
-    end;
+    // [EventSubscriber(ObjectType::Table, 23, 'OnBeforeCheckBlockedVend', '', false, false)]
+    // local procedure CheckIfAccountIsJunior(Vendor: Record Vendor; Source: Option Journal,Document; DocType: Option; Transaction: Boolean; var IsHandled: Boolean)
+    // var
+    //     VendorTable: Record Vendor;
+    // begin
+    //     VendorTable.Reset();
+    //     VendorTable.SetFilter(VendorTable."Account Type", '=%1|%2', 'JUNIOR', 'FIXED');
+    //     VendorTable.SetRange(VendorTable."No.", Vendor."No.");
+    //     if VendorTable.Find('-') then begin
+    //         IsHandled := true;
+    //         exit;
+    //     end;
+    // end;
     //.................Ordinary accounts are dormant,hence blocked...hence we have to exempt them
     // [EventSubscriber(ObjectType::Table, 23, 'OnBeforeCheckBlockedVend', '', false, false)]
     // local procedure CheckIfAccountIsOrdinary(Vendor: Record Vendor; Source: Option Journal,Document; DocType: Option; Transaction: Boolean; var IsHandled: Boolean)

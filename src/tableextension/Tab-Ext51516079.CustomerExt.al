@@ -39,7 +39,7 @@ tableextension 51516079 "CustomerExt" extends Customer
         field(68000; "Customer Type"; Option)
         {
 
-            OptionMembers = " ",Member,FOSA,Investments,Property,MicroFinance;
+            OptionMembers = " ",Member,Checkoff,Investments,Property,MicroFinance;
         }
         field(68001; "Registration Date"; Date)
         {
@@ -112,8 +112,12 @@ tableextension 51516079 "CustomerExt" extends Customer
             TableRelation = "Sacco Employers".Code;
 
             trigger OnValidate()
+            var
+                SCEMPCODE: Record "Sacco Employers";
             begin
-
+                if SCEMPCODE.Get("Employer Code") then begin
+                    "Employer Name" := SCEMPCODE.Description;
+                end;
 
             end;
         }
@@ -846,7 +850,7 @@ tableextension 51516079 "CustomerExt" extends Customer
             Enabled = false;
             FieldClass = FlowField;
         }
-                field(68205; "Property Savings"; Decimal)
+        field(68205; "Property Savings"; Decimal)
         {
             CalcFormula = - sum("Cust. Ledger Entry"."Amount Posted" where("Customer No." = field("No."),
                                                                    "Transaction Type" = filter("Property Shares"),

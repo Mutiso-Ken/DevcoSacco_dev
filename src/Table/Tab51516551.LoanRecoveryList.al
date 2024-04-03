@@ -13,7 +13,7 @@ Table 51516551 "Loan Recovery List"
         {
             TableRelation = if (Source = const(FOSA)) "Loans Register"."Loan  No." where("Client Code" = field("BOSA Account No"), Source = field(Source))
             else
-            "Loans Register"."Loan  No." where("Client Code" = field("Member No"), Source = field(Source));
+            "Loans Register"."Loan  No." where("Client Code" = field("Member No"), Source = field(Source), "Outstanding Balance" = filter(> 0));
             trigger OnValidate()
             begin
                 Loans.Reset;
@@ -124,6 +124,7 @@ Table 51516551 "Loan Recovery List"
         }
         field(30; Source; enum LoanSourcesEnum)
         {
+            InitValue = BOSA;
 
         }
         field(31; "BOSA Account No"; Code[50])

@@ -2030,7 +2030,7 @@ Page 51516462 "Devco Sacco"
                             {
                                 Caption = 'Dividends Processing-Prorated';
                                 Image = Setup;
-                                RunObject = report "Dividend Processing Prorated";
+                                RunObject = report "Dividend Processing-Prorated";
                             }
                             action("Dividends Register")
                             {
@@ -2198,9 +2198,9 @@ Page 51516462 "Devco Sacco"
                     action("CEEP Collections Report")
                     {
                         ApplicationArea = all;
-                        RunObject = report "CEEP Officer Collection Report";
-                        ToolTip = 'CEEP Collections & Variance Report';
-                        Caption = 'CEEP Collections & Variance Report';
+                        // RunObject = report "CEEP Officer Collection Report";
+                        // ToolTip = 'CEEP Collections & Variance Report';
+                        // Caption = 'CEEP Collections & Variance Report';
                     }
                     action("CEEP Loans Register ")
                     {

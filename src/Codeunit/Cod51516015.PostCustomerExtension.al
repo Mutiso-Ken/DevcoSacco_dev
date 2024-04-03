@@ -65,10 +65,7 @@ codeunit 51516015 "PostCustomerExtension"
                     begin
                         PostMemb(GenJournalLine, Balancing);
                     end;
-                "Account Type"::Vendor:
-                    begin
-                        CheckDimensions(GenJournalLine, Balancing);//Check Branch Is Inserted
-                    end;
+              
             end;
     end;
 

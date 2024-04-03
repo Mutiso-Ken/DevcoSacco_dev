@@ -413,11 +413,10 @@ Page 51516271 "Sacco General Set-Up"
                     Caption = 'Interest On FOSA Shares(%)';
                     Visible = false;
                 }
-                field("Interest On Computer Shares"; "Interest On Computer Shares")
+                field("Dividend Payable Account"; "Dividend Payable Account")
                 {
                     ApplicationArea = Basic;
-                    Caption = 'Interest On Computer Shares(%)';
-                    Visible = false;
+
                 }
                 field("Interest On Preferential Shares"; "Interest On PreferentialShares")
                 {

@@ -34,12 +34,6 @@ Table 51516142 "Change Request"
         field(3; "Account No"; Code[50])
         {
             TableRelation = Customer."No." where("Customer Posting Group" = filter('MEMBER'));
-            // else
-            // if (Type = const("M-Banking Change")) Vendor."No."
-            // else
-            // if (Type = const("ATM Change")) Vendor."No."
-            // else
-            // if (Type = const("FOSA Change")) Vendor."No.";
             trigger OnValidate()
             begin
                 Clear(Picture);

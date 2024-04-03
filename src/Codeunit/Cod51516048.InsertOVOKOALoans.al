@@ -3,6 +3,7 @@ codeunit 51516048 "Insert OVOKOALoans"
     trigger OnRun()
     var
         VendorTable: Record Vendor;
+        X:page "Purchase Invoice";
     begin
         // ImportedLoans.reset;
         // if ImportedLoans.Find('-') then begin

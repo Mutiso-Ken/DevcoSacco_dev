@@ -128,6 +128,7 @@ page 51516045 "Loan Recovery Header"
                 Caption = 'Post';
                 Image = PostedReceipt;
                 Promoted = true;
+                Visible=false;
                 Enabled = PostEnabled;
                 PromotedIsBig = true;
                 PromotedCategory = Process;

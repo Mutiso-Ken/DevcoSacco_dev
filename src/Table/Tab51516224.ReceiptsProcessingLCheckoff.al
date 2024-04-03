@@ -149,7 +149,7 @@ Table 51516224 "ReceiptsProcessing_L-Checkoff"
         }
         field(28;"Receipt Line No";Integer)
         {
-            AutoIncrement = true;
+            
         }
         field(29;"Account Type";Option)
         {

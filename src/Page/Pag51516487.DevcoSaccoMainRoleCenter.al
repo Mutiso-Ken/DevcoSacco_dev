@@ -13,7 +13,7 @@ Page 51516487 "Devco Sacco Main Role Center"
             part(Control75; "Custom Headline")
             {
                 ApplicationArea = All;
-                Visible = true;
+                Visible = false;
 
             }
 
@@ -181,6 +181,7 @@ Page 51516487 "Devco Sacco Main Role Center"
                 Caption = 'Financial Management';
                 Image = Journals;
                 ToolTip = 'Collect and make payments, prepare statements, and reconcile bank accounts.';
+
                 action("Budgets")
                 {
                     ApplicationArea = Basic, Suite;
@@ -189,6 +190,8 @@ Page 51516487 "Devco Sacco Main Role Center"
                     RunObject = Page "G/L Budget Names";
                     ToolTip = 'Post financial transactions directly to general ledger accounts and other accounts, such as bank, customer, vendor, and employee accounts. Posting with a general journal always creates entries on general ledger accounts. This is true even when, for example, you post a journal line to a customer account, because an entry is posted to a general ledger receivables account through a posting group.';
                 }
+
+
                 action("General Journals")
                 {
                     ApplicationArea = Basic, Suite;
@@ -421,7 +424,21 @@ Page 51516487 "Devco Sacco Main Role Center"
 
                 }
                 //..........................................................................................................................................
-
+                group("Receipt Processing")
+                {
+                    action("Create Receipt")
+                    {
+                        ApplicationArea = all;
+                        Image = Journal;
+                        RunObject = page "Receipt Header List";
+                    }
+                    action("Posted Receipts")
+                    {
+                        ApplicationArea = all;
+                        Image = Journal;
+                        RunObject = page "Posted Receipt Header List";
+                    }
+                }
                 group("Payments Processing")
                 {
                     Caption = 'Payment Processing';
@@ -1146,6 +1163,7 @@ Page 51516487 "Devco Sacco Main Role Center"
                 group("Loans Appeals")
                 {
                     // Visible = false;
+                    Caption = 'Loan Restructure';
                     action("Loan Appeal List")
                     {
                         ApplicationArea = Basic, Suite;
@@ -1447,7 +1465,7 @@ Page 51516487 "Devco Sacco Main Role Center"
                             Caption = 'Pending Approval Loan Recovery List';
                             RunObject = page "Loan Recovery";
                             RunPageView = WHERE(Status = CONST(pending));
-                            Visible = false;
+
 
                         }
                         action(ALoanRecovList)
@@ -1455,7 +1473,7 @@ Page 51516487 "Devco Sacco Main Role Center"
                             Caption = 'Approved Loan Recovery List';
                             RunObject = page "Loan Recovery";
                             RunPageView = WHERE(Status = CONST(approved));
-                            Visible = false;
+
 
                         }
                         action(PostedLoanRecovList)
@@ -1470,7 +1488,7 @@ Page 51516487 "Devco Sacco Main Role Center"
 
                     group(demandnotices)
                     {
-                        
+
                         group(DemandReports)
                         {
                             action(Ldemandnotice1)
@@ -1664,13 +1682,19 @@ Page 51516487 "Devco Sacco Main Role Center"
                             {
                                 Caption = 'Dividends Processing-Prorated';
                                 Image = Setup;
-                                RunObject = report "Dividend Processing Prorated";
+                                RunObject = report "Dividend Processing-Prorated";
                             }
                             action("Dividends Register")
                             {
                                 Caption = 'Dividends Register';
                                 Image = Setup;
                                 RunObject = report "Dividend Register";
+                            }
+                            action(DividendProgressionSlip)
+                            {
+                                Caption = 'Dividend Progression Slip';
+                                Image = Setup;
+                                RunObject = report "Dividends Progressionslip";
                             }
                         }
                         group("Share capital Manangement")
@@ -2248,7 +2272,7 @@ Page 51516487 "Devco Sacco Main Role Center"
             }
 
 #if not CLEAN18
-          
+
 
 #if not CLEAN18
             group(SetupAndExtensions)

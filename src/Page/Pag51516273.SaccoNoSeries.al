@@ -214,6 +214,10 @@ Page 51516273 "Sacco No. Series"
                 {
                     ApplicationArea = Basic;
                 }
+                field("Receipts Nos"; "Receipts Nos")
+                {
+                    ApplicationArea = all;
+                }
                 field("Member Agent/NOK Change"; "Member Agent/NOK Change")
                 {
                     ApplicationArea = Basic;

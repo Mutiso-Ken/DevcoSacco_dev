@@ -4,44 +4,54 @@ Table 51516252 "Dividends Progression"
 
     fields
     {
-        field(1;"Member No";Code[20])
+        field(1; "Member No"; Code[20])
         {
         }
-        field(2;Date;Date)
+        field(2; Date; Date)
         {
         }
-        field(3;"Gross Dividends";Decimal)
+        field(3; "Gross Dividends"; Decimal)
         {
         }
-        field(4;"Witholding Tax";Decimal)
+        field(4; "Witholding Tax"; Decimal)
         {
         }
-        field(5;"Net Dividends";Decimal)
+        field(5; "Net Dividends"; Decimal)
         {
         }
-        field(6;"Qualifying Shares";Decimal)
+        field(6; "Qualifying Shares"; Decimal)
         {
         }
-        field(7;Shares;Decimal)
+        field(7; Shares; Decimal)
         {
         }
-        field(8;"Current Shares";Decimal)
+        field(51516150; "Share Capital"; Decimal)
         {
         }
-        field(9;GrossINT;Decimal)
+        field(51516151; "Qualifying Share Capital"; Decimal)
         {
         }
-        field(10;GRossSCap;Decimal)
+        field(51516152; "Gross Interest On Deposit"; Decimal)
         {
+        }
+        field(51516153; "Gross Interest On Sharecapital"; Decimal)
+        {
+        }
+        field(51516154; "Current Shares"; Decimal)
+        {
+            DataClassification = ToBeClassified;
         }
     }
 
     keys
     {
-        key(Key1;"Member No",Date)
+        key(Key1; "Member No", Date)
         {
             Clustered = true;
-            SumIndexFields = "Gross Dividends","Net Dividends",Shares,"Qualifying Shares","Witholding Tax";
+            SumIndexFields = "Gross Dividends", "Net Dividends", Shares, "Qualifying Shares", "Witholding Tax";
+        }
+        key(Key2; Date)
+        {
         }
     }
 

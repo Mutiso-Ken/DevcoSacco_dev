@@ -3,25 +3,21 @@ pageextension 51516628 "ChartOfAccountsCardExt" extends "G/L Account Card"
 
     layout
     {
-      
+
         addafter(Reporting)
         {
             group(Budgetary)
             {
-                field("Balance at Date"; "Balance at Date")
-                {
-                    ApplicationArea = Basic;
-                    Editable = false;
-                }
+
                 field("Budgeted Amount"; "Budgeted Amount")
                 {
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Budget Filter"; "Budget Filter")
+                field("Budget Controlled"; "Budget Controlled")
                 {
                     ApplicationArea = Basic;
-                    Editable = false;
+                    Editable = true;
                 }
                 field("Budgeted Credit Amount"; "Budgeted Credit Amount")
                 {
@@ -103,4 +99,5 @@ pageextension 51516628 "ChartOfAccountsCardExt" extends "G/L Account Card"
         AuditLog: Codeunit "Audit Log Codeunit";
         GlEntry: Record "G/L Entry";
         Edit: Boolean;
+
 }

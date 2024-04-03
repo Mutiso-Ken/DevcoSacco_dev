@@ -807,10 +807,10 @@ Page 51516463 "Credit Role Center"
                     }
                     action("CEEP Collections Report")
                     {
-                        ApplicationArea = all;
-                        RunObject = report "CEEP Officer Collection Report";
-                        ToolTip = 'CEEP Collections & Variance Report';
-                        Caption = 'CEEP Collections & Variance Report';
+                        // ApplicationArea = all;
+                        // RunObject = report "CEEP Officer Collection Report";
+                        // ToolTip = 'CEEP Collections & Variance Report';
+                        // Caption = 'CEEP Collections & Variance Report';
                     }
                     action("CEEP Loans Register ")
                     {

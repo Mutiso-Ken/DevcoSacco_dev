@@ -38,6 +38,7 @@ page 51516048 "Loan Recovery Card"
                 field(Posted; Rec.Posted)
                 {
                     Editable = false;
+                    Visible = false;
                 }
                 field("Posting Date"; Rec."Posting Date")
                 {
@@ -137,6 +138,10 @@ page 51516048 "Loan Recovery Card"
                 trigger OnAction()
                 var
                     RecoveryLines: Record "Loan Recovery List";
+                    FundsManager: Codeunit "Funds Management";
+                    JTemplate: Code[20];
+                    JBatch: Code[20];
+                    FundsUser: Record "Funds User Setup";
                 begin
                     TestField(Posted, false);
                     TestField("Posted By", '');
@@ -148,265 +153,122 @@ page 51516048 "Loan Recovery Card"
                     if Confirm('Are You sure you want to recover loans from ' + Format("Recovery Type") + ' ?', false) = false then begin
                         exit;
                     end else begin
-                        GenJournalLine.RESET;
-                        GenJournalLine.SETRANGE(GenJournalLine."Journal Template Name", 'GENERAL');
-                        GenJournalLine.SETRANGE(GenJournalLine."Journal Batch Name", 'LOANS');
-                        IF GenJournalLine.FIND('-') THEN begin
-                            GenJournalLine.DELETEALL;
-                        end;
 
-                        RecoveryLines.Reset();
-                        RecoveryLines.SetRange(RecoveryLines."Document No", "Document No");
-                        if RecoveryLines.Find('-') then begin
-                            repeat
-                                //.....................Create GL Lines
-                                if RecoveryLines.Source <> RecoveryLines.Source::MICRO then begin
-                                    Vendor.reset;
-                                    Vendor.SetRange(Vendor."BOSA Account No", RecoveryLines."BOSA Account No");
-                                    Vendor.SetAutoCalcFields(Vendor."FOSA Balance");
-                                    if Vendor.Find('-') then begin
-                                        //----------------------------------Principal Repayment
-                                        LineNo := LineNo + 10000;
-                                        GenJournalLine.INIT;
-                                        GenJournalLine."Journal Template Name" := 'GENERAL';
-                                        GenJournalLine."Journal Batch Name" := 'LOANS';
-                                        GenJournalLine."Line No." := LineNo;
-                                        GenJournalLine."Document No." := 'RECOVERIES';
-                                        GenJournalLine."Posting Date" := TODAY;
-                                        GenJournalLine."Account Type" := GenJournalLine."Account Type"::Customer;
-                                        GenJournalLine."Account No." := RecoveryLines."BOSA Account No";
-                                        GenJournalLine.VALIDATE(GenJournalLine."Account No.");
-                                        GenJournalLine.Description := RecoveryLines."Loan No." + '-Loan Principle Recovery';
-                                        GenJournalLine.Amount := -RecoveryLines."Principal Amount To Recover";
-                                        GenJournalLine.VALIDATE(GenJournalLine.Amount);
-                                        GenJournalLine."Transaction Type" := GenJournalLine."Transaction Type"::Repayment;
-                                        GenJournalLine."Loan No" := RecoveryLines."Loan No.";
-                                        GenJournalLine."Shortcut Dimension 1 Code" := 'BOSA';
-                                        GenJournalLine."Shortcut Dimension 2 Code" := surestepFactory.FnGetMemberBranch(RecoveryLines."BOSA Account No");
-                                        IF GenJournalLine.Amount <> 0 THEN begin
-                                            GenJournalLine.INSERT;
-                                        end;
-                                        //--------------------------------------Interest Repayment
-                                        LineNo := LineNo + 10000;
-                                        GenJournalLine.INIT;
-                                        GenJournalLine."Journal Template Name" := 'GENERAL';
-                                        GenJournalLine."Journal Batch Name" := 'LOANS';
-                                        GenJournalLine."Line No." := LineNo;
-                                        GenJournalLine."Document No." := 'RECOVERIES';
-                                        GenJournalLine."Posting Date" := TODAY;
-                                        GenJournalLine."Account Type" := GenJournalLine."Account Type"::Customer;
-                                        GenJournalLine."Account No." := RecoveryLines."BOSA Account No";
-                                        GenJournalLine.VALIDATE(GenJournalLine."Account No.");
-                                        GenJournalLine.Description := RecoveryLines."Loan No." + '-Loan Interest Recovery';
-                                        GenJournalLine.Amount := -RecoveryLines."Interest Amount To Recover";
-                                        GenJournalLine.VALIDATE(GenJournalLine.Amount);
-                                        GenJournalLine."Transaction Type" := GenJournalLine."Transaction Type"::"Interest Paid";
-                                        GenJournalLine."Loan No" := RecoveryLines."Loan No.";
-                                        GenJournalLine."Shortcut Dimension 1 Code" := 'BOSA';
-                                        GenJournalLine."Shortcut Dimension 2 Code" := surestepFactory.FnGetMemberBranch(RecoveryLines."BOSA Account No");
-                                        IF GenJournalLine.Amount <> 0 THEN begin
-                                            GenJournalLine.INSERT;
-                                        end;
-                                        //-------------Recover Total From Vendor Account
-                                        LineNo := LineNo + 10000;
-                                        GenJournalLine.INIT;
-                                        GenJournalLine."Journal Template Name" := 'GENERAL';
-                                        GenJournalLine."Journal Batch Name" := 'LOANS';
-                                        GenJournalLine."Line No." := LineNo;
-                                        GenJournalLine."Document No." := 'RECOVERIES';
-                                        GenJournalLine."Posting Date" := TODAY;
-                                        GenJournalLine."Account Type" := GenJournalLine."Account Type"::Vendor;
-                                        GenJournalLine."Account No." := Vendor."No.";
-                                        GenJournalLine.VALIDATE(GenJournalLine."Account No.");
-                                        GenJournalLine.Description := RecoveryLines."Loan No." + '-Loan Recovery';
-                                        GenJournalLine.Amount := RecoveryLines."Total Amount To Recover";
-                                        GenJournalLine.VALIDATE(GenJournalLine.Amount);
-                                        GenJournalLine."Shortcut Dimension 1 Code" := 'FOSA';
-                                        GenJournalLine."Shortcut Dimension 2 Code" := surestepFactory.FnGetMemberBranch(RecoveryLines."BOSA Account No");
-                                        IF GenJournalLine.Amount <> 0 THEN begin
-                                            GenJournalLine.INSERT;
-                                        end;
-                                        //-------------Recover Fee charge
-                                        // LineNo := LineNo + 10000;
-                                        // GenJournalLine.INIT;
-                                        // GenJournalLine."Journal Template Name" := 'GENERAL';
-                                        // GenJournalLine."Journal Batch Name" := 'LOANS';
-                                        // GenJournalLine."Line No." := LineNo;
-                                        // GenJournalLine."Document No." := 'RECOVERIES';
-                                        // GenJournalLine."Posting Date" := TODAY;
-                                        // GenJournalLine."Account Type" := GenJournalLine."Account Type"::Vendor;
-                                        // GenJournalLine."Account No." := Vendor."No.";
-                                        // GenJournalLine.VALIDATE(GenJournalLine."Account No.");
-                                        // GenJournalLine.Description := RecoveryLines."Loan No." + '-Loan Recovery transfer fee';
-                                        // GenJournalLine.Amount := 50;
-                                        // GenJournalLine.VALIDATE(GenJournalLine.Amount);
-                                        // GenJournalLine."Shortcut Dimension 1 Code" := 'FOSA';
-                                        // GenJournalLine."Bal. Account Type" := GenJournalLine."Bal. Account Type"::"G/L Account";
-                                        // GenJournalLine."Account No." := '5421';
-                                        // GenJournalLine."Shortcut Dimension 2 Code" := surestepFactory.FnGetMemberBranch(RecoveryLines."BOSA Account No");
-                                        // IF GenJournalLine.Amount <> 0 THEN begin
-                                        //     GenJournalLine.INSERT;
-                                        // end;
-                                        // //-------------Recover Fee charge excise duty
-                                        // LineNo := LineNo + 10000;
-                                        // GenJournalLine.INIT;
-                                        // GenJournalLine."Journal Template Name" := 'GENERAL';
-                                        // GenJournalLine."Journal Batch Name" := 'LOANS';
-                                        // GenJournalLine."Line No." := LineNo;
-                                        // GenJournalLine."Document No." := 'RECOVERIES';
-                                        // GenJournalLine."Posting Date" := TODAY;
-                                        // GenJournalLine."Account Type" := GenJournalLine."Account Type"::Vendor;
-                                        // GenJournalLine."Account No." := Vendor."No.";
-                                        // GenJournalLine.VALIDATE(GenJournalLine."Account No.");
-                                        // GenJournalLine.Description := RecoveryLines."Loan No." + '-Loan Recovery excise duty';
-                                        // GenJournalLine.Amount := 50 * (20 / 100);
-                                        // GenJournalLine.VALIDATE(GenJournalLine.Amount);
-                                        // GenJournalLine."Shortcut Dimension 1 Code" := 'FOSA';
-                                        // GenJournalLine."Bal. Account Type" := GenJournalLine."Bal. Account Type"::"G/L Account";
-                                        // GenJournalLine."Account No." := '6322';
-                                        // GenJournalLine."Shortcut Dimension 2 Code" := surestepFactory.FnGetMemberBranch(RecoveryLines."BOSA Account No");
-                                        // IF GenJournalLine.Amount <> 0 THEN begin
-                                        //     GenJournalLine.INSERT;
-                                        // end;
-                                    end;
 
-                                end else
-                                    if RecoveryLines.Source = RecoveryLines.Source::MICRO then begin
-                                        ///
-                                        Customer.Reset();
+                        if FundsUser.Get(UserId) then begin
+                            FundsUser.TestField(FundsUser."Receipt Journal Template");
+                            FundsUser.TestField(FundsUser."Receipt Journal Batch");
+                            JTemplate := FundsUser."Receipt Journal Template";
+                            JBatch := FundsUser."Receipt Journal Batch";
+
+
+
+                            GenJournalLine.RESET;
+                            GenJournalLine.SETRANGE(GenJournalLine."Journal Template Name", JTemplate);
+                            GenJournalLine.SETRANGE(GenJournalLine."Journal Batch Name", JBatch);
+                            IF GenJournalLine.FIND('-') THEN begin
+                                GenJournalLine.DELETEALL;
+                            end;
+
+                            RecoveryLines.Reset();
+                            RecoveryLines.SetRange(RecoveryLines."Document No", "Document No");
+                            if RecoveryLines.Find('-') then begin
+                                repeat
+                                    //.....................Create GL Lines
+
+                                    if RecoveryLines.Source = RecoveryLines.Source::BOSA then begin
+                                        Customer.reset;
                                         Customer.SetRange(Customer."No.", RecoveryLines."BOSA Account No");
-                                        if Customer.find('-') then begin
-                                            Vendor.reset;
-                                            Vendor.SetRange(Vendor."BOSA Account No", Customer."No.");
-                                            Vendor.SetAutoCalcFields(Vendor."FOSA Balance");
-                                            if Vendor.Find('-') then begin
-                                                //----------------------------------Principal Repayment
-                                                LineNo := LineNo + 10000;
-                                                GenJournalLine.INIT;
-                                                GenJournalLine."Journal Template Name" := 'GENERAL';
-                                                GenJournalLine."Journal Batch Name" := 'LOANS';
-                                                GenJournalLine."Line No." := LineNo;
-                                                GenJournalLine."Document No." := 'RECOVERIES';
-                                                GenJournalLine."Posting Date" := TODAY;
-                                                GenJournalLine."Account Type" := GenJournalLine."Account Type"::Customer;
-                                                GenJournalLine."Account No." := RecoveryLines."BOSA Account No";
-                                                GenJournalLine.VALIDATE(GenJournalLine."Account No.");
-                                                GenJournalLine.Description := RecoveryLines."Loan No." + '-Loan Principle Recovery';
-                                                GenJournalLine.Amount := -RecoveryLines."Principal Amount To Recover";
-                                                GenJournalLine.VALIDATE(GenJournalLine.Amount);
-                                                GenJournalLine."Transaction Type" := GenJournalLine."Transaction Type"::Repayment;
-                                                GenJournalLine."Loan No" := RecoveryLines."Loan No.";
-                                                GenJournalLine."Shortcut Dimension 1 Code" := 'BOSA';
-                                                GenJournalLine."Shortcut Dimension 2 Code" := surestepFactory.FnGetMemberBranch(RecoveryLines."BOSA Account No");
-                                                IF GenJournalLine.Amount <> 0 THEN begin
-                                                    GenJournalLine.INSERT;
-                                                end;
-                                                //--------------------------------------Interest Repayment
-                                                LineNo := LineNo + 10000;
-                                                GenJournalLine.INIT;
-                                                GenJournalLine."Journal Template Name" := 'GENERAL';
-                                                GenJournalLine."Journal Batch Name" := 'LOANS';
-                                                GenJournalLine."Line No." := LineNo;
-                                                GenJournalLine."Document No." := 'RECOVERIES';
-                                                GenJournalLine."Posting Date" := TODAY;
-                                                GenJournalLine."Account Type" := GenJournalLine."Account Type"::Customer;
-                                                GenJournalLine."Account No." := RecoveryLines."BOSA Account No";
-                                                GenJournalLine.VALIDATE(GenJournalLine."Account No.");
-                                                GenJournalLine.Description := RecoveryLines."Loan No." + '-Loan Interest Recovery';
-                                                GenJournalLine.Amount := -RecoveryLines."Interest Amount To Recover";
-                                                GenJournalLine.VALIDATE(GenJournalLine.Amount);
-                                                GenJournalLine."Transaction Type" := GenJournalLine."Transaction Type"::"Interest Paid";
-                                                GenJournalLine."Loan No" := RecoveryLines."Loan No.";
-                                                GenJournalLine."Shortcut Dimension 1 Code" := 'BOSA';
-                                                GenJournalLine."Shortcut Dimension 2 Code" := surestepFactory.FnGetMemberBranch(RecoveryLines."BOSA Account No");
-                                                IF GenJournalLine.Amount <> 0 THEN begin
-                                                    GenJournalLine.INSERT;
-                                                end;
-                                                //-------------Recover Total From Vendor Account
-                                                LineNo := LineNo + 10000;
-                                                GenJournalLine.INIT;
-                                                GenJournalLine."Journal Template Name" := 'GENERAL';
-                                                GenJournalLine."Journal Batch Name" := 'LOANS';
-                                                GenJournalLine."Line No." := LineNo;
-                                                GenJournalLine."Document No." := 'RECOVERIES';
-                                                GenJournalLine."Posting Date" := TODAY;
-                                                GenJournalLine."Account Type" := GenJournalLine."Account Type"::Vendor;
-                                                GenJournalLine."Account No." := Vendor."No.";
-                                                GenJournalLine.VALIDATE(GenJournalLine."Account No.");
-                                                GenJournalLine.Description := RecoveryLines."Loan No." + '-Loan Recovery';
-                                                GenJournalLine.Amount := RecoveryLines."Total Amount To Recover";
-                                                GenJournalLine.VALIDATE(GenJournalLine.Amount);
-                                                GenJournalLine."Shortcut Dimension 1 Code" := 'FOSA';
-                                                GenJournalLine."Shortcut Dimension 2 Code" := surestepFactory.FnGetMemberBranch(RecoveryLines."BOSA Account No");
-                                                IF GenJournalLine.Amount <> 0 THEN begin
-                                                    GenJournalLine.INSERT;
-                                                end;
-                                                //-------------Recover Fee charge
-                                                // LineNo := LineNo + 10000;
-                                                // GenJournalLine.INIT;
-                                                // GenJournalLine."Journal Template Name" := 'GENERAL';
-                                                // GenJournalLine."Journal Batch Name" := 'LOANS';
-                                                // GenJournalLine."Line No." := LineNo;
-                                                // GenJournalLine."Document No." := 'RECOVERIES';
-                                                // GenJournalLine."Posting Date" := TODAY;
-                                                // GenJournalLine."Account Type" := GenJournalLine."Account Type"::Vendor;
-                                                // GenJournalLine."Account No." := Vendor."No.";
-                                                // GenJournalLine.VALIDATE(GenJournalLine."Account No.");
-                                                // GenJournalLine.Description := RecoveryLines."Loan No." + '-Loan Recovery transfer fee';
-                                                // GenJournalLine.Amount := 50;
-                                                // GenJournalLine.VALIDATE(GenJournalLine.Amount);
-                                                // GenJournalLine."Shortcut Dimension 1 Code" := 'FOSA';
-                                                // GenJournalLine."Bal. Account Type" := GenJournalLine."Bal. Account Type"::"G/L Account";
-                                                // GenJournalLine."Account No." := '5421';
-                                                // GenJournalLine."Shortcut Dimension 2 Code" := surestepFactory.FnGetMemberBranch(RecoveryLines."BOSA Account No");
-                                                // IF GenJournalLine.Amount <> 0 THEN begin
-                                                //     GenJournalLine.INSERT;
-                                                // end;
-                                                // //-------------Recover Fee charge excise duty
-                                                // LineNo := LineNo + 10000;
-                                                // GenJournalLine.INIT;
-                                                // GenJournalLine."Journal Template Name" := 'GENERAL';
-                                                // GenJournalLine."Journal Batch Name" := 'LOANS';
-                                                // GenJournalLine."Line No." := LineNo;
-                                                // GenJournalLine."Document No." := 'RECOVERIES';
-                                                // GenJournalLine."Posting Date" := TODAY;
-                                                // GenJournalLine."Account Type" := GenJournalLine."Account Type"::Vendor;
-                                                // GenJournalLine."Account No." := Vendor."No.";
-                                                // GenJournalLine.VALIDATE(GenJournalLine."Account No.");
-                                                // GenJournalLine.Description := RecoveryLines."Loan No." + '-Loan Recovery excise duty';
-                                                // GenJournalLine.Amount := 50 * (20 / 100);
-                                                // GenJournalLine.VALIDATE(GenJournalLine.Amount);
-                                                // GenJournalLine."Shortcut Dimension 1 Code" := 'FOSA';
-                                                // GenJournalLine."Bal. Account Type" := GenJournalLine."Bal. Account Type"::"G/L Account";
-                                                // GenJournalLine."Account No." := '6322';
-                                                // GenJournalLine."Shortcut Dimension 2 Code" := surestepFactory.FnGetMemberBranch(RecoveryLines."BOSA Account No");
-                                                // IF GenJournalLine.Amount <> 0 THEN begin
-                                                //     GenJournalLine.INSERT;
-                                                // end;
+                                        Customer.SetAutoCalcFields(Customer."Current Shares");
+                                        if Customer.Find('-') then begin
+                                            //----------------------------------Principal Repayment
+                                            LineNo := LineNo + 10000;
+                                            GenJournalLine.INIT;
+                                            GenJournalLine."Journal Template Name" := JTemplate;
+                                            GenJournalLine."Journal Batch Name" := JBatch;
+                                            GenJournalLine."Line No." := LineNo;
+                                            GenJournalLine."Document No." := 'RECOVERIES';
+                                            GenJournalLine."Posting Date" := TODAY;
+                                            GenJournalLine."Account Type" := GenJournalLine."Account Type"::Customer;
+                                            GenJournalLine."Account No." := RecoveryLines."BOSA Account No";
+                                            GenJournalLine.VALIDATE(GenJournalLine."Account No.");
+                                            GenJournalLine.Description := RecoveryLines."Loan No." + '-Loan Principle Recovery';
+                                            GenJournalLine.Amount := -RecoveryLines."Principal Amount To Recover";
+                                            GenJournalLine.VALIDATE(GenJournalLine.Amount);
+                                            GenJournalLine."Transaction Type" := GenJournalLine."Transaction Type"::Repayment;
+                                            GenJournalLine."Loan No" := RecoveryLines."Loan No.";
+                                            GenJournalLine."Shortcut Dimension 1 Code" := 'BOSA';
+                                            GenJournalLine."Shortcut Dimension 2 Code" := surestepFactory.FnGetMemberBranch(RecoveryLines."BOSA Account No");
+                                            IF GenJournalLine.Amount <> 0 THEN begin
+                                                GenJournalLine.INSERT;
+                                            end;
+                                            //--------------------------------------Interest Repayment
+                                            LineNo := LineNo + 10000;
+                                            GenJournalLine.INIT;
+                                            GenJournalLine."Journal Template Name" := JTemplate;
+                                            GenJournalLine."Journal Batch Name" := JBatch;
+                                            GenJournalLine."Line No." := LineNo;
+                                            GenJournalLine."Document No." := 'RECOVERIES';
+                                            GenJournalLine."Posting Date" := TODAY;
+                                            GenJournalLine."Account Type" := GenJournalLine."Account Type"::Customer;
+                                            GenJournalLine."Account No." := RecoveryLines."BOSA Account No";
+                                            GenJournalLine.VALIDATE(GenJournalLine."Account No.");
+                                            GenJournalLine.Description := RecoveryLines."Loan No." + '-Loan Interest Recovery';
+                                            GenJournalLine.Amount := -RecoveryLines."Interest Amount To Recover";
+                                            GenJournalLine.VALIDATE(GenJournalLine.Amount);
+                                            GenJournalLine."Transaction Type" := GenJournalLine."Transaction Type"::"Interest Paid";
+                                            GenJournalLine."Loan No" := RecoveryLines."Loan No.";
+                                            GenJournalLine."Shortcut Dimension 1 Code" := 'BOSA';
+                                            GenJournalLine."Shortcut Dimension 2 Code" := surestepFactory.FnGetMemberBranch(RecoveryLines."BOSA Account No");
+                                            IF GenJournalLine.Amount <> 0 THEN begin
+                                                GenJournalLine.INSERT;
+                                            end;
+                                            //-------------Recover Total From Deposits Account
+                                            LineNo := LineNo + 10000;
+                                            GenJournalLine.INIT;
+                                            GenJournalLine."Journal Template Name" := JTemplate;
+                                            GenJournalLine."Journal Batch Name" := JBatch;
+                                            GenJournalLine."Line No." := LineNo;
+                                            GenJournalLine."Document No." := 'RECOVERIES';
+                                            GenJournalLine."Posting Date" := TODAY;
+                                            GenJournalLine."Account Type" := GenJournalLine."Account Type"::Customer;
+                                            GenJournalLine."Account No." := RecoveryLines."BOSA Account No";
+                                            GenJournalLine.VALIDATE(GenJournalLine."Account No.");
+                                            GenJournalLine.Description := RecoveryLines."Loan No." + '-Loan Recovery';
+                                            GenJournalLine.Amount := RecoveryLines."Total Amount To Recover";
+                                            GenJournalLine.VALIDATE(GenJournalLine.Amount);
+                                            GenJournalLine."Transaction Type" := GenJournalLine."Transaction Type"::"Deposit Contribution";
+                                            GenJournalLine."Shortcut Dimension 1 Code" := 'BOSA';
+                                            GenJournalLine."Shortcut Dimension 2 Code" := surestepFactory.FnGetMemberBranch(RecoveryLines."BOSA Account No");
+                                            IF GenJournalLine.Amount <> 0 THEN begin
+                                                GenJournalLine.INSERT;
                                             end;
 
                                         end;
                                     end;
-                            until RecoveryLines.Next = 0;
-                        end;
-                        //...................Post Lines And Mark Receipt Line As Posted
-                        GenJournalLine.RESET;
-                        GenJournalLine.SETRANGE(GenJournalLine."Journal Template Name", 'GENERAL');
-                        GenJournalLine.SETRANGE(GenJournalLine."Journal Batch Name", 'LOANS');
-                        IF GenJournalLine.FIND('-') THEN begin
-                            Codeunit.Run(Codeunit::"Gen. Jnl.-Post Sacco", GenJournalLine);
+                                until RecoveryLines.Next = 0;
+                            end;
+                            //...................Post Lines And Mark Receipt Line As Posted
+                            GenJournalLine.RESET;
+                            GenJournalLine.SETRANGE(GenJournalLine."Journal Template Name", JTemplate);
+                            GenJournalLine.SETRANGE(GenJournalLine."Journal Batch Name", JBatch);
+                            IF GenJournalLine.FIND('-') THEN begin
+                                Codeunit.Run(Codeunit::"Gen. Jnl.-Post Sacco", GenJournalLine);
 
-                        end;
-                        //------------------Mark As Posted
-                        Posted := true;
-                        "Posted By" := UserId;
-                        "Posting Date" := Today;
-                        Status := Status::Closed;
-                        REC.Modify();
-                        Message('Loan Recoveries Posted Successfully');
-                        // IF REC."Notify Member(s)" = true THEN begin
-                        //     //Send SMS Alerts
-                        // end;
+                            end;
+
+                            //------------------Mark As Posted
+                            Posted := true;
+                            "Posted By" := UserId;
+                            "Posting Date" := Today;
+                            Status := Status::Closed;
+                            REC.Modify();
+                            Message('Loan Recoveries Posted Successfully');
+                            // IF REC."Notify Member(s)" = true THEN begin
+                            //     //Send SMS Alerts
+                            // end;
+                        end else
+                            Error('User Account Not Setup');
                     end;
                 end;
             }

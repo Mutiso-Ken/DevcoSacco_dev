@@ -55,22 +55,19 @@ Table 51516248 "ReceiptsProcessing_H-Checkoff"
         {
             TableRelation = if ("Account Type" = const("G/L Account")) "G/L Account"
             else
-            if ("Account Type" = const(Customer)) Customer where("Customer Type" = const(Member));
-            // else
-            // if ("Account Type" = const(Vendor)) Vendor
-            // else
-            // if ("Account Type" = const("Bank Account")) "Bank Account"
-            // else
-            // if ("Account Type" = const("Fixed Asset")) "Fixed Asset";
+            if ("Account Type" = const(Customer)) Customer where("Customer Type" = filter(Checkoff));
+
 
             trigger OnValidate()
             begin
                 if "Account Type" = "account type"::Customer then begin
                     cust.Reset;
                     cust.SetRange(cust."No.", "Account No");
-                    cust.SetFilter(cust."Customer Type", '%1', cust."Customer Type"::Member);
+                    cust.SetFilter(cust."Customer Type", '%1', cust."Customer Type"::Checkoff);
                     if cust.Find('-') then begin
-                        "Employer Name" := cust.Name;
+                        "Employer Name" := cust."Employer Name";
+                        "Employer Code" := cust."Employer Code";
+
 
                     end;
                 end;
@@ -124,7 +121,7 @@ Table 51516248 "ReceiptsProcessing_H-Checkoff"
         }
         field(29; "Employer Code"; Code[30])
         {
-            TableRelation = "Sacco Employers".Code;
+            //TableRelation = "Sacco Employers".Code;
         }
         field(30; "Un Allocated amount-surplus"; Decimal)
         {

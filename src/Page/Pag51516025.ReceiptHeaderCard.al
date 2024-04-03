@@ -11,85 +11,88 @@ Page 51516025 "Receipt Header Card"
         {
             group(General)
             {
-                field("No.";"No.")
+                field("No."; "No.")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Document Type";"Document Type")
+                field("Document Type"; "Document Type")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Date;Date)
+                field(Date; Date)
                 {
                     ApplicationArea = Basic;
                 }
-                field("Posting Date";"Posting Date")
+                field("Posting Date"; "Posting Date")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Bank Code";"Bank Code")
+                field("Bank Code"; "Bank Code")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Bank Name";"Bank Name")
+                field("Bank Name"; "Bank Name")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Bank Balance";"Bank Balance")
+                field("Bank Balance"; "Bank Balance")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Global Dimension 1 Code";"Global Dimension 1 Code")
+                field("Global Dimension 1 Code"; "Global Dimension 1 Code")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Global Dimension 2 Code";"Global Dimension 2 Code")
+                field("Global Dimension 2 Code"; "Global Dimension 2 Code")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Amount Received";"Amount Received")
+                field("Amount Received"; "Amount Received")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Amount Received(LCY)";"Amount Received(LCY)")
+                field("Amount Received(LCY)"; "Amount Received(LCY)")
+                {
+                    ApplicationArea = Basic;
+                    Visible = false;
+                }
+                field("Total Amount"; "Total Amount")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Total Amount";"Total Amount")
+                field(Status; Status)
+                {
+                    ApplicationArea = Basic;
+                    Visible = false;
+                }
+                field(Description; Description)
                 {
                     ApplicationArea = Basic;
                 }
-                field(Status;Status)
+                field("Received From"; "Received From")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Description;Description)
+                field("User ID"; "User ID")
                 {
                     ApplicationArea = Basic;
                 }
-                field("Received From";"Received From")
+                field("Total Amount(LCY)"; "Total Amount(LCY)")
                 {
                     ApplicationArea = Basic;
-                }
-                field("User ID";"User ID")
-                {
-                    ApplicationArea = Basic;
-                }
-                field("Total Amount(LCY)";"Total Amount(LCY)")
-                {
-                    ApplicationArea = Basic;
+                    Visible = false;
                 }
             }
-            part(Control23;"Receipt Line")
+            part(Control23; "Receipt Line")
             {
-                SubPageLink = "Document No"=field("No.");
+                SubPageLink = "Document No" = field("No.");
             }
         }
     }
 
     actions
     {
-        area(creation)
+        area(Processing)
         {
             action("Post Receipt")
             {
@@ -107,35 +110,37 @@ Page 51516025 "Receipt Header Card"
                     TestField(Description);
 
                     if Posted then
-                    Error('This receipt is already posted');
+                        Error('This receipt is already posted');
 
                     //TESTFIELD(Status,Status::Approved);
-                    CalcFields("Total Amount","Total Amount(LCY)");
+                    CalcFields("Total Amount", "Total Amount(LCY)");
 
-                    ok:=Confirm('Post Receipt No:'+Format("No.")+'. The account will be credited with KES:'+Format("Total Amount(LCY)")+' Continue?');
+                    ok := Confirm('Post Receipt No:' + Format("No.") + '. The account will be credited with KES:' + Format("Total Amount(LCY)") + ' Continue?');
                     if ok then begin
-                      DocNo:="No.";
-                      if FundsUser.Get(UserId) then begin
-                        FundsUser.TestField(FundsUser."Receipt Journal Template");
-                        FundsUser.TestField(FundsUser."Receipt Journal Batch");
-                        JTemplate:=FundsUser."Receipt Journal Template";JBatch:=FundsUser."Receipt Journal Batch";
-                        PostedEntry:=FundsManager.PostPropertyReceipt(Rec,JTemplate,JBatch,"Property Code","No.",'',"Received From","Total Amount(LCY)");
-                        if PostedEntry then begin
-                          ReceiptHeader.Reset;
-                          ReceiptHeader.SetRange(ReceiptHeader."No.",DocNo);
-                          if ReceiptHeader.FindFirst then begin
-                           // Report.RunModal(Report::"Investor Receipt",true,false,ReceiptHeader);
-                          end;
+                        DocNo := "No.";
+                        if FundsUser.Get(UserId) then begin
+                            FundsUser.TestField(FundsUser."Receipt Journal Template");
+                            FundsUser.TestField(FundsUser."Receipt Journal Batch");
+                            JTemplate := FundsUser."Receipt Journal Template";
+                            JBatch := FundsUser."Receipt Journal Batch";
+                            PostedEntry := FundsManager.PostPropertyReceipt(Rec, JTemplate, JBatch, "Property Code", "No.", '', "Received From", "Total Amount(LCY)");
+                            if PostedEntry then begin
+                                ReceiptHeader.Reset;
+                                ReceiptHeader.SetRange(ReceiptHeader."No.", DocNo);
+                                if ReceiptHeader.FindFirst then begin
+                                     Report.RunModal(Report::"Receipt Header",true,false,ReceiptHeader);
+                                end;
+                            end;
+                        end else begin
+                            Error('User Account Not Setup');
                         end;
-                      end else begin
-                        Error('User Account Not Setup');
-                      end;
                     end;
                 end;
             }
             action(Approvals)
             {
                 ApplicationArea = Basic;
+                Visible=false;
             }
             action(Print)
             {
@@ -147,11 +152,12 @@ Page 51516025 "Receipt Header Card"
 
                 trigger OnAction()
                 begin
-                      ReceiptHeader.Reset;
-                      ReceiptHeader.SetRange(ReceiptHeader."No.","No.");
-                      if ReceiptHeader.FindFirst then begin
-                           // Report.RunModal(Report::"Property Receipt",true,false,ReceiptHeader);
-                      end;
+                    ReceiptHeader.Reset;
+                    ReceiptHeader.SetRange(ReceiptHeader."No.", "No.");
+                    if ReceiptHeader.FindFirst then begin
+                        Report.RunModal(Report::"Receipt Header",true,false,ReceiptHeader);
+
+                    end;
                 end;
             }
         }

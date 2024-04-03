@@ -13,6 +13,7 @@ Page 51516026 "Receipt Line"
                 field("Document No";"Document No")
                 {
                     ApplicationArea = Basic;
+
                 }
                 field("Transaction Type";"Transaction Type")
                 {
@@ -21,6 +22,7 @@ Page 51516026 "Receipt Line"
                 field("Default Grouping";"Default Grouping")
                 {
                     ApplicationArea = Basic;
+                    Visible=false;
                 }
                 field("Account Type";"Account Type")
                 {
@@ -58,6 +60,7 @@ Page 51516026 "Receipt Line"
                 {
                     ApplicationArea = Basic;
                     Editable = false;
+                    Visible=false;
                 }
                 field("Cheque No";"Cheque No")
                 {

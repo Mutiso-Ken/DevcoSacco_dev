@@ -40,7 +40,7 @@ page 51516940 "Loan Appeal List"
                 {
                     ToolTip = 'Specifies the value of the New Amount field.';
                     Editable = false;
-                    Visible = false;
+                    // Visible = false;
                 }
                 field("Oustanding Balance"; Rec."Oustanding Balance")
                 {

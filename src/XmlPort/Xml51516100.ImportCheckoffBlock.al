@@ -10,6 +10,9 @@ XmlPort 51516100 "Import Checkoff Block"
             tableelement("ReceiptsProcessing_L-Checkoff"; "ReceiptsProcessing_L-Checkoff")
             {
                 XmlName = 'checkoff';
+                fieldelement(Transaction_No; "ReceiptsProcessing_L-Checkoff"."Receipt Line No")
+                {
+                }
                 fieldelement(No; "ReceiptsProcessing_L-Checkoff"."Receipt Header No")
                 {
                 }
@@ -22,9 +25,7 @@ XmlPort 51516100 "Import Checkoff Block"
                 fieldelement(Header_No; "ReceiptsProcessing_L-Checkoff"."Employer Code")
                 {
                 }
-                fieldelement(Transaction_No; "ReceiptsProcessing_L-Checkoff"."Receipt Line No")
-                {
-                }
+
             }
         }
     }

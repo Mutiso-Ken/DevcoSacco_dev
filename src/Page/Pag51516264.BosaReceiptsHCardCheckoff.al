@@ -62,16 +62,18 @@ Page 51516264 "Bosa Receipts H Card-Checkoff."
                 field("Employer Code"; "Employer Code")
                 {
                     ApplicationArea = Basic;
+                    Editable = false;
+                }
+                field("Employer Name"; "Employer Name")
+                {
+                    ApplicationArea = all;
+                    Editable = false;
                 }
                 field("Document No"; "Document No")
                 {
                     ApplicationArea = Basic;
                 }
-                field(Posted; Posted)
-                {
-                    ApplicationArea = Basic;
-                    Editable = true;
-                }
+          
                 field(Amount; Amount)
                 {
                     ApplicationArea = Basic;
@@ -100,7 +102,7 @@ Page 51516264 "Bosa Receipts H Card-Checkoff."
                 Promoted = true;
                 PromotedCategory = Process;
                 PromotedIsBig = true;
-                RunObject = XMLport "Import Tea Periodics";
+                RunObject = XMLport "Import Checkoff Block";
             }
             group(ActionGroup1102755021)
             {
@@ -124,25 +126,25 @@ Page 51516264 "Bosa Receipts H Card-Checkoff."
                         repeat
 
                             Memb.Reset;
-                            Memb.SetRange(Memb."No.", RcptBufLines."Member No");
+                            Memb.SetRange(Memb."No.", RcptBufLines."Staff/Payroll No");
                             //Memb.SETRANGE(Memb."Employer Code",RcptBufLines."Employer Code");
                             if Memb.Find('-') then begin
 
-                                RcptBufLines."Staff/Payroll No" := Memb."Payroll/Staff No";
+                                RcptBufLines."Member No" := Memb."No.";
                                 RcptBufLines.Name := Memb.Name;
                                 RcptBufLines."ID No." := Memb."ID No.";
-                                RcptBufLines."FOSA Account" := Memb."FOSA Account";
+                                // RcptBufLines."FOSA Account" := Memb."FOSA Account";
 
-                                Vendor.Reset;
-                                Vendor.SetRange(Vendor."Staff No", Memb."Payroll/Staff No");
-                                Vendor.SetRange(Vendor."Account Type", 'CHRISTMAS');
-                                if Vendor.Find('-') then begin
+                                // Vendor.Reset;
+                                // Vendor.SetRange(Vendor."Staff No", Memb."Payroll/Staff No");
+                                // Vendor.SetRange(Vendor."Account Type", 'CHRISTMAS');
+                                // if Vendor.Find('-') then begin
 
-                                    RcptBufLines."Xmas Account" := Vendor."No.";
+                                //     RcptBufLines."Xmas Account" := Vendor."No.";
 
-                                    RcptBufLines."Xmas Contribution" := Vendor."Monthly Contribution";
-                                    RcptBufLines.Modify;
-                                end;
+                                //     RcptBufLines."Xmas Contribution" := Vendor."Monthly Contribution";
+                                //     RcptBufLines.Modify;
+                                // end;
 
 
 
@@ -169,6 +171,11 @@ Page 51516264 "Bosa Receipts H Card-Checkoff."
                 PromotedIsBig = true;
 
                 trigger OnAction()
+                var
+                    UsersID: Record User;
+                    FundsUSer: Record "Funds User Setup";
+                    GenJnlManagement: Codeunit GenJnlManagement;
+                    GenBatch: Record "Gen. Journal Batch";
                 begin
 
                     genstup.Get();
@@ -186,73 +193,31 @@ Page 51516264 "Bosa Receipts H Card-Checkoff."
                         Error('You must specify the Loan CutOff Date.');
                     Datefilter := '..' + Format("Loan CutOff Date");
                     IssueDate := "Loan CutOff Date";
-                    startDate := 20000101D;
+                    //General Journals
+                    if FundsUSer.Get(UserId) then begin
+                        Jtemplate := FundsUSer."Receipt Journal Template";
+                        Jbatch := FundsUSer."Receipt Journal Batch";
+                    end;
                     //Delete journal
                     Gnljnline.Reset;
-                    Gnljnline.SetRange("Journal Template Name", 'GENERAL');
-                    Gnljnline.SetRange("Journal Batch Name", 'CHECKOFF');
-                    if Gnljnline.Find('-') then
+                    Gnljnline.SetRange("Journal Template Name", Jtemplate);
+                    Gnljnline.SetRange("Journal Batch Name", Jbatch);
+                    if Gnljnline.Find('-') then begin
                         Gnljnline.DeleteAll;
+                    end;
 
                     RunBal := 0;
                     TotalWelfareAmount := 0;
                     CalcFields("Scheduled Amount");
                     if "Scheduled Amount" <> Amount then begin
-                        //ERROR('Scheduled Amount Is Not Equal To Cheque Amount');
+                        ERROR('Scheduled Amount Is Not Equal To Cheque Amount');
                     end;
 
-                    RcptBufLines.Reset;
-                    RcptBufLines.SetRange(RcptBufLines."Receipt Header No", No);
-                    RcptBufLines.SetRange(RcptBufLines.Posted, false);
-                    if RcptBufLines.Find('-') then begin
-
-                        repeat
-                            RunBal := 0;
-                            RunBal := RcptBufLines.Amount;
-                            RunBal := FnRunInterest(RcptBufLines, RunBal, "Loan CutOff Date");
-                            RunBal := FnRunPrinciple(RcptBufLines, RunBal, "Loan CutOff Date");
-                            RunBal := FnRunEntranceFee(RcptBufLines, RunBal);
-                            RunBal := FnRunShareCapital(RcptBufLines, RunBal);
-                            RunBal := FnRunDepositContribution(RcptBufLines, RunBal);
-                            RunBal := FnRunHolidayContribution(RcptBufLines, RunBal);
-                            RunBal := FnRunAlphaContribution(RcptBufLines, RunBal);
-                            RunBal := FnRunHousingContribution(RcptBufLines, RunBal);
-
-                            RunBal := FnRunjunioroneContribution(RcptBufLines, RunBal);
-                            RunBal := FnRunjuniortwoContribution(RcptBufLines, RunBal);
-                            RunBal := FnRunjuniorThreeContribution(RcptBufLines, RunBal);
-                            //RunBal:=FnRecoverPrincipleFromExcess(RcptBufLines,RunBal);
-                            FnTransferExcessToUnallocatedFunds(RcptBufLines, RunBal);
-                        until RcptBufLines.Next = 0;
-                    end;
-
-                    /*//CREDIT WELFARE VENDOR ACCOUNT
-                    LineN:=LineN+10000;
-                    Gnljnline.INIT;
-                    Gnljnline."Journal Template Name":='GENERAL';
-                    Gnljnline."Journal Batch Name":='CHECKOFF';
-                    Gnljnline."Line No.":=LineN;
-                    Gnljnline."Account Type":=Gnljnline."Account Type"::Vendor;
-                    Gnljnline."Account No.":='MILK';  //Insert Welfare Control account here
-                    Gnljnline.VALIDATE(Gnljnline."Account No.");
-                    Gnljnline."Document No.":="Document No";
-                    Gnljnline."Posting Date":="Posting date";
-                    Gnljnline.Description:='Welfare Contributions';
-                    Gnljnline.Amount:=TotalWelfareAmount*-1;
-                    Gnljnline.VALIDATE(Gnljnline.Amount);
-                    Gnljnline."Shortcut Dimension 1 Code":='BOSA';
-                    Gnljnline."Shortcut Dimension 2 Code":='001';
-                    Gnljnline.VALIDATE(Gnljnline."Shortcut Dimension 1 Code");
-                    Gnljnline.VALIDATE(Gnljnline."Shortcut Dimension 2 Code");
-                    IF Gnljnline.Amount<>0 THEN
-                    Gnljnline.INSERT;*/
-
-                    //DEBIT TOTAL CHECK OFF
                     CalcFields("Scheduled Amount");
                     LineN := LineN + 10000;
                     Gnljnline.Init;
-                    Gnljnline."Journal Template Name" := 'GENERAL';
-                    Gnljnline."Journal Batch Name" := 'CHECKOFF';
+                    Gnljnline."Journal Template Name" := Jtemplate;
+                    Gnljnline."Journal Batch Name" := Jbatch;
                     Gnljnline."Line No." := LineN;
                     Gnljnline."Account Type" := "Account Type";
                     Gnljnline."Account No." := "Account No";
@@ -267,18 +232,59 @@ Page 51516264 "Bosa Receipts H Card-Checkoff."
                     Gnljnline.Validate(Gnljnline."Shortcut Dimension 1 Code");
                     Gnljnline.Validate(Gnljnline."Shortcut Dimension 2 Code");
                     if Gnljnline.Amount <> 0 then
-                        Gnljnline.Insert;
+                        Gnljnline.Insert(true);
+                    //End Of control
 
+
+                    RcptBufLines.Reset;
+                    RcptBufLines.SetRange(RcptBufLines."Receipt Header No", No);
+                    RcptBufLines.SetRange(RcptBufLines.Posted, false);
+                    if RcptBufLines.Find('-') then begin
+                        repeat
+                            RunBal := 0;
+                            RunBal := RcptBufLines.Amount;
+                            RunBal := FnRunInterest(RcptBufLines, RunBal, "Loan CutOff Date");
+                            RunBal := FnRunPrinciple(RcptBufLines, RunBal, "Loan CutOff Date");
+                            RunBal := FnRunEntranceFee(RcptBufLines, RunBal);
+                            RunBal := FnRunShareCapital(RcptBufLines, RunBal);
+                            RunBal := FnRunDepositContribution(RcptBufLines, RunBal);
+                            RunBal := FnRunHolidayContribution(RcptBufLines, RunBal);
+                            RunBal := FnRunAlphaContribution(RcptBufLines, RunBal);
+                            RunBal := FnRunHousingContribution(RcptBufLines, RunBal);
+                            RunBal := FnRunjunioroneContribution(RcptBufLines, RunBal);
+                            RunBal := FnRunjuniortwoContribution(RcptBufLines, RunBal);
+                            RunBal := FnRunjuniorThreeContribution(RcptBufLines, RunBal);
+                            //  RunBal := FnRecoverPrincipleFromExcess(RcptBufLines, RunBal);
+                            FnTransferExcessToUnallocatedFunds(RcptBufLines, RunBal);
+                        until RcptBufLines.Next = 0;
+                    end;
+
+                    //Post control
+
+                    Message('CheckOff Successfully Generated');
+
+
+                    Gnljnline.Reset;
+                    Gnljnline.SetRange("Journal Template Name", Jtemplate);
+                    Gnljnline.SetRange("Journal Batch Name", Jbatch);
+                    if Gnljnline.Find('-') then
+                        Page.Run(page::"General Journal", Gnljnline);
+
+
+                    // Gnljnline.SetRange("Journal Template Name", Jtemplate);
+                    // Gnljnline.SetRange("Journal Batch Name", Jbatch);
+                    // if Gnljnline.Find('-') then
+                    // GenJnlManagement.TemplateSelectionFromBatch(GenBatch);
                     //Post New  //To be Uncommented after thorough tests
                     /*Gnljnline.RESET;
-                    Gnljnline.SETRANGE("Journal Template Name",'GENERAL');
-                    Gnljnline.SETRANGE("Journal Batch Name",'CHECKOFF');
+                    Gnljnline.SETRANGE("Journal Template Name",Jtemplate);
+                    Gnljnline.SETRANGE("Journal Batch Name",Jbatch);
                     IF Gnljnline.FIND('-') THEN BEGIN
                     CODEUNIT.RUN(CODEUNIT::"Gen. Jnl.-Post",Gnljnline);
                     END;
                     Posted:=True;
                     MODIFY;*/
-                    Message('CheckOff Successfully Generated');
+
                     //Posted:=TRUE;
 
                 end;
@@ -358,7 +364,7 @@ Page 51516264 "Bosa Receipts H Card-Checkoff."
         Lschedule: Record "Loan Repayment Schedule";
         ScheduleRepayment: Decimal;
 
-    local procedure FnRunInterest(ObjRcptBuffer: Record "ReceiptsProcessing_L-Checkoff"; RunningBalance: Decimal; LoanCutoffDate: Date) NewRunningBalance: Decimal
+    local procedure FnRunInterest(ObjRcptBuffer: Record "ReceiptsProcessing_L-Checkoff"; RunningBalance: Decimal; LoanCutoffDate: Date): Decimal
     var
         AmountToDeduct: Decimal;
         InterestToRecover: Decimal;
@@ -370,7 +376,7 @@ Page 51516264 "Bosa Receipts H Card-Checkoff."
             LoanApp.SetRange(LoanApp."Recovery Mode", LoanApp."recovery mode"::Checkoff);
             //LoanApp.SETFILTER(LoanApp."Date filter",Datefilter); //Deduct all interest outstanding regardless of date
             //LoanApp.SETRANGE(LoanApp."Issued Date",startDate,IssueDate);
-            if LoanApp.Find('-') then begin
+            if LoanApp.FindSet() then begin
                 repeat
                     LoanApp.CalcFields(LoanApp."Oustanding Interest");
                     if (LoanApp."Oustanding Interest" > 0) and (LoanApp."Issued Date" <= LoanCutoffDate) then begin
@@ -385,8 +391,8 @@ Page 51516264 "Bosa Receipts H Card-Checkoff."
 
                             LineN := LineN + 10000;
                             Gnljnline.Init;
-                            Gnljnline."Journal Template Name" := 'GENERAL';
-                            Gnljnline."Journal Batch Name" := 'CHECKOFF';
+                            Gnljnline."Journal Template Name" := Jtemplate;
+                            Gnljnline."Journal Batch Name" := Jbatch;
                             Gnljnline."Line No." := LineN;
                             Gnljnline."Account Type" := Gnljnline."bal. account type"::Customer;
                             Gnljnline."Account No." := LoanApp."Client Code";
@@ -414,7 +420,7 @@ Page 51516264 "Bosa Receipts H Card-Checkoff."
         end;
     end;
 
-    local procedure FnRunPrinciple(ObjRcptBuffer: Record "ReceiptsProcessing_L-Checkoff"; RunningBalance: Decimal; LoanCutoffDate: Date) NewRunningBalance: Decimal
+    local procedure FnRunPrinciple(ObjRcptBuffer: Record "ReceiptsProcessing_L-Checkoff"; RunningBalance: Decimal; LoanCutoffDate: Date): Decimal
     var
         varTotalRepay: Decimal;
         varMultipleLoan: Decimal;
@@ -434,7 +440,7 @@ Page 51516264 "Bosa Receipts H Card-Checkoff."
             LoanApp.SetRange(LoanApp."Client Code", ObjRcptBuffer."Member No");
             LoanApp.SetRange(LoanApp."Recovery Mode", LoanApp."recovery mode"::Checkoff);
             //LoanApp.SETRANGE(LoanApp."Issued Date",startDate,IssueDate);
-            if LoanApp.Find('-') then begin
+            if LoanApp.Findset then begin
 
                 repeat
                     if RunningBalance > 0 then begin
@@ -459,8 +465,7 @@ Page 51516264 "Bosa Receipts H Card-Checkoff."
                                     MonthlyRepay := LoanApp."Outstanding Balance";
                                     NewOutstandingBal := LoanApp."Outstanding Balance" - MonthlyRepay;
                                 end;
-                                if NewOutstandingBal > 0 then
-                                    FnSaveTempLoanAmount(LoanApp, NewOutstandingBal);
+
 
                                 //GET SCHEDULE REPYAMENT
 
@@ -479,8 +484,8 @@ Page 51516264 "Bosa Receipts H Card-Checkoff."
 
                                 LineN := LineN + 10000;
                                 Gnljnline.Init;
-                                Gnljnline."Journal Template Name" := 'GENERAL';
-                                Gnljnline."Journal Batch Name" := 'CHECKOFF';
+                                Gnljnline."Journal Template Name" := Jtemplate;
+                                Gnljnline."Journal Batch Name" := Jbatch;
                                 Gnljnline."Line No." := LineN;
                                 Gnljnline."Account Type" := Gnljnline."bal. account type"::Customer;
                                 Gnljnline."Account No." := LoanApp."Client Code";
@@ -500,7 +505,7 @@ Page 51516264 "Bosa Receipts H Card-Checkoff."
                                 Gnljnline.Validate(Gnljnline."Shortcut Dimension 1 Code");
                                 Gnljnline.Validate(Gnljnline."Shortcut Dimension 2 Code");
                                 if Gnljnline.Amount <> 0 then
-                                    Gnljnline.Insert;
+                                    Gnljnline.Insert();
                                 RunningBalance := RunningBalance - Abs(Gnljnline.Amount);
                             end;
                         end;
@@ -511,7 +516,7 @@ Page 51516264 "Bosa Receipts H Card-Checkoff."
         end;
     end;
 
-    local procedure FnRunEntranceFee(ObjRcptBuffer: Record "ReceiptsProcessing_L-Checkoff"; RunningBalance: Decimal) NewRunningBalance: Decimal
+    local procedure FnRunEntranceFee(ObjRcptBuffer: Record "ReceiptsProcessing_L-Checkoff"; RunningBalance: Decimal): Decimal
     var
         varTotalRepay: Decimal;
         varMultipleLoan: Decimal;
@@ -524,7 +529,7 @@ Page 51516264 "Bosa Receipts H Card-Checkoff."
             ObjMember.SetRange(ObjMember."No.", ObjRcptBuffer."Member No");
             ObjMember.SetRange(ObjMember."Payroll/Staff No", ObjRcptBuffer."Staff/Payroll No");
             ObjMember.SetRange(ObjMember."Employer Code", ObjRcptBuffer."Employer Code");
-            ObjMember.SetFilter(ObjMember."Registration Date", '>%1', 20170115D); //To Ensure deduction is for New Members Only
+            ObjMember.SetFilter(ObjMember."Registration Date", '>%1', 20230115D); //To Ensure deduction is for New Members Only
             if ObjMember.Find('-') then begin
                 repeat
                     ObjMember.CalcFields(ObjMember."Registration Fee Paid");
@@ -538,8 +543,8 @@ Page 51516264 "Bosa Receipts H Card-Checkoff."
 
                             LineN := LineN + 10000;
                             Gnljnline.Init;
-                            Gnljnline."Journal Template Name" := 'GENERAL';
-                            Gnljnline."Journal Batch Name" := 'CHECKOFF';
+                            Gnljnline."Journal Template Name" := Jtemplate;
+                            Gnljnline."Journal Batch Name" := Jbatch;
                             Gnljnline."Line No." := LineN;
                             Gnljnline."Account Type" := Gnljnline."account type"::Customer;
                             Gnljnline."Account No." := RcptBufLines."Member No";
@@ -565,7 +570,7 @@ Page 51516264 "Bosa Receipts H Card-Checkoff."
         end;
     end;
 
-    local procedure FnRunShareCapital(ObjRcptBuffer: Record "ReceiptsProcessing_L-Checkoff"; RunningBalance: Decimal) NewRunningBalance: Decimal
+    local procedure FnRunShareCapital(ObjRcptBuffer: Record "ReceiptsProcessing_L-Checkoff"; RunningBalance: Decimal): Decimal
     var
         varTotalRepay: Decimal;
         varMultipleLoan: Decimal;
@@ -596,8 +601,8 @@ Page 51516264 "Bosa Receipts H Card-Checkoff."
 
                             LineN := LineN + 10000;
                             Gnljnline.Init;
-                            Gnljnline."Journal Template Name" := 'GENERAL';
-                            Gnljnline."Journal Batch Name" := 'CHECKOFF';
+                            Gnljnline."Journal Template Name" := Jtemplate;
+                            Gnljnline."Journal Batch Name" := Jbatch;
                             Gnljnline."Line No." := LineN;
                             Gnljnline."Account Type" := Gnljnline."account type"::Customer;
                             Gnljnline."Account No." := ObjRcptBuffer."Member No";
@@ -625,7 +630,7 @@ Page 51516264 "Bosa Receipts H Card-Checkoff."
         end;
     end;
 
-    local procedure FnRunDepositContribution(ObjRcptBuffer: Record "ReceiptsProcessing_L-Checkoff"; RunningBalance: Decimal) NewRunningBalance: Decimal
+    local procedure FnRunDepositContribution(ObjRcptBuffer: Record "ReceiptsProcessing_L-Checkoff"; RunningBalance: Decimal): Decimal
     var
         varTotalRepay: Decimal;
         varMultipleLoan: Decimal;
@@ -646,8 +651,8 @@ Page 51516264 "Bosa Receipts H Card-Checkoff."
 
                 LineN := LineN + 10000;
                 Gnljnline.Init;
-                Gnljnline."Journal Template Name" := 'GENERAL';
-                Gnljnline."Journal Batch Name" := 'CHECKOFF';
+                Gnljnline."Journal Template Name" := Jtemplate;
+                Gnljnline."Journal Batch Name" := Jbatch;
                 Gnljnline."Line No." := LineN;
                 Gnljnline."Account Type" := Gnljnline."account type"::Customer;
                 Gnljnline."Account No." := ObjRcptBuffer."Member No";
@@ -671,7 +676,7 @@ Page 51516264 "Bosa Receipts H Card-Checkoff."
         end;
     end;
 
-    local procedure FnRunHolidayContribution(ObjRcptBuffer: Record "ReceiptsProcessing_L-Checkoff"; RunningBalance: Decimal) NewRunningBalance: Decimal
+    local procedure FnRunHolidayContribution(ObjRcptBuffer: Record "ReceiptsProcessing_L-Checkoff"; RunningBalance: Decimal): Decimal
     var
         varTotalRepay: Decimal;
         varMultipleLoan: Decimal;
@@ -692,8 +697,8 @@ Page 51516264 "Bosa Receipts H Card-Checkoff."
 
                 LineN := LineN + 10000;
                 Gnljnline.Init;
-                Gnljnline."Journal Template Name" := 'GENERAL';
-                Gnljnline."Journal Batch Name" := 'CHECKOFF';
+                Gnljnline."Journal Template Name" := Jtemplate;
+                Gnljnline."Journal Batch Name" := Jbatch;
                 Gnljnline."Line No." := LineN;
                 Gnljnline."Account Type" := Gnljnline."account type"::Customer;
                 Gnljnline."Account No." := ObjRcptBuffer."Member No";
@@ -717,7 +722,7 @@ Page 51516264 "Bosa Receipts H Card-Checkoff."
         end;
     end;
 
-    local procedure FnRunHousingContribution(ObjRcptBuffer: Record "ReceiptsProcessing_L-Checkoff"; RunningBalance: Decimal) NewRunningBalance: Decimal
+    local procedure FnRunHousingContribution(ObjRcptBuffer: Record "ReceiptsProcessing_L-Checkoff"; RunningBalance: Decimal): Decimal
     var
         varTotalRepay: Decimal;
         varMultipleLoan: Decimal;
@@ -738,8 +743,8 @@ Page 51516264 "Bosa Receipts H Card-Checkoff."
 
                 LineN := LineN + 10000;
                 Gnljnline.Init;
-                Gnljnline."Journal Template Name" := 'GENERAL';
-                Gnljnline."Journal Batch Name" := 'CHECKOFF';
+                Gnljnline."Journal Template Name" := Jtemplate;
+                Gnljnline."Journal Batch Name" := Jbatch;
                 Gnljnline."Line No." := LineN;
                 Gnljnline."Account Type" := Gnljnline."account type"::Customer;
                 Gnljnline."Account No." := ObjRcptBuffer."Member No";
@@ -749,7 +754,7 @@ Page 51516264 "Bosa Receipts H Card-Checkoff."
                 Gnljnline.Description := 'Housing Contribution';
                 Gnljnline.Amount := AmountToDeduct * -1;
                 Gnljnline.Validate(Gnljnline.Amount);
-                Gnljnline."Transaction Type" := Gnljnline."transaction type"::Investment;
+                Gnljnline."Transaction Type" := Gnljnline."transaction type"::"Housing Deposits Shares";
                 Gnljnline."Shortcut Dimension 1 Code" := 'BOSA';
                 Gnljnline."Shortcut Dimension 2 Code" := ObjMember."Global Dimension 2 Code";
                 Gnljnline.Validate(Gnljnline."Shortcut Dimension 1 Code");
@@ -763,7 +768,7 @@ Page 51516264 "Bosa Receipts H Card-Checkoff."
         end;
     end;
 
-    // local procedure FnRunXmasContribution(ObjRcptBuffer: Record "ReceiptsProcessing_L-Checkoff";RunningBalance: Decimal) NewRunningBalance: Decimal
+    // local procedure FnRunXmasContribution(ObjRcptBuffer: Record "ReceiptsProcessing_L-Checkoff";RunningBalance: Decimal) :Decimal
     // var
     //     varTotalRepay: Decimal;
     //     varMultipleLoan: Decimal;
@@ -781,8 +786,8 @@ Page 51516264 "Bosa Receipts H Card-Checkoff."
     //             LineN:=LineN+10000;
 
     //             Gnljnline.Init;
-    //             Gnljnline."Journal Template Name":='GENERAL';
-    //             Gnljnline."Journal Batch Name":='CHECKOFF';
+    //             Gnljnline."Journal Template Name":=Jtemplate;
+    //             Gnljnline."Journal Batch Name":=Jbatch;
     //             Gnljnline."Line No.":=LineN;
     //             Gnljnline."Account Type":=Gnljnline."account type"::Vendor;
     //             Gnljnline."Account No.":=RcptBufLines."Xmas Account";
@@ -803,7 +808,7 @@ Page 51516264 "Bosa Receipts H Card-Checkoff."
     //     end;
     // end;
 
-    local procedure FnRecoverPrincipleFromExcess(ObjRcptBuffer: Record "ReceiptsProcessing_L-Checkoff"; RunningBalance: Decimal) NewRunningBalance: Decimal
+    local procedure FnRecoverPrincipleFromExcess(ObjRcptBuffer: Record "ReceiptsProcessing_L-Checkoff"; RunningBalance: Decimal): Decimal
     var
         varTotalRepay: Decimal;
         varMultipleLoan: Decimal;
@@ -826,8 +831,8 @@ Page 51516264 "Bosa Receipts H Card-Checkoff."
                                 AmountToDeduct := ObjTempLoans."Outstanding Balance";
                             LineN := LineN + 10000;
                             Gnljnline.Init;
-                            Gnljnline."Journal Template Name" := 'GENERAL';
-                            Gnljnline."Journal Batch Name" := 'CHECKOFF';
+                            Gnljnline."Journal Template Name" := Jtemplate;
+                            Gnljnline."Journal Batch Name" := Jbatch;
                             Gnljnline."Line No." := LineN;
                             Gnljnline."Account Type" := Gnljnline."bal. account type"::Customer;
                             Gnljnline."Account No." := LoanApp."Client Code";
@@ -854,23 +859,7 @@ Page 51516264 "Bosa Receipts H Card-Checkoff."
         end;
     end;
 
-    local procedure FnSaveTempLoanAmount(ObjLoansRegister: Record "Loans Register"; TempBalance: Decimal)
-    var
-        ObjTempLoans: Record "Temp Loans Balances";
-    begin
-        /*ObjTempLoans.RESET;
-        ObjTempLoans.SETRANGE(ObjTempLoans."Loan No",ObjLoansRegister."Client Code");
-        ObjTempLoans.SETRANGE(ObjTempLoans."Outstanding Balance",ObjLoansRegister."Outstanding Balance");
-        IF ObjTempLoans.FIND('-') THEN
-          ObjTempLoans.DELETEALL;
-        
-        ObjTempLoans.INIT;
-        ObjTempLoans."Loan No":=ObjLoansRegister."Loan  No.";
-        ObjTempLoans."Outstanding Balance":=TempBalance;
-        ObjTempLoans."Member No":=ObjLoansRegister."Client Code";
-        ObjTempLoans.INSERT;*/
 
-    end;
 
     local procedure FnGetMemberBranch(MemberNo: Code[50]): Code[100]
     var
@@ -904,8 +893,8 @@ Page 51516264 "Bosa Receipts H Card-Checkoff."
 
                 LineN := LineN + 10000;
                 Gnljnline.Init;
-                Gnljnline."Journal Template Name" := 'GENERAL';
-                Gnljnline."Journal Batch Name" := 'CHECKOFF';
+                Gnljnline."Journal Template Name" := Jtemplate;
+                Gnljnline."Journal Batch Name" := Jbatch;
                 Gnljnline."Line No." := LineN;
                 Gnljnline."Account Type" := Gnljnline."account type"::Customer;
                 Gnljnline."Account No." := ObjRcptBuffer."Member No";
@@ -926,7 +915,7 @@ Page 51516264 "Bosa Receipts H Card-Checkoff."
         end;
     end;
 
-    local procedure FnRecoverWelfare(ObjRcptBuffer: Record "ReceiptsProcessing_L-Checkoff"; RunningBalance: Decimal) NewRunningBalance: Decimal
+    local procedure FnRecoverWelfare(ObjRcptBuffer: Record "ReceiptsProcessing_L-Checkoff"; RunningBalance: Decimal): Decimal
     var
         AmountToDeduct: Decimal;
         ObjVendor: Record Vendor;
@@ -943,7 +932,7 @@ Page 51516264 "Bosa Receipts H Card-Checkoff."
         end;
     end;
 
-    local procedure FnRunAlphaContribution(ObjRcptBuffer: Record "ReceiptsProcessing_L-Checkoff"; RunningBalance: Decimal) NewRunningBalance: Decimal
+    local procedure FnRunAlphaContribution(ObjRcptBuffer: Record "ReceiptsProcessing_L-Checkoff"; RunningBalance: Decimal): Decimal
     var
         varTotalRepay: Decimal;
         varMultipleLoan: Decimal;
@@ -964,8 +953,8 @@ Page 51516264 "Bosa Receipts H Card-Checkoff."
 
                 LineN := LineN + 10000;
                 Gnljnline.Init;
-                Gnljnline."Journal Template Name" := 'GENERAL';
-                Gnljnline."Journal Batch Name" := 'CHECKOFF';
+                Gnljnline."Journal Template Name" := Jtemplate;
+                Gnljnline."Journal Batch Name" := Jbatch;
                 Gnljnline."Line No." := LineN;
                 Gnljnline."Account Type" := Gnljnline."account type"::Customer;
                 Gnljnline."Account No." := ObjRcptBuffer."Member No";
@@ -991,7 +980,7 @@ Page 51516264 "Bosa Receipts H Card-Checkoff."
 
 
 
-    local procedure FnRunjunioroneContribution(ObjRcptBuffer: Record "ReceiptsProcessing_L-Checkoff"; RunningBalance: Decimal) NewRunningBalance: Decimal
+    local procedure FnRunjunioroneContribution(ObjRcptBuffer: Record "ReceiptsProcessing_L-Checkoff"; RunningBalance: Decimal): Decimal
     var
         varTotalRepay: Decimal;
         varMultipleLoan: Decimal;
@@ -1012,8 +1001,8 @@ Page 51516264 "Bosa Receipts H Card-Checkoff."
 
                 LineN := LineN + 10000;
                 Gnljnline.Init;
-                Gnljnline."Journal Template Name" := 'GENERAL';
-                Gnljnline."Journal Batch Name" := 'CHECKOFF';
+                Gnljnline."Journal Template Name" := Jtemplate;
+                Gnljnline."Journal Batch Name" := Jbatch;
                 Gnljnline."Line No." := LineN;
                 Gnljnline."Account Type" := Gnljnline."account type"::Customer;
                 Gnljnline."Account No." := ObjRcptBuffer."Member No";
@@ -1037,7 +1026,7 @@ Page 51516264 "Bosa Receipts H Card-Checkoff."
         end;
     end;
 
-    local procedure FnRunjuniortwoContribution(ObjRcptBuffer: Record "ReceiptsProcessing_L-Checkoff"; RunningBalance: Decimal) NewRunningBalance: Decimal
+    local procedure FnRunjuniortwoContribution(ObjRcptBuffer: Record "ReceiptsProcessing_L-Checkoff"; RunningBalance: Decimal): Decimal
     var
         varTotalRepay: Decimal;
         varMultipleLoan: Decimal;
@@ -1058,8 +1047,8 @@ Page 51516264 "Bosa Receipts H Card-Checkoff."
 
                 LineN := LineN + 10000;
                 Gnljnline.Init;
-                Gnljnline."Journal Template Name" := 'GENERAL';
-                Gnljnline."Journal Batch Name" := 'CHECKOFF';
+                Gnljnline."Journal Template Name" := Jtemplate;
+                Gnljnline."Journal Batch Name" := Jbatch;
                 Gnljnline."Line No." := LineN;
                 Gnljnline."Account Type" := Gnljnline."account type"::Customer;
                 Gnljnline."Account No." := ObjRcptBuffer."Member No";
@@ -1083,7 +1072,7 @@ Page 51516264 "Bosa Receipts H Card-Checkoff."
         end;
     end;
 
-    local procedure FnRunjuniorThreeContribution(ObjRcptBuffer: Record "ReceiptsProcessing_L-Checkoff"; RunningBalance: Decimal) NewRunningBalance: Decimal
+    local procedure FnRunjuniorThreeContribution(ObjRcptBuffer: Record "ReceiptsProcessing_L-Checkoff"; RunningBalance: Decimal): Decimal
     var
         varTotalRepay: Decimal;
         varMultipleLoan: Decimal;
@@ -1104,8 +1093,8 @@ Page 51516264 "Bosa Receipts H Card-Checkoff."
 
                 LineN := LineN + 10000;
                 Gnljnline.Init;
-                Gnljnline."Journal Template Name" := 'GENERAL';
-                Gnljnline."Journal Batch Name" := 'CHECKOFF';
+                Gnljnline."Journal Template Name" := Jtemplate;
+                Gnljnline."Journal Batch Name" := Jbatch;
                 Gnljnline."Line No." := LineN;
                 Gnljnline."Account Type" := Gnljnline."account type"::Customer;
                 Gnljnline."Account No." := ObjRcptBuffer."Member No";

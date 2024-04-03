@@ -992,23 +992,23 @@ Table 51516230 "Loans Register"
                             "Client Name" := Vendor.Name;
 
                         end else begin
-                            "BOSA No" := Vendor."BOSA Account No";
-                            "Client Code" := Vendor."No.";
-                            "Client Name" := Vendor.Name;
-                            CustR.Init;
-                            CustR."No." := Vendor."No.";
-                            CustR.Name := Vendor.Name;
-                            CustR."Global Dimension 1 Code" := Vendor."Global Dimension 1 Code";
-                            CustR."Global Dimension 2 Code" := Vendor."Global Dimension 2 Code";
-                            CustR.Status := Cust.Status::Active;
-                            CustR."Customer Type" := CustR."customer type"::FOSA;
-                            CustR."Customer Posting Group" := 'FOSA';
-                            CustR."FOSA Account" := "Account No";
-                            if CustR."Payroll/Staff No" <> '' then
-                                CustR."Payroll/Staff No" := Vendor."Staff No";
-                            CustR."ID No." := Vendor."ID No.";
-                            CustR.Gender := Vendor.Gender;
-                            CustR.Insert;
+                            // "BOSA No" := Vendor."BOSA Account No";
+                            // "Client Code" := Vendor."No.";
+                            // "Client Name" := Vendor.Name;
+                            // CustR.Init;
+                            // CustR."No." := Vendor."No.";
+                            // CustR.Name := Vendor.Name;
+                            // CustR."Global Dimension 1 Code" := Vendor."Global Dimension 1 Code";
+                            // CustR."Global Dimension 2 Code" := Vendor."Global Dimension 2 Code";
+                            // CustR.Status := Cust.Status::Active;
+                            // CustR."Customer Type" := CustR."customer type"::FOSA;
+                            // CustR."Customer Posting Group" := 'FOSA';
+                            // CustR."FOSA Account" := "Account No";
+                            // if CustR."Payroll/Staff No" <> '' then
+                            //     CustR."Payroll/Staff No" := Vendor."Staff No";
+                            // CustR."ID No." := Vendor."ID No.";
+                            // CustR.Gender := Vendor.Gender;
+                            // CustR.Insert;
 
                             CustR.Reset;
                             if CustR.Get("Account No") then begin
